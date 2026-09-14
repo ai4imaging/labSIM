@@ -1,67 +1,146 @@
-# amx
+# labSIM
 
-Generate lab assets, simulate a robot arm working with them, and refine both against a
-physics judge.
+Generate labware as articulated 3D assets, hold them to the specification they were
+built from, and score them on a 64-case bench.
 
-Three things, in order:
+The authoring loop is Articraft's ReAct agent plus three grounding tools and a finish
+gate. The same measurement kernel grades the result. Deterministic tests and rubric
+compilation run without an API key; generating an asset needs one.
 
-1. **Assets.** A prompt, a protocol excerpt and a datasheet go in; an articulated MJCF part
-   comes out, checked against the datasheet it claims to match.
-2. **A cell and a motion.** The part, an arm, a bench and some co-designed fixtures are
-   composed into a scene, and a plan of four action primitives is executed in it.
-3. **Refinement.** [`sim_judge`](vendor/sim_judge) reads the recorded run, and what it
-   found is routed back into the waypoints, the layout or the fixture parameters.
+## Configure the environment
 
-## Setup
+You need a Unix machine (macOS or Linux), a network connection, and permission to
+install a user-local binary. Nothing here requires sudo. Python 3.12 is installed by
+the setup script; do not point the project at 3.11 or 3.13.
 
-```bash
-scripts/setup.sh
-```
-
-Installs `uv`, pins Python 3.12, syncs the dependencies, and extracts the UR5e and
-Robotiq 85 from the `robosuite` wheel into `vendor/robots/`. Put API keys in `.env` (see
-`.env.example`) if you want the model-driven parts; everything deterministic runs without
-them.
+### 1. Clone
 
 ```bash
-uv run pytest              # 158 tests, about 90 seconds
-uv run python examples/wetlab_transfer/run.py --clean
+git clone https://github.com/ai4imaging/labSIM.git
+cd labSIM
 ```
 
-The example is the whole pipeline on one task: compile a 1.5 mL microcentrifuge tube from an
-Articraft model, ground it against its datasheet, design a staging rack and a destination
-rack around the arm's measured gripper, transfer the tube from one to the other, and judge
-the result. It passes on the first round, which means it also demonstrates nothing about
-the loop, so:
+### 2. Run setup
 
 ```bash
-uv run python examples/wetlab_transfer/run.py --clean --break-the-plan
+chmod +x setup.sh
+./setup.sh
 ```
 
-starts from a lift that does not clear the staging well's rim. Round 0 fails — the tube
-travels 0.9 mm and never reaches the destination — the repairer reads that from the
-findings and raises the lift, and round 1 passes. Add `--llm` to have a model propose the
-repair instead of the built-in heuristic.
+`setup.sh` at the repo root calls `scripts/setup.sh`. Either path is fine. The script:
+
+1. Installs [`uv`](https://docs.astral.sh/uv/) into `~/.local/bin` if it is missing
+2. Installs CPython 3.12
+3. Creates `.venv` and syncs dependencies, including CadQuery (`--extra articraft`)
+4. Copies `.env.example` to `.env` if you do not already have a `.env` (it will not
+   overwrite one you already filled in)
+5. On macOS, symlinks `libpython` next to the venv so `mjpython` can find it
+6. Extracts the UR5e and Robotiq 85 meshes from the `robosuite` wheel into
+   `vendor/robots/` (those meshes are not in git)
+7. Imports `mujoco`, `trimesh`, and `sim_judge` so a broken wheel fails now, not later
+
+If `uv` was just installed and the next command says it is not found, add
+`$HOME/.local/bin` to `PATH` and open a new shell.
+
+To refresh the environment later, run `./setup.sh` again. `uv sync` is incremental;
+robot meshes are skipped when they are already present.
+
+### 3. Fill in `.env`
+
+Open the `.env` the script wrote and set at least a key for the provider you will use.
+Only that provider's variables are required. The defaults talk to the GpuGeek
+OpenAI-compatible gateway:
+
+```bash
+# required to generate assets
+GPUGEEK_API_KEY=sk-...
+GPUGEEK_BASE_URL=https://api.gpugeek.com/v1
+
+# which model the bench and the authoring agent ask for
+AMX_LLM_PROVIDER=gpugeek
+AMX_LLM_MODEL=Vendor2/Claude-4.8-opus
+GPUGEEK_MODEL=Vendor2/Claude-4.8-opus
+ARTICRAFT_MODEL=Vendor2/Claude-4.8-opus
+```
+
+Model ids are whatever that gateway currently serves. Do not guess — list them:
+
+```bash
+uv run amx llm doctor
+```
+
+That call tells you whether the key is present, whether the endpoint answers, and which
+model names it actually has. A 400 that says `model not found` is almost always a stale
+id in `.env`, not a code bug.
+
+Direct Anthropic or OpenAI also work. Set `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` and
+point `AMX_LLM_PROVIDER` at `anthropic` or `openai`. Articraft infers a provider from
+the model id; GpuGeek ids use a `VendorN/` prefix on purpose, so they are not read as
+OpenRouter.
+
+On Linux, add `MUJOCO_GL=egl` (or `osmesa`) to `.env` for headless renders. On macOS
+leave `MUJOCO_GL` unset — MuJoCo uses CGL, and setting EGL there fails at render time.
+
+Retry knobs (`GPUGEEK_MAX_ATTEMPTS`, `GPUGEEK_RETRY_BASE_SECONDS`,
+`GPUGEEK_RETRY_MAX_SECONDS`) default to values that survive a several-minute outage.
+You do not need to change them for a first run.
+
+### 4. Check the install
+
+No API key is needed for these:
+
+```bash
+uv run pytest            # unit tests; about a minute and a half
+uv run amx bench list    # 64 cases and what each rubric measures
+```
+
+If pytest fails on a missing GL context, the visual checks are skipped with a note
+rather than treated as a pass. Everything else should be green.
+
+### 5. Generate one case
+
+This spends API tokens and writes under `runs/`:
+
+```bash
+uv run amx bench run BEA-001 --run-dir runs/bench/one --max-turns 60
+uv run amx view BEA-001 --run-dir runs/bench/one --animate
+```
+
+`runs/` is gitignored. A case directory with an empty `checks/` folder means generation
+did not submit an asset (usually a dead connection or an exhausted turn budget), not
+that the viewer is broken.
+
+All 64 cases:
+
+```bash
+uv run amx bench sweep --workers 2 --resume --max-turns 60 --run-dir runs/bench/full
+```
+
+`--resume` skips a case that already has a `scorecard.json`. Delete that file, or the
+whole case directory, if you want it generated again.
 
 ## Layout
 
 ```
+setup.sh                 repo-root entry; calls scripts/setup.sh
+scripts/setup.sh         uv, Python 3.12, .venv, .env, robot meshes
+.env.example             every variable the tools read; copy is made by setup
 src/amx/
-├── asset/       part 1: AssetRequest -> Articraft -> MJCF, then grounding checks
-├── grounding/   the measurement core: cross-sections, cavities, staging, renders
-├── search/      best-first search over candidate designs, with backtracking
-├── skills/      lessons learned, written as Articraft examples and retrieved by BM25
-├── sim/         part 2: scene assembly, IK, the four primitives, tracing, policy
-├── codesign/    part 2c: parametric parts, DFM checks, three-format export
-├── loop/        part 3: judging, finding -> repair routing, bounded iteration
-├── bench/       the 3D asset benchmark: case parsing, measurement, scoring, sweeps
-├── trace_export.py  trajectory.jsonl -> one directory per ReAct turn
-└── cli.py       amx llm | asset | codesign | sim | judge | loop | bench | trace
+├── asset/               AssetRequest -> Articraft -> MJCF, then grounding checks
+├── grounding/           cross-sections, cavities, staging, renders
+├── search/              best-first search over candidate designs
+├── skills/              lessons stored as Articraft examples, retrieved by BM25
+├── sim/                 scene assembly, IK, primitives, tracing, policy
+├── codesign/            parametric parts, DFM checks, three-format export
+├── loop/                judging, finding -> repair routing, bounded iteration
+├── bench/               case parsing, measurement, scoring, sweeps
+├── trace_export.py      trajectory.jsonl -> one directory per ReAct turn
+└── cli.py               amx llm | asset | codesign | sim | judge | loop | bench
+3D_asset_cases/          64 cases: input.md + compiled rubric.json
 vendor/
-├── articraft/       upstream, plus a handful of listed seams (see PROVENANCE.md)
-├── articraft_ext/   bioSIM's additions, overlaid onto the `agent` namespace
-└── sim_judge/, robots/
-examples/        the wetlab transfer, end to end
+├── articraft/           upstream, plus listed seams (see vendor/PROVENANCE.md)
+├── articraft_ext/       grounding tools and the finish gate
+└── sim_judge/           physics judge (robots/ is created by setup.sh)
 ```
 
 ## The generation loop is Articraft's, with three more ways to fail
@@ -125,16 +204,16 @@ truth to keep in step, and publishing the answer key leaks nothing the generator
 already shown.
 
 ```bash
-amx bench list                          # every case and what its rubric measures
-amx bench show BEA-001                  # the derived spec next to the compiled rubric
-amx bench show BEA-001 --prompt         # exactly what the generator will be sent
-amx bench rubric BEA-001                # compile and print without writing
-amx bench run BEA-001 --run-dir runs/bench/one
-amx bench generate BEA-001 --run-dir runs/bench/one \
+uv run amx bench list                          # every case and what its rubric measures
+uv run amx bench show BEA-001                  # the derived spec next to the compiled rubric
+uv run amx bench show BEA-001 --prompt         # exactly what the generator will be sent
+uv run amx bench rubric BEA-001                # compile and print without writing
+uv run amx bench run BEA-001 --run-dir runs/bench/one
+uv run amx bench generate BEA-001 --run-dir runs/bench/one \
       --max-turns 40 --beam 3 --samples 2 --max-nodes 24
-amx bench judge BEA-001 --run-dir runs/bench/one     # re-score without regenerating
-amx bench sweep --workers 4 --resume --run-dir runs/bench/full
-amx bench sweep --no-grounding --run-dir runs/bench/baseline   # plain Articraft
+uv run amx bench judge BEA-001 --run-dir runs/bench/one     # re-score without regenerating
+uv run amx bench sweep --workers 2 --resume --run-dir runs/bench/full
+uv run amx bench sweep --no-grounding --run-dir runs/bench/baseline   # plain Articraft
 ```
 
 ### Three axes, graded items, and no prose in the scoring path
@@ -260,19 +339,20 @@ the next round has to reason about.
 ## Command line
 
 ```bash
-amx asset generate request.json --output-root assets      # author with Articraft
-amx asset compile model.py --asset-id tube --output-root assets
-amx asset check assets/tube request.json                  # grounding
-amx codesign templates                                    # parameters and bounds
-amx codesign build rack.json --out parts/rack             # rack.json is a PartProposal
-amx sim build design.json --out runs/probe
-amx sim run design.json --out runs/probe
-amx judge runs/probe/case --stride 1
-amx loop run design.json --rounds 4 --run-dir runs
-amx bench run BEA-001 --run-dir runs/bench/one            # generate and score one case
-amx bench sweep --workers 4 --resume                      # all 64
-amx trace runs/.../traces --output runs/.../expanded      # per-turn transcript
-amx llm doctor                                            # is the endpoint reachable
+uv run amx asset generate request.json --output-root assets
+uv run amx asset compile model.py --asset-id tube --output-root assets
+uv run amx asset check assets/tube request.json
+uv run amx codesign templates
+uv run amx codesign build rack.json --out parts/rack
+uv run amx sim build design.json --out runs/probe
+uv run amx sim run design.json --out runs/probe
+uv run amx judge runs/probe/case --stride 1
+uv run amx loop run design.json --rounds 4 --run-dir runs
+uv run amx bench run BEA-001 --run-dir runs/bench/one
+uv run amx bench sweep --workers 2 --resume
+uv run amx view BEA-001 --run-dir runs/bench/one --animate
+uv run amx trace runs/.../traces --output runs/.../expanded
+uv run amx llm doctor
 ```
 
 Use `--scan-stride 20` while iterating and `--stride 1` to accept: the judge scans
@@ -297,8 +377,7 @@ runs/bench/<sweep>/BEA-001/
 │       ├── tool-results/       one file each, signal blocks left as readable text
 │       ├── injected.txt        what the harness said that the model did not ask for
 │       └── model.py            the file as it stood after this turn
-├── checks/T-VIS/renders/   the images the visual review actually looked at
-├── outcomes.json           per-check measurements, with every number that was read
+├── checks/renders/         four views the visual review actually looked at
 ├── scorecard.json          score, per-category split, hard gates, status
 └── scorecard.txt           the same, readable
 ```
