@@ -1,0 +1,501 @@
+# funnel benchmark Input Specification
+
+- `benchmark_id`: FUN-001
+- `asset_class`: funnel
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: funnel
+- `name_en`: funnel
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: DWK Life Sciences
+- `model`: DURAN213533306
+- `configuration`: Ordinary long-stem Bunsen funnel,55mm bowl OD;not a Buchner or sintered filter funnel
+- `nominal_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+- `accessories`:
+  - 90mm circular filter paper,pre-folded geometry
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `bowl_od`:
+  - `id`: DIM-D
+  - `value`: `55`
+  - `unit`: mm
+  - `measurement_object`: Funnel bowl
+  - `measurement_location`: Outer rim diameter d
+  - `measurement_state`: Upright
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `stem_od`:
+  - `id`: DIM-S
+  - `value`: `6`
+  - `unit`: mm
+  - `measurement_object`: Stem
+  - `measurement_location`: Outer diameter d1
+  - `measurement_state`: Upright
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-H
+  - `value`: `190`
+  - `unit`: mm
+  - `measurement_object`: Funnel
+  - `measurement_location`: Rim to stem outlet h
+  - `measurement_state`: Upright
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `stem_length`:
+  - `id`: DIM-SL
+  - `value`: `150`
+  - `unit`: mm
+  - `measurement_object`: Stem
+  - `measurement_location`: h1 from bowl/stem junction to outlet
+  - `measurement_state`: Upright
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `stem_bore`:
+  - `id`: DIM-ID
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Stem
+  - `measurement_location`: Internal lumen diameter
+  - `measurement_state`: Unloaded
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Only outer diameter supplied.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `bowl_inner_profile`:
+  - `id`: DIM-BI
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Bowl
+  - `measurement_location`: Inner conical profile
+  - `measurement_state`: Unloaded
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: No dimensioned inner profile or wall section.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-BOWL`**
+  - `id`: CMP-BOWL
+  - `name`: Conical glass bowl
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-STEM`**
+  - `id`: CMP-STEM
+  - `name`: Long hollow stem
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BOWL
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-PATH`**
+  - `id`: CMP-PATH
+  - `name`: Continuous bowl-to-outlet lumen
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-BOWL
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-PAPER`**
+  - `id`: IF-PAPER
+  - `description`: Manufacturer matching paper range70-90mm;fix90mm round paper and its independently prepared folded cone geometry for this case.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `mate`: REF-PAPER
+  - `paper_diameter_mm`: `90`
+  - `approach_direction`: -Z
+  - `support`: Inner conical bowl surface
+  - `access_clearance_mm`:
+    - `value`: `30`
+    - `source_class`: B
+- **Item 2 — `IF-RECEIVER`**
+  - `id`: IF-RECEIVER
+  - `description`: Stem must enter B cylindrical receiver without sealing its mouth; funnel is held by external support at bowl.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `mate`: REF-RECEIVER
+  - `approach_direction`: -Z
+  - `insertion_mm`: `100`
+  - `support`: External bowl grasp,not stem glued to receiver
+
+## Reference Consumables
+
+- **Item 1 — `REF-PAPER`**
+  - `id`: REF-PAPER
+  - `configuration`: 90mm circular paper within manufacturer70-90mm range;material grade/thickness and pre-folded model must be fixed before evaluation.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-RECEIVER`**
+  - `id`: REF-RECEIVER
+  - `configuration`: B cylindrical receiver:20mm clear bore,180mm internal depth,open mouth.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `false`
+- `reason`: One-piece rigid funnel. Paper folding is an external consumable preparation step,not an internal funnel joint.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - *(none)*
+
+## Functional Requirements
+
+- **Item 1 — `FUN-PATH`**
+  - `id`: FUN-PATH
+  - `description`: An open internal path connects bowl and stem outlet; no solid collision approximation may plug the stem.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `nominal_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `working_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `brim_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unknown_reason`: Selected funnel specified by geometry and paper size,not volume.
+- **Item 2 — `FUN-PAPER`**
+  - `id`: FUN-PAPER
+  - `description`: Pre-folded reference paper seats without passing through stem or protruding beyond usable rim; no filtration efficacy claim.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FUN-TRANSFER`**
+  - `id`: FUN-TRANSFER
+  - `description`: Funnel can be inserted into and removed from receiver while maintaining a nonzero air gap around stem at mouth.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Gravity filtration/decanting setup fragment.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `object`: Funnel,paper and receiver
+  - `preconditions`:
+    - Pre-folded paper model available
+    - Funnel externally supported
+  - `action`: Place folded paper into bowl;lower stem100mm into receiver;hold;withdraw stem and remove paper.
+  - `expected_postconditions`:
+    - Paper supported
+    - Outlet route remains available
+    - Assembly separable
+  - `parameters`:
+    - `linear_speed_mm_s`: `10`
+    - `dwell_s`: `5`
+    - `repetitions`: `3`
+    - `timeout_s`: `60`
+  - `forbidden_states`:
+    - Using rigid paper contact as verified wetting or retention efficiency
+    - Blocking receiver mouth with an invented seal
+  - `source_note`: Filtration and decanting use describedp160; exact test sequence is B.
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - SRC-01
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: Filtration and decanting use describedp160; exact test sequence is B.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Place folded paper into bowl;lower stem100mm into receiver;hold;withdraw stem and remove paper.
+    - `parameters`:
+      - `linear_speed_mm_s`: `10`
+      - `dwell_s`: `5`
+      - `repetitions`: `3`
+      - `timeout_s`: `60`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: DURAN Laboratory Glassware Catalog
+  - `publisher`: DWK Life Sciences
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: p160 upper long-stem funnel table213533306 row and drawing.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-D
+    - DIM-S
+    - DIM-H
+    - DIM-SL
+    - CMP-BOWL
+    - CMP-STEM
+    - CMP-PATH
+    - IF-PAPER
+    - REF-PAPER
+    - PRO-01
+    - REQ-VIS
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-PAPER (90mm circular paper within manufacturer70-90mm range;material grade/thickness and pre-folded model must be fixed before evaluation.)
+  - Independent reference model: REF-RECEIVER (B cylindrical receiver:20mm clear bore,180mm internal depth,open mouth.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-PATH`:
+    - `source_class`: B
+    - `condition`: Nonzero-area connected lumen throughout;no solid plug.
+    - `target_path`: input.functional_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-PAPER`:
+    - `source_class`: B
+    - `condition`: Paper remains bowl-supported,does not pass into stem or exceed rim by>1mm(B);unintended overlap<=0.2mm;removable.
+    - `target_path`: input.interfaces.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-RECEIVER`:
+    - `source_class`: B
+    - `condition`: 100±1mm insertion;mouth radial air gap>=1mm(B);outlet remains>=10mm above receiver bottom;no blocked removal.
+    - `target_path`: input.protocol_conditioned_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: p160 upper long-stem funnel drawing.
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Conical bowl
+  - Long straight stem
+  - Open upper rim
+  - Open lower outlet
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

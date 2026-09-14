@@ -1,0 +1,735 @@
+# analytical balance benchmark Input Specification
+
+- `benchmark_id`: BAL-001
+- `asset_class`: analytical_balance
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: analytical balance
+- `name_en`: analytical_balance
+- `representation_mode`: Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.
+- `manufacturer`: OHAUS
+- `model`: Pioneer PX224/E
+- `configuration`: External-calibration analytical balance, item 30429811, glass draft shield and 90 mm weighing pan; no InCal mechanism.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-WIDTH
+  - `value`: `209`
+  - `unit`: mm
+  - `measurement_object`: Pioneer PX224/E
+  - `measurement_location`: Assembled width
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `depth`:
+  - `id`: DIM-DEPTH
+  - `value`: `321`
+  - `unit`: mm
+  - `measurement_object`: Pioneer PX224/E
+  - `measurement_location`: Assembled front-to-rear depth
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-HEIGHT
+  - `value`: `309`
+  - `unit`: mm
+  - `measurement_object`: Pioneer PX224/E
+  - `measurement_location`: Assembled height
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `pan_diameter`:
+  - `id`: DIM-PAN_DIAMETER
+  - `value`: `90`
+  - `unit`: mm
+  - `measurement_object`: Pioneer PX224/E
+  - `measurement_location`: Circular weighing platform diameter
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `capacity`:
+  - `id`: DIM-CAPACITY
+  - `value`: `220`
+  - `unit`: g
+  - `measurement_object`: Pioneer PX224/E
+  - `measurement_location`: Maximum published weighing capacity; not geometry
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `readability`:
+  - `id`: DIM-READABILITY
+  - `value`: `0.0001`
+  - `unit`: g
+  - `measurement_object`: Pioneer PX224/E
+  - `measurement_location`: Displayed mass increment; not measurement uncertainty
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `draft_shield_opening`:
+  - `id`: DIM-DRAFT_SHIELD_OPENING
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Pioneer PX224/E
+  - `measurement_location`: draft_shield_opening
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: No dimensioned door opening or verified travel acquired; do not infer from the product image.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `pan_elevation`:
+  - `id`: DIM-PAN_ELEVATION
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Pioneer PX224/E
+  - `measurement_location`: pan_elevation
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Pan support height and usable chamber clearance unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `leveling_foot_travel`:
+  - `id`: DIM-LEVELING_FOOT_TRAVEL
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Pioneer PX224/E
+  - `measurement_location`: leveling_foot_travel
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Thread pitch, permissible travel and foot contact geometry unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Balance housing
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Removable weighing pan
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Glass draft-shield enclosure and movable access panels
+  - `quantity`: `1`
+  - `kind`: articulated
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Level indicator
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: Adjustable leveling feet
+  - `quantity`: `4`
+  - `kind`: articulated
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Display and Zero/Tare/Menu controls
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-6`**
+  - `id`: CMP-6
+  - `name`: Power, RS232 and USB connectors
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: 90 mm pan supports an independently specified container without contacting the surrounding draft shield; external load must act only through the pan.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Movable shield access must permit container insertion; no door-state sensor or automatic weighing interlock is claimed.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: Four leveling feet and bubble indicator provide manual leveling; power adapter, USB and RS232 are distinct rear interfaces.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Independent PX224/E draft-shield and pan reference geometry.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Benchmark container, 40 mm outside diameter and 20 mm height, 10 g virtual mass; not an OHAUS accessory.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: Independent external calibration mass geometry and certificate for 100 g or 200 g if physical calibration is evaluated.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: Selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-2
+    - `type`: access_panel_mechanisms_pending_reference
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Resolve each movable glass panel axis from independent model.
+    - `zero`: Closed panel poses
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: mm
+    - `range_source_class`: U
+    - `limits`: Do not invent travel; door movement test blocked until independent travel limits exist.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+  - **Item 2 — `J-1`**
+    - `id`: J-1
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-4
+    - `type`: four_independent_screw_adjusters
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Each foot screw axis, pending reference
+    - `zero`: Reference nominal leveling position
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: mm
+    - `range_source_class`: U
+    - `limits`: No guessed screw pitch or extension limit.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Provide collision-aware access to the pan and independent stable support of the container.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Implement Zero, Tare and net/gross display semantics from injected load values without claiming analytical mass accuracy.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Expose external span calibration with the model-specific 100 g or 200 g choices, not an internal calibration actuator.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Level and prepare the balance before use or after relocation.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Stable bench, empty pan, instrument acclimatized under manufacturer conditions.
+  - `action`: Adjust four feet until bubble centered; perform required external calibration before weighing.
+  - `expected_postcondition`: Leveling and calibration preparation acknowledged.
+  - `forbidden_states`: Treating relocation as calibration-free or adding an internal calibration mechanism.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Level and prepare the balance before use or after relocation.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Adjust four feet until bubble centered; perform required external calibration before weighing.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Execute container tare and subsequent negative tare indication.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Weighing mode, empty pan.
+  - `action`: Zero; place empty container; Tare; add material; remove container and contents; Tare again.
+  - `expected_postcondition`: Display net material mass after addition, negative container mass after removal, zero after final Tare.
+  - `forbidden_states`: Tare adding container mass or clearing tare automatically on container removal.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Execute container tare and subsequent negative tare indication.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Zero; place empty container; Tare; add material; remove container and contents; Tare again.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 3 — `PRO-2`**
+  - `id`: PRO-2
+  - `description`: External span calibration uses model-specific reference loads.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Balance on, unloaded pan, suitable external mass available.
+  - `action`: Enter Calibration menu, select Span Cal, follow zero/load/removal prompts using 100 g or 200 g for PX224/E.
+  - `expected_postcondition`: Calibration done shown only after sequence completes.
+  - `forbidden_states`: Using illustrative 50 g instructions as the PX224/E specification.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: External span calibration uses model-specific reference loads.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Enter Calibration menu, select Span Cal, follow zero/load/removal prompts using 100 g or 200 g for PX224/E.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: PX Series instruction manual
+  - `publisher`: OHAUS
+  - `url`: https://www.ohausvietnam.com/data/news/3295/TPS-HDSD-PX.pdf
+  - `version_or_publication_date`: 30372560J, 2020
+  - `locator`: English EN-4 to EN-8, EN-22 to EN-23, EN-38 Table 9-1; PDF pages 6-10,24-25,40. Table and parts image visually inspected.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-WIDTH
+    - DIM-DEPTH
+    - DIM-HEIGHT
+    - DIM-PAN_DIAMETER
+    - DIM-CAPACITY
+    - DIM-READABILITY
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - CMP-6
+    - IF-0
+    - IF-1
+    - IF-2
+    - REF-0
+    - REF-2
+    - PRO-0
+    - PRO-1
+    - PRO-2
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Pioneer PX224/E product specifications
+  - `publisher`: OHAUS
+  - `url`: https://oceania.ohaus.com/en-eu/products/balances-scales/analytical-balances/pioneer-analytical-(1)/electronic-balance-px224-e-(1)
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Product specifications: capacity, readability, pan, dimensions and Internal Calibration Not Applicable.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - *(none)*
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real heat transfer, fluid flow and experimental efficacy
+  - Requirement extraction from raw sources
+  - Analytical measurement accuracy, drift, air-current rejection and mass-traceability certification.
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry/contact/state checkers and assigned visual reviewer
+  - Independent reference model: Independent PX224/E draft-shield and pan reference geometry.
+  - Independent reference model: Benchmark container, 40 mm outside diameter and 20 mm height, 10 g virtual mass; not an OHAUS accessory.
+  - Independent reference model: Independent external calibration mass geometry and certificate for 100 g or 200 g if physical calibration is evaluated.
+  - Independent source truth for critical geometry gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `virtual_loads_g`:
+    - `source_class`: B
+    - `container`: `10`
+    - `contents`: `20`
+    - `total`: `30`
+  - `display_quantization_g`:
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `value`: `0.0001`
+  - `metrology_boundary`: Injected load values exercise state logic; repeatability, linearity and typical 3 s stabilization are not demonstrated by this benchmark.
+  - `T-CASE-0`:
+    - `initial`: Independent panel geometry and travel available; empty pan and closed shield.
+    - `action`: Open one verified access panel, insert benchmark container centrally, release, close panel; repeat removal.
+    - `observable`: Panel travel, contacts, container pose and load path.
+    - `pass_condition`: All motions stay within independent limits; container supported on pan only; no unintended penetration above 0.2 mm; settled drift <=1 mm and <=2 deg. Missing travel truth blocks this check.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-1`:
+    - `initial`: Weighing mode, unloaded pan, virtual load injector calibrated independently.
+    - `action`: Zero; inject 10 g container; Tare; add 20 g; remove all 30 g; Tare.
+    - `observable`: Display values, unit and NET flag.
+    - `pass_condition`: After Zero=0.0000 g; after container=10.0000 g; after Tare=0.0000 g net; after addition=20.0000 g net; after removal=-10.0000 g; after final Tare=0.0000 g, each within 0.0001 g numerical tolerance. This is display arithmetic only.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-2`:
+    - `initial`: Verified foot kinematics and reference calibration fixture available; level preparation not yet acknowledged.
+    - `action`: Level through four foot adjusters; enter span menu, select 200 g; supply independent zero/load/remove events.
+    - `observable`: Bubble position, foot bounds, menu selections and calibration state.
+    - `pass_condition`: Bubble centered within independently defined marked circle; all feet within verified limits; external 100/200 g choices match PX224/E; no successful completion before required events; no internal actuator invented. A certified mass is required only for any separately claimed physical calibration.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: All motions stay within independent limits; container supported on pan only; no unintended penetration above 0.2 mm; settled drift <=1 mm and <=2 deg. Missing travel truth blocks this check.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: After Zero=0.0000 g; after container=10.0000 g; after Tare=0.0000 g net; after addition=20.0000 g net; after removal=-10.0000 g; after final Tare=0.0000 g, each within 0.0001 g numerical tolerance. This is display arithmetic only.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Bubble centered within independently defined marked circle; all feet within verified limits; external 100/200 g choices match PX224/E; no successful completion before required events; no internal actuator invented. A certified mass is required only for any separately claimed physical calibration.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: English EN-4 to EN-8, EN-22 to EN-23, EN-38 Table 9-1; PDF pages 6-10,24-25,40. Table and parts image visually inspected.
+  - `url`: https://www.ohausvietnam.com/data/news/3295/TPS-HDSD-PX.pdf
+  - `verification_status`: Manual parts image PDF page 9 and specifications table page 40 visually inspected.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Glass draft shield, circular pan, front display and controls, bubble level and four feet.
+  - Rear USB, RS232 and power interface layout.
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

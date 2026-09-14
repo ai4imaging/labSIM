@@ -1,0 +1,536 @@
+# sampling spoon benchmark Input Specification
+
+- `benchmark_id`: SPO-001
+- `asset_class`: sampling_spoon
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `manufacturer`: Buerkle
+- `model`: 5378-5008 detectable long-handle spoon
+- `configuration`: Single blue polystyrene spoon, nominal20 mL; individually packed disposable configuration. Detection and sterility are not simulated.
+- `name`: sampling spoon
+- `name_en`: sampling_spoon
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `overall_length`:
+  - `id`: DIM-OVERALL_LENGTH
+  - `value`: `375`
+  - `unit`: mm
+  - `measurement_object`: 5378-5008 detectable long-handle spoon
+  - `measurement_location`: End-to-end length
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `handle_length`:
+  - `id`: DIM-HANDLE_LENGTH
+  - `value`: `300`
+  - `unit`: mm
+  - `measurement_object`: 5378-5008 detectable long-handle spoon
+  - `measurement_location`: Manufacturer handle length, not overall reach
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `bowl_length`:
+  - `id`: DIM-BOWL_LENGTH
+  - `value`: `68`
+  - `unit`: mm
+  - `measurement_object`: 5378-5008 detectable long-handle spoon
+  - `measurement_location`: Spoon portion longitudinal length
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `bowl_width`:
+  - `id`: DIM-BOWL_WIDTH
+  - `value`: `48`
+  - `unit`: mm
+  - `measurement_object`: 5378-5008 detectable long-handle spoon
+  - `measurement_location`: Spoon portion width
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `nominal_capacity`:
+  - `id`: DIM-NOMINAL_CAPACITY
+  - `value`: `20`
+  - `unit`: mL
+  - `measurement_object`: 5378-5008 detectable long-handle spoon
+  - `measurement_location`: Nominal content, not a calibrated delivered volume
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `bowl_depth`:
+  - `id`: DIM-BOWL_DEPTH
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: 5378-5008 detectable long-handle spoon
+  - `measurement_location`: bowl_depth
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Exact cavity depth, wall thickness and rim profile not published on acquired page.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `handle_profile`:
+  - `id`: DIM-HANDLE_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: 5378-5008 detectable long-handle spoon
+  - `measurement_location`: handle_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Handle cross-section and indentation geometry require independent reference.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Continuous spoon body
+  - `quantity`: `1`
+  - `kind`: root
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Concave bowl region and rim
+  - `quantity`: `1`
+  - `kind`: fixed_region_or_component
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Long indented handle region
+  - `quantity`: `1`
+  - `kind`: fixed_region_or_component
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Grasp indented handle without occupying the bowl; no threaded or hinged connection.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Bowl must pass through independently defined container opening and reach a sample surface; nominal capacity does not imply accurate dosing.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: B1 benchmark cylindrical source container:80 mm clear opening,200 mm internal depth; receiver100 mm clear opening. Independent model missing.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Independent spoon reference profile, cavity and handle grip geometry.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: B2 inert5 mm diameter sphere,0.1 g; rigid support probe, not powder or liquid.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `applicable`: `false`
+- `reason`: Rigid item or independent free bodies; no internal joint needed.
+- `joints`:
+  - *(none)*
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Preserve an open concave cavity rather than a solid spoon-shaped lump.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Support collision-aware insertion, withdrawal and receiver approach with handle-only grasp.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Separate geometric support of an inert probe and single-use workflow from real sample delivery.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Single-use sampling application
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Unused individually packed spoon selected.
+  - `action`: Use long handle to access material; retire item after the sampling episode.
+  - `expected_postcondition`: No reuse in this workflow.
+  - `forbidden_states`: Claiming decontamination, detection sensitivity or sterile assurance from a model.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Single-use sampling application
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Use long handle to access material; retire item after the sampling episode.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Benchmark sampling motion derived from the stated application
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `preconditions`: Source/receiver and inert probe fixtures ready; grip on handle.
+  - `action`: Approach source, lower bowl, place probe, withdraw level, move above receiver, tilt and retract.
+  - `expected_postcondition`: Source-to-receiver motion completed.
+  - `forbidden_states`: Contacting bowl with gripper or counting motion as20 mL delivery.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - *(none)*
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Approach source, lower bowl, place probe, withdraw level, move above receiver, tilt and retract.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Detectable spoon, long handle, blue20 ml375 mm
+  - `url`: https://www.buerkle.de/en/detectable-spoon-long-handle-blue_p5378-5008
+  - `publisher`: Buerkle
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Detailed information and Specifications:300 mm handle,375 mm overall,68x48 mm spoon bowl,20 mL nominal content.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-OVERALL_LENGTH
+    - DIM-HANDLE_LENGTH
+    - DIM-BOWL_LENGTH
+    - DIM-BOWL_WIDTH
+    - DIM-NOMINAL_CAPACITY
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - IF-0
+    - IF-1
+    - PRO-0
+    - REQ-VIS
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Liquid/powder transfer yield, quantitative20 mL dosing, metal/X-ray detectability and sterility.
+- `runtime_dependencies`:
+  - Submitted asset, pinned MuJoCo environment and independent checkers
+  - B1 benchmark cylindrical source container:80 mm clear opening,200 mm internal depth; receiver100 mm clear opening. Independent model missing.
+  - Independent spoon reference profile, cavity and handle grip geometry.
+  - B2 inert5 mm diameter sphere,0.1 g; rigid support probe, not powder or liquid.
+  - Source truth for critical gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `fixture_source`: B;80 mm and100 mm openings are independent test conditions, not claimed compatible commercial bottles.
+  - `probe_boundary`: One rigid bead is a cavity-support proxy; no fluid/particle ensemble flow or dosing accuracy.
+  - `T-CASE-0`:
+    - `initial`: Upright source, spoon bowl above opening and handle gripped outside bowl.
+    - `action`: Lower bowl150 mm through80 mm opening, withdraw and translate150 mm above receiver.
+    - `observable`: Clearance, bowl depth and gripper contact regions.
+    - `pass_condition`: Reach150 +/-1 mm relative to opening; no unintended overlap>0.2 mm; gripper contacts handle only; maintain bowl within2 degrees of level on withdrawal.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-1`:
+    - `initial`: Independently measured cavity and level spoon; sphere just above bowl interior.
+    - `action`: Release sphere, settle2 s, translate50 mm at10 mm/s while bowl level, hold2 s.
+    - `observable`: Sphere support contacts and displacement relative to bowl.
+    - `pass_condition`: Sphere settles inside open cavity and remains supported during prescribed motion; no unintended overlap>0.2 mm; no fabricated cavity closure. This does not establish20 mL volume or flow.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-2`:
+    - `initial`: Spoon above receiver, sampling episode active.
+    - `action`: Rotate bowl90 degrees at30 deg/s, return, withdraw and mark used; attempt reuse in workflow checker.
+    - `observable`: Receiver clearance and item-use event log.
+    - `pass_condition`: Bowl reaches90 +/-2 degrees without receiver collision>0.2 mm; used item rejected for subsequent episode by workflow oracle; no delivered amount inferred.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Reach150 +/-1 mm relative to opening; no unintended overlap>0.2 mm; gripper contacts handle only; maintain bowl within2 degrees of level on withdrawal.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Sphere settles inside open cavity and remains supported during prescribed motion; no unintended overlap>0.2 mm; no fabricated cavity closure. This does not establish20 mL volume or flow.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Bowl reaches90 +/-2 degrees without receiver collision>0.2 mm; used item rejected for subsequent episode by workflow oracle; no delivered amount inferred.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `url`: https://www.buerkle.de/en/detectable-spoon-long-handle-blue_p5378-5008
+  - `locator`: Detailed information and Specifications:300 mm handle,375 mm overall,68x48 mm spoon bowl,20 mL nominal content.
+  - `verification_status`: Source body read; image review pending.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Blue polymer bowl and long indented handle; single continuous item.
+  - Concavity visible from above; no invented moving mechanism.
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

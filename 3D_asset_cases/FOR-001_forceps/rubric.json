@@ -1,0 +1,250 @@
+{
+  "format": "amx-rubric",
+  "case_id": "FOR-001",
+  "asset_class": "forceps",
+  "source_sha": "745d5f9e25b34ee4",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "max_penetration_mm": 0.005
+      }
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0,
+      "params": {
+        "max_penetration_mm": 0.005
+      }
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Joined forceps body",
+      "weight": 3.0,
+      "params": {
+        "part": "Joined forceps body"
+      }
+    },
+    {
+      "id": "PART-CMP-1",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Left compliant shank and fine tip",
+      "weight": 3.0,
+      "params": {
+        "part": "Left compliant shank and fine tip"
+      }
+    },
+    {
+      "id": "PART-CMP-2",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Right compliant shank and fine tip",
+      "weight": 3.0,
+      "params": {
+        "part": "Right compliant shank and fine tip"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "DIM-DIM-LENGTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "length",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-LENGTH",
+        "value_m": 0.11,
+        "kind": "extent_max"
+      },
+      "note": "Overall length"
+    },
+    {
+      "id": "NA-DIM-TIP_WIDTH",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "tip_width",
+      "params": {
+        "reason": "the name does not say how to measure this on the assembled object"
+      }
+    },
+    {
+      "id": "DIM-DIM-TIP_THICKNESS",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "tip_thickness",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-TIP_THICKNESS",
+        "value_m": 6e-05,
+        "kind": "wall_thickness",
+        "local_feature": true
+      },
+      "note": "Tip thickness, not jaw separation"
+    },
+    {
+      "id": "PROP-DIM-MASS",
+      "axis": "parts",
+      "primitive": "property_assert",
+      "subject": "mass",
+      "params": {
+        "quantity": "mass",
+        "quantity_class": "mass",
+        "value": 0.012,
+        "unit": "g"
+      }
+    },
+    {
+      "id": "NA-DIM-REST_GAP",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "rest_gap",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-SHANK_GEOMETRY",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "shank_geometry",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-TIP_CONTACT",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "tip_contact",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Slender straight opposed tips and joined shanks, not crossed self-closing form.",
+      "params": {
+        "feature": "Slender straight opposed tips and joined shanks, not crossed self-closing form."
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Inox finish and Standard tip proportions; no ratchet or rings.",
+      "params": {
+        "feature": "Inox finish and Standard tip proportions; no ratchet or rings."
+      }
+    },
+    {
+      "id": "OP-J-0",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Left compliant shank and fine tip",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Left compliant shank and fine tip",
+        "operation_id": "J-0",
+        "parent_part": "Joined forceps body"
+      },
+      "note": "Unloaded shape; Physical safe gap range and force curve remain unknown; rigid-link proxy must be labeled B."
+    },
+    {
+      "id": "SWEEP-J-0",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Left compliant shank and fine tip clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Left compliant shank and fine tip"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-J-0"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}

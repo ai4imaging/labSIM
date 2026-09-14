@@ -1,0 +1,439 @@
+# beaker benchmark Input Specification
+
+- `benchmark_id`: BEA-001
+- `asset_class`: beaker
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: beaker
+- `name_en`: beaker
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: DWK Life Sciences
+- `model`: DURAN 211063604
+- `nominal_capacity_ml`: `250`
+- `accessories`:
+  - *(none)*
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `body_outer_diameter`:
+  - `id`: DIM-OD
+  - `value`: `70`
+  - `unit`: mm
+  - `measurement_object`: Beaker body
+  - `measurement_location`: Cylindrical outside diameter excluding spout
+  - `measurement_state`: Upright, empty
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-H
+  - `value`: `95`
+  - `unit`: mm
+  - `measurement_object`: Beaker
+  - `measurement_location`: Base to rim, h in source drawing
+  - `measurement_state`: Upright, empty
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `mouth_inner_diameter`:
+  - `id`: DIM-ID
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Mouth
+  - `measurement_location`: Clear inner diameter
+  - `measurement_state`: Empty
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: No inner-diameter drawing obtained.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `wall_thickness`:
+  - `id`: DIM-WALL
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Wall
+  - `measurement_location`: Mid-height wall section
+  - `measurement_state`: Empty
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Catalog does not specify wall thickness; outer diameter is not inner diameter.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-BODY`**
+  - `id`: CMP-BODY
+  - `name`: Wall and closed bottom
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-CAVITY`**
+  - `id`: CMP-CAVITY
+  - `name`: Open internal cavity
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-SPOUT`**
+  - `id`: CMP-SPOUT
+  - `name`: Pouring spout
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-MARK`**
+  - `id`: CMP-MARK
+  - `name`: Graduations and marking area
+  - `quantity`: `1`
+  - `kind`: visual
+  - `parent`: CMP-BODY
+  - `critical`: `false`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-MOUTH`**
+  - `id`: IF-MOUTH
+  - `description`: Approach the mouth along -Z; bottom provides support. Spout points +X. Reserve 50 mm above the mouth for the benchmark probe.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `mate`: REF-PROBE
+  - `approach_clearance_mm`: `50`
+
+## Reference Consumables
+
+- **Item 1 — `REF-PROBE`**
+  - `id`: REF-PROBE
+  - `configuration`: Benchmark rigid sphere, diameter 5 mm, mass 0.1 g.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+  - `geometry`:
+    - `type`: sphere
+    - `diameter_mm`: `5`
+    - `mass_g`: `0.1`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `false`
+- `reason`: No internal moving mechanism. Free placement in the world is not an internal joint.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - *(none)*
+
+## Functional Requirements
+
+- **Item 1 — `FUN-CAVITY`**
+  - `id`: FUN-CAVITY
+  - `description`: Connected open cavity has computed volume to its lowest overflow edge >= nominal 250 mL. Nominal capacity is not an exact brim-capacity target.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `nominal_capacity_ml`: `250`
+  - `working_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `brim_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unknown_reason`: Working fill and true brim capacity are not specified.
+  - `geometry_proxy_min_ml`: `250`
+- **Item 2 — `FUN-SUPPORT`**
+  - `id`: FUN-SUPPORT
+  - `description`: The empty beaker remains supported for 5 s; the internal rigid probe cannot pass through its bottom.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FUN-POUR`**
+  - `id`: FUN-POUR
+  - `description`: External grasping can tilt the beaker 90 degrees about Y toward the spout and return upright; the spout connects the cavity to outside. No liquid-volume claim.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Mechanical fragment for mixing-vessel access and transfer.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `object`: Beaker, mouth and spout
+  - `preconditions`:
+    - Empty, upright on a horizontal table
+    - Uncovered mouth
+  - `action`: Insert and retrieve the probe through the mouth; grasp body, tilt toward spout and restore upright.
+  - `expected_postconditions`:
+    - Mouth accessible
+    - Pose restored
+  - `parameters`:
+    - `tilt_deg`: `90`
+    - `speed_deg_s`: `30`
+    - `repetitions`: `3`
+    - `timeout_s`: `30`
+  - `forbidden_states`:
+    - Treating approximate graduations as precision volumetry
+    - Reporting rigid-probe motion as verified fluid flow
+  - `source_note`: Manufacturer supports pouring/heating use on page 69; sequence is benchmark-authored.
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - SRC-01
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: Manufacturer supports pouring/heating use on page 69; sequence is benchmark-authored.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Insert and retrieve the probe through the mouth; grasp body, tilt toward spout and restore upright.
+    - `parameters`:
+      - `tilt_deg`: `90`
+      - `speed_deg_s`: `30`
+      - `repetitions`: `3`
+      - `timeout_s`: `30`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: DURAN Laboratory Glassware Catalog
+  - `publisher`: DWK Life Sciences
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Printed page 69: lower beaker table, 250 mL row and adjacent drawing.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-OD
+    - DIM-H
+    - CMP-BODY
+    - CMP-CAVITY
+    - CMP-SPOUT
+    - CMP-MARK
+    - FUN-CAVITY
+    - PRO-01
+    - REQ-VIS
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-PROBE (Benchmark rigid sphere, diameter 5 mm, mass 0.1 g.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-CAVITY`:
+    - `source_class`: B
+    - `condition`: Connected cavity, V>=250 mL and convergence error<=1%.
+    - `target_path`: input.functional_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-SUPPORT`:
+    - `source_class`: B
+    - `condition`: Translation<=1 mm; tilt<=2 degrees; probe stays inside without crossing bottom; unintended penetration<=0.2 mm.
+    - `target_path`: input.functional_requirements.1
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-ACCESS`:
+    - `source_class`: B
+    - `condition`: No obstructed path; 90±2 degrees reached and restored within 2 degrees; connected spout.
+    - `target_path`: input.protocol_conditioned_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Printed page 69, lower beaker illustration.
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Low cylindrical body
+  - Projecting pouring spout
+  - Transparent wall
+  - Graduations and marking area
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

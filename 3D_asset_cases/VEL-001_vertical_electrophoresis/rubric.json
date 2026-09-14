@@ -1,0 +1,467 @@
+{
+  "format": "amx-rubric",
+  "case_id": "VEL-001",
+  "asset_class": "vertical_electrophoresis",
+  "source_sha": "b4c4b9a4d92e0d92",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Buffer tank",
+      "weight": 3.0,
+      "params": {
+        "part": "Buffer tank"
+      }
+    },
+    {
+      "id": "PART-CMP-1",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Removable safety lid and cables",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Removable safety lid and cables"
+      }
+    },
+    {
+      "id": "PART-CMP-2",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Electrode assembly with upper/lower electrodes",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Electrode assembly with upper/lower electrodes"
+      }
+    },
+    {
+      "id": "PART-CMP-3",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Locking arms",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Locking arms",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-4",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Green sealing gaskets",
+      "weight": 3.0,
+      "params": {
+        "part": "Green sealing gaskets"
+      }
+    },
+    {
+      "id": "PART-CMP-5",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Two1.0 mm handcast gel sandwiches",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Two1.0 mm handcast gel sandwiches",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-6",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Buffer dam for one-gel configuration",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Buffer dam for one-gel configuration"
+      }
+    },
+    {
+      "id": "PART-CMP-7",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Ten-well loading guide",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Ten-well loading guide"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "DIM-DIM-WIDTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "width",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-WIDTH",
+        "value_m": 0.12,
+        "kind": "footprint_min",
+        "axis": "x"
+      },
+      "note": "Assembled tank/lid width"
+    },
+    {
+      "id": "DIM-DIM-LENGTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "length",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-LENGTH",
+        "value_m": 0.16,
+        "kind": "footprint_max"
+      },
+      "note": "Assembled tank/lid length"
+    },
+    {
+      "id": "DIM-DIM-HEIGHT",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-HEIGHT",
+        "value_m": 0.18
+      },
+      "note": "Assembled height"
+    },
+    {
+      "id": "NA-DIM-GEL_GAP",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "gel_gap",
+      "params": {
+        "reason": "the name does not say how to measure this on the assembled object"
+      }
+    },
+    {
+      "id": "NA-DIM-CLAMP_TRAVEL",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "clamp_travel",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-CONNECTOR_KEYS",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "connector_keys",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-WELL_PROFILE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "well_profile",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Clear tank, keyed lid, red/black electrode jacks, green clamp arms and gasket notches.",
+      "params": {
+        "feature": "Clear tank, keyed lid, red/black electrode jacks, green clamp arms and gasket notches."
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Only electrode assembly in two-gel tank, no companion module.",
+      "params": {
+        "feature": "Only electrode assembly in two-gel tank, no companion module."
+      }
+    },
+    {
+      "id": "OP-J-0",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Locking arms",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Locking arms",
+        "operation_id": "J-0",
+        "parent_part": "Electrode assembly with upper/lower electrodes",
+        "count": 2
+      },
+      "note": "Open clamp; No fabricated arm stroke; initial30 degree cassette tilt is not clamp joint travel."
+    },
+    {
+      "id": "SWEEP-J-0",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Locking arms clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Locking arms"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Removable safety lid and cables",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Removable safety lid and cables",
+        "operation_id": "OP-CMP-1-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-0",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Removable safety lid and cables clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Removable safety lid and cables"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-2-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Electrode assembly with upper/lower electrodes",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Electrode assembly with upper/lower electrodes",
+        "operation_id": "OP-CMP-2-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-0",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-2-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Electrode assembly with upper/lower electrodes clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Electrode assembly with upper/lower electrodes"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-5-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Two1.0 mm handcast gel sandwiches",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Two1.0 mm handcast gel sandwiches",
+        "operation_id": "OP-CMP-5-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-2",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ],
+        "count": 2
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-5-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Two1.0 mm handcast gel sandwiches clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Two1.0 mm handcast gel sandwiches"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-6-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Buffer dam for one-gel configuration",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Buffer dam for one-gel configuration",
+        "operation_id": "OP-CMP-6-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-0",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-6-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Buffer dam for one-gel configuration clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Buffer dam for one-gel configuration"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-7-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Ten-well loading guide",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Ten-well loading guide",
+        "operation_id": "OP-CMP-7-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-0",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-7-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Ten-well loading guide clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Ten-well loading guide"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G1-PARTS",
+      "item_ids": [
+        "PART-CMP-1",
+        "PART-CMP-2",
+        "PART-CMP-3",
+        "PART-CMP-5",
+        "PART-CMP-6",
+        "PART-CMP-7"
+      ],
+      "description": "Whether every named critical component is present as a body."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-J-0",
+        "OP-OP-CMP-1-REMOVE",
+        "OP-OP-CMP-2-REMOVE",
+        "OP-OP-CMP-5-REMOVE",
+        "OP-OP-CMP-6-REMOVE",
+        "OP-OP-CMP-7-REMOVE"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}

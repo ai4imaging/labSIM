@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "./viewer/web/tsconfig.app.json"
+    },
+    {
+      "path": "./viewer/web/tsconfig.node.json"
+    }
+  ]
+}

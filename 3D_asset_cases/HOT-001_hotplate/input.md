@@ -1,0 +1,717 @@
+# hotplate benchmark Input Specification
+
+- `benchmark_id`: HOT-001
+- `asset_class`: hotplate
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: hotplate
+- `name_en`: hotplate
+- `representation_mode`: Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.
+- `manufacturer`: IKA
+- `model`: C-MAG HP 7, CMAG 032006 documented configuration
+- `configuration`: Historical 120 V / 60 Hz pure hotplate; 200 x 200 mm heating plate per 2006 manual. Not current 180 x 180 mm variant and not HS magnetic stirrer.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-WIDTH
+  - `value`: `220`
+  - `unit`: mm
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: 2006 table W
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `depth`:
+  - `id`: DIM-DEPTH
+  - `value`: `335`
+  - `unit`: mm
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: 2006 table D; not current 330 mm
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-HEIGHT
+  - `value`: `105`
+  - `unit`: mm
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: 2006 table H
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `plate_width`:
+  - `id`: DIM-PLATE_WIDTH
+  - `value`: `200`
+  - `unit`: mm
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: 2006 HP7 heating plate dimension; not current 180 mm
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `plate_depth`:
+  - `id`: DIM-PLATE_DEPTH
+  - `value`: `200`
+  - `unit`: mm
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: 2006 HP7 plate depth
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `temperature_min`:
+  - `id`: DIM-TEMPERATURE_MIN
+  - `value`: `50`
+  - `unit`: C
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: Published surface temperature setting minimum
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `temperature_max`:
+  - `id`: DIM-TEMPERATURE_MAX
+  - `value`: `500`
+  - `unit`: C
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: Published surface temperature setting maximum
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `knob_geometry`:
+  - `id`: DIM-KNOB_GEOMETRY
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: knob_geometry
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Knob pivot location, angular travel and setpoint mapping not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `connector_geometry`:
+  - `id`: DIM-CONNECTOR_GEOMETRY
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: connector_geometry
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Contact thermometer jack and support-bore detailed mating profile unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `historical_hardware_identification`:
+  - `id`: DIM-HISTORICAL_HARDWARE_IDENTIFICATION
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: C-MAG HP 7, CMAG 032006 documented configuration
+  - `measurement_location`: historical_hardware_identification
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Serial/date identifiers distinguishing 2006 hardware from current HP7 variant not acquired; independent reference must match the historical dimensional table.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Housing
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Temperature knob
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Ceramic heating plate
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Power switch
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: Temperature display and heating LED
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Contact thermometer jack
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-6`**
+  - `id`: CMP-6
+  - `name`: Threaded support bore
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 8 — `CMP-7`**
+  - `id`: CMP-7
+  - `name`: Mains inlet and feet
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Flat vessel base rests on ceramic plate; setup must remain level and stable, with mains cable clear of hot surface.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Optional contact thermometer jack exists; selected benchmark uses supplied contact plug and no external thermometer.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: Knob controls heating only; HP7 has no stirring motor or speed-control requirement.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: DURAN 250 mL beaker from BEA-001 as a B mechanical support object, no manufacturer thermal-compatibility certification.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Historical HP7 contact plug and connector reference geometry, not yet supplied.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: Selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-1
+    - `type`: revolute
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Normal to knob face; center unknown
+    - `zero`: Minimum setting
+    - `range`:
+      - `min`: `0`
+      - `max`: `270`
+      - `unit`: deg
+    - `range_source_class`: B
+    - `limits`: B 270-degree proxy only; actual travel and mapping remain unknown.
+    - `locking_conditions`: No angular lock asserted.
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Support a vessel without slipping or overlap.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Display target setting rather than asserting measured sample temperature; heating LED follows energy-supply state.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Retain residual-hot warning in powered standby when surface exceeds 50 C.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Prepare and operate heating.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Intact ceramic plate, stable dry fire-resistant bench, switch OFF.
+  - `action`: Connect mains, switch ON and adjust heating target with knob.
+  - `expected_postcondition`: Display indicates target and LED indicates heating-energy supply.
+  - `forbidden_states`:
+    - Using damaged ceramic
+    - Treating HP7 as magnetic stirrer
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Prepare and operate heating.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Connect mains, switch ON and adjust heating target with knob.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Observe residual heat.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Heater has been used.
+  - `action`: Turn heating off and observe powered standby display.
+  - `expected_postcondition`: Hot warning flashes while plate temperature exceeds 50 C.
+  - `forbidden_states`:
+    - Inferring safe touch merely from heater OFF
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Observe residual heat.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Turn heating off and observe powered standby display.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: C-MAG HS / HP / MS Operating Instructions
+  - `publisher`: IKA
+  - `url`: https://www.labshop.nl/wp-content/uploads/2024/01/SC2721-Verwarmings-en-magnetische-roerder-C-MAG-HS-4-Handleiding.pdf
+  - `version_or_publication_date`: 35 828 00, CMAG 032006
+  - `locator`: Pages 3-4 safety, 5 commissioning model-column matrix, 8 HP7 technical column. PDF locally retrieved; pages 5 and 8 rendered and visually inspected.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-WIDTH
+    - DIM-DEPTH
+    - DIM-HEIGHT
+    - DIM-PLATE_WIDTH
+    - DIM-PLATE_DEPTH
+    - DIM-TEMPERATURE_MIN
+    - DIM-TEMPERATURE_MAX
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - CMP-6
+    - CMP-7
+    - IF-0
+    - IF-1
+    - IF-2
+    - REF-0
+    - REF-1
+    - PRO-0
+    - PRO-1
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Current C-MAG HP 7 technical data, excluded variant comparison
+  - `publisher`: IKA
+  - `url`: https://www.ika.com/en/Products-LabEq/Hot-Plates-pg212/C-MAG-HP-7-3581800/Technical-Data-cptd.html
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Current SKU 0003581801 lists 180 x 180 mm plate and 330 mm depth. These values are NOT used for the selected historical configuration.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - *(none)*
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real heat transfer, fluid flow and experimental efficacy
+  - Requirement extraction from raw sources
+  - Real heating rate and thermal safety certification
+  - Current HP7 geometry
+  - External thermometer operation
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry/contact/state checkers and assigned visual reviewer
+  - Independent reference model: DURAN 250 mL beaker from BEA-001 as a B mechanical support object, no manufacturer thermal-compatibility certification.
+  - Independent reference model: Historical HP7 contact plug and connector reference geometry, not yet supplied.
+  - Independent source truth for critical geometry gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `source_class`: B
+  - `knob_proxy`: Map 0..270 degrees linearly to 50..500 C only for controller-interaction testing; no physical-potentiometer claim.
+  - `support_mass_kg`: `0.2`
+  - `sensor_injection_C`:
+    - `80`
+    - `55`
+    - `45`
+  - `variant_conflict`: Current official page and 2006 table differ in plate size and body depth. Selected old configuration is explicit; no blended geometry.
+  - `T-CASE-0`:
+    - `initial`: Unpowered cooled plate; independently modeled beaker, B total mass 0.2 kg, centered 10 mm above plate.
+    - `action`: Lower at 10 mm/s and release for 5 s; lift off.
+    - `observable`: Beaker contact, drift, tilt and removal clearance.
+    - `pass_condition`: Base remains supported, drift <=1 mm and tilt <=2 degrees over 5 s; no unintended penetration >0.2 mm; removable vertically.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-1`:
+    - `initial`: Powered standby, intact contact plug, B knob proxy at zero.
+    - `action`: Switch ON; move proxy to 0,135,270 degrees; inject heater-energy enable false then true.
+    - `observable`: Knob coordinate, target register, display and LED.
+    - `pass_condition`: Proxy angles within 2 degrees and target states 50,275,500 C within 1 C; LED tracks energy state within 1 s; no stirring motion required. Real knob mapping remains blocked pending source truth.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-2`:
+    - `initial`: Heating off but mains connected in standby; independent plate-temperature input.
+    - `action`: Inject 80,55,45 C sequentially and observe each for 3 s.
+    - `observable`: Warning state and heater-enable independently.
+    - `pass_condition`: Warning active for 80 and 55 C and inactive at 45 C within 1 s of each injection; heater remains off throughout. Flash frequency not specified and not scored.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Base remains supported, drift <=1 mm and tilt <=2 degrees over 5 s; no unintended penetration >0.2 mm; removable vertically.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Proxy angles within 2 degrees and target states 50,275,500 C within 1 C; LED tracks energy state within 1 s; no stirring motion required. Real knob mapping remains blocked pending source truth.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Warning active for 80 and 55 C and inactive at 45 C within 1 s of each injection; heater remains off throughout. Flash frequency not specified and not scored.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Pages 3-4 safety, 5 commissioning model-column matrix, 8 HP7 technical column. PDF locally retrieved; pages 5 and 8 rendered and visually inspected.
+  - `url`: https://www.labshop.nl/wp-content/uploads/2024/01/SC2721-Verwarmings-en-magnetische-roerder-C-MAG-HS-4-Handleiding.pdf
+  - `verification_status`: 2006 HP7 applicability matrix and technical table inspected; model-specific appearance reference still needs historical hardware confirmation.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Single heating control rather than HS stirring/heating controls
+  - Ceramic square plate, front display and heater indication
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

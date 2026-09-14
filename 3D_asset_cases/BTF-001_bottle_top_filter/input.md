@@ -1,0 +1,578 @@
+# bottle top filter benchmark Input Specification
+
+- `benchmark_id`: BTF-001
+- `asset_class`: bottle_top_filter
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: bottle top filter
+- `name_en`: bottle_top_filter
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: Thermo Fisher Scientific
+- `model`: Nalgene DS0320-5045
+- `configuration`: Reusable 500 mL polysulfone bottle-top holder, 45 mm bottle thread; 47 mm replaceable membrane and receiver supplied separately.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `reservoir_capacity`:
+  - `id`: DIM-RESERVOIR_CAPACITY
+  - `value`: `500`
+  - `unit`: mL
+  - `measurement_object`: Nalgene DS0320-5045
+  - `measurement_location`: Nominal upper reservoir capacity
+  - `measurement_state`: Assembled
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `membrane_diameter`:
+  - `id`: DIM-MEMBRANE_DIAMETER
+  - `value`: `47`
+  - `unit`: mm
+  - `measurement_object`: Nalgene DS0320-5045
+  - `measurement_location`: Separate membrane disc outside diameter; not housing diameter
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `envelope`:
+  - `id`: DIM-ENVELOPE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Nalgene DS0320-5045
+  - `measurement_location`: envelope
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Overall width and height not specified in the inspected instructions.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `thread_profile`:
+  - `id`: DIM-THREAD_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Nalgene DS0320-5045
+  - `measurement_location`: thread_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: 45 mm denotes bottle thread family; pitch, seal and engagement dimensions are unknown.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `sidearm_profile`:
+  - `id`: DIM-SIDEARM_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Nalgene DS0320-5045
+  - `measurement_location`: sidearm_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Hose fit envelope and insertion stop require independent geometry.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Bottle-top adapter and side-arms
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Upper chamber
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Threaded locking ring
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Removable chamber cover with two ports
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: Clear sterilization support plate
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Support O-rings
+  - `quantity`: `2`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-6`**
+  - `id`: CMP-6
+  - `name`: Cover O-ring
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 8 — `CMP-7`**
+  - `id`: CMP-7
+  - `name`: Vacuum gasket
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 9 — `CMP-8`**
+  - `id`: CMP-8
+  - `name`: TPE port caps
+  - `quantity`: `4`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 10 — `CMP-9`**
+  - `id`: CMP-9
+  - `name`: PP tubing adapter
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 11 — `CMP-10`**
+  - `id`: CMP-10
+  - `name`: Funnel extension
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: 47 mm membrane rests on support plate between correctly seated seals.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: 45 mm receiver thread is below adapter; exact bottle fit must be independently fixed.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: Connect 6.3 mm ID tubing directly to one side-arm; cap opposite arm. Larger tubing up to 8.0 mm uses supplied adapter.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: 47 mm diameter membrane disc; thickness/material SKU unresolved.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Verified vacuum-rated glass receiver with matching 45 mm thread; SKU unresolved.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: 6.3 mm ID vacuum tubing; wall thickness and material unresolved.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `false`
+- `reason`: No internal moving mechanism. Free placement in the world is not an internal joint.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - *(none)*
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Permit membrane replacement by removing locking ring and upper chamber.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Permit receiver mounting and independent cover/port removal; no powered mechanism.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Seat seals and membrane, hand tighten ring and receiver. Cap unused side-arm and leave a vent route open during filtration.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Clean disassembled holder and verified vacuum receiver.
+  - `action`: Assemble, connect hose, close unused side-arm, remove upper cover for venting.
+  - `expected_postcondition`: Supported membrane and open atmospheric inlet route.
+  - `forbidden_states`:
+    - Missing support O-ring
+    - Both side-arms left open
+    - Fully sealed upper chamber during filtration
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Seat seals and membrane, hand tighten ring and receiver. Cap unused side-arm and leave a vent route open during filtration.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Assemble, connect hose, close unused side-arm, remove upper cover for venting.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Nalgene Reusable Bottle Top Filter Unit instructions
+  - `publisher`: Thermo Fisher Scientific
+  - `url`: https://documents.thermofisher.com/TFS-Assets/LCD/manuals/Nalgene-Reuseable-BottleTop-Filter-Unit-EN-8-0404-46-0310.pdf
+  - `version_or_publication_date`: 8-0404-46 0310
+  - `locator`: Pages 1-2; page 2 exploded diagram visually inspected, assembly 1-5 and vacuum filtration 1-5.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-MEMBRANE_DIAMETER
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - CMP-6
+    - CMP-7
+    - CMP-8
+    - CMP-9
+    - CMP-10
+    - IF-0
+    - IF-1
+    - IF-2
+    - REF-0
+    - REF-1
+    - REF-2
+    - PRO-0
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Nalgene DS0320-5045 product page
+  - `publisher`: Thermo Fisher Scientific
+  - `url`: https://www.thermofisher.com/order/catalog/product/kr/en/DS0320-5045
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Selected DS0320-5045 row and specifications.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-RESERVOIR_CAPACITY
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+  - Actual seal leakage, membrane wrinkling, filtration and autoclave endurance
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: 47 mm diameter membrane disc; thickness/material SKU unresolved.
+  - Independent reference model: Verified vacuum-rated glass receiver with matching 45 mm thread; SKU unresolved.
+  - Independent reference model: 6.3 mm ID vacuum tubing; wall thickness and material unresolved.
+  - Pinned and independently justified mass,inertia and contact parameters
+  - Independent source-truth geometry for dimensions marked unknown
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `assembly_rotation`: B proxy only: one 360 degree release sweep followed by 30 mm removal; not actual thread pitch or release angle.
+  - `vacuum`: External logical flag only; no pressure simulation.
+  - `T-CASE-0`:
+    - `initial`: Vacuum off; parts separate.
+    - `action`: Place both support O-rings, plate and disc; replace upper chamber and ring; remove again by verified thread path or explicitly declared B proxy.
+    - `observable`: Disc support footprint, seal placement, part access.
+    - `pass_condition`: Disc fully supported with center error <=0.5 mm, seals in their independent reference seats; each removable part travels clear by 30 mm without unintended penetration >0.2 mm.
+    - `source_class`: B
+    - `note`: Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance.
+  - `T-CASE-1`:
+    - `initial`: Assembled holder on independent receiver; vacuum flag false.
+    - `action`: Mount hose, cap opposite side-arm, remove cover; request filtration; repeat with both upper vents and cover closed.
+    - `observable`: Actual connected port graph and external protocol eligibility.
+    - `pass_condition`: Correct side-arm and receiver connections retained for 5 s; intended configuration accepted and sealed-upper-chamber configuration flagged invalid by protocol checker. No built-in interlock or filtration efficacy inferred.
+    - `source_class`: B
+    - `note`: Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Disc fully supported with center error <=0.5 mm, seals in their independent reference seats; each removable part travels clear by 30 mm without unintended penetration >0.2 mm.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Correct side-arm and receiver connections retained for 5 s; intended configuration accepted and sealed-upper-chamber configuration flagged invalid by protocol checker. No built-in interlock or filtration efficacy inferred.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Pages 1-2; page 2 exploded diagram visually inspected, assembly 1-5 and vacuum filtration 1-5.
+  - `url`: https://documents.thermofisher.com/TFS-Assets/LCD/manuals/Nalgene-Reuseable-BottleTop-Filter-Unit-EN-8-0404-46-0310.pdf
+  - `verification_status`: Source text read; image-specific appearance review remains a runtime dependency.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Straw-tinted transparent upper chamber
+  - White locking ring, red seals and side-arms
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

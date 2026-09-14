@@ -1,0 +1,740 @@
+# water bath benchmark Input Specification
+
+- `benchmark_id`: WBA-001
+- `asset_class`: water_bath
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: water bath
+- `name_en`: water_bath
+- `representation_mode`: Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.
+- `manufacturer`: Thermo Scientific
+- `model`: Precision GP 02 TSGP02
+- `configuration`: 2 L general-purpose water bath, supplied polycarbonate gable cover TSGPACL02 and diffuser tray 102352; water mode, no beads or circulation pump.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `length_without_cover`:
+  - `id`: DIM-LENGTH_WITHOUT_COVER
+  - `value`: `230`
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: Published L dimension excluding cover; horizontal axis mapping requires confirmation
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `width_without_cover`:
+  - `id`: DIM-WIDTH_WITHOUT_COVER
+  - `value`: `199`
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: Published W dimension excluding cover
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height_without_cover`:
+  - `id`: DIM-HEIGHT_WITHOUT_COVER
+  - `value`: `233`
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: Bench to body top excluding cover
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `work_length`:
+  - `id`: DIM-WORK_LENGTH
+  - `value`: `138`
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: Published work-area L, not outer tank length
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `work_width`:
+  - `id`: DIM-WORK_WIDTH
+  - `value`: `155`
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: Published work-area W
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `work_height`:
+  - `id`: DIM-WORK_HEIGHT
+  - `value`: `150`
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: Published usable work-area height
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `nominal_capacity`:
+  - `id`: DIM-NOMINAL_CAPACITY
+  - `value`: `2`
+  - `unit`: L
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: Nominal chamber capacity, not prescribed fill volume
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `cover_envelope`:
+  - `id`: DIM-COVER_ENVELOPE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: cover_envelope
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Closed-cover height and lid seating geometry not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `tray_support`:
+  - `id`: DIM-TRAY_SUPPORT
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: tray_support
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Diffuser tray profile, feet and true tank bottom datum not acquired.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `horizontal_axes`:
+  - `id`: DIM-HORIZONTAL_AXES
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: horizontal_axes
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: L/W table values verified but orientation relative to front display needs an engineering drawing.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `low_level_threshold`:
+  - `id`: DIM-LOW_LEVEL_THRESHOLD
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Precision GP 02 TSGP02
+  - `measurement_location`: low_level_threshold
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Low-fluid trip is described as near-empty; no physical trip height is given. Do not equate it with minimum recommended fill.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Housing
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Reservoir
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Removable gable cover
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Diffuser tray
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-1
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: Controller display and keys
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Rear circuit protector and mains connection
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Selected GP02 cover is removable for vertical access; do not import large-model hinge or quick-disconnect drain geometry.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Samples and tray go in before water, with depth at least 1 inch and freeboard at least 1 inch below tank top.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: GP02 drains by lifting and carefully pouring into a receptacle after power disconnection and cooling; no drain-hose port is required.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Supplied TSGPACL02 cover and diffuser tray 102352, independently measured geometry.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Nalgene half rack 5972-0013TC listed as compatible in brochure page 6; tube SKU and loaded height still to be fixed.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `false`
+- `reason`: No internal joint is required; removable separate objects use free-body manipulation.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - *(none)*
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Provide reservoir, support and lid access without pretending rigid-body geometry validates water circulation.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Reject protocol-invalid empty heating and unsafe draining in the benchmark procedure monitor, not as invented manufacturer hardware interlocks.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Represent saved/cancelled setpoint and low-fluid fault states.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Fill safely.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `preconditions`: Stopped water-mode bath, clean reservoir, tray and samples already installed.
+  - `action`: Add approved filtered/single-distilled or deionized water within fill limits; use cover, or keep setpoint <=60 C without it.
+  - `expected_postcondition`: Permitted fill state before heating.
+  - `forbidden_states`:
+    - Heating empty
+    - Using bead-mode protection behavior in water mode
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Fill safely.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Add approved filtered/single-distilled or deionized water within fill limits; use cover, or keep setpoint <=60 C without it.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Drain GP02.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `preconditions`: Heater off, unplugged, fluid about 40 C or cooler.
+  - `action`: Lift bath and carefully pour into suitable receptacle; wipe reservoir.
+  - `expected_postcondition`: Empty bath before relocation/storage.
+  - `forbidden_states`:
+    - Expecting GP10 drain hose
+    - Draining hot powered bath
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Drain GP02.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Lift bath and carefully pour into suitable receptacle; wipe reservoir.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 3 — `PRO-2`**
+  - `id`: PRO-2
+  - `description`: Change setpoint.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `preconditions`: Controller on.
+  - `action`: Adjust setpoint then save, cancel or leave untouched for 30 s.
+  - `expected_postcondition`: Only save commits; timeout/cancel retains prior setting.
+  - `forbidden_states`:
+    - Treating uncommitted display entry as accepted target
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Change setpoint.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Adjust setpoint then save, cancel or leave untouched for 30 s.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Precision Water Baths brochure
+  - `publisher`: Thermo Scientific
+  - `url`: https://www.thermofisher.com/TFS-Assets/LED/brochures/Precision-Water-Baths-Brochure-BRTCPRECISION.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Page 5 GP 02 photograph and specification row, page 6 accessory matrix; page 5 visually inspected.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-LENGTH_WITHOUT_COVER
+    - DIM-WIDTH_WITHOUT_COVER
+    - DIM-HEIGHT_WITHOUT_COVER
+    - DIM-WORK_LENGTH
+    - DIM-WORK_WIDTH
+    - DIM-WORK_HEIGHT
+    - DIM-NOMINAL_CAPACITY
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - IF-0
+    - REF-0
+    - REF-1
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Precision Water Baths Operating Manual
+  - `publisher`: Thermo Scientific
+  - `url`: https://device.report/m/15746df53b9eb1b7e8b3f7842404eebb13bf43d496a8eadc17d9e49272411939
+  - `version_or_publication_date`: U01316, January 21 2025
+  - `locator`: Manufacturer manual mirrored as readable text: quick start; 3-6 filling, 3-7 GP02 draining, 4-3 setpoint, 4-5 low-fluid protection, 6-1 errors.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - IF-1
+    - IF-2
+    - PRO-0
+    - PRO-1
+    - PRO-2
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real heat transfer, fluid flow and experimental efficacy
+  - Requirement extraction from raw sources
+  - Real water heating, buoyancy and circulation
+  - Bead mode
+  - True water volume delivery during draining
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry/contact/state checkers and assigned visual reviewer
+  - Independent reference model: Supplied TSGPACL02 cover and diffuser tray 102352, independently measured geometry.
+  - Independent reference model: Nalgene half rack 5972-0013TC listed as compatible in brochure page 6; tube SKU and loaded height still to be fixed.
+  - Independent source truth for critical geometry gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `fill_conversion`:
+    - `source_class`: D
+    - `source_refs`:
+      - SRC-02
+    - `formula`: 1 inch * 25.4 mm/inch = 25.4 mm
+    - `minimum_depth_mm`: `25.4`
+    - `minimum_freeboard_mm`: `25.4`
+    - `note`: Protocol limits, not sensor thresholds.
+  - `test_setpoint_C`: `37`
+  - `source_class`: B
+  - `T-CASE-0`:
+    - `initial`: Power off, empty cooled reservoir, cover removed.
+    - `action`: Place diffuser tray and selected rack; replace cover and remove it; lift rack vertically.
+    - `observable`: Support contacts, cover seating and access clearance.
+    - `pass_condition`: Tray and rack support within 1 mm of independent reference datum; no unintended penetration >0.2 mm; cover and rack removable without collision. Missing true support geometry blocks this check.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-1`:
+    - `initial`: Procedure monitor with empty unpowered bath; geometry-based fluid level markers, not fluid dynamics.
+    - `action`: Exercise valid 30 mm depth/30 mm freeboard; negative 20 mm depth and 20 mm freeboard cases; request drain while powered or 60 C, then retry unplugged at 35 C.
+    - `observable`: Independent procedure-validity state and body pour access.
+    - `pass_condition`: Only fill states satisfying both 25.4 mm limits are accepted; unsafe drain requests flagged invalid; unplugged 35 C pour sequence allowed. Monitor decisions are B procedure checks, not claimed automatic device interlocks.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-2`:
+    - `initial`: Water mode, protection enabled, saved setpoint 37 C; independent fault injection.
+    - `action`: Enter 40 C and cancel; enter 45 C and wait 31 s; save 40 C; start heating and inject low-fluid fault.
+    - `observable`: Committed target and heater-enable state.
+    - `pass_condition`: Cancel/timeout preserve 37 C; save commits 40 C; low-fluid fault disables heat within 1 s and exposes error state. No inferred trip height or measured thermal response.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Tray and rack support within 1 mm of independent reference datum; no unintended penetration >0.2 mm; cover and rack removable without collision. Missing true support geometry blocks this check.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Only fill states satisfying both 25.4 mm limits are accepted; unsafe drain requests flagged invalid; unplugged 35 C pour sequence allowed. Monitor decisions are B procedure checks, not claimed automatic device interlocks.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Cancel/timeout preserve 37 C; save commits 40 C; low-fluid fault disables heat within 1 s and exposes error state. No inferred trip height or measured thermal response.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Page 5 GP 02 photograph and specification row, page 6 accessory matrix; page 5 visually inspected.
+  - `url`: https://www.thermofisher.com/TFS-Assets/LED/brochures/Precision-Water-Baths-Brochure-BRTCPRECISION.pdf
+  - `verification_status`: Brochure page 5 photograph and GP02 row rendered and inspected.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - GP02 compact reservoir with separate knob-handled clear gable cover
+  - Front controller; no larger-model drain fitting
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

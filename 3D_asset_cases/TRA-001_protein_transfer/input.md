@@ -1,0 +1,778 @@
+# protein transfer benchmark Input Specification
+
+- `benchmark_id`: TRA-001
+- `asset_class`: protein_transfer
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: protein transfer
+- `name_en`: protein_transfer
+- `manufacturer`: Bio-Rad
+- `model`: Mini Trans-Blot 170-3930
+- `configuration`: Historical Rev K tank transfer cell with two170-3931 hinged cassettes, four fiber pads, electrode module,170-3934 cooling unit and lid/cables; standard non-acidic transfer orientation. Not semi-dry or Turbo.
+- `representation_mode`: One selected real configuration; unresolved physical geometry remains unknown.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-WIDTH
+  - `value`: `120`
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: Assembled tank/lid width
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `length`:
+  - `id`: DIM-LENGTH
+  - `value`: `160`
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: Assembled tank/lid length
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-HEIGHT
+  - `value`: `180`
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: Assembled height
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `cassette_side_a`:
+  - `id`: DIM-CASSETTE_SIDE_A
+  - `value`: `100`
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: Gel holder first published planar dimension; orientation requires reference
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `cassette_side_b`:
+  - `id`: DIM-CASSETTE_SIDE_B
+  - `value`: `110`
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: Gel holder second planar dimension
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `electrode_spacing`:
+  - `id`: DIM-ELECTRODE_SPACING
+  - `value`: `40`
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: Parallel electrode spacing, not cassette slot pitch
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `cassette_hinge`:
+  - `id`: DIM-CASSETTE_HINGE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: cassette_hinge
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Pivot location and opening limit unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `latch_geometry`:
+  - `id`: DIM-LATCH_GEOMETRY
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: latch_geometry
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: White latch travel, catch engagement and retention force not acquired.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `stack_thickness`:
+  - `id`: DIM-STACK_THICKNESS
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: stack_thickness
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Independent wet pad, paper, gel and membrane thickness/compression unknown.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `cooling_clearance`:
+  - `id`: DIM-COOLING_CLEARANCE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Mini Trans-Blot 170-3930
+  - `measurement_location`: cooling_clearance
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Cooling block dimensions, slot geometry and blotting mark elevation unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Buffer tank
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Removable safety lid and cables
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Offset electrode module
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Hinged gel holder cassettes
+  - `quantity`: `2`
+  - `kind`: articulated
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: White cassette latches
+  - `quantity`: `2`
+  - `kind`: articulated
+  - `parent`: CMP-3
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Fiber pads
+  - `quantity`: `4`
+  - `kind`: removable
+  - `parent`: CMP-3
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-6`**
+  - `id`: CMP-6
+  - `name`: Blue cooling unit
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 8 — `CMP-7`**
+  - `id`: CMP-7
+  - `name`: Gel/filter-paper/membrane reference stacks
+  - `quantity`: `2`
+  - `kind`: removable
+  - `parent`: CMP-3
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Cassette slots orient stack between electrode faces; membrane on anode side for selected non-acidic setup; acidic transfer is excluded.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Gray cassette side receives pad,paper,gel,membrane,paper,pad before closing and latching.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: Offset module leaves room for frozen cooling unit; lid electrical connection opens when lid removed.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Independent170-3931 cassette and latch models.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Independent wet stack layer geometry and compressibility, cut to selected gel outline.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: Independent170-3934 cooling unit,module,tank marks and connector geometry.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: Selected mechanism requires relative motion.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-2
+    - `child_component`: CMP-3
+    - `type`: two_cassette_hinges
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Cassette hinge lines pending reference
+    - `zero`: Closed cassette
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: deg
+    - `range_source_class`: U
+    - `limits`: Do not assume180 degree opening.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+  - **Item 2 — `J-1`**
+    - `id`: J-1
+    - `parent_component`: CMP-3
+    - `child_component`: CMP-4
+    - `type`: cassette_latch_mechanisms
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Verified latch guide/pivot pending
+    - `zero`: Unlatched
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: mm
+    - `range_source_class`: U
+    - `limits`: Unknown latch travel and force.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Preserve non-acidic transfer layer ordering and overlap during closure.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Hold latched cassette and cooling unit in correct module positions without stack displacement.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Represent preparation, safe power sequence and lid interruption separately from actual protein transfer.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Prepare transfer sandwich.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Gloved handling, equilibrated gel and wetted pads/paper/membrane; cooling block prepared separately.
+  - `action`: Build pad,paper,gel,membrane,paper,pad from gray cassette side; use gentle roller pass to address bubbles; close without shifting and engage white latch.
+  - `expected_postcondition`: Correct layer order and retained assembly.
+  - `forbidden_states`: Reversing gel/membrane for this non-acidic case or claiming roller path proves bubble removal.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Prepare transfer sandwich.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Build pad,paper,gel,membrane,paper,pad from gray cassette side; use gentle roller pass to address bubbles; close without shifting and engage white latch.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Load transfer cell.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Closed cassettes and cooling unit previously held at-20 C as manufacturer preparation.
+  - `action`: Insert cassettes with correct electrode orientation, install cooling unit, fill to blotting mark and provide compatible stir-bar clearance.
+  - `expected_postcondition`: Correctly loaded tank and declared fill state.
+  - `forbidden_states`: Treating950 mL with block as universal fill volume irrespective of configuration.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Load transfer cell.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Insert cassettes with correct electrode orientation, install cooling unit, fill to blotting mark and provide compatible stir-bar clearance.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 3 — `PRO-2`**
+  - `id`: PRO-2
+  - `description`: Run and dismantle safely.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Closed correctly connected lid; external isolated supply.
+  - `action`: Begin virtual run; stop supply and disconnect before opening; remove cassettes and recover membrane.
+  - `expected_postcondition`: Circuit open and stack removed without unintended inversion.
+  - `forbidden_states`: Bypassing lid electrical interruption.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Run and dismantle safely.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Begin virtual run; stop supply and disconnect before opening; remove cassettes and recover membrane.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Mini Trans-Blot Electrophoretic Transfer Cell instruction manual
+  - `publisher`: Bio-Rad
+  - `url`: https://www.citrinesolutions.co.il/userfiles/documents/Mini_Portan.pdf
+  - `version_or_publication_date`: M1703930 Rev K,Sig1213
+  - `locator`: Printed3-4 specifications/safety,5-9 assembly and non-acidic layer order; PDF9 and13 visually inspected.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-WIDTH
+    - DIM-LENGTH
+    - DIM-HEIGHT
+    - DIM-CASSETTE_SIDE_A
+    - DIM-CASSETTE_SIDE_B
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - CMP-6
+    - CMP-7
+    - IF-0
+    - IF-1
+    - IF-2
+    - REF-0
+    - REF-1
+    - REF-2
+    - PRO-0
+    - PRO-1
+    - PRO-2
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Manufacturer-hosted Mini Trans-Blot manual
+  - `publisher`: Bio-Rad
+  - `url`: https://www.bio-rad.com/webroot/web/pdf/lsr/literature/M1703930.pdf
+  - `version_or_publication_date`: M1703930 Rev K
+  - `locator`: Same40-page manual; text read, direct download blocked. Printed1-2 electrode spacing and5-9 assembly.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-ELECTRODE_SPACING
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow and experimental efficacy
+  - Acidic-transfer polarity, semi-dry operation, protein transfer yield and live electrical safety testing.
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Independent reference model: Independent170-3931 cassette and latch models.
+  - Independent reference model: Independent wet stack layer geometry and compressibility, cut to selected gel outline.
+  - Independent reference model: Independent170-3934 cooling unit,module,tank marks and connector geometry.
+  - Independent truth for listed critical source gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `buffer_context`:
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `with_cooling_unit_mL`: `950`
+    - `without_cooling_unit_mL`: `1150`
+    - `note`: Published capacity, operational fill follows tank mark; not the later brochure1.2 L requirement.
+  - `boundary`: Zero-energy virtual circuit, declared wetting/cooling states; no heat extraction, bubbles, transfer yield or biological outcome measured.
+  - `T-CASE-0`:
+    - `initial`: Independent layer/cassette geometry and open cassette on level surface.
+    - `action`: Assemble six layers, trace roller across stack, close hinge, engage latch and lift50 mm.
+    - `observable`: Layer order, planar overlap, compression and retention.
+    - `pass_condition`: Order from gray side exactly pad/paper/gel/membrane/paper/pad; membrane covers gel outline with edge mismatch<=0.5 mm; closing/lifting changes layer pose<=0.5 mm and1 deg; latch stays engaged and verified compression/hinge limits respected. Missing layer truth blocks.
+    - `source_class`: B
+    - `note`: Test conditions and tolerances, not manufacturer performance.
+  - `T-CASE-1`:
+    - `initial`: Two closed cassettes, independent tank/module/cooling geometry.
+    - `action`: Insert cassettes and cooling block, assign fill to mark, check stir-bar swept envelope using independent accessory fixture.
+    - `observable`: Membrane/electrode order, slot seating and clearances.
+    - `pass_condition`: Membrane lies on anode side of gel in both cassettes; seat mismatch<=0.5 mm; no unintended overlap>0.2 mm; stir-bar envelope clear>=1 mm; declared fill matches independently measured mark within1 mm. Unknown bar SKU/mark prevents completion.
+    - `source_class`: B
+    - `note`: Test conditions and tolerances, not manufacturer performance.
+  - `T-CASE-2`:
+    - `initial`: Zero-energy continuity oracle, assembled cell.
+    - `action`: Close lid and virtual-run; test disconnected-contact fault; execute normal off/unplug/open/remove sequence.
+    - `observable`: Circuit graph and ordered events.
+    - `pass_condition`: Any disconnected required lid contact breaks circuit within1 ms B step; normal opening follows power-off and unplug; no transfer-success claim arises from virtual run completion.
+    - `source_class`: B
+    - `note`: Test conditions and tolerances, not manufacturer performance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Order from gray side exactly pad/paper/gel/membrane/paper/pad; membrane covers gel outline with edge mismatch<=0.5 mm; closing/lifting changes layer pose<=0.5 mm and1 deg; latch stays engaged and verified compression/hinge limits respected. Missing layer truth blocks.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Membrane lies on anode side of gel in both cassettes; seat mismatch<=0.5 mm; no unintended overlap>0.2 mm; stir-bar envelope clear>=1 mm; declared fill matches independently measured mark within1 mm. Unknown bar SKU/mark prevents completion.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Any disconnected required lid contact breaks circuit within1 ms B step; normal opening follows power-off and unplug; no transfer-success claim arises from virtual run completion.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `url`: https://www.citrinesolutions.co.il/userfiles/documents/Mini_Portan.pdf
+  - `locator`: Printed3-4 specifications/safety,5-9 assembly and non-acidic layer order; PDF9 and13 visually inspected.
+  - `verification_status`: Specification and exploded sandwich/cassette figures visually inspected.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Tank and lid with separate offset electrode module and blue cooling block.
+  - Two perforated hinged cassettes with white latches and six-layer stacks.
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

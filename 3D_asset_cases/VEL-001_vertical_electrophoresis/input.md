@@ -1,0 +1,690 @@
+# vertical electrophoresis benchmark Input Specification
+
+- `benchmark_id`: VEL-001
+- `asset_class`: vertical_electrophoresis
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: vertical electrophoresis
+- `name_en`: vertical_electrophoresis
+- `manufacturer`: Bio-Rad
+- `model`: Mini-PROTEAN Tetra 165-8003
+- `configuration`: Historical 2011 two-gel 1.0 mm handcast system; running configuration has one electrode assembly, two prepared handcast sandwiches or one sandwich plus buffer dam. Casting stand assessed separately in GEL-001. No companion running module.
+- `representation_mode`: One selected real configuration; unresolved physical geometry remains unknown.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-WIDTH
+  - `value`: `120`
+  - `unit`: mm
+  - `measurement_object`: Mini-PROTEAN Tetra 165-8003
+  - `measurement_location`: Assembled tank/lid width
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `length`:
+  - `id`: DIM-LENGTH
+  - `value`: `160`
+  - `unit`: mm
+  - `measurement_object`: Mini-PROTEAN Tetra 165-8003
+  - `measurement_location`: Assembled tank/lid length
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-HEIGHT
+  - `value`: `180`
+  - `unit`: mm
+  - `measurement_object`: Mini-PROTEAN Tetra 165-8003
+  - `measurement_location`: Assembled height
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `gel_gap`:
+  - `id`: DIM-GEL_GAP
+  - `value`: `1`
+  - `unit`: mm
+  - `measurement_object`: Mini-PROTEAN Tetra 165-8003
+  - `measurement_location`: Selected spacer-defined gel gap, not glass thickness
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `clamp_travel`:
+  - `id`: DIM-CLAMP_TRAVEL
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Mini-PROTEAN Tetra 165-8003
+  - `measurement_location`: clamp_travel
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Locking-arm guide axes, end stops and required gasket compression unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `connector_keys`:
+  - `id`: DIM-CONNECTOR_KEYS
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Mini-PROTEAN Tetra 165-8003
+  - `measurement_location`: connector_keys
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Independent lid stops, electrode jack geometry and mating depths not acquired.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `well_profile`:
+  - `id`: DIM-WELL_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Mini-PROTEAN Tetra 165-8003
+  - `measurement_location`: well_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Exact ten-well pitch/depth and loading-tip geometry require independent reference.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Buffer tank
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Removable safety lid and cables
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Electrode assembly with upper/lower electrodes
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Locking arms
+  - `quantity`: `2`
+  - `kind`: articulated
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: Green sealing gaskets
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Two1.0 mm handcast gel sandwiches
+  - `quantity`: `2`
+  - `kind`: removable
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-6`**
+  - `id`: CMP-6
+  - `name`: Buffer dam for one-gel configuration
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 8 — `CMP-7`**
+  - `id`: CMP-7
+  - `name`: Ten-well loading guide
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Gel short plates face inward, below gasket notches; supports initially hold sandwiches tilted outward approximately30 degrees before clamping.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: For two gels use electrode assembly in rear position only; for one gel substitute buffer dam at opposite side, never companion module.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: Color-coded lid plugs and tank stops prevent reversed placement; upper and lower chambers remain distinct.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Independent1.0 mm handcast sandwich and ten-well loading guide models.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Independent electrode assembly, green gaskets, locking-arm and buffer-dam geometry.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: Independent lid and electrode plug/key reference.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: Selected mechanism requires relative motion.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-2
+    - `child_component`: CMP-3
+    - `type`: two_locking_arm_mechanisms
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Independent guide axes pending
+    - `zero`: Open clamp
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: mm
+    - `range_source_class`: U
+    - `limits`: No fabricated arm stroke; initial30 degree cassette tilt is not clamp joint travel.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Retain aligned sandwiches through locking without bypassing gaskets.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Permit individual well access without piercing well floors; reject unsealed one-sided assembly in procedural scoring.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Expose circuit interruption on lid disconnection and enforce power-off/disconnect/drain-before-unclamp sequence in workflow evaluation.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Assemble selected electrode module.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Clean dry tank, independently prepared gels, power off.
+  - `action`: Support both sandwiches with short plates inward; align under green gasket notches; hold them while closing locking arms; use buffer dam if only one gel.
+  - `expected_postcondition`: Two sealed sides supported without movement.
+  - `forbidden_states`: Closing arms on misaligned glass or placing companion module in this two-gel setup.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Assemble selected electrode module.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Support both sandwiches with short plates inward; align under green gasket notches; hold them while closing locking arms; use buffer dam if only one gel.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Load and place module.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Clamped assembly and filled upper chamber just below outer plate edge.
+  - `action`: Access wells slowly with suitable loading tip, avoid well-floor contact, insert electrode module into rear tank position with red jack to red mark.
+  - `expected_postcondition`: Accessible wells and correct electrode polarity.
+  - `forbidden_states`: Assuming upper/lower buffer volumes are interchangeable.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Load and place module.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Access wells slowly with suitable loading tip, avoid well-floor contact, insert electrode module into rear tank position with red jack to red mark.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 3 — `PRO-2`**
+  - `id`: PRO-2
+  - `description`: Power-down and remove gel.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Virtual run complete.
+  - `action`: Turn supply off, unplug leads, remove lid/module, drain buffer, then open arms and remove sandwiches.
+  - `expected_postcondition`: Open assembly only after drain step.
+  - `forbidden_states`: Unclamping a filled module or lifting lid under live power.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Power-down and remove gel.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Turn supply off, unplug leads, remove lid/module, drain buffer, then open arms and remove sandwiches.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Mini-PROTEAN Tetra instruction manual, historical edition
+  - `publisher`: Bio-Rad
+  - `url`: https://www.richmondscientific.com/wp-content/uploads/2022/10/Mini-Protean-Tetra-Cell-Manual.pdf
+  - `version_or_publication_date`: 10007296 Rev D, Sig1211,44 PDF pages
+  - `locator`: Printed4-5 specifications/safety,9-14 module loading and removal,31/33 ordering. PDF8/11/15 images inspected.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-WIDTH
+    - DIM-LENGTH
+    - DIM-HEIGHT
+    - DIM-GEL_GAP
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - CMP-6
+    - CMP-7
+    - IF-0
+    - IF-1
+    - IF-2
+    - REF-0
+    - REF-1
+    - REF-2
+    - PRO-0
+    - PRO-1
+    - PRO-2
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Mini-PROTEAN Tetra product dimensions and plate formats
+  - `publisher`: Bio-Rad
+  - `url`: https://www.bio-rad.com/en-us/product/mini-protean-tetra-vertical-electrophoresis-cell?ID=N3F2UD4VY
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Specifications: short/spacer plate dimensions and overall dimensions.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - *(none)*
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: Reformatted Tetra manual, comparison only
+  - `publisher`: Bio-Rad
+  - `url`: https://www.bio-rad.com/webroot/web/pdf/lsr/literature/10007296D.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: 36-page edition, printed3-4: extracted width2 cm and power30 W differ from historical44-page edition. Do not merge limits.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - *(none)*
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow and experimental efficacy
+  - Protein separation, gasket leak-tightness, chemical gel quality and live electrical performance.
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Independent reference model: Independent1.0 mm handcast sandwich and ten-well loading guide models.
+  - Independent reference model: Independent electrode assembly, green gaskets, locking-arm and buffer-dam geometry.
+  - Independent reference model: Independent lid and electrode plug/key reference.
+  - Independent truth for listed critical source gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `source_version_boundary`: Historical2011 specifications retained for geometry; no claim that historical500 W is a current safe operating recommendation. No physical energization in task.
+  - `source_context`:
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `two_gel_total_buffer_mL`: `700`
+    - `lower_chamber_mL`: `550`
+  - `virtual_run`:
+    - `source_class`: B
+    - `duration_s`: `5`
+    - `real_voltage`: `0`
+  - `T-CASE-0`:
+    - `initial`: Independent clamp/gasket reference; empty module on level surface.
+    - `action`: Load two sandwiches, align and lock; lift50 mm and replace; repeat with one sandwich and dam; try misaligned placement as negative fixture.
+    - `observable`: Arm travel, plate alignment, contact and retention.
+    - `pass_condition`: Physical limits respected; aligned plate datums within0.5 mm; after lift relative slip<=0.5 mm; no unintended overlap>0.2 mm; one-sided unfilled configuration is rejected by workflow oracle, not claimed hardware sensor.
+    - `source_class`: B
+    - `note`: Test conditions and tolerances, not manufacturer performance.
+  - `T-CASE-1`:
+    - `initial`: Clamped prepared ten-well gels and independently specified loading tip; separate upper/lower virtual fluid states.
+    - `action`: Approach all ten wells per gel; insert assembly at rear tank position; inspect color mapping.
+    - `observable`: Tip/well paths, module pose and chamber identity.
+    - `pass_condition`: Every well reached independently with>=0.5 mm floor clearance and no unintended overlap>0.2 mm; red jack matches red tank mark; virtual upper chamber not conflated with550 mL lower fill. Unknown well geometry blocks.
+    - `source_class`: B
+    - `note`: Test conditions and tolerances, not manufacturer performance.
+  - `T-CASE-2`:
+    - `initial`: Independent zero-energy circuit oracle and seated lid.
+    - `action`: Verify correct and reversed lid placements; virtual supply-on; simulate contact disconnection; run normal off/unplug/open/lift/drain/unclamp sequence.
+    - `observable`: Mating stops, electrical graph and event order.
+    - `pass_condition`: Reversed lid cannot seat; disconnected lid always breaks circuit within1 ms B step; normal sequence has off before unplug/open and drain before unclamp; any sequence violation fails.
+    - `source_class`: B
+    - `note`: Test conditions and tolerances, not manufacturer performance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Physical limits respected; aligned plate datums within0.5 mm; after lift relative slip<=0.5 mm; no unintended overlap>0.2 mm; one-sided unfilled configuration is rejected by workflow oracle, not claimed hardware sensor.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Every well reached independently with>=0.5 mm floor clearance and no unintended overlap>0.2 mm; red jack matches red tank mark; virtual upper chamber not conflated with550 mL lower fill. Unknown well geometry blocks.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Reversed lid cannot seat; disconnected lid always breaks circuit within1 ms B step; normal sequence has off before unplug/open and drain before unclamp; any sequence violation fails.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `url`: https://www.richmondscientific.com/wp-content/uploads/2022/10/Mini-Protean-Tetra-Cell-Manual.pdf
+  - `locator`: Printed4-5 specifications/safety,9-14 module loading and removal,31/33 ordering. PDF8/11/15 images inspected.
+  - `verification_status`: Historical manual specification and assembly figures visually inspected.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Clear tank, keyed lid, red/black electrode jacks, green clamp arms and gasket notches.
+  - Only electrode assembly in two-gel tank, no companion module.
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

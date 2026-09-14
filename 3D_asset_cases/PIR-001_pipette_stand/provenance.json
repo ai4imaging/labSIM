@@ -1,0 +1,2898 @@
+{
+  "benchmark_id": "PIR-001",
+  "asset_class": "pipette_stand",
+  "source_classification": {
+    "M": "Manufacturer statement",
+    "P": "Published protocol or SOP",
+    "S": "Formal standard",
+    "D": "Derived with explicit assumptions",
+    "B": "Benchmark-defined",
+    "U": "Unknown or unverified"
+  },
+  "checks": [
+    {
+      "id": "T-LOAD",
+      "name": "Future asset compilation",
+      "requirements": [
+        {
+          "id": "REQ-ASSET",
+          "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+          "source_class": "B",
+          "sources": [],
+          "output_format": "MJCF + meshes + semantic mapping",
+          "required_capabilities": []
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "Six references hung;base on bench.",
+              "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+              "observable": "Angle and mutual clearance.",
+              "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Fully loaded carousel.",
+              "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+              "observable": "Tip-to-bench clearance and neighbor stability.",
+              "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Base with rubber feet",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Rotating carousel",
+                  "quantity": 1,
+                  "kind": "moving",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Research plus holders",
+                  "quantity": 6,
+                  "kind": "fixed",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "Pipette Holder System",
+                    "publisher": "Eppendorf",
+                    "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                    "version_or_publication_date": null,
+                    "locator": "3116000015 row and Features",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "3116000015 row and Features",
+                  "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "target": {
+                "initial": "Six references hung;base on bench.",
+                "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+                "observable": "Angle and mutual clearance.",
+                "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "target": {
+                "initial": "Fully loaded carousel.",
+                "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+                "observable": "Tip-to-bench clearance and neighbor stability.",
+                "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Base diameter,height and holder spacing unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "hanger_geometry": {
+                  "id": "DIM-HANGER_GEOMETRY",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "hanger_geometry",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Holder engagement and suspended-tip clearance need independent geometry.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tip_length": {
+                  "id": "DIM-REF-TIP-L",
+                  "value": 53,
+                  "unit": "mm",
+                  "measurement_object": "Yellow 2-200 uL epT.I.P.S. on a compatible Research plus pipette",
+                  "measurement_location": "Tip end-to-end length used to define minimum suspended-tip clearance; not a carousel envelope dimension",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-02",
+                      "title": "Eppendorf Research plus Operating Manual",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/174967/Eppendorf_Liquid-Handling_Operating-manual_Research-plus_Eppendorf-Research-plus.pdf",
+                      "version": "manufacturer operating manual available in 2026",
+                      "locator": "Tip allocation table: yellow 2-200 uL epT.I.P.S. length 53 mm; used as a fixed suspended-clearance reference, not as a carousel dimension.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TIP-L",
+                        "IF-0"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [],
+      "limitations": [
+        "Specification only: checker not implemented and asset test not run."
+      ]
+    },
+    {
+      "id": "T-STRUCT",
+      "name": "Required components and topology",
+      "requirements": [
+        {
+          "id": "CMP-0",
+          "name": "Base with rubber feet",
+          "quantity": 1,
+          "kind": "fixed",
+          "parent": null,
+          "critical": true,
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CMP-1",
+          "name": "Rotating carousel",
+          "quantity": 1,
+          "kind": "moving",
+          "parent": "CMP-0",
+          "critical": true,
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CMP-2",
+          "name": "Research plus holders",
+          "quantity": 6,
+          "kind": "fixed",
+          "parent": "CMP-1",
+          "critical": true,
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "Six references hung;base on bench.",
+              "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+              "observable": "Angle and mutual clearance.",
+              "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Fully loaded carousel.",
+              "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+              "observable": "Tip-to-bench clearance and neighbor stability.",
+              "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Base with rubber feet",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Rotating carousel",
+                  "quantity": 1,
+                  "kind": "moving",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Research plus holders",
+                  "quantity": 6,
+                  "kind": "fixed",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "Pipette Holder System",
+                    "publisher": "Eppendorf",
+                    "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                    "version_or_publication_date": null,
+                    "locator": "3116000015 row and Features",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "3116000015 row and Features",
+                  "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "target": {
+                "initial": "Six references hung;base on bench.",
+                "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+                "observable": "Angle and mutual clearance.",
+                "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "target": {
+                "initial": "Fully loaded carousel.",
+                "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+                "observable": "Tip-to-bench clearance and neighbor stability.",
+                "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Base diameter,height and holder spacing unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "hanger_geometry": {
+                  "id": "DIM-HANGER_GEOMETRY",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "hanger_geometry",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Holder engagement and suspended-tip clearance need independent geometry.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tip_length": {
+                  "id": "DIM-REF-TIP-L",
+                  "value": 53,
+                  "unit": "mm",
+                  "measurement_object": "Yellow 2-200 uL epT.I.P.S. on a compatible Research plus pipette",
+                  "measurement_location": "Tip end-to-end length used to define minimum suspended-tip clearance; not a carousel envelope dimension",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-02",
+                      "title": "Eppendorf Research plus Operating Manual",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/174967/Eppendorf_Liquid-Handling_Operating-manual_Research-plus_Eppendorf-Research-plus.pdf",
+                      "version": "manufacturer operating manual available in 2026",
+                      "locator": "Tip allocation table: yellow 2-200 uL epT.I.P.S. length 53 mm; used as a fixed suspended-clearance reference, not as a carousel dimension.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TIP-L",
+                        "IF-0"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [
+        {
+          "id": "SRC-01",
+          "title": "Pipette Holder System",
+          "publisher": "Eppendorf",
+          "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+          "version_or_publication_date": null,
+          "locator": "3116000015 row and Features",
+          "access_date": "2026-09-08",
+          "verification_status": "body_read",
+          "supports_requirement_ids": [
+            "CMP-0",
+            "CMP-1",
+            "CMP-2",
+            "IF-0",
+            "IF-1",
+            "REF-0",
+            "REQ-VIS"
+          ]
+        }
+      ],
+      "limitations": [
+        "Specification only: checker not implemented and asset test not run."
+      ]
+    },
+    {
+      "id": "T-VIS",
+      "name": "Reference-image features",
+      "requirements": [
+        {
+          "id": "REQ-VIS",
+          "description": "Observable features in fixed views.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ],
+          "reference": {
+            "source_id": "SRC-01",
+            "locator": "3116000015 row and Features",
+            "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+            "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+          },
+          "views": [
+            "front",
+            "left",
+            "top",
+            "front_left_45deg"
+          ],
+          "state": "Upright and stationary; also open-cover views where applicable.",
+          "features": [
+            "Material appearance and silhouette consistent with the source image"
+          ],
+          "reviewer_status": "not_assigned",
+          "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+          "review_protocol": {
+            "source_class": "B",
+            "render_resolution_px": {
+              "width": 1600,
+              "height": 1600
+            },
+            "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+            "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+            "asset_state": "Upright and stationary; also open-cover views where applicable.",
+            "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+            "reviewer_policy": {
+              "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+              "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+              "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+              "current_assignment": null,
+              "status": "blocked_dependency"
+            }
+          }
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "Six references hung;base on bench.",
+              "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+              "observable": "Angle and mutual clearance.",
+              "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Fully loaded carousel.",
+              "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+              "observable": "Tip-to-bench clearance and neighbor stability.",
+              "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Base with rubber feet",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Rotating carousel",
+                  "quantity": 1,
+                  "kind": "moving",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Research plus holders",
+                  "quantity": 6,
+                  "kind": "fixed",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "Pipette Holder System",
+                    "publisher": "Eppendorf",
+                    "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                    "version_or_publication_date": null,
+                    "locator": "3116000015 row and Features",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "3116000015 row and Features",
+                  "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "target": {
+                "initial": "Six references hung;base on bench.",
+                "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+                "observable": "Angle and mutual clearance.",
+                "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "target": {
+                "initial": "Fully loaded carousel.",
+                "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+                "observable": "Tip-to-bench clearance and neighbor stability.",
+                "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Base diameter,height and holder spacing unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "hanger_geometry": {
+                  "id": "DIM-HANGER_GEOMETRY",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "hanger_geometry",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Holder engagement and suspended-tip clearance need independent geometry.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tip_length": {
+                  "id": "DIM-REF-TIP-L",
+                  "value": 53,
+                  "unit": "mm",
+                  "measurement_object": "Yellow 2-200 uL epT.I.P.S. on a compatible Research plus pipette",
+                  "measurement_location": "Tip end-to-end length used to define minimum suspended-tip clearance; not a carousel envelope dimension",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-02",
+                      "title": "Eppendorf Research plus Operating Manual",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/174967/Eppendorf_Liquid-Handling_Operating-manual_Research-plus_Eppendorf-Research-plus.pdf",
+                      "version": "manufacturer operating manual available in 2026",
+                      "locator": "Tip allocation table: yellow 2-200 uL epT.I.P.S. length 53 mm; used as a fixed suspended-clearance reference, not as a carousel dimension.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TIP-L",
+                        "IF-0"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [
+        {
+          "id": "SRC-01",
+          "title": "Pipette Holder System",
+          "publisher": "Eppendorf",
+          "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+          "version_or_publication_date": null,
+          "locator": "3116000015 row and Features",
+          "access_date": "2026-09-08",
+          "verification_status": "body_read",
+          "supports_requirement_ids": [
+            "CMP-0",
+            "CMP-1",
+            "CMP-2",
+            "IF-0",
+            "IF-1",
+            "REF-0",
+            "REQ-VIS"
+          ]
+        }
+      ],
+      "limitations": [
+        "Specification only: checker not implemented and asset test not run."
+      ]
+    },
+    {
+      "id": "T-CASE-0",
+      "name": "Carousel sweep",
+      "requirements": [
+        {
+          "id": "IF-0",
+          "description": "Six matching holders support Research plus pipettes;no charging contacts required.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF-1",
+          "description": "Interchangeable holders must be the selected Research plus type.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "FN-0",
+          "description": "Suspend pipettes without contacting bench or actuating plungers.",
+          "source_class": "B",
+          "sources": []
+        },
+        {
+          "id": "FN-1",
+          "description": "Rotate loaded carousel to present each holder.",
+          "source_class": "B",
+          "sources": []
+        },
+        {
+          "id": "PRO-0",
+          "description": "B storage/retrieval fragment based on documented holder compatibility.",
+          "source_class": "B",
+          "sources": [],
+          "preconditions": "Pipettes without tips;carousel stopped.",
+          "action": "Hang by proper holder contact;rotate to chosen position;remove.",
+          "expected_postcondition": "Remaining pipettes stay suspended.",
+          "forbidden_states": [
+            "Supporting by fragile tip cone",
+            "Charging claim for mechanical carousel"
+          ],
+          "parameters": null,
+          "source_defined_step": {
+            "status": "not_separately_extracted",
+            "source_class": "U",
+            "sources": [],
+            "statement": null,
+            "source_note": null
+          },
+          "benchmark_test_action": {
+            "source_class": "B",
+            "action": "Hang by proper holder contact;rotate to chosen position;remove.",
+            "parameters": null,
+            "reason": "Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement."
+          }
+        },
+        {
+          "id": "REF-0",
+          "configuration": "Six Research plus3120000054 pipettes without tips;independent holder/carousel geometry",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ],
+          "source_class": "M",
+          "model_status": "missing",
+          "model_version": null,
+          "path": null,
+          "sha256": null,
+          "frozen": false
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "Six references hung;base on bench.",
+              "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+              "observable": "Angle and mutual clearance.",
+              "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Fully loaded carousel.",
+              "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+              "observable": "Tip-to-bench clearance and neighbor stability.",
+              "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Base with rubber feet",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Rotating carousel",
+                  "quantity": 1,
+                  "kind": "moving",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Research plus holders",
+                  "quantity": 6,
+                  "kind": "fixed",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "Pipette Holder System",
+                    "publisher": "Eppendorf",
+                    "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                    "version_or_publication_date": null,
+                    "locator": "3116000015 row and Features",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "3116000015 row and Features",
+                  "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "target": {
+                "initial": "Six references hung;base on bench.",
+                "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+                "observable": "Angle and mutual clearance.",
+                "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "target": {
+                "initial": "Fully loaded carousel.",
+                "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+                "observable": "Tip-to-bench clearance and neighbor stability.",
+                "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Base diameter,height and holder spacing unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "hanger_geometry": {
+                  "id": "DIM-HANGER_GEOMETRY",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "hanger_geometry",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Holder engagement and suspended-tip clearance need independent geometry.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tip_length": {
+                  "id": "DIM-REF-TIP-L",
+                  "value": 53,
+                  "unit": "mm",
+                  "measurement_object": "Yellow 2-200 uL epT.I.P.S. on a compatible Research plus pipette",
+                  "measurement_location": "Tip end-to-end length used to define minimum suspended-tip clearance; not a carousel envelope dimension",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-02",
+                      "title": "Eppendorf Research plus Operating Manual",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/174967/Eppendorf_Liquid-Handling_Operating-manual_Research-plus_Eppendorf-Research-plus.pdf",
+                      "version": "manufacturer operating manual available in 2026",
+                      "locator": "Tip allocation table: yellow 2-200 uL epT.I.P.S. length 53 mm; used as a fixed suspended-clearance reference, not as a carousel dimension.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TIP-L",
+                        "IF-0"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        },
+        {
+          "id": "REQ-JOINT",
+          "applicable": true,
+          "reason": "The selected configuration has moving mechanisms.",
+          "source_class": "B",
+          "sources": [],
+          "joints": [
+            {
+              "id": "J-0",
+              "parent_component": "CMP-0",
+              "child_component": "CMP-1",
+              "type": "continuous_revolute",
+              "coordinate_frame": "Local body frame; +Z upright. Axis location must come from independent reference geometry.",
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "zero": "Holder1 faces+X",
+              "range": {
+                "min": null,
+                "max": null,
+                "unit": "deg"
+              },
+              "range_source_class": "B",
+              "limits": "Continuous carousel rotation;Btest360 deg.",
+              "locking_conditions": "None",
+              "source_class": "B",
+              "sources": [],
+              "unknown_physical_geometry": "Pivot or sliding guide geometry requires independent reference."
+            }
+          ]
+        },
+        {
+          "id": "J-0",
+          "parent_component": "CMP-0",
+          "child_component": "CMP-1",
+          "type": "continuous_revolute",
+          "coordinate_frame": "Local body frame; +Z upright. Axis location must come from independent reference geometry.",
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "zero": "Holder1 faces+X",
+          "range": {
+            "min": null,
+            "max": null,
+            "unit": "deg"
+          },
+          "range_source_class": "B",
+          "limits": "Continuous carousel rotation;Btest360 deg.",
+          "locking_conditions": "None",
+          "source_class": "B",
+          "sources": [],
+          "unknown_physical_geometry": "Pivot or sliding guide geometry requires independent reference."
+        }
+      ],
+      "sources": [],
+      "limitations": [
+        "Not run. Missing external models or source truth blocks testing.",
+        "Mechanical and state proxies do not validate fluid,thermal,magnetic,biological or cutting efficacy."
+      ]
+    },
+    {
+      "id": "T-CASE-1",
+      "name": "Six-pipette storage/retrieval",
+      "requirements": [
+        {
+          "id": "IF-0",
+          "description": "Six matching holders support Research plus pipettes;no charging contacts required.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF-1",
+          "description": "Interchangeable holders must be the selected Research plus type.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "FN-0",
+          "description": "Suspend pipettes without contacting bench or actuating plungers.",
+          "source_class": "B",
+          "sources": []
+        },
+        {
+          "id": "FN-1",
+          "description": "Rotate loaded carousel to present each holder.",
+          "source_class": "B",
+          "sources": []
+        },
+        {
+          "id": "PRO-0",
+          "description": "B storage/retrieval fragment based on documented holder compatibility.",
+          "source_class": "B",
+          "sources": [],
+          "preconditions": "Pipettes without tips;carousel stopped.",
+          "action": "Hang by proper holder contact;rotate to chosen position;remove.",
+          "expected_postcondition": "Remaining pipettes stay suspended.",
+          "forbidden_states": [
+            "Supporting by fragile tip cone",
+            "Charging claim for mechanical carousel"
+          ],
+          "parameters": null,
+          "source_defined_step": {
+            "status": "not_separately_extracted",
+            "source_class": "U",
+            "sources": [],
+            "statement": null,
+            "source_note": null
+          },
+          "benchmark_test_action": {
+            "source_class": "B",
+            "action": "Hang by proper holder contact;rotate to chosen position;remove.",
+            "parameters": null,
+            "reason": "Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement."
+          }
+        },
+        {
+          "id": "REF-0",
+          "configuration": "Six Research plus3120000054 pipettes without tips;independent holder/carousel geometry",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "Pipette Holder System",
+              "publisher": "Eppendorf",
+              "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+              "version_or_publication_date": null,
+              "locator": "3116000015 row and Features",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "REQ-VIS"
+              ]
+            }
+          ],
+          "source_class": "M",
+          "model_status": "missing",
+          "model_version": null,
+          "path": null,
+          "sha256": null,
+          "frozen": false
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "Six references hung;base on bench.",
+              "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+              "observable": "Angle and mutual clearance.",
+              "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Fully loaded carousel.",
+              "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+              "observable": "Tip-to-bench clearance and neighbor stability.",
+              "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Base with rubber feet",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Rotating carousel",
+                  "quantity": 1,
+                  "kind": "moving",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Research plus holders",
+                  "quantity": 6,
+                  "kind": "fixed",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "Pipette Holder System",
+                    "publisher": "Eppendorf",
+                    "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                    "version_or_publication_date": null,
+                    "locator": "3116000015 row and Features",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "3116000015 row and Features",
+                  "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "target": {
+                "initial": "Six references hung;base on bench.",
+                "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+                "observable": "Angle and mutual clearance.",
+                "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "target": {
+                "initial": "Fully loaded carousel.",
+                "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+                "observable": "Tip-to-bench clearance and neighbor stability.",
+                "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Base diameter,height and holder spacing unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "hanger_geometry": {
+                  "id": "DIM-HANGER_GEOMETRY",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "hanger_geometry",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Holder engagement and suspended-tip clearance need independent geometry.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tip_length": {
+                  "id": "DIM-REF-TIP-L",
+                  "value": 53,
+                  "unit": "mm",
+                  "measurement_object": "Yellow 2-200 uL epT.I.P.S. on a compatible Research plus pipette",
+                  "measurement_location": "Tip end-to-end length used to define minimum suspended-tip clearance; not a carousel envelope dimension",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-02",
+                      "title": "Eppendorf Research plus Operating Manual",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/174967/Eppendorf_Liquid-Handling_Operating-manual_Research-plus_Eppendorf-Research-plus.pdf",
+                      "version": "manufacturer operating manual available in 2026",
+                      "locator": "Tip allocation table: yellow 2-200 uL epT.I.P.S. length 53 mm; used as a fixed suspended-clearance reference, not as a carousel dimension.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TIP-L",
+                        "IF-0"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        },
+        {
+          "id": "REQ-JOINT",
+          "applicable": true,
+          "reason": "The selected configuration has moving mechanisms.",
+          "source_class": "B",
+          "sources": [],
+          "joints": [
+            {
+              "id": "J-0",
+              "parent_component": "CMP-0",
+              "child_component": "CMP-1",
+              "type": "continuous_revolute",
+              "coordinate_frame": "Local body frame; +Z upright. Axis location must come from independent reference geometry.",
+              "axis": [
+                0,
+                0,
+                1
+              ],
+              "zero": "Holder1 faces+X",
+              "range": {
+                "min": null,
+                "max": null,
+                "unit": "deg"
+              },
+              "range_source_class": "B",
+              "limits": "Continuous carousel rotation;Btest360 deg.",
+              "locking_conditions": "None",
+              "source_class": "B",
+              "sources": [],
+              "unknown_physical_geometry": "Pivot or sliding guide geometry requires independent reference."
+            }
+          ]
+        },
+        {
+          "id": "J-0",
+          "parent_component": "CMP-0",
+          "child_component": "CMP-1",
+          "type": "continuous_revolute",
+          "coordinate_frame": "Local body frame; +Z upright. Axis location must come from independent reference geometry.",
+          "axis": [
+            0,
+            0,
+            1
+          ],
+          "zero": "Holder1 faces+X",
+          "range": {
+            "min": null,
+            "max": null,
+            "unit": "deg"
+          },
+          "range_source_class": "B",
+          "limits": "Continuous carousel rotation;Btest360 deg.",
+          "locking_conditions": "None",
+          "source_class": "B",
+          "sources": [],
+          "unknown_physical_geometry": "Pivot or sliding guide geometry requires independent reference."
+        }
+      ],
+      "sources": [],
+      "limitations": [
+        "Not run. Missing external models or source truth blocks testing.",
+        "Mechanical and state proxies do not validate fluid,thermal,magnetic,biological or cutting efficacy."
+      ]
+    },
+    {
+      "id": "T-DIM",
+      "name": "Pending independent dimensional truth",
+      "requirements": [
+        {
+          "id": "DIM-ENVELOPE",
+          "value": null,
+          "unit": "mm",
+          "measurement_object": "Pipette Carousel2 3116000015",
+          "measurement_location": "envelope",
+          "measurement_state": "Requires independent reference measurement",
+          "source_class": "U",
+          "sources": [],
+          "unknown_reason": "Base diameter,height and holder spacing unavailable.",
+          "tolerance": {
+            "source_class": "B",
+            "full_relative_error_max": 0.05,
+            "partial_relative_error_max": 0.1,
+            "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+            "is_manufacturer_tolerance": false
+          },
+          "required_for_spec_completion": true,
+          "critical": true,
+          "hard_fail_relative_error_max": {
+            "value": 0.2,
+            "source_class": "B",
+            "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+          },
+          "measurement_plan": {
+            "status": "required_not_performed",
+            "source_class": "B",
+            "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+            "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+            "sample_count": 3,
+            "repetitions_per_sample": 3,
+            "required_traceability": [
+              "instrument identifier and calibration certificate",
+              "sample catalog number and lot when available",
+              "operator, date, raw readings, summary statistic and measurement uncertainty",
+              "photograph or drawing showing the measurement datum and asset state"
+            ],
+            "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+          }
+        },
+        {
+          "id": "DIM-HANGER_GEOMETRY",
+          "value": null,
+          "unit": "mm",
+          "measurement_object": "Pipette Carousel2 3116000015",
+          "measurement_location": "hanger_geometry",
+          "measurement_state": "Requires independent reference measurement",
+          "source_class": "U",
+          "sources": [],
+          "unknown_reason": "Holder engagement and suspended-tip clearance need independent geometry.",
+          "tolerance": {
+            "source_class": "B",
+            "full_relative_error_max": 0.05,
+            "partial_relative_error_max": 0.1,
+            "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+            "is_manufacturer_tolerance": false
+          },
+          "required_for_spec_completion": true,
+          "critical": true,
+          "hard_fail_relative_error_max": {
+            "value": 0.2,
+            "source_class": "B",
+            "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+          },
+          "measurement_plan": {
+            "status": "required_not_performed",
+            "source_class": "B",
+            "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+            "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+            "sample_count": 3,
+            "repetitions_per_sample": 3,
+            "required_traceability": [
+              "instrument identifier and calibration certificate",
+              "sample catalog number and lot when available",
+              "operator, date, raw readings, summary statistic and measurement uncertainty",
+              "photograph or drawing showing the measurement datum and asset state"
+            ],
+            "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+          }
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "Six references hung;base on bench.",
+              "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+              "observable": "Angle and mutual clearance.",
+              "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Fully loaded carousel.",
+              "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+              "observable": "Tip-to-bench clearance and neighbor stability.",
+              "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Base with rubber feet",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Rotating carousel",
+                  "quantity": 1,
+                  "kind": "moving",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Research plus holders",
+                  "quantity": 6,
+                  "kind": "fixed",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "Pipette Holder System",
+                      "publisher": "Eppendorf",
+                      "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                      "version_or_publication_date": null,
+                      "locator": "3116000015 row and Features",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "Pipette Holder System",
+                    "publisher": "Eppendorf",
+                    "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                    "version_or_publication_date": null,
+                    "locator": "3116000015 row and Features",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "3116000015 row and Features",
+                  "url": "https://www.eppendorf.com/gb-en/Products/Liquid-Handling/Dispenser-Pipette-Accessories/Eppendorf-Pipette-Holder-System-p-PF-218982",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+              "target": {
+                "initial": "Six references hung;base on bench.",
+                "action": "Rotate360 deg at30 deg/s;stop at60 deg intervals.",
+                "observable": "Angle and mutual clearance.",
+                "pass_condition": "Angle error <=2 deg;no pipette collisions or unintended overlaps >0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+              "target": {
+                "initial": "Fully loaded carousel.",
+                "action": "Release5 s;lift each pipette30 mm along verified removal path and replace.",
+                "observable": "Tip-to-bench clearance and neighbor stability.",
+                "pass_condition": "All6 remain supported;tip cones clear bench byB>=5 mm;neighbor drift <=1 mm;no plunger actuation.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Base diameter,height and holder spacing unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "hanger_geometry": {
+                  "id": "DIM-HANGER_GEOMETRY",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "Pipette Carousel2 3116000015",
+                  "measurement_location": "hanger_geometry",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Holder engagement and suspended-tip clearance need independent geometry.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tip_length": {
+                  "id": "DIM-REF-TIP-L",
+                  "value": 53,
+                  "unit": "mm",
+                  "measurement_object": "Yellow 2-200 uL epT.I.P.S. on a compatible Research plus pipette",
+                  "measurement_location": "Tip end-to-end length used to define minimum suspended-tip clearance; not a carousel envelope dimension",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-02",
+                      "title": "Eppendorf Research plus Operating Manual",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/174967/Eppendorf_Liquid-Handling_Operating-manual_Research-plus_Eppendorf-Research-plus.pdf",
+                      "version": "manufacturer operating manual available in 2026",
+                      "locator": "Tip allocation table: yellow 2-200 uL epT.I.P.S. length 53 mm; used as a fixed suspended-clearance reference, not as a carousel dimension.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TIP-L",
+                        "IF-0"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [],
+      "limitations": [
+        "Specification only: checker not implemented and asset test not run."
+      ]
+    }
+  ]
+}

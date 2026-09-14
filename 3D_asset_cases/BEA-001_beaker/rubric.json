@@ -1,0 +1,214 @@
+{
+  "format": "amx-rubric",
+  "case_id": "BEA-001",
+  "asset_class": "beaker",
+  "source_sha": "b8d6500ac570c183",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PHY-PROBE",
+      "axis": "physics",
+      "primitive": "probe_insert",
+      "subject": "the reference body going in and staying in",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-TILT",
+      "axis": "physics",
+      "primitive": "tilt_restore",
+      "subject": "surviving a pour or an inversion",
+      "weight": 2.0
+    },
+    {
+      "id": "PART-CMP-BODY",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Wall and closed bottom",
+      "weight": 3.0,
+      "params": {
+        "part": "Wall and closed bottom"
+      }
+    },
+    {
+      "id": "PART-CMP-SPOUT",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Pouring spout",
+      "weight": 3.0,
+      "params": {
+        "part": "Pouring spout"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "PART-CAVITY",
+      "axis": "parts",
+      "primitive": "cavity_volume",
+      "subject": "the internal volume",
+      "weight": 3.0,
+      "params": {
+        "min_volume_ml": 250.0
+      }
+    },
+    {
+      "id": "DIM-DIM-OD",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "body_outer_diameter",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-OD",
+        "value_m": 0.07,
+        "kind": "diameter_outer"
+      },
+      "note": "Cylindrical outside diameter excluding spout"
+    },
+    {
+      "id": "DIM-DIM-H",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-H",
+        "value_m": 0.095,
+        "height_fraction": 0.15
+      },
+      "note": "Base to rim, h in source drawing"
+    },
+    {
+      "id": "NA-DIM-ID",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "mouth_inner_diameter",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-WALL",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "wall_thickness",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Low cylindrical body",
+      "params": {
+        "feature": "Low cylindrical body"
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Projecting pouring spout",
+      "params": {
+        "feature": "Projecting pouring spout"
+      }
+    },
+    {
+      "id": "VIS-02",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Transparent wall",
+      "params": {
+        "feature": "Transparent wall"
+      }
+    },
+    {
+      "id": "VIS-03",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Graduations and marking area",
+      "params": {
+        "feature": "Graduations and marking area"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    }
+  ]
+}

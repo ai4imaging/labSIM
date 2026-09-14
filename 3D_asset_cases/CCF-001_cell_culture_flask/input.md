@@ -1,0 +1,574 @@
+# cell culture flask benchmark Input Specification
+
+- `benchmark_id`: CCF-001
+- `asset_class`: cell_culture_flask
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: cell culture flask
+- `name_en`: cell_culture_flask
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: Corning
+- `model`: 430641U
+- `configuration`: 75 cm2 TC-treated U-shaped flask,canted neck,vent cap.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `growth_area`:
+  - `id`: DIM-GROWTH_AREA
+  - `value`: `75`
+  - `unit`: cm2
+  - `measurement_object`: 430641U
+  - `measurement_location`: Culture growth surface,not total exterior area
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `envelope`:
+  - `id`: DIM-ENVELOPE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: 430641U
+  - `measurement_location`: envelope
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Length,width,height and neck bore absent from selected guide section.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `cap_thread`:
+  - `id`: DIM-CAP_THREAD
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: 430641U
+  - `measurement_location`: cap_thread
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Cap thread and canted neck angle require reference geometry.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `length_without_cap`:
+  - `id`: DIM-L
+  - `value`: `155.702`
+  - `unit`: mm
+  - `measurement_object`: Corning 430641U
+  - `measurement_location`: End-to-end body length excluding cap
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: D
+  - `source_refs`:
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `derivation`:
+    - `expression`: 6.13 in x 25.4 mm/in
+    - `result_mm`: `155.702`
+    - `conversion_factor_source`: SI exact inch definition
+- `width`:
+  - `id`: DIM-W
+  - `value`: `89.662`
+  - `unit`: mm
+  - `measurement_object`: Corning 430641U
+  - `measurement_location`: Maximum body width
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: D
+  - `source_refs`:
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `derivation`:
+    - `expression`: 3.53 in x 25.4 mm/in
+    - `result_mm`: `89.662`
+    - `conversion_factor_source`: SI exact inch definition
+- `flask_depth`:
+  - `id`: DIM-H
+  - `value`: `35.56`
+  - `unit`: mm
+  - `measurement_object`: Corning 430641U
+  - `measurement_location`: Flask body depth/height in the source terminology
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: D
+  - `source_refs`:
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `derivation`:
+    - `expression`: 1.4 in x 25.4 mm/in
+    - `result_mm`: `35.56`
+    - `conversion_factor_source`: SI exact inch definition
+- `threaded_neck_outer_diameter`:
+  - `id`: DIM-NECK-OD
+  - `value`: `27.432`
+  - `unit`: mm
+  - `measurement_object`: Corning 430641U
+  - `measurement_location`: Neck outside diameter including threads
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: D
+  - `source_refs`:
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `derivation`:
+    - `expression`: 1.08 in x 25.4 mm/in
+    - `result_mm`: `27.432`
+    - `conversion_factor_source`: SI exact inch definition
+- `neck_inner_diameter`:
+  - `id`: DIM-NECK-ID
+  - `value`: `22.098`
+  - `unit`: mm
+  - `measurement_object`: Corning 430641U
+  - `measurement_location`: Clear neck inside diameter
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: D
+  - `source_refs`:
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `derivation`:
+    - `expression`: 0.87 in x 25.4 mm/in
+    - `result_mm`: `22.098`
+    - `conversion_factor_source`: SI exact inch definition
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: U-shaped flask
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Vent cap
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Growth chamber
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Canted neck
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Pipette access through canted neck with cap removed.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Matching vent cap must retain its vent function; do not replace it with a plug-seal closure.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: 430641U flask and matching vent cap independent geometry
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-1
+    - `type`: rotational_release_surrogate
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `zero`: Cap closed; axis must be transformed to measured neck frame
+    - `range`:
+      - `min`: `0`
+      - `max`: `360`
+      - `unit`: deg
+    - `range_source_class`: B
+    - `limits`: B one-turn release followed by20 mm axial removal; not thread validation.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Expose growth surface through neck without contacting walls.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Support horizontal culture orientation; vent status is distinct from cap removal.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Manufacturer medium recommendation0.2..0.3 mL per cm2;75 cm2 gives15..22.5 mL by multiplication.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Selected75 cm2 flask.
+  - `action`: Choose a medium amount consistent with the area-based recommendation.
+  - `expected_postcondition`: Documented fill selection; fluid efficacy excluded.
+  - `forbidden_states`:
+    - Using total brim volume as growth medium recommendation
+  - `parameters`:
+    - `source_class`: D
+    - `formula`: 75*(0.2..0.3)
+    - `range_mL`:
+      - `15`
+      - `22.5`
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Manufacturer medium recommendation0.2..0.3 mL per cm2;75 cm2 gives15..22.5 mL by multiplication.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Choose a medium amount consistent with the area-based recommendation.
+    - `parameters`:
+      - `source_class`: D
+      - `formula`: 75*(0.2..0.3)
+      - `range_mL`:
+        - `15`
+        - `22.5`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Cell Culture Selection Guide
+  - `publisher`: Corning
+  - `url`: https://www.corning.com/content/dam/corning/catalog/cls/documents/selection-guides/CLS-CC-010.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Printed page7,75 cm2 flask table and application tip;web PDF text read,local graphics download denied
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-GROWTH_AREA
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - IF-0
+    - IF-1
+    - REF-0
+    - PRO-0
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Corning Product Specification Sheet 430641U
+  - `url`: https://www.novolab-labware.com/amfile/file/download/file/2837/product/17963/
+  - `version`: one-page Corning product specification sheet, mirrored by a distributor
+  - `locator`: Product Dimensions: length without cap 6.13 in, width 3.53 in, flask depth 1.40 in, threaded neck OD 1.08 in, neck ID 0.87 in; stated tolerance +/-0.05 in.
+  - `access_date`: 2026-09-09
+  - `verification_status`: body_read_mirror
+  - `supports_requirement_ids`:
+    - DIM-L
+    - DIM-W
+    - DIM-H
+    - DIM-NECK-OD
+    - DIM-NECK-ID
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+  - Cell attachment
+  - Gas-exchange rate
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: 430641U flask and matching vent cap independent geometry
+  - Pinned and independently justified mass,inertia and contact parameters
+  - Independent source-truth geometry for dimensions marked unknown
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `T-CASE-0`:
+    - `initial`: Empty flask fixed; measured neck frame available.
+    - `action`: Release one turn,remove20 mm,replace;3 cycles.
+    - `observable`: Relative cap pose,vent geometry and clearance.
+    - `pass_condition`: Release/removal completes; cap reseats within0.2 mm and2 deg; vent feature not replaced by solid closure.
+    - `source_class`: B
+    - `note`: Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance.
+  - `T-CASE-1`:
+    - `initial`: Cap removed;flask on growth-surface side;B2 mm diameter probe.
+    - `action`: Advance probe10 mm past neck exit along measured neck axis;withdraw;release flask5 s.
+    - `observable`: Clearance to neck and chamber;support pose.
+    - `pass_condition`: Probe enters chamber with overlap <=0.2 mm; flask tilt <=2 deg and drift <=1 mm.
+    - `source_class`: B
+    - `note`: Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Release/removal completes; cap reseats within0.2 mm and2 deg; vent feature not replaced by solid closure.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Probe enters chamber with overlap <=0.2 mm; flask tilt <=2 deg and drift <=1 mm.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: All required dimension errors <=10%;unknown truth blocks evaluation.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Printed page7,75 cm2 flask table and application tip;web PDF text read,local graphics download denied
+  - `url`: https://www.corning.com/content/dam/corning/catalog/cls/documents/selection-guides/CLS-CC-010.pdf
+  - `verification_status`: Source text read; image-specific appearance review remains a runtime dependency.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Material appearance and silhouette consistent with the source image
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

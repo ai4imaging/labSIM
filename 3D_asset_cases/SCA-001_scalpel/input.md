@@ -1,0 +1,559 @@
+# scalpel benchmark Input Specification
+
+- `benchmark_id`: SCA-001
+- `asset_class`: scalpel
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `manufacturer`: Swann-Morton
+- `model`: No.3 graduated handle0933 with No.10 stainless blade0301
+- `configuration`: Reusable graduated stainless No.3 handle and removable sterile stainless No.10 blade. No retractable guard, no integrated disposable scalpel. Inert bench interaction only.
+- `name`: scalpel
+- `name_en`: scalpel
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `handle_length`:
+  - `id`: DIM-HANDLE_LENGTH
+  - `value`: `120`
+  - `unit`: mm
+  - `measurement_object`: Swann-Morton No. 3 graduated handle 0933
+  - `measurement_location`: Handle end-to-end length before a blade is mounted
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: D
+  - `source_refs`:
+    - SRC-04
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_note`: Secondary distributor value tied to manufacturer catalog 0933; retain the primary-source confirmation gap.
+- `blade_profile`:
+  - `id`: DIM-BLADE_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: No.3 graduated handle0933 with No.10 stainless blade0301
+  - `measurement_location`: blade_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: No dimensioned0301 profile, thickness or cutting-edge radius acquired.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `bayonet_profile`:
+  - `id`: DIM-BAYONET_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: No.3 graduated handle0933 with No.10 stainless blade0301
+  - `measurement_location`: bayonet_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Fitment slot geometry and mounting displacement unknown; cited ISO7740 text not acquired and no standard compliance claim made.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `assembly_envelope`:
+  - `id`: DIM-ASSEMBLY_ENVELOPE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: No.3 graduated handle0933 with No.10 stainless blade0301
+  - `measurement_location`: assembly_envelope
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Combined mounted length is unknown; must not add separate nominal lengths without overlap datum.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Graduated0933 handle
+  - `quantity`: `1`
+  - `kind`: root
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: No.3 bayonet fitment region
+  - `quantity`: `1`
+  - `kind`: fixed_region_or_component
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Separate No.10 stainless0301 blade
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Blade slot mates only to compatible No.3 bayonet; full engagement must precede manipulation.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Grip blade with mounting tool away from cutting edge; contaminated blade removal uses5502 enclosed remover in selected workflow.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Independent0933/0301 fitment and blade geometry; source drawing not acquired.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Independent compatible mounting forceps geometry; grip on blade non-edge region.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: Independent5502 single-use remover and sharps-container geometry.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 4 — `REF-3`**
+  - `id`: REF-3
+  - `configuration`: B1 inert non-colliding witness plane:30x30 mm with10 mm target line; not tissue.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `applicable`: `true`
+- `reason`: Actual flexibility or relative motion; approximation is not physical truth.
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-2
+    - `type`: temporary_slide_and_flex_assembly_then_fixed_connection
+    - `coordinate_frame`: Handle local X along bayonet; Z away from broad face
+    - `axis`: Slide along fitment and temporary blade flex; no permanent hinge
+    - `zero`: Detached blade aligned before engagement
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: mm
+    - `range_source_class`: U
+    - `limits`: Unknown true slide/flex; snap engagement needs independent geometry; no hidden weld before full seating.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Allow blade installation and retention with correct interface geometry.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Move identified cutting edge along an inert target path; motion does not prove incision.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Permit controlled removal into enclosed remover without bare-hand blade handling.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Inspect and mount blade
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Undamaged clean handle, compatible blade and mounting forceps.
+  - `action`: Inspect bayonet; grasp blade away from edge, engage slots and slide to full seating with slight flex if needed.
+  - `expected_postcondition`: Fully engaged blade.
+  - `forbidden_states`: Fitting to worn/damaged bayonet or treating audible click alone as geometric proof.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Inspect and mount blade
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Inspect bayonet; grasp blade away from edge, engage slots and slide to full seating with slight flex if needed.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Benchmark edge-guidance motion
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `preconditions`: Installed blade and no biological material.
+  - `action`: Move cutting edge along a10 mm witness path at5 mm/s.
+  - `expected_postcondition`: Correct edge follows line.
+  - `forbidden_states`: Equating path tracking with cutting.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - *(none)*
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Move cutting edge along a10 mm witness path at5 mm/s.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 3 — `PRO-2`**
+  - `id`: PRO-2
+  - `description`: Enclosed removal
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-03
+  - `preconditions`: Used blade,5502 remover on stable fixture.
+  - `action`: Locate blade in remover, close and engage front/rear tabs, withdraw handle and dispose enclosed blade in sharps receptacle.
+  - `expected_postcondition`: Blade retained inside remover.
+  - `forbidden_states`: Pulling handle before tabs engage or reusing single-use blade/remover.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-03
+    - `statement`: Enclosed removal
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Locate blade in remover, close and engage front/rear tabs, withdraw handle and dispose enclosed blade in sharps receptacle.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Handle with Care
+  - `url`: https://www.swann-morton.com/pdfs/handle_with_care_A4_4pp.pdf
+  - `publisher`: Swann-Morton
+  - `version_or_publication_date`: HWC/ISSUE2 03/25
+  - `locator`: Pages2-4:0933 handle, No.3 fitment, inspection, mounting and removal; page4 diagrams visually inspected.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - CMP-0
+    - CMP-1
+    - IF-0
+    - IF-1
+    - PRO-0
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Surgical Scalpel Blade No.10
+  - `url`: https://www.swann-morton.com/product/16.php
+  - `publisher`: Swann-Morton
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Description and specification:No.10 curved cutting edge, compatible No.3 handles; stainless sterile code0301.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - CMP-2
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: Single-use blade remover leaflet
+  - `url`: https://www.swann-morton.com/pdfs/blade_remover_low_res.pdf
+  - `publisher`: Swann-Morton
+  - `version_or_publication_date`: BR/issue1
+  - `locator`: Six-step remover sequence and5502 sterile remover; previously read manufacturer leaflet.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - PRO-2
+- **Item 4 — `SRC-04`**
+  - `id`: SRC-04
+  - `title`: Fisher Scientific listing for Swann-Morton 0933 No. 3 graduated handle
+  - `url`: https://www.fishersci.dk/shop/products/surgical-stainless-steel-scalpel-handles/11880862
+  - `version`: live distributor product page
+  - `locator`: Technical data identifies brand Swann-Morton, catalog 0933, size No. 3 and metric length 120 mm.
+  - `access_date`: 2026-09-09
+  - `verification_status`: body_read_secondary_source
+  - `supports_requirement_ids`:
+    - DIM-HANDLE_LENGTH
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Clinical use, tissue incision, sharpness, sterilization and ISO7740 certification.
+- `runtime_dependencies`:
+  - Submitted asset, pinned MuJoCo environment and independent checkers
+  - Independent0933/0301 fitment and blade geometry; source drawing not acquired.
+  - Independent compatible mounting forceps geometry; grip on blade non-edge region.
+  - Independent5502 single-use remover and sharps-container geometry.
+  - B1 inert non-colliding witness plane:30x30 mm with10 mm target line; not tissue.
+  - Source truth for critical gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `boundary`: No live sharps handled; fixture identity and state are benchmark concepts. No clinical or cutting efficacy evaluated.
+  - `T-CASE-0`:
+    - `initial`: Independent fitment geometry and undamaged reference handle; detached blade.
+    - `action`: Use forceps on non-edge region, align, flex/slide through verified mounting path; release and move handle50 mm.
+    - `observable`: Slot engagement, gripping location and relative blade pose.
+    - `pass_condition`: Only compatible full seating permits retained connection; seating within0.1 mm of independent datum; blade slip<=0.1 mm and0.5 deg; no unintended overlap>0.02 mm outside intended fit contact; tool never grips cutting edge. Missing geometry blocks.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-1`:
+    - `initial`: Mounted blade and witness plane without collision response.
+    - `action`: Trace10 mm line with curved cutting edge at5 mm/s, retract5 mm.
+    - `observable`: Closest cutting-edge distance to line and handle clearance.
+    - `pass_condition`: At least95% line coverage within0.2 mm; handle never substitutes for edge; no claim of material fracture or incision.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-2`:
+    - `initial`: Independent5502 fixture and mounted blade, remover open.
+    - `action`: Position blade, close front/rear locking tabs, withdraw handle, transfer enclosed blade to sharps receiver.
+    - `observable`: Tab states, blade containment and tool contacts.
+    - `pass_condition`: Both tab pairs engage before withdrawal; blade remains inside remover through withdrawal and transfer; no bare-hand proxy contacts blade; no reuse accepted by workflow oracle.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Independent primary dimensional truth acquired and numerical targets defined before execution; current check is blocked_source.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Only compatible full seating permits retained connection; seating within0.1 mm of independent datum; blade slip<=0.1 mm and0.5 deg; no unintended overlap>0.02 mm outside intended fit contact; tool never grips cutting edge. Missing geometry blocks.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: At least95% line coverage within0.2 mm; handle never substitutes for edge; no claim of material fracture or incision.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Both tab pairs engage before withdrawal; blade remains inside remover through withdrawal and transfer; no bare-hand proxy contacts blade; no reuse accepted by workflow oracle.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `url`: https://www.swann-morton.com/pdfs/handle_with_care_A4_4pp.pdf
+  - `locator`: Pages2-4:0933 handle, No.3 fitment, inspection, mounting and removal; page4 diagrams visually inspected.
+  - `verification_status`: Manufacturer mounting/removal and damaged-fitment diagrams visually inspected.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Graduated reusable No.3 handle with bayonet and separate curved No.10 blade.
+  - No sliding safety guard; mounting slot and non-edge gripping region identifiable.
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

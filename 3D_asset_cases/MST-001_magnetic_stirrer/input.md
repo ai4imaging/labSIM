@@ -1,0 +1,573 @@
+# magnetic stirrer benchmark Input Specification
+
+- `benchmark_id`: MST-001
+- `asset_class`: magnetic_stirrer
+- `specification_version`: 1.2.1
+- `language`: en
+
+> This Markdown file contains the complete current input specification. Newly resolved values retain explicit provenance; unresolved values and measurement plans remain explicit.
+
+## Asset Identity
+
+- `name`: magnetic stirrer
+- `name_en`: magnetic_stirrer
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: IKA
+- `model`: RCT basic 0025006052
+- `configuration`: 115 V model on currently read product page; stirring-only benchmark with heating held OFF and one IKAFLON 30 round stir bar, Ident. No. 0004489000.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-WIDTH
+  - `value`: `160`
+  - `unit`: mm
+  - `measurement_object`: RCT basic 0025006052
+  - `measurement_location`: Housing width
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-HEIGHT
+  - `value`: `85`
+  - `unit`: mm
+  - `measurement_object`: RCT basic 0025006052
+  - `measurement_location`: Base-to-plate top
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `depth`:
+  - `id`: DIM-DEPTH
+  - `value`: `270`
+  - `unit`: mm
+  - `measurement_object`: RCT basic 0025006052
+  - `measurement_location`: Housing depth
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `plate_diameter`:
+  - `id`: DIM-PLATE_DIAMETER
+  - `value`: `135`
+  - `unit`: mm
+  - `measurement_object`: RCT basic 0025006052
+  - `measurement_location`: Circular aluminium setup plate diameter
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `knob_geometry`:
+  - `id`: DIM-KNOB_GEOMETRY
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: RCT basic 0025006052
+  - `measurement_location`: knob_geometry
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Knob center, radius and physical rotation/push stops unreported.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `bar_diameter`:
+  - `id`: DIM-BAR_DIAMETER
+  - `value`: `8`
+  - `unit`: mm
+  - `measurement_object`: IKAFLON 30 round, Ident. No. 0004489000
+  - `measurement_location`: Maximum outside diameter of the round PTFE-coated stir bar
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-03
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `connector_geometry`:
+  - `id`: DIM-CONNECTOR_GEOMETRY
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: RCT basic 0025006052
+  - `measurement_location`: connector_geometry
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: USB-B, RS232 and PT1000 connector locations and physical clearances not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Housing with feet
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Aluminium setup plate
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Stirring control knob
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Heating control knob
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: Set/actual display
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Power and external sensor interfaces
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Vessel bottom supported on circular plate; stir bar is an external free object inside vessel, not a joint attaching vessel to plate.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: External PT1000 port is present but unused in stirring-only task; heat control must remain accessible and OFF.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: DURAN low-form250 mL beaker from BEA-001, independently validated geometry.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: IKAFLON 30 round stir bar, Ident. No. 0004489000; 30 mm length and 8 mm diameter.
+  - `source_refs`:
+    - SRC-03
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-2
+    - `type`: revolute_control_proxy
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Normal to control face
+    - `zero`: B reference orientation at speed minimum
+    - `range`:
+      - `min`: `0`
+      - `max`: `270`
+      - `unit`: deg
+    - `range_source_class`: B
+    - `limits`: B270-degree control surrogate; not claimed manufacturer travel. Map to50-1500 rpm; actual control geometry remains unknown.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Allow vessel placement and stirring speed setting without rotating the setup plate.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Expose motor command separately from stir-bar response; prescribed bar motion is not magnetic validation.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Install on level non-slip surface; keep cables away from heating plate and secure accessories. Disconnect before fitting accessories.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `preconditions`: Power disconnected, heating OFF.
+  - `action`: Install beaker and bar, reconnect, set stirring command.
+  - `expected_postcondition`: Stable vessel; no cable-plate contact.
+  - `forbidden_states`:
+    - Accessory installation while powered
+    - Power cable contacting plate
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Install on level non-slip surface; keep cables away from heating plate and secure accessories. Disconnect before fitting accessories.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Install beaker and bar, reconnect, set stirring command.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: RCT basic technical data
+  - `publisher`: IKA
+  - `url`: https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25005927/Technical-Data-cptd.html
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Technical data and selected Ident. No.0025006052; not older RCT basic safety-control model.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-WIDTH
+    - DIM-HEIGHT
+    - DIM-DEPTH
+    - DIM-PLATE_DIAMETER
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - IF-0
+    - IF-1
+    - REF-0
+    - REF-1
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: RCT basic English manual
+  - `publisher`: IKA
+  - `url`: https://www.scribd.com/document/882879905/20000018613c-EN-RCT-basic-092024-web
+  - `version_or_publication_date`: 20000018613c, 09/2024
+  - `locator`: Manufacturer manual text reproduced by Scribd; printed pages7-9 safety/accessories, operation and mode sections. Original IKA download blocked by challenge.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - PRO-0
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: IKAFLON 30 round (5 pcs.) Technical Data
+  - `publisher`: IKA
+  - `url`: https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/IKAFLON-30-round-(5-pcs)-4489000/Technical-Data-cptd.html
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Technical Data: length 30 mm, diameter 8 mm, round shape, PTFE coating; product Ident. No. 0004489000.
+  - `access_date`: 2026-09-09
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-BAR_DIAMETER
+    - REF-1
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+  - Magnetic coupling, real liquid stirring, heating and EMC qualification
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: DURAN low-form250 mL beaker from BEA-001, independently validated geometry.
+  - Independent reference model: IKAFLON 30 round stir bar, Ident. No. 0004489000; model file still not supplied.
+  - Pinned and independently justified mass,inertia and contact parameters
+  - Independent source-truth geometry for dimensions marked unknown
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `speed_range_rpm`:
+    - `min`: `50`
+    - `max`: `1500`
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+  - `test_speed_rpm`: `300`
+  - `bar_proxy`: Optional prescribed rotation at300 rpm is only a clearance sweep; no magnetic coupling claimed.
+  - `T-CASE-0`:
+    - `initial`: Empty independent beaker centered on plate; bar placed on its bottom; heating OFF.
+    - `action`: Release beaker for5 s; sweep bar through360 degrees quasistatically about vessel axis.
+    - `observable`: Support polygon, vessel motion and swept bar envelope.
+    - `pass_condition`: Beaker drift <=1 mm and tilt <=2 degrees; no bar-wall penetration >0.2 mm; plate does not rotate. Intended bar-bottom contact permitted.
+    - `source_class`: B
+    - `note`: Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance.
+  - `T-CASE-1`:
+    - `initial`: Motor stopped, heat disabled.
+    - `action`: Operate knob proxy to set50,300 and1500 rpm, then stop; inspect independently mapped control state and physical knob response.
+    - `observable`: Knob angle, motor setpoint and heating-enable state.
+    - `pass_condition`: All setpoints reachable within10 rpm; heat remains disabled throughout; stop yields motor command0 within1 s. Missing knob truth blocks final geometric certification; bar efficacy not scored.
+    - `source_class`: B
+    - `note`: Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Beaker drift <=1 mm and tilt <=2 degrees; no bar-wall penetration >0.2 mm; plate does not rotate. Intended bar-bottom contact permitted.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: All setpoints reachable within10 rpm; heat remains disabled throughout; stop yields motor command0 within1 s. Missing knob truth blocks final geometric certification; bar efficacy not scored.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Technical data and selected Ident. No.0025006052; not older RCT basic safety-control model.
+  - `url`: https://www.ika.com/en/Products-LabEq/Magnetic-Stirrers-pg188/RCT-basic-25005927/Technical-Data-cptd.html
+  - `verification_status`: Source text read; image-specific appearance review remains a runtime dependency.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Circular metal plate above rectangular housing
+  - Distinct heating and speed controls with displays
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

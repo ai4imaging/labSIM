@@ -1,0 +1,596 @@
+# forceps benchmark Input Specification
+
+- `benchmark_id`: FOR-001
+- `asset_class`: forceps
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `manufacturer`: Fine Science Tools / Dumont
+- `model`: Dumont #5 11251-20
+- `configuration`: Straight Standard-tip Inox forceps,110 mm; not Biology tips, Dumoxel or self-closing #5AC.
+- `name`: forceps
+- `name_en`: forceps
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `length`:
+  - `id`: DIM-LENGTH
+  - `value`: `110`
+  - `unit`: mm
+  - `measurement_object`: Dumont #5 11251-20
+  - `measurement_location`: Overall length
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `tip_width`:
+  - `id`: DIM-TIP_WIDTH
+  - `value`: `0.1`
+  - `unit`: mm
+  - `measurement_object`: Dumont #5 11251-20
+  - `measurement_location`: Tip width; ordering defined by Dumont guide
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `tip_thickness`:
+  - `id`: DIM-TIP_THICKNESS
+  - `value`: `0.06`
+  - `unit`: mm
+  - `measurement_object`: Dumont #5 11251-20
+  - `measurement_location`: Tip thickness, not jaw separation
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `mass`:
+  - `id`: DIM-MASS
+  - `value`: `12`
+  - `unit`: g
+  - `measurement_object`: Dumont #5 11251-20
+  - `measurement_location`: Published net mass, not inertia tensor
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `rest_gap`:
+  - `id`: DIM-REST_GAP
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Dumont #5 11251-20
+  - `measurement_location`: rest_gap
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Unloaded tip gap and safe closure force/displacement curve unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `shank_geometry`:
+  - `id`: DIM-SHANK_GEOMETRY
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Dumont #5 11251-20
+  - `measurement_location`: shank_geometry
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Independent shank section, joined root and compliant curvature unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `tip_contact`:
+  - `id`: DIM-TIP_CONTACT
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Dumont #5 11251-20
+  - `measurement_location`: tip_contact
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Meeting-face length and tip alignment tolerances not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Joined forceps body
+  - `quantity`: `1`
+  - `kind`: root
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Left compliant shank and fine tip
+  - `quantity`: `1`
+  - `kind`: compliant_region
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Right compliant shank and fine tip
+  - `quantity`: `1`
+  - `kind`: compliant_region
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Opposed fine tips contact the sample; external gripper squeezes shanks, not the distal tips.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: No lock, scissor screw or ratchet in selected configuration; elastic return and protected storage require distinct behavior.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Independent unloaded and closing11251-20 geometry plus measured compliant response.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: B1 inert flat coupon:1x1x0.1 mm,0.1 mg, friction coefficient0.5; not tissue.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: Independent tip protector geometry, exact SKU not yet selected.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `applicable`: `true`
+- `reason`: Actual flexibility or relative motion; approximation is not physical truth.
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-1
+    - `type`: coupled_compliant_shanks
+    - `coordinate_frame`: Local X longitudinal toward tips; Y closes jaws; Z tip thickness
+    - `axis`: Distributed bending; no literal hinge claimed
+    - `zero`: Unloaded shape
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: mm
+    - `range_source_class`: U
+    - `limits`: Physical safe gap range and force curve remain unknown; rigid-link proxy must be labeled B.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Independent shank shape and distributed elastic response required; no actual pivot assumed.
+    - `coupled_component_ids`:
+      - CMP-1
+      - CMP-2
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Produce opposed aligned closure and reopening without tip crossing.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Grip and release an inert coupon with both tips, without treating retention as tissue-safe force validation.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Permit inspection, open-position cleaning access and dry protected storage.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Fine grasping benchmark
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `preconditions`: Inspected forceps, reference response and coupon ready.
+  - `action`: Squeeze shanks to contact coupon, lift, translate, lower and release.
+  - `expected_postcondition`: Coupon transferred and jaws return.
+  - `forbidden_states`: Treating fixed welded jaws, self-closing behavior or tip collision as valid #5 action.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - *(none)*
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Squeeze shanks to contact coupon, lift, translate, lower and release.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Post-use care
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-03
+  - `preconditions`: Used item; no damaged tip permitted for reuse.
+  - `action`: Expose open inner surfaces for cleaning, rinse and dry, then use tip protection for storage.
+  - `expected_postcondition`: Dry and protected storage recorded.
+  - `forbidden_states`: Declaring sterilization or corrosion resistance from this sequence.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-03
+    - `statement`: Post-use care
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Expose open inner surfaces for cleaning, rinse and dry, then use tip protection for storage.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Dumont #5 Forceps11251-20
+  - `url`: https://finescience.com/en-US/dumont-5-forceps/11251-20
+  - `publisher`: Fine Science Tools / Dumont
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Item specifications:11 cm,12 g,0.1x0.06 mm straight Standard Inox tips.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-LENGTH
+    - DIM-TIP_WIDTH
+    - DIM-TIP_THICKNESS
+    - DIM-MASS
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - IF-0
+    - IF-1
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Instructions for Dumont Forceps
+  - `url`: https://cdn.finesciencetools.shop/downloads/11443-en
+  - `publisher`: Fine Science Tools / Dumont
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: English page2: tip width x thickness and #5 style; distinguishes #55 spring action and #5AC self-closing.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-TIP_WIDTH
+    - DIM-TIP_THICKNESS
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: Maintenance and Care
+  - `url`: https://finescience.com/en-US/service/maintenance-care/
+  - `publisher`: Fine Science Tools / Dumont
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Cleaning, Manual Cleaning and Storage sections: open-position cleaning, drying and tip protection.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - PRO-1
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Tissue manipulation efficacy, biological damage, true elastic response without measured reference, cleaning efficacy and sterilization.
+- `runtime_dependencies`:
+  - Submitted asset, pinned MuJoCo environment and independent checkers
+  - Independent unloaded and closing11251-20 geometry plus measured compliant response.
+  - B1 inert flat coupon:1x1x0.1 mm,0.1 mg, friction coefficient0.5; not tissue.
+  - Independent tip protector geometry, exact SKU not yet selected.
+  - Source truth for critical gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.005`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `scale`:
+    - `source_class`: B
+    - `unintended_penetration_max_mm`: `0.005`
+    - `alignment_max_mm`: `0.01`
+  - `boundary`: Compliant response source missing; no guessed spring constant or safe tissue force. Rigid proxy tests cannot certify real elasticity.
+  - `T-CASE-0`:
+    - `initial`: Unloaded reference shape and measured response available.
+    - `action`: Close gradually to tip contact at0.1 mm/s, release, repeat3 times.
+    - `observable`: Tip separation/alignment, shank deformation and restored pose.
+    - `pass_condition`: Tip width-axis mismatch<=0.01 mm; no tip crossing or unintended penetration>0.005 mm; unloaded gap returns within0.02 mm of independent reference after2 s; measured safe travel never exceeded. Missing response blocks.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-1`:
+    - `initial`: Coupon flat on fixture; independently validated shank response.
+    - `action`: Grip coupon edge, lift5 mm, translate10 mm at1 mm/s, lower and release.
+    - `observable`: Bilateral tip contact, coupon slip and final position.
+    - `pass_condition`: Both tips contact opposite coupon faces; slip<=0.05 mm while held; no unintended overlap>0.005 mm; final placement within0.5 mm; released coupon not attached by an undeclared weld.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-2`:
+    - `initial`: Open forceps and independent protector fixture.
+    - `action`: Trace cleaning access to inner meeting surfaces without tip impact, record dry state, insert into protector.
+    - `observable`: Access visibility, tip clearance and procedure order.
+    - `pass_condition`: Inner surfaces accessible when open; no unintended tip overlap>0.005 mm; dry acknowledgment precedes storage; protector surrounds tips without contact deformation beyond independent limit. Unknown protector/limit blocks.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Tip width-axis mismatch<=0.01 mm; no tip crossing or unintended penetration>0.005 mm; unloaded gap returns within0.02 mm of independent reference after2 s; measured safe travel never exceeded. Missing response blocks.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Both tips contact opposite coupon faces; slip<=0.05 mm while held; no unintended overlap>0.005 mm; final placement within0.5 mm; released coupon not attached by an undeclared weld.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Inner surfaces accessible when open; no unintended tip overlap>0.005 mm; dry acknowledgment precedes storage; protector surrounds tips without contact deformation beyond independent limit. Unknown protector/limit blocks.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `url`: https://finescience.com/en-US/dumont-5-forceps/11251-20
+  - `locator`: Item specifications:11 cm,12 g,0.1x0.06 mm straight Standard Inox tips.
+  - `verification_status`: Source body read; image review pending.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Slender straight opposed tips and joined shanks, not crossed self-closing form.
+  - Inox finish and Standard tip proportions; no ratchet or rings.
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

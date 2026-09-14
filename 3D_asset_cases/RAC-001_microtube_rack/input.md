@@ -1,0 +1,550 @@
+# microtube rack benchmark Input Specification
+
+- `benchmark_id`: RAC-001
+- `asset_class`: microtube_rack
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: microtube rack
+- `name_en`: microtube_rack
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: Eppendorf
+- `model`: Tube Rack 1.5 mL / 2 mL, drawing 0030 119.819-00
+- `positions`: `36`
+- `accessories`:
+  - Safe-Lock 1.5 mL reference tubes
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `footprint_length`:
+  - `id`: DIM-L
+  - `value`: `236.6`
+  - `unit`: mm
+  - `measurement_object`: Rack
+  - `measurement_location`: End-to-end including feet
+  - `measurement_state`: Unloaded
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `footprint_width`:
+  - `id`: DIM-W
+  - `value`: `93.5`
+  - `unit`: mm
+  - `measurement_object`: Rack
+  - `measurement_location`: Side-view base extent
+  - `measurement_state`: Unloaded
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `max_height`:
+  - `id`: DIM-H
+  - `value`: `43.6`
+  - `unit`: mm
+  - `measurement_object`: Rack
+  - `measurement_location`: Base to high row
+  - `measurement_state`: Unloaded
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `low_height`:
+  - `id`: DIM-LH
+  - `value`: `28.3`
+  - `unit`: mm
+  - `measurement_object`: Rack
+  - `measurement_location`: Base to low row
+  - `measurement_state`: Unloaded
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `hole_diameter`:
+  - `id`: DIM-HD
+  - `value`: `10.9`
+  - `unit`: mm
+  - `measurement_object`: Tube openings
+  - `measurement_location`: Top-view outer circle dimension
+  - `measurement_state`: Unloaded
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `column_edge_gap`:
+  - `id`: DIM-CG
+  - `value`: `7`
+  - `unit`: mm
+  - `measurement_object`: Neighboring openings
+  - `measurement_location`: Clear edge gap along row, not pitch
+  - `measurement_state`: Unloaded
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `row_edge_gap`:
+  - `id`: DIM-RG
+  - `value`: `13`
+  - `unit`: mm
+  - `measurement_object`: Neighboring rows
+  - `measurement_location`: Clear edge gap between rows, not pitch
+  - `measurement_state`: Unloaded
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `support_depth`:
+  - `id`: DIM-SD
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Tube support
+  - `measurement_location`: Seating height and lower support geometry
+  - `measurement_state`: Loaded
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: The one-page drawing does not dimension the complete support section.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-FRAME`**
+  - `id`: CMP-FRAME
+  - `name`: Wavelike rack frame
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-HOLES`**
+  - `id`: CMP-HOLES
+  - `name`: Tube-position openings
+  - `quantity`: `36`
+  - `kind`: cavity
+  - `parent`: CMP-FRAME
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-FEET`**
+  - `id`: CMP-FEET
+  - `name`: Nonslip feet
+  - `quantity`: `4`
+  - `kind`: fixed
+  - `parent`: CMP-FRAME
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-03
+- **Item 4 — `CMP-LABEL`**
+  - `id`: CMP-LABEL
+  - `name`: Position numbering
+  - `quantity`: `36`
+  - `kind`: visual
+  - `parent`: CMP-FRAME
+  - `critical`: `false`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-TUBES`**
+  - `id`: IF-TUBES
+  - `description`: 36 openings in 3 rows of 12 accept 1.5/2 mL tubes; this representative test fixes the 1.5 mL Safe-Lock geometry. Insert along -Z, supported by rack/tube contact rather than a hidden weld.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-02
+    - SRC-03
+  - `mate`: REF-TUBE
+  - `required_positions`: `36`
+  - `rows`: `3`
+  - `columns`: `12`
+  - `access_clearance_mm`:
+    - `value`: `30`
+    - `source_class`: B
+  - `pitch_derivation`:
+    - `source_class`: D
+    - `column_pitch_mm`: `17.9`
+    - `row_pitch_mm`: `23.9`
+    - `formula`: pitch = opening diameter 10.9 mm + corresponding clear edge gap (7 or 13 mm)
+    - `assumptions`: Equal circular holes as dimensioned in top view.
+
+## Reference Consumables
+
+- **Item 1 — `REF-TUBE`**
+  - `id`: REF-TUBE
+  - `configuration`: Eppendorf Safe-Lock 1.5 mL, configuration fixed by the cited technical drawing, closed cap.
+  - `source_refs`:
+    - SRC-02
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+  - `geometry_reference`:
+    - `body_outer_diameter_mm`: `10.8`
+    - `closed_total_height_approx_mm`: `41`
+    - `source_class`: M
+  - `compatibility_scope`: Only the 1.5 mL variant is actually specified for this test; 2 mL model-dependent fit is not claimed.
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `false`
+- `reason`: No internal moving mechanism. Free placement in the world is not an internal joint.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - *(none)*
+
+## Functional Requirements
+
+- **Item 1 — `FUN-LOAD`**
+  - `id`: FUN-LOAD
+  - `description`: Each of 36 positions must permit individual tube insertion, gravity support and retrieval; fully occupied rack must keep all caps accessible.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FUN-STABLE`**
+  - `id`: FUN-STABLE
+  - `description`: Unloaded and fully loaded rack stays supported after settling on a horizontal surface.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Ordered sample staging.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-03
+  - `object`: Rack and 36 labeled closed tubes
+  - `preconditions`:
+    - Rack upright on level bench
+    - Tube reference models available
+  - `action`: Load positions 1 through 36; inspect position identity; retrieve 36 through 1 without removing neighbors.
+  - `expected_postconditions`:
+    - Every tube seated at its designated position
+    - Rack empty after retrieval
+  - `parameters`:
+    - `speed_mm_s`: `10`
+    - `repetitions`: `3`
+    - `timeout_s_per_tube`: `30`
+  - `forbidden_states`:
+    - Hidden attachment substituting for support
+    - Tube falling through rack
+    - Neighbor collision blocking retrieval
+  - `source_note`: Numbering and easy handling are manufacturer-described; sequence and repetitions are benchmark conditions.
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - SRC-03
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: Numbering and easy handling are manufacturer-described; sequence and repetitions are benchmark conditions.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Load positions 1 through 36; inspect position identity; retrieve 36 through 1 without removing neighbors.
+    - `parameters`:
+      - `speed_mm_s`: `10`
+      - `repetitions`: `3`
+      - `timeout_s_per_tube`: `30`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Technical Data Sheet: Tube Rack 1.5 mL / 2 mL
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/product-media/doc/en/235449/Consumables_Technical-data_Tube-Rack-15-mL-20-mL.pdf
+  - `version_or_publication_date`: 0030 119.819-00/042017
+  - `locator`: Page 1: three views, hole diameter and edge gaps.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-L
+    - DIM-W
+    - DIM-H
+    - DIM-LH
+    - DIM-HD
+    - DIM-CG
+    - DIM-RG
+    - CMP-FRAME
+    - CMP-HOLES
+    - CMP-FEET
+    - CMP-LABEL
+    - IF-TUBES
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Technical Data Sheet: Safe-Lock Tubes 1.5 mL
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Page 1: section and cap-state views.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - IF-TUBES
+    - REF-TUBE
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: Eppendorf Tube Racks and Cuvette Rack
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/us-en/Products/Lab-Consumables/Lab-Tubes/Eppendorf-Tube-Racks-and-Eppendorf-Cuvette-Rack-p-PF-135827
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Product information: wavelike rows, nonslip silicone feet and numbered tube positions.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - CMP-FEET
+    - IF-TUBES
+    - PRO-01
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-TUBE (Eppendorf Safe-Lock 1.5 mL, configuration fixed by the cited technical drawing, closed cap.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-LAYOUT`:
+    - `source_class`: B
+    - `condition`: Exactly 36 openings in 3x12 arrangement; column pitch17.9±0.5 mm and row pitch23.9±0.5 mm. Tolerances B.
+    - `target_path`: input.interfaces.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-LOAD-TUBES`:
+    - `source_class`: B
+    - `condition`: 36/36 positions succeed on all three repetitions; no fall-through; no unintended overlap>0.2 mm or blocked retrieval.
+    - `target_path`: input.functional_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STABLE`:
+    - `source_class`: B
+    - `condition`: Rack translation<=1 mm, tilt<=2 degrees, no loss of support.
+    - `target_path`: input.functional_requirements.1
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Rack technical drawing page 1.
+  - `url`: https://www.eppendorf.com/product-media/doc/en/235449/Consumables_Technical-data_Tube-Rack-15-mL-20-mL.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Three stepped/wavelike rows
+  - Twelve positions in each row
+  - Four projecting feet
+  - Position-number labels
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

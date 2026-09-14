@@ -1,0 +1,585 @@
+# orbital shaker benchmark Input Specification
+
+- `benchmark_id`: ORB-001
+- `asset_class`: orbital_shaker
+- `specification_version`: 1.2.1
+- `language`: en
+
+> This Markdown file contains the complete current input specification. Newly resolved values retain explicit provenance; unresolved values and measurement plans remain explicit.
+
+## Asset Identity
+
+- `name`: orbital shaker
+- `name_en`: orbital_shaker
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: IKA
+- `model`: KS260 basic with AS260.1 universal attachment
+- `configuration`: 100-120 V KS260 basic, four-roll AS260.1 attachment, one centered250 mL Erlenmeyer flask; not KS260 control or reciprocating HS260.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-WIDTH
+  - `value`: `360`
+  - `unit`: mm
+  - `measurement_object`: KS260 basic with AS260.1 universal attachment
+  - `measurement_location`: Base housing only, excludingAS260.1 overhang
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-HEIGHT
+  - `value`: `98`
+  - `unit`: mm
+  - `measurement_object`: KS260 basic with AS260.1 universal attachment
+  - `measurement_location`: Base instrument only, attachment excluded
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `depth`:
+  - `id`: DIM-DEPTH
+  - `value`: `420`
+  - `unit`: mm
+  - `measurement_object`: KS260 basic with AS260.1 universal attachment
+  - `measurement_location`: Base housing front-back
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `mounting_coordinates`:
+  - `id`: DIM-MOUNTING_COORDINATES
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: KS260 basic with AS260.1 universal attachment
+  - `measurement_location`: mounting_coordinates
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Four lateral attachment screw positions not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `clamp_travel`:
+  - `id`: DIM-CLAMP_TRAVEL
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: KS260 basic with AS260.1 universal attachment
+  - `measurement_location`: clamp_travel
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Roll adjustment travel and screw thread geometry unknown.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `orbit_radius`:
+  - `id`: DIM-ORBIT_RADIUS
+  - `value`: `5`
+  - `unit`: mm
+  - `measurement_object`: KS260 basic orbital drive
+  - `measurement_location`: Radius from the orbital centerline to the platform-center trajectory
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: D
+  - `source_refs`:
+    - SRC-03
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `derivation`:
+    - `formula`: r = d / 2
+    - `inputs`: Manufacturer-published orbital/shaker diameter d = 10 mm.
+    - `assumption`: The published diameter describes the circular platform-center trajectory for the stated orbital motion.
+    - `result`: r = 10 mm / 2 = 5 mm.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `load_speed_envelope`:
+  - `id`: DIM-LOAD_SPEED_ENVELOPE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: KS260 basic with AS260.1 universal attachment
+  - `measurement_location`: load_speed_envelope
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Manufacturer load-versus-speed diagram not fully inspected; allowable paired load/speed requires verification.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Base housing
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Orbital table
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: AS1.60 attachment frame
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-1
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: AS1.61 clamping rolls
+  - `quantity`: `4`
+  - `kind`: adjustable
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: AS1.5 fastening screws
+  - `quantity`: `8`
+  - `kind`: removable
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Lateral mounting screws
+  - `quantity`: `4`
+  - `kind`: removable
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-6`**
+  - `id`: CMP-6
+  - `name`: Speed/time controls
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Secure frame by four lateral screws; adjust rolls to restrain centered vessel.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Platform is320 by320 mm per data-sheet description; mounting pattern cannot be inferred from this envelope.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: DURAN250 mL Erlenmeyer flask from ERL-001, verified geometry and total test mass required.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-1
+    - `type`: coupled_planar_orbit_proxy
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: XY translation without platform yaw
+    - `zero`: Mean platform center
+    - `range`:
+      - `min`: `-5`
+      - `max`: `5`
+      - `unit`: mm
+    - `range_source_class`: B
+    - `limits`: B5 mm radius for initial proxy only; physical stroke interpretation still U.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Move table on an orbit while retaining vessel and attachment.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Provide timer/continuous operation without importing KS260 control firmware features.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Fasten recommended attachment and distribute load centrally; reduce speed if unstable.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `preconditions`: Stopped shaker on clean level surface; paired load/speed verified.
+  - `action`: Clamp centered flask and start at low speed.
+  - `expected_postcondition`: Vessel retained; monitor platform and base separately.
+  - `forbidden_states`:
+    - Loose attachment
+    - Loading outside verified load-speed envelope
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Fasten recommended attachment and distribute load centrally; reduce speed if unstable.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Clamp centered flask and start at low speed.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: KS260 basic data sheet
+  - `publisher`: IKA
+  - `url`: https://www.ika.com/ika/datasheet/download?filename=DataSheet_KS_260_basic.pdf&iCountry=840&iLang=1&iProduct=2980200
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Pages1-3; base dimensions W x H x D, orbital movement, speed and timer.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-WIDTH
+    - DIM-HEIGHT
+    - DIM-DEPTH
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - CMP-6
+    - IF-0
+    - IF-1
+    - REF-0
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: HS/KS260 basic/control operating manual
+  - `publisher`: IKA
+  - `url`: https://www.manualsdir.com/manuals/551124/ika-ks-260-control-hs-260-control-ks-260-basic-hs-260-basic.html?page=28
+  - `version_or_publication_date`: Page footer HS/KS2600305; hosted manual cover0506
+  - `locator`: Page28 attachment assembly and load placement; base/control distinction retained.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - PRO-0
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: IKA Product Overview 2021 - Orbital Shakers
+  - `publisher`: IKA
+  - `url`: https://www.ika.com/ika/pdf/flyer-catalog/202101_POV_2021_210x280_IWW_EN_USD_screen.pdf
+  - `version_or_publication_date`: 2021
+  - `locator`: Page 54, KS 260 basic column: Type of movement orbital; Shaker diameter 10 mm.
+  - `access_date`: 2026-09-09
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-ORBIT_RADIUS
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+  - Mixing effectiveness
+  - Unverified automatic imbalance interlock
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: DURAN250 mL Erlenmeyer flask from ERL-001, verified geometry and total test mass required.
+  - Pinned and independently justified mass,inertia and contact parameters
+  - Independent source-truth geometry for dimensions marked unknown
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `test_speed_rpm`: `50`
+  - `proxy_radius_mm`: `5`
+  - `timer_min`: `5`
+  - `source_class`: B
+  - `note`: Runtime blocked until actual load-speed envelope and physical orbit interpretation are independently verified.
+  - `T-CASE-0`:
+    - `initial`: Verified low load; all fasteners engaged; continuous mode.
+    - `action`: Run50 rpm for12 s after2 s ramp.
+    - `observable`: Platform center circle and orientation.
+    - `pass_condition`: Bproxy radius5 mm within0.25 mm, speed50 rpm within5%, yaw variation <=2 degrees; physical certification remains blocked by stroke ambiguity.
+    - `source_class`: B
+    - `note`: Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance.
+  - `T-CASE-1`:
+    - `initial`: Flask centered and clamped; timer5 min; approved load-speed pair fixed.
+    - `action`: Run for300 s at50 rpm; track flask relative to table and motor stop after timer.
+    - `observable`: Fastener retention, flask slip and timer transition.
+    - `pass_condition`: Flask relative drift <=1 mm, tilt <=2 degrees, no unintended overlap >0.2 mm; motor command zero within1 s after300 s. Missing load-speed truth gives blocked_dependency, not a pass.
+    - `source_class`: B
+    - `note`: Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Bproxy radius5 mm within0.25 mm, speed50 rpm within5%, yaw variation <=2 degrees; physical certification remains blocked by stroke ambiguity.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Flask relative drift <=1 mm, tilt <=2 degrees, no unintended overlap >0.2 mm; motor command zero within1 s after300 s. Missing load-speed truth gives blocked_dependency, not a pass.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Pages1-3; base dimensions W x H x D, orbital movement, speed and timer.
+  - `url`: https://www.ika.com/ika/datasheet/download?filename=DataSheet_KS_260_basic.pdf&iCountry=840&iLang=1&iProduct=2980200
+  - `verification_status`: Source text read; image-specific appearance review remains a runtime dependency.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Low-profile rectangular base with orbital table
+  - Four adjustable clamping rolls and front speed/time indicators
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

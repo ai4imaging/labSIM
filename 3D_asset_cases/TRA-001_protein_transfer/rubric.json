@@ -1,0 +1,535 @@
+{
+  "format": "amx-rubric",
+  "case_id": "TRA-001",
+  "asset_class": "protein_transfer",
+  "source_sha": "b0f9ce50ec1c83eb",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Buffer tank",
+      "weight": 3.0,
+      "params": {
+        "part": "Buffer tank"
+      }
+    },
+    {
+      "id": "PART-CMP-1",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Removable safety lid and cables",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Removable safety lid and cables"
+      }
+    },
+    {
+      "id": "PART-CMP-2",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Offset electrode module",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Offset electrode module"
+      }
+    },
+    {
+      "id": "PART-CMP-3",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Hinged gel holder cassettes",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Hinged gel holder cassettes",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-4",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "White cassette latches",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "White cassette latches",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-5",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Fiber pads",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Fiber pads",
+        "count": 4
+      }
+    },
+    {
+      "id": "PART-CMP-6",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Blue cooling unit",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Blue cooling unit"
+      }
+    },
+    {
+      "id": "PART-CMP-7",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Gel/filter-paper/membrane reference stacks",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Gel/filter-paper/membrane reference stacks",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "DIM-DIM-WIDTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "width",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-WIDTH",
+        "value_m": 0.12,
+        "kind": "footprint_min",
+        "axis": "x"
+      },
+      "note": "Assembled tank/lid width"
+    },
+    {
+      "id": "DIM-DIM-LENGTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "length",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-LENGTH",
+        "value_m": 0.16,
+        "kind": "footprint_max"
+      },
+      "note": "Assembled tank/lid length"
+    },
+    {
+      "id": "DIM-DIM-HEIGHT",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-HEIGHT",
+        "value_m": 0.18
+      },
+      "note": "Assembled height"
+    },
+    {
+      "id": "NA-DIM-CASSETTE_SIDE_A",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "cassette_side_a",
+      "params": {
+        "reason": "the name does not say how to measure this on the assembled object"
+      }
+    },
+    {
+      "id": "NA-DIM-CASSETTE_SIDE_B",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "cassette_side_b",
+      "params": {
+        "reason": "the name does not say how to measure this on the assembled object"
+      }
+    },
+    {
+      "id": "DIM-DIM-ELECTRODE_SPACING",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "electrode_spacing",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Offset electrode module",
+        "dimension_id": "DIM-ELECTRODE_SPACING",
+        "value_m": 0.04,
+        "kind": "pitch"
+      },
+      "note": "Parallel electrode spacing, not cassette slot pitch"
+    },
+    {
+      "id": "NA-DIM-CASSETTE_HINGE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "cassette_hinge",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-LATCH_GEOMETRY",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "latch_geometry",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-STACK_THICKNESS",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "stack_thickness",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-COOLING_CLEARANCE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "cooling_clearance",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Tank and lid with separate offset electrode module and blue cooling block.",
+      "params": {
+        "feature": "Tank and lid with separate offset electrode module and blue cooling block."
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Two perforated hinged cassettes with white latches and six-layer stacks.",
+      "params": {
+        "feature": "Two perforated hinged cassettes with white latches and six-layer stacks."
+      }
+    },
+    {
+      "id": "OP-J-0",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Hinged gel holder cassettes",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Hinged gel holder cassettes",
+        "operation_id": "J-0",
+        "operation_kind": "hinge",
+        "parent_part": "Offset electrode module",
+        "expected_joint_types": [
+          "hinge"
+        ],
+        "count": 2
+      },
+      "note": "Closed cassette; Do not assume180 degree opening."
+    },
+    {
+      "id": "SWEEP-J-0",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Hinged gel holder cassettes clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Hinged gel holder cassettes"
+      }
+    },
+    {
+      "id": "OP-J-1",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "White cassette latches",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "White cassette latches",
+        "operation_id": "J-1",
+        "parent_part": "Hinged gel holder cassettes",
+        "count": 2
+      },
+      "note": "Unlatched; Unknown latch travel and force."
+    },
+    {
+      "id": "SWEEP-J-1",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "White cassette latches clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "White cassette latches"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Removable safety lid and cables",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Removable safety lid and cables",
+        "operation_id": "OP-CMP-1-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-0",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Removable safety lid and cables clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Removable safety lid and cables"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-2-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Offset electrode module",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Offset electrode module",
+        "operation_id": "OP-CMP-2-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-0",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-2-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Offset electrode module clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Offset electrode module"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-5-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Fiber pads",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Fiber pads",
+        "operation_id": "OP-CMP-5-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-3",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ],
+        "count": 4
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-5-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Fiber pads clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Fiber pads"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-6-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Blue cooling unit",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Blue cooling unit",
+        "operation_id": "OP-CMP-6-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-0",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-6-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Blue cooling unit clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Blue cooling unit"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-7-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Gel/filter-paper/membrane reference stacks",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Gel/filter-paper/membrane reference stacks",
+        "operation_id": "OP-CMP-7-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-3",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ],
+        "count": 2
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-7-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Gel/filter-paper/membrane reference stacks clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Gel/filter-paper/membrane reference stacks"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G1-PARTS",
+      "item_ids": [
+        "PART-CMP-1",
+        "PART-CMP-2",
+        "PART-CMP-3",
+        "PART-CMP-4",
+        "PART-CMP-5",
+        "PART-CMP-6",
+        "PART-CMP-7"
+      ],
+      "description": "Whether every named critical component is present as a body."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-J-0",
+        "OP-J-1",
+        "OP-OP-CMP-1-REMOVE",
+        "OP-OP-CMP-2-REMOVE",
+        "OP-OP-CMP-5-REMOVE",
+        "OP-OP-CMP-6-REMOVE",
+        "OP-OP-CMP-7-REMOVE"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}

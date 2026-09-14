@@ -1,0 +1,300 @@
+{
+  "format": "amx-rubric",
+  "case_id": "CCP-001",
+  "asset_class": "cell_culture_plate",
+  "source_sha": "37489f9f43b735c1",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Six-well plate",
+      "weight": 3.0,
+      "params": {
+        "part": "Six-well plate"
+      }
+    },
+    {
+      "id": "PART-CMP-1-COUNT",
+      "axis": "parts",
+      "primitive": "feature_count",
+      "subject": "6 × Separate well cavities",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Separate well cavities",
+        "count": 6
+      }
+    },
+    {
+      "id": "PART-CMP-2",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Loose matching lid",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Loose matching lid"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "DIM-DIM-WELL_BOTTOM_DIAMETER",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "well_bottom_diameter",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "well_bottom",
+        "dimension_id": "DIM-WELL_BOTTOM_DIAMETER",
+        "value_m": 0.0348,
+        "kind": "diameter_inner",
+        "height_fraction": 0.15,
+        "local_feature": true
+      },
+      "note": "Inner flat well bottom,not mouth diameter"
+    },
+    {
+      "id": "NA-DIM-WELL_CAPACITY",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "well_capacity",
+      "params": {
+        "reason": "a per-feature volume: the cavity integration reports the whole part's capacity, so comparing it to one well's would pass any plate with wells at all"
+      }
+    },
+    {
+      "id": "DIM-DIM-PLATE_LENGTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "plate_length",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Six-well plate",
+        "dimension_id": "DIM-PLATE_LENGTH",
+        "value_m": 0.12776,
+        "kind": "footprint_max"
+      },
+      "note": "Maximum external plate length"
+    },
+    {
+      "id": "DIM-DIM-PLATE_WIDTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "plate_width",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Six-well plate",
+        "dimension_id": "DIM-PLATE_WIDTH",
+        "value_m": 0.08547,
+        "kind": "footprint_min",
+        "axis": "x"
+      },
+      "note": "Maximum external plate width"
+    },
+    {
+      "id": "DIM-DIM-PLATE_HEIGHT",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "plate_height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Six-well plate",
+        "dimension_id": "DIM-PLATE_HEIGHT",
+        "value_m": 0.02027
+      },
+      "note": "Overall plate height in the manufacturer dimension table"
+    },
+    {
+      "id": "DIM-DIM-WELL_DEPTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "well_depth",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Six-well plate",
+        "dimension_id": "DIM-WELL_DEPTH",
+        "value_m": 0.0174,
+        "local_feature": true
+      },
+      "note": "Well depth measured along the well axis as defined by the manufacturer dimension table"
+    },
+    {
+      "id": "DIM-DIM-WELL_TOP_DIAMETER",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "well_top_diameter",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "well_top",
+        "dimension_id": "DIM-WELL_TOP_DIAMETER",
+        "value_m": 0.03543,
+        "kind": "diameter_inner",
+        "height_fraction": 0.85,
+        "local_feature": true
+      },
+      "note": "Internal well diameter at the top of the well"
+    },
+    {
+      "id": "DIM-DIM-WELL_CENTER_SPACING",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "well_center_spacing",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Six-well plate",
+        "dimension_id": "DIM-WELL_CENTER_SPACING",
+        "value_m": 0.039119999999999995,
+        "kind": "pitch",
+        "local_feature": true
+      },
+      "note": "Center-to-center spacing between adjacent wells in the 2 x 3 array"
+    },
+    {
+      "id": "NA-DIM-LID_REGISTRATION",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "lid_registration",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Material appearance and silhouette consistent with the source image",
+      "params": {
+        "feature": "Material appearance and silhouette consistent with the source image"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-2-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Loose matching lid",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Loose matching lid",
+        "operation_id": "OP-CMP-2-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-2-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Loose matching lid clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Loose matching lid"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G1-PARTS",
+      "item_ids": [
+        "PART-CMP-2"
+      ],
+      "description": "Whether every named critical component is present as a body."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-OP-CMP-2-REMOVE"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}

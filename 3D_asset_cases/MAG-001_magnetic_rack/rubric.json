@@ -1,0 +1,229 @@
+{
+  "format": "amx-rubric",
+  "case_id": "MAG-001",
+  "asset_class": "magnetic_rack",
+  "source_sha": "1b3aae8d86326914",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Magnetic base",
+      "weight": 3.0,
+      "params": {
+        "part": "Magnetic base"
+      }
+    },
+    {
+      "id": "PART-CMP-1",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Removable sample rack",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Removable sample rack"
+      }
+    },
+    {
+      "id": "PART-CMP-2-COUNT",
+      "axis": "parts",
+      "primitive": "feature_count",
+      "subject": "16 × Tube seats",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Tube seats",
+        "count": 16
+      }
+    },
+    {
+      "id": "PART-CMP-3",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Permanent magnet region",
+      "weight": 3.0,
+      "params": {
+        "part": "Permanent magnet region"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "NA-DIM-ENVELOPE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "envelope",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-MAGNET_DISTANCE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "magnet_distance",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "DIM-DIM-REF-TUBE-OD",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "reference_tube_outer_diameter",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Tube seats",
+        "dimension_id": "DIM-REF-TUBE-OD",
+        "value_m": 0.0108,
+        "kind": "diameter_outer"
+      },
+      "note": "Maximum cylindrical tube body outside diameter; this is not the rack seat diameter"
+    },
+    {
+      "id": "DIM-DIM-REF-TUBE-H",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "reference_tube_closed_height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Tube seats",
+        "dimension_id": "DIM-REF-TUBE-H",
+        "value_m": 0.041
+      },
+      "note": "Approximate closed tube height in the technical drawing"
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Material appearance and silhouette consistent with the source image",
+      "params": {
+        "feature": "Material appearance and silhouette consistent with the source image"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Removable sample rack",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Removable sample rack",
+        "operation_id": "OP-CMP-1-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Removable sample rack clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Removable sample rack"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G1-PARTS",
+      "item_ids": [
+        "PART-CMP-1"
+      ],
+      "description": "Whether every named critical component is present as a body."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-OP-CMP-1-REMOVE"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}

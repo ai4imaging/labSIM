@@ -1,0 +1,380 @@
+{
+  "format": "amx-rubric",
+  "case_id": "HOT-001",
+  "asset_class": "hotplate",
+  "source_sha": "c24df2aafc440744",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Housing",
+      "weight": 3.0,
+      "params": {
+        "part": "Housing"
+      }
+    },
+    {
+      "id": "PART-CMP-1",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Temperature knob",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Temperature knob"
+      }
+    },
+    {
+      "id": "PART-CMP-2",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Ceramic heating plate",
+      "weight": 3.0,
+      "params": {
+        "part": "Ceramic heating plate"
+      }
+    },
+    {
+      "id": "PART-CMP-3",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Power switch",
+      "weight": 3.0,
+      "params": {
+        "part": "Power switch"
+      }
+    },
+    {
+      "id": "PART-CMP-4",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Temperature display and heating LED",
+      "weight": 3.0,
+      "params": {
+        "part": "Temperature display and heating LED"
+      }
+    },
+    {
+      "id": "PART-CMP-5",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Contact thermometer jack",
+      "weight": 3.0,
+      "params": {
+        "part": "Contact thermometer jack"
+      }
+    },
+    {
+      "id": "PART-CMP-6",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Threaded support bore",
+      "weight": 3.0,
+      "params": {
+        "part": "Threaded support bore"
+      }
+    },
+    {
+      "id": "PART-CMP-7",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Mains inlet and feet",
+      "weight": 3.0,
+      "params": {
+        "part": "Mains inlet and feet"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "DIM-DIM-WIDTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "width",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-WIDTH",
+        "value_m": 0.22,
+        "kind": "extent_x",
+        "axis": "x"
+      },
+      "note": "2006 table W"
+    },
+    {
+      "id": "DIM-DIM-DEPTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "depth",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-DEPTH",
+        "value_m": 0.335,
+        "kind": "extent_y",
+        "axis": "y"
+      },
+      "note": "2006 table D; not current 330 mm"
+    },
+    {
+      "id": "DIM-DIM-HEIGHT",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-HEIGHT",
+        "value_m": 0.105
+      },
+      "note": "2006 table H"
+    },
+    {
+      "id": "DIM-DIM-PLATE_WIDTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "plate_width",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "plate",
+        "dimension_id": "DIM-PLATE_WIDTH",
+        "value_m": 0.2,
+        "kind": "extent_x",
+        "axis": "x"
+      },
+      "note": "2006 HP7 heating plate dimension; not current 180 mm"
+    },
+    {
+      "id": "DIM-DIM-PLATE_DEPTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "plate_depth",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "plate",
+        "dimension_id": "DIM-PLATE_DEPTH",
+        "value_m": 0.2,
+        "kind": "extent_y",
+        "axis": "y"
+      },
+      "note": "2006 HP7 plate depth"
+    },
+    {
+      "id": "NA-DIM-TEMPERATURE_MIN",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "temperature_min",
+      "params": {
+        "reason": "temperature is a device property, not geometry; no mesh measurement can confirm 50 C"
+      }
+    },
+    {
+      "id": "NA-DIM-TEMPERATURE_MAX",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "temperature_max",
+      "params": {
+        "reason": "temperature is a device property, not geometry; no mesh measurement can confirm 500 C"
+      }
+    },
+    {
+      "id": "NA-DIM-KNOB_GEOMETRY",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "knob_geometry",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-CONNECTOR_GEOMETRY",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "connector_geometry",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-HISTORICAL_HARDWARE_IDENTIFICATION",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "historical_hardware_identification",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Single heating control rather than HS stirring/heating controls",
+      "params": {
+        "feature": "Single heating control rather than HS stirring/heating controls"
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Ceramic square plate, front display and heater indication",
+      "params": {
+        "feature": "Ceramic square plate, front display and heater indication"
+      }
+    },
+    {
+      "id": "OP-J-0",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Temperature knob",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Temperature knob",
+        "operation_id": "J-0",
+        "operation_kind": "rotate",
+        "parent_part": "Housing",
+        "expected_joint_types": [
+          "hinge"
+        ],
+        "range_min": 0.0,
+        "range_max": 4.71238898038469
+      },
+      "note": "Minimum setting; B 270-degree proxy only; actual travel and mapping remain unknown."
+    },
+    {
+      "id": "SWEEP-J-0",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Temperature knob clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Temperature knob"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-3-POWER",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "POWER",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "POWER",
+        "operation_id": "OP-CMP-3-POWER",
+        "operation_kind": "press",
+        "parent_part": "Power switch",
+        "expected_joint_types": [
+          "slide"
+        ]
+      },
+      "note": "named physical control in required component CMP-3"
+    },
+    {
+      "id": "SWEEP-OP-CMP-3-POWER",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "POWER clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "POWER"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G1-PARTS",
+      "item_ids": [
+        "PART-CMP-1"
+      ],
+      "description": "Whether every named critical component is present as a body."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-J-0",
+        "OP-OP-CMP-3-POWER"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}

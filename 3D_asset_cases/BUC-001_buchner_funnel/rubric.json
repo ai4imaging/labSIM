@@ -1,0 +1,235 @@
+{
+  "format": "amx-rubric",
+  "case_id": "BUC-001",
+  "asset_class": "buchner_funnel",
+  "source_sha": "2385e834d8e91a4e",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-BOWL",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Cylindrical bowl and lower collection chamber",
+      "weight": 3.0,
+      "params": {
+        "part": "Cylindrical bowl and lower collection chamber"
+      }
+    },
+    {
+      "id": "PART-CMP-DISC",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Glass paper-support disc",
+      "weight": 3.0,
+      "params": {
+        "part": "Glass paper-support disc"
+      }
+    },
+    {
+      "id": "PART-CMP-STEM",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Outlet stem",
+      "weight": 3.0,
+      "params": {
+        "part": "Outlet stem"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "PART-CAVITY",
+      "axis": "parts",
+      "primitive": "cavity_volume",
+      "subject": "the internal volume",
+      "weight": 3.0,
+      "params": {
+        "min_volume_ml": 70.0
+      }
+    },
+    {
+      "id": "DIM-DIM-D",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "bowl_od",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "bowl",
+        "dimension_id": "DIM-D",
+        "value_m": 0.057,
+        "kind": "diameter_outer"
+      },
+      "note": "Outer diameter OD"
+    },
+    {
+      "id": "DIM-DIM-H",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-H",
+        "value_m": 0.132,
+        "height_fraction": 0.85
+      },
+      "note": "Upper rim to stem outlet h"
+    },
+    {
+      "id": "DIM-DIM-S",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "stem_od",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "stem",
+        "dimension_id": "DIM-S",
+        "value_m": 0.01,
+        "kind": "diameter_outer"
+      },
+      "note": "Outer diameter d1"
+    },
+    {
+      "id": "NA-DIM-DISC",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "support_disc_diameter",
+      "params": {
+        "reason": "a diameter_outer of a local feature is not separable from the part it is cut into with the cross-section machinery available"
+      }
+    },
+    {
+      "id": "NA-DIM-ID",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "stem_id",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-ACTIVE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "active_filter_area_diameter",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Cylindrical bowl",
+      "params": {
+        "feature": "Cylindrical bowl"
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Flat internal glass support",
+      "params": {
+        "feature": "Flat internal glass support"
+      }
+    },
+    {
+      "id": "VIS-02",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Lower collection chamber",
+      "params": {
+        "feature": "Lower collection chamber"
+      }
+    },
+    {
+      "id": "VIS-03",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Outlet stem",
+      "params": {
+        "feature": "Outlet stem"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    }
+  ]
+}

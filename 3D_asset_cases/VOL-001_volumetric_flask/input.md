@@ -1,0 +1,511 @@
+# volumetric flask benchmark Input Specification
+
+- `benchmark_id`: VOL-001
+- `asset_class`: volumetric_flask
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: volumetric flask
+- `name_en`: volumetric_flask
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: DWK Life Sciences
+- `model`: DURAN246792555
+- `configuration`: Class A volumetric flask,100mL,14/23 PE stopper, individual certificate
+- `nominal_capacity_ml`: `100`
+- `accessories`:
+  - Matching ergonomic polyethylene stopper14/23
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `body_diameter`:
+  - `id`: DIM-D
+  - `value`: `60`
+  - `unit`: mm
+  - `measurement_object`: Flask
+  - `measurement_location`: Maximum body OD d
+  - `measurement_state`: Upright
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-H
+  - `value`: `170`
+  - `unit`: mm
+  - `measurement_object`: Flask
+  - `measurement_location`: Source drawing h endpoints, base to neck; stopper protrusion not separately specified
+  - `measurement_state`: As depicted in source drawing
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `neck_clear_bore`:
+  - `id`: DIM-N
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Neck
+  - `measurement_location`: Clear cylindrical bore below stopper seat
+  - `measurement_state`: Stopper removed
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Catalog Neck column is13±1 but its exact diameter definition is not explicit; not adopted as inner bore.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `stopper_seat`:
+  - `id`: DIM-SEAT
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Stopper interface
+  - `measurement_location`: Taper seat profile
+  - `measurement_state`: Unassembled
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: 14/23 is a size designation; complete taper dimensions not independently obtained.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `mark_height`:
+  - `id`: DIM-MARK
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Calibration line
+  - `measurement_location`: Height above external base
+  - `measurement_state`: Upright
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: No dimensioned calibration-line location.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-BODY`**
+  - `id`: CMP-BODY
+  - `name`: Bulb body and base
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-NECK`**
+  - `id`: CMP-NECK
+  - `name`: Long narrow neck
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-CAV`**
+  - `id`: CMP-CAV
+  - `name`: Continuous internal cavity
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-MARK`**
+  - `id`: CMP-MARK
+  - `name`: Single scribed calibration line
+  - `quantity`: `1`
+  - `kind`: visual
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-STOP`**
+  - `id`: CMP-STOP
+  - `name`: PE stopper14/23
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-STOP`**
+  - `id`: IF-STOP
+  - `description`: Matching14/23 PE stopper enters along-Z and seats in the neck; remove along+Z. Do not treat designation as a fully verified taper CAD model.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `mate`: REF-STOP
+  - `support`: Matching taper seat
+  - `access_clearance_mm`:
+    - `value`: `30`
+    - `source_class`: B
+
+## Reference Consumables
+
+- **Item 1 — `REF-STOP`**
+  - `id`: REF-STOP
+  - `configuration`: PE ergonomic stopper supplied with246792555, size14/23.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-01`**
+    - `parent`: flask
+    - `child`: stopper
+    - `type`: detachable_axial_seating
+    - `coordinate_frame`: Neck+Z outward
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `zero`: Seated
+    - `range`:
+      - `source_class`: B
+      - `min`: `0`
+      - `max`: `30`
+      - `unit`: mm
+      - `reason`: Removal clearance test, not actual engagement depth.
+    - `limits`: Do not force beyond independent reference seat; no permanent hinge.
+    - `id`: J-01
+
+## Functional Requirements
+
+- **Item 1 — `FUN-CAL`**
+  - `id`: FUN-CAL
+  - `description`: Nominal contained volume100mL at20C; manufacturer ClassA limit±0.1mL. Geometry-to-line comparison is a separate B proxy, not liquid calibration.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `nominal_capacity_ml`: `100`
+  - `reference_temperature_c`: `20`
+  - `manufacturer_accuracy_ml`: `0.1`
+  - `calibration_basis`: In / to contain
+  - `geometric_proxy_tolerance_ml`:
+    - `value`: `2`
+    - `source_class`: B
+  - `brim_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `working_capacity_ml`: `100`
+  - `unknown_reason`: Brim capacity unknown; working capacity here means the marked nominal contained volume.
+- **Item 2 — `FUN-SEAT`**
+  - `id`: FUN-SEAT
+  - `description`: Independent stopper fits, can be removed and does not seal by a hidden weld.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FUN-PREP`**
+  - `id`: FUN-PREP
+  - `description`: The calibration line is reachable and readable with the stopper removed; after reclosure the instrument can support an inversion pose.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Standard-solution preparation handling fragment.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `object`: Neck, calibration line and stopper
+  - `preconditions`:
+    - Upright open flask
+    - No pressure applied
+  - `action`: Expose neck and calibration line; represent final fill by a horizontal reference plane at the line; seat stopper; externally support stopper during180degree inversion; return upright and remove stopper.
+  - `expected_postconditions`:
+    - Line visible
+    - Stopper reseatable
+    - Upright pose restored
+  - `parameters`:
+    - `rotation_deg`: `180`
+    - `speed_deg_s`: `30`
+    - `repetitions`: `3`
+    - `timeout_s`: `45`
+  - `forbidden_states`:
+    - Claiming a mesh integration tolerance demonstrates ClassA liquid accuracy
+    - Using brim capacity as marked capacity
+  - `source_note`: Standard-solution use and In20C calibration documentedp90; geometric plane/inversion test is B.
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - SRC-01
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: Standard-solution use and In20C calibration documentedp90; geometric plane/inversion test is B.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Expose neck and calibration line; represent final fill by a horizontal reference plane at the line; seat stopper; externally support stopper during180degree inversion; return upright and remove stopper.
+    - `parameters`:
+      - `rotation_deg`: `180`
+      - `speed_deg_s`: `30`
+      - `repetitions`: `3`
+      - `timeout_s`: `45`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: DURAN Laboratory Glassware Catalog
+  - `publisher`: DWK Life Sciences
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: p90 lower Class A table,246792555 row, drawing and calibration paragraph.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-D
+    - DIM-H
+    - CMP-BODY
+    - CMP-NECK
+    - CMP-CAV
+    - CMP-MARK
+    - CMP-STOP
+    - IF-STOP
+    - REF-STOP
+    - FUN-CAL
+    - PRO-01
+    - REQ-VIS
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-STOP (PE ergonomic stopper supplied with246792555, size14/23.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STOP`:
+    - `source_class`: B
+    - `condition`: Seat center within0.5mm of neck; no unintended overlap>0.2mm;30mm withdrawal clears mouth; no permanent rigid attachment.
+    - `target_path`: input.interfaces.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-CAL`:
+    - `source_class`: B
+    - `condition`: 98<=V<=102mL(B); convergence<=0.5mL; metadata distinguishes100mL In20C and manufacturer±0.1mL from proxy tolerance.
+    - `target_path`: input.functional_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-PREP`:
+    - `source_class`: B
+    - `condition`: Line visible in both views;180±2deg reached and upright restoredwithin2deg; no unintended obstruction.
+    - `target_path`: input.protocol_conditioned_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: p90 lower Class A flask illustration.
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Bulb body
+  - Long narrow neck
+  - Single calibration ring
+  - Removable ergonomic stopper
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

@@ -1,0 +1,2228 @@
+{
+  "version": "1.2.1",
+  "updated_at": "2026-09-09",
+  "output_directory": "csaes",
+  "directory_decision": "The current format uses one benchmark directory per asset under csaes. Each directory contains exactly input.md and rubric.json; paths are relative to csaes.",
+  "expected_asset_count": 64,
+  "original_reference": {
+    "path": "../CEN-001_centrifuge_benchmark_v0.2.json",
+    "read_completely": true,
+    "sha256": "DB75C865DD0A3AF2FD54D0C36F03C35BCAD3AD16D089DA529AEE12E3D9B3DB12",
+    "preserved": true
+  },
+  "progress": {
+    "spec_validated": 0,
+    "draft": 0,
+    "needs_review": 64,
+    "blocked_sources": 0,
+    "not_started": 0
+  },
+  "next_item": "BEA-001",
+  "last_static_check": {
+    "checked_at": "2026-09-09",
+    "status": "passed",
+    "note": "Validated all 64 asset folders after two source-enrichment passes: strict JSON parsing with duplicate-key rejection, English-only content, 100-point score totals and category sums, resolvable check and hard-gate identifiers, concrete newly resolved targets, input/rubric version alignment, stale-placeholder removal, and catalog blocking-gap consistency."
+  },
+  "source_blockers": [
+    {
+      "source": "DWK dynamic product pages",
+      "reason": "Repeated web fetch timeouts; manufacturer-authored catalog obtained from authorized distributor instead.",
+      "resolved_with_alternative": true
+    },
+    {
+      "source": "Selected products' unpublished interface sections",
+      "reason": "Missing mouth/wall/thread/cone/bore detail; kept null and needs_review rather than inventing dimensions.",
+      "resolved_with_alternative": false
+    },
+    {
+      "asset_class": "conical_tube",
+      "url": "https://www.eppendorf.com/product-media/doc/en/161797/Eppendorf_Consumables_Technical-data_Eppendorf-Conical-Tubes-15-mL.pdf",
+      "reason": "Returned404 during both web and local retrieval. Selected Corning430791 with accessible primary product information instead.",
+      "resolved_with_alternative": true
+    },
+    {
+      "asset_class": "conical_tube",
+      "url": "https://www.corning.com/catalog/cls/documents/product-information-sheets/CLS-LH-334.pdf",
+      "reason": "Local download denied;web tool supplied readable text. Product-page values used for selectedSKU;PDF graphics not claimed inspected.",
+      "resolved_with_alternative": true
+    },
+    {
+      "asset_class": "cell_scraper",
+      "url": "https://www.corning.com/catalog/cls/documents/product-information-sheets/CLS-DL-CC-049_DL.pdf",
+      "reason": "Web PDF text readable; local download denied. Figures and force plot remain unverified.",
+      "resolved_with_alternative": false
+    },
+    {
+      "asset_class": "scissors",
+      "reason": "Manufacturer catalog text and rendered ordering table available; full instrument images did not fully render.",
+      "resolved_with_alternative": false
+    }
+  ],
+  "assets": [
+    {
+      "sequence": 1,
+      "benchmark_id": "BEA-001",
+      "category": "A",
+      "asset_class": "beaker",
+      "representative_configuration": {
+        "name": "beaker",
+        "name_en": "beaker",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK Life Sciences",
+        "model": "DURAN 211063604",
+        "nominal_capacity_ml": 250,
+        "accessories": []
+      },
+      "file_path": "BEA-001_beaker/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-PROBE (Benchmark rigid sphere, diameter 5 mm, mass 0.1 g.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Mouth bore, wall thickness and spout dimensions require a drawing or measured reference; specification remains needs_review.; Probe model, geometry integrator and independent runtime checkers are missing.",
+      "name": "beaker",
+      "benchmark_directory": "BEA-001_beaker",
+      "input_path": "BEA-001_beaker/input.md",
+      "rubric_path": "BEA-001_beaker/rubric.json"
+    },
+    {
+      "sequence": 2,
+      "benchmark_id": "ERL-001",
+      "category": "A",
+      "asset_class": "erlenmeyer_flask",
+      "representative_configuration": {
+        "name": "erlenmeyer flask",
+        "name_en": "erlenmeyer_flask",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK Life Sciences",
+        "model": "DURAN212163605",
+        "configuration": "Narrow-neck Erlenmeyer flask,250mL; no stopper",
+        "nominal_capacity_ml": 250,
+        "accessories": []
+      },
+      "file_path": "ERL-001_erlenmeyer_flask/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-PROBE (Rigid B sphere: diameter5mm,mass0.1g for access and containment checks.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Neck inner bore and wall section geometry need primary drawing or measured truth.",
+      "name": "erlenmeyer flask",
+      "benchmark_directory": "ERL-001_erlenmeyer_flask",
+      "input_path": "ERL-001_erlenmeyer_flask/input.md",
+      "rubric_path": "ERL-001_erlenmeyer_flask/rubric.json"
+    },
+    {
+      "sequence": 3,
+      "benchmark_id": "VOL-001",
+      "category": "A",
+      "asset_class": "volumetric_flask",
+      "representative_configuration": {
+        "name": "volumetric flask",
+        "name_en": "volumetric_flask",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK Life Sciences",
+        "model": "DURAN246792555",
+        "configuration": "Class A volumetric flask,100mL,14/23 PE stopper, individual certificate",
+        "nominal_capacity_ml": 100,
+        "accessories": [
+          "Matching ergonomic polyethylene stopper14/23"
+        ]
+      },
+      "file_path": "VOL-001_volumetric_flask/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-STOP (PE ergonomic stopper supplied with246792555, size14/23.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "True neck bore, taper profile and calibration-line height require an engineering or measured reference.",
+      "name": "volumetric flask",
+      "benchmark_directory": "VOL-001_volumetric_flask",
+      "input_path": "VOL-001_volumetric_flask/input.md",
+      "rubric_path": "VOL-001_volumetric_flask/rubric.json"
+    },
+    {
+      "sequence": 4,
+      "benchmark_id": "CYL-001",
+      "category": "A",
+      "asset_class": "graduated_cylinder",
+      "representative_configuration": {
+        "name": "graduated cylinder",
+        "name_en": "graduated_cylinder",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK Life Sciences",
+        "model": "DURAN213962408",
+        "configuration": "Tall100mL ClassB measuring cylinder,hexagonal base,white1mL scale",
+        "nominal_capacity_ml": 100,
+        "accessories": []
+      },
+      "file_path": "CYL-001_graduated_cylinder/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-PROBE (Rigid cylindrical access probe: diameter2mm,length30mm; B geometry.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Base dimensions and true inner profile are not documented; need engineering drawing or measured reference.",
+      "name": "graduated cylinder",
+      "benchmark_directory": "CYL-001_graduated_cylinder",
+      "input_path": "CYL-001_graduated_cylinder/input.md",
+      "rubric_path": "CYL-001_graduated_cylinder/rubric.json"
+    },
+    {
+      "sequence": 5,
+      "benchmark_id": "BOT-001",
+      "category": "A",
+      "asset_class": "reagent_bottle",
+      "representative_configuration": {
+        "name": "reagent bottle",
+        "name_en": "reagent_bottle",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK Life Sciences",
+        "model": "DURAN Original 218013651",
+        "nominal_capacity_ml": 250,
+        "accessories": [
+          "Blue PP GL45 screw cap",
+          "PP pouring ring"
+        ]
+      },
+      "file_path": "BOT-001_reagent_bottle/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-CAP (Cap and pouring ring included with DURAN 218013651, per catalog page 11.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "GL45 thread profile/pitch, neck bore and cap seat truth are missing; true interface verification remains blocked.; Reference cap model and independent checker are not supplied. One-revolution release is a disclosed surrogate.",
+      "name": "reagent bottle",
+      "benchmark_directory": "BOT-001_reagent_bottle",
+      "input_path": "BOT-001_reagent_bottle/input.md",
+      "rubric_path": "BOT-001_reagent_bottle/rubric.json"
+    },
+    {
+      "sequence": 6,
+      "benchmark_id": "MED-001",
+      "category": "A",
+      "asset_class": "media_bottle",
+      "representative_configuration": {
+        "name": "media bottle",
+        "name_en": "media_bottle",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK Life Sciences",
+        "model": "DURAN TILT218914459",
+        "configuration": "500mL GL56 media bottle with supplied PP cap and pouring ring",
+        "nominal_capacity_ml": 500,
+        "accessories": [
+          "Supplied GL56 PP cap and ring"
+        ],
+        "distinction": "Two supported body orientations for pipetting; not the GL45 round reagent bottle case."
+      },
+      "file_path": "MED-001_media_bottle/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-CAP (PP cap and ring supplied with218914459; exact mesh/version unavailable.)",
+        "Independent reference model: REF-ROD (B access rod: diameter3mm,length100mm; not a commercial serological pipette compatibility claim.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Body depth, GL56 thread and support-face dimensional truth are missing.; Cap model and liquid-aware pipetting/sterilization models are unavailable; only geometry and state proxies are in scope.",
+      "name": "media bottle",
+      "benchmark_directory": "MED-001_media_bottle",
+      "input_path": "MED-001_media_bottle/input.md",
+      "rubric_path": "MED-001_media_bottle/rubric.json"
+    },
+    {
+      "sequence": 7,
+      "benchmark_id": "WAS-001",
+      "category": "A",
+      "asset_class": "wash_bottle",
+      "representative_configuration": {
+        "name": "wash bottle",
+        "name_en": "wash_bottle",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Thermo Scientific Nalgene",
+        "model": "2401-0500",
+        "configuration": "500mL LDPE Economy Wash Bottle;28mm PP closure/stem and PPCO draw tube",
+        "nominal_capacity_ml": 500,
+        "accessories": [
+          "Supplied closure/nozzle",
+          "Draw tube"
+        ]
+      },
+      "file_path": "WAS-001_wash_bottle/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-CAP (Supplied2401-0500 PP closure/stem plus PPCO draw tube.)",
+        "Independent reference model: REF-TARGET (B target disk,diameter20mm,plane normal facing nozzle.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "SKU-specific engineering drawing must confirm published91.4mm/213mm measurement extents; nozzle bore, thread and wall compliance remain unknown.; Gallery image could not be fetched for visual inspection; reviewer/image selection remains a dependency.",
+      "name": "wash bottle",
+      "benchmark_directory": "WAS-001_wash_bottle",
+      "input_path": "WAS-001_wash_bottle/input.md",
+      "rubric_path": "WAS-001_wash_bottle/rubric.json"
+    },
+    {
+      "sequence": 8,
+      "benchmark_id": "MCT-001",
+      "category": "B",
+      "asset_class": "microcentrifuge_tube",
+      "representative_configuration": {
+        "name": "microcentrifuge tube",
+        "name_en": "microcentrifuge_tube",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Eppendorf",
+        "model": "Safe-Lock1.5mL,clear,PCR clean0030123328",
+        "configuration": "Single polypropylene tube with tethered snap lid",
+        "nominal_capacity_ml": 1.5,
+        "accessories": []
+      },
+      "file_path": "MCT-001_microcentrifuge_tube/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-RACK (Eppendorf1.5/2mL Tube Rack per0030119819 drawing; independent geometry model missing.)",
+        "Independent reference model: REF-PROBE (Rigid B probe: diameter1mm,length30mm.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Snap-latch dimensions, tether stiffness and seat interference require manufacturer drawings or measured references.; Exact rack model and compliant seal physics are absent; testing remains a rigid-body surrogate.",
+      "name": "microcentrifuge tube",
+      "benchmark_directory": "MCT-001_microcentrifuge_tube",
+      "input_path": "MCT-001_microcentrifuge_tube/input.md",
+      "rubric_path": "MCT-001_microcentrifuge_tube/rubric.json"
+    },
+    {
+      "sequence": 9,
+      "benchmark_id": "CTU-001",
+      "category": "B",
+      "asset_class": "conical_tube",
+      "representative_configuration": {
+        "name": "conical tube",
+        "name_en": "conical_tube",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Corning",
+        "model": "430791",
+        "configuration": "15mL PP conical tube with orange HDPE CentriStar screw cap; not self-standing",
+        "nominal_capacity_ml": 15,
+        "accessories": [
+          "Supplied CentriStar cap"
+        ]
+      },
+      "file_path": "CTU-001_conical_tube/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-CAP (Supplied orange HDPE CentriStar cap for430791.)",
+        "Independent reference model: REF-HOLDER (B fixture: vertical cylindrical bore18.5mm diameter,100mm deep with closed flat bottom; tube rests at its tip; not a manufacturer rotor adaptor.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Cap thread profile remains unknown; reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "conical tube",
+      "benchmark_directory": "CTU-001_conical_tube",
+      "input_path": "CTU-001_conical_tube/input.md",
+      "rubric_path": "CTU-001_conical_tube/rubric.json"
+    },
+    {
+      "sequence": 10,
+      "benchmark_id": "PCT-001",
+      "category": "B",
+      "asset_class": "pcr_tube",
+      "representative_configuration": {
+        "name": "pcr tube",
+        "name_en": "pcr_tube",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Thermo Scientific",
+        "model": "AB0620G",
+        "configuration": "One green 0.2 mL individual PCR tube with integral flat snap cap."
+      },
+      "file_path": "PCT-001_pcr_tube/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent AB0620G tube and compatible block geometry; exact block model pending verification",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Selected SKU dimensional drawing not obtained; body height,diameter and wall profile remain unknown.; Snap interference and hinge flexure geometry not published in the read product page.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "pcr tube",
+      "benchmark_directory": "PCT-001_pcr_tube",
+      "input_path": "PCT-001_pcr_tube/input.md",
+      "rubric_path": "PCT-001_pcr_tube/rubric.json"
+    },
+    {
+      "sequence": 11,
+      "benchmark_id": "PCS-001",
+      "category": "B",
+      "asset_class": "pcr_strip",
+      "representative_configuration": {
+        "name": "pcr strip",
+        "name_en": "pcr_strip",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Thermo Scientific",
+        "model": "AB0451",
+        "configuration": "One eight-tube strip and its separate eight-domed-cap strip; natural polypropylene."
+      },
+      "file_path": "PCS-001_pcr_strip/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: AB0451 tube strip and supplied matching cap strip; independently matched0.2 mL block geometry",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Tube center pitch and strip envelope not established by the read source; do not infer them from a generic96-well format.; Cap seat profile and interference unknown.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "pcr strip",
+      "benchmark_directory": "PCS-001_pcr_strip",
+      "input_path": "PCS-001_pcr_strip/input.md",
+      "rubric_path": "PCS-001_pcr_strip/rubric.json"
+    },
+    {
+      "sequence": 12,
+      "benchmark_id": "CRY-001",
+      "category": "B",
+      "asset_class": "cryovial",
+      "representative_configuration": {
+        "name": "cryovial",
+        "name_en": "cryovial",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Thermo Scientific Nunc",
+        "model": "375418",
+        "configuration": "1.8 mL external-thread polypropylene cryovial with polyethylene screw cap,self-standing anti-rotation base."
+      },
+      "file_path": "CRY-001_cryovial/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent375418 vial,cap and manufacturer-matched anti-rotation holder geometry",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "External thread pitch,seat profile and cap travel not obtained.; Anti-rotation base mating key and approved rack dimensions not obtained.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "cryovial",
+      "benchmark_directory": "CRY-001_cryovial",
+      "input_path": "CRY-001_cryovial/input.md",
+      "rubric_path": "CRY-001_cryovial/rubric.json"
+    },
+    {
+      "sequence": 13,
+      "benchmark_id": "VIA-001",
+      "category": "B",
+      "asset_class": "sample_vial",
+      "representative_configuration": {
+        "name": "sample vial",
+        "name_en": "sample_vial",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Agilent",
+        "model": "5182-0716",
+        "configuration": "2 mL amber screw-top sample vial with write-on spot;12 mm cap required but sold separately."
+      },
+      "file_path": "VIA-001_sample_vial/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent selected vial and approved12 mm closure assembly;closure SKU pending",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Mouth internal diameter and wall profile not specified.; Exact cap/septum SKU and thread geometry not verified;12 mm is cap-size designation,not bore diameter.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "sample vial",
+      "benchmark_directory": "VIA-001_sample_vial",
+      "input_path": "VIA-001_sample_vial/input.md",
+      "rubric_path": "VIA-001_sample_vial/rubric.json"
+    },
+    {
+      "sequence": 14,
+      "benchmark_id": "PET-001",
+      "category": "C",
+      "asset_class": "petri_dish",
+      "representative_configuration": {
+        "name": "petri dish",
+        "name_en": "petri_dish",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK Life Sciences",
+        "model": "DUROPLAN217554607",
+        "configuration": "Borosilicate glass Petri dish with separate planar lid and base;100mm lid OD",
+        "nominal_capacity_ml": null,
+        "capacity_note": "Selected by diameter and height,not by nominal liquid capacity.",
+        "accessories": [
+          "Matching loose lid"
+        ]
+      },
+      "file_path": "PET-001_petri_dish/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-LID (Matching DUROPLAN217554607 lid,fixed by manufacturer's table.)",
+        "Independent reference model: REF-PROBE (Rigid B sphere diameter2mm for access test.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Lid inner diameter,base inner diameter and actual assembled overlap need drawing or measured reference.",
+      "name": "petri dish",
+      "benchmark_directory": "PET-001_petri_dish",
+      "input_path": "PET-001_petri_dish/input.md",
+      "rubric_path": "PET-001_petri_dish/rubric.json"
+    },
+    {
+      "sequence": 15,
+      "benchmark_id": "CCF-001",
+      "category": "C",
+      "asset_class": "cell_culture_flask",
+      "representative_configuration": {
+        "name": "cell culture flask",
+        "name_en": "cell_culture_flask",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Corning",
+        "model": "430641U",
+        "configuration": "75 cm2 TC-treated U-shaped flask,canted neck,vent cap."
+      },
+      "file_path": "CCF-001_cell_culture_flask/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: 430641U flask and matching vent cap independent geometry",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Length,width,height and neck bore absent from selected guide section.; Cap thread and canted neck angle require reference geometry.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "cell culture flask",
+      "benchmark_directory": "CCF-001_cell_culture_flask",
+      "input_path": "CCF-001_cell_culture_flask/input.md",
+      "rubric_path": "CCF-001_cell_culture_flask/rubric.json"
+    },
+    {
+      "sequence": 16,
+      "benchmark_id": "CCP-001",
+      "category": "C",
+      "asset_class": "cell_culture_plate",
+      "representative_configuration": {
+        "name": "cell culture plate",
+        "name_en": "cell_culture_plate",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Corning",
+        "model": "3516",
+        "configuration": "Six-well clear TC-treated plate with matching loose lid."
+      },
+      "file_path": "CCP-001_cell_culture_plate/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent3516 plate and lid geometry",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for the lid registration features that remain unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Lid-to-plate locating features, seating depth and lateral clearance remain unknown; reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "cell culture plate",
+      "benchmark_directory": "CCP-001_cell_culture_plate",
+      "input_path": "CCP-001_cell_culture_plate/input.md",
+      "rubric_path": "CCP-001_cell_culture_plate/rubric.json"
+    },
+    {
+      "sequence": 17,
+      "benchmark_id": "MWP-001",
+      "category": "C",
+      "asset_class": "microplate",
+      "representative_configuration": {
+        "name": "microplate",
+        "name_en": "microplate",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Corning",
+        "model": "3596",
+        "configuration": "96-well clear flat-bottom TC-treated polystyrene microplate with matching nonreversible lid."
+      },
+      "file_path": "MWP-001_microplate/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent3596 plate and lid; verified well-center coordinate map",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Lid registration/corner details and well-section draft, transition radii, bottom thickness and wall section remain unknown; reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "microplate",
+      "benchmark_directory": "MWP-001_microplate",
+      "input_path": "MWP-001_microplate/input.md",
+      "rubric_path": "MWP-001_microplate/rubric.json"
+    },
+    {
+      "sequence": 18,
+      "benchmark_id": "DWP-001",
+      "category": "C",
+      "asset_class": "deep_well_plate",
+      "representative_configuration": {
+        "name": "deep well plate",
+        "name_en": "deep_well_plate",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Eppendorf",
+        "model": "951033421",
+        "configuration": "Deepwell Plate96/2000 uL,PCR clean,yellow border,no seal included.",
+        "source_refs": [
+          "SRC-02"
+        ]
+      },
+      "file_path": "DWP-001_deep_well_plate/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent951033421 plate geometry with resolved length;matching support and seal not supplied",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Exact rounded corner radii and seal mating details remain unknown; reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "deep well plate",
+      "benchmark_directory": "DWP-001_deep_well_plate",
+      "input_path": "DWP-001_deep_well_plate/input.md",
+      "rubric_path": "DWP-001_deep_well_plate/rubric.json"
+    },
+    {
+      "sequence": 19,
+      "benchmark_id": "PIP-001",
+      "category": "D",
+      "asset_class": "single_channel_pipette",
+      "representative_configuration": {
+        "name": "single channel pipette",
+        "name_en": "single_channel_pipette",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Eppendorf",
+        "model": "Research plus 3120 000.054",
+        "configuration": "Single-channel variable volume, yellow, 20-200 microliters",
+        "accessories": [
+          "epT.I.P.S. 2-200 microliter, yellow, 53 mm"
+        ]
+      },
+      "file_path": "PIP-001_single_channel_pipette/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-TIP (epT.I.P.S. 2-200 microliters, yellow, 53 mm, manual p36 selected test-tip configuration.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Body dimensions, cone profile and physical button/ejector/cone travels require engineering drawings or measurement.; The exact test-tip model and instrumented force/stop reference are unavailable; physical fit cannot yet run.",
+      "name": "single channel pipette",
+      "benchmark_directory": "PIP-001_single_channel_pipette",
+      "input_path": "PIP-001_single_channel_pipette/input.md",
+      "rubric_path": "PIP-001_single_channel_pipette/rubric.json"
+    },
+    {
+      "sequence": 20,
+      "benchmark_id": "MCP-001",
+      "category": "D",
+      "asset_class": "multichannel_pipette",
+      "representative_configuration": {
+        "name": "multichannel pipette",
+        "name_en": "multichannel_pipette",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Eppendorf",
+        "model": "Research plus3122000051",
+        "configuration": "Fixed-spacing8-channel30..300 uL,orange;epT.I.P.S.20..300 uL55 mm tips."
+      },
+      "file_path": "MCP-001_multichannel_pipette/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Eight epT.I.P.S.20..300 uL55 mm tips and matched tip tray",
+        "Independent reference model: Independent Research plus8-channel lower part with measured stop travels",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Body envelope and cone mating taper unavailable.; First stop,second stop and ejector travel require measured reference;no invented millimeter stroke.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "multichannel pipette",
+      "benchmark_directory": "MCP-001_multichannel_pipette",
+      "input_path": "MCP-001_multichannel_pipette/input.md",
+      "rubric_path": "MCP-001_multichannel_pipette/rubric.json"
+    },
+    {
+      "sequence": 21,
+      "benchmark_id": "SEP-001",
+      "category": "D",
+      "asset_class": "serological_pipette",
+      "representative_configuration": {
+        "name": "serological pipette",
+        "name_en": "serological_pipette",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Corning",
+        "model": "4488",
+        "configuration": "Single disposable10 mL polystyrene Stripette,orange stripe,blowout,0.1 mL graduations."
+      },
+      "file_path": "SEP-001_serological_pipette/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent4488 pipet and validated PIPETBOY acu2 mount in >2 mL orientation",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Controller-end outer diameter and engagement length not given.; Dispensing bore,barrel bore and scale heights not established.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "serological pipette",
+      "benchmark_directory": "SEP-001_serological_pipette",
+      "input_path": "SEP-001_serological_pipette/input.md",
+      "rubric_path": "SEP-001_serological_pipette/rubric.json"
+    },
+    {
+      "sequence": 22,
+      "benchmark_id": "PCTLR-001",
+      "category": "D",
+      "asset_class": "pipette_controller",
+      "representative_configuration": {
+        "name": "pipette controller",
+        "name_en": "pipette_controller",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "INTEGRA Biosciences",
+        "model": "PIPETBOY acu2 155000",
+        "configuration": "Classic controller,serial>=1350000,Li-ion battery,0.45 um filter and silicone pipet mount."
+      },
+      "file_path": "PCTLR-001_pipette_controller/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent10 mL Corning4488 and PIPETBOY silicone mount/filter module",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Button travel,gravity/pump trigger threshold and thumb-wheel angular limits unmeasured.; Silicone cone inner profile,retention force and module sealing geometry not published.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "pipette controller",
+      "benchmark_directory": "PCTLR-001_pipette_controller",
+      "input_path": "PCTLR-001_pipette_controller/input.md",
+      "rubric_path": "PCTLR-001_pipette_controller/rubric.json"
+    },
+    {
+      "sequence": 23,
+      "benchmark_id": "PAS-001",
+      "category": "D",
+      "asset_class": "pasteur_pipette",
+      "representative_configuration": {
+        "name": "pasteur pipette",
+        "name_en": "pasteur_pipette",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Thermo Scientific Samco",
+        "model": "225",
+        "configuration": "Nonsterile graduated3 mL large-bulb disposable transfer pipette;7.7 mL overall capacity."
+      },
+      "file_path": "PAS-001_pasteur_pipette/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent225 geometry;B20 mm bore receiving vessel and opposing flat contact pads",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Tip bore and bulb wall profile not specified.; Bulb force-displacement and hysteresis unavailable;rigid proxy does not validate squeezing.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "pasteur pipette",
+      "benchmark_directory": "PAS-001_pasteur_pipette",
+      "input_path": "PAS-001_pasteur_pipette/input.md",
+      "rubric_path": "PAS-001_pasteur_pipette/rubric.json"
+    },
+    {
+      "sequence": 24,
+      "benchmark_id": "SYR-001",
+      "category": "D",
+      "asset_class": "syringe",
+      "representative_configuration": {
+        "name": "syringe",
+        "name_en": "syringe",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Hamilton",
+        "model": "1001 TLL 81322",
+        "configuration": "1 mL Gastight syringe,X-style plunger,PTFE Luer Lock,no needle."
+      },
+      "file_path": "SYR-001_syringe/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent81322 syringe and standard female Luer Lock fitting geometry;no sharp needle",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Barrel length,plunger extension and mechanical stops not specified.; Luer taper/locking geometry and6-32 mounting-hole detail unverified.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "syringe",
+      "benchmark_directory": "SYR-001_syringe",
+      "input_path": "SYR-001_syringe/input.md",
+      "rubric_path": "SYR-001_syringe/rubric.json"
+    },
+    {
+      "sequence": 25,
+      "benchmark_id": "BUR-001",
+      "category": "D",
+      "asset_class": "burette",
+      "representative_configuration": {
+        "name": "burette",
+        "name_en": "burette",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "BRAND",
+        "model": "13966",
+        "configuration": "25 mL amber BLAUBRAND classAS compact burette,removablePTFE valve,0.05 mL divisions."
+      },
+      "file_path": "BUR-001_burette/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent13966 assembly,BRAND16515 clamp and23882 stand",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "PTFE valve mechanism exact travel and angular endpoints not established;do not assume a quarter-turn rotary plug.; Outer tube diameter and valve seat geometry unknown.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "burette",
+      "benchmark_directory": "BUR-001_burette",
+      "input_path": "BUR-001_burette/input.md",
+      "rubric_path": "BUR-001_burette/rubric.json"
+    },
+    {
+      "sequence": 26,
+      "benchmark_id": "FUN-001",
+      "category": "E",
+      "asset_class": "funnel",
+      "representative_configuration": {
+        "name": "funnel",
+        "name_en": "funnel",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK Life Sciences",
+        "model": "DURAN213533306",
+        "configuration": "Ordinary long-stem Bunsen funnel,55mm bowl OD;not a Buchner or sintered filter funnel",
+        "nominal_capacity_ml": null,
+        "accessories": [
+          "90mm circular filter paper,pre-folded geometry"
+        ]
+      },
+      "file_path": "FUN-001_funnel/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-PAPER (90mm circular paper within manufacturer70-90mm range;material grade/thickness and pre-folded model must be fixed before evaluation.)",
+        "Independent reference model: REF-RECEIVER (B cylindrical receiver:20mm clear bore,180mm internal depth,open mouth.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Stem bore and bowl inner profile need a section drawing;paper grade/thickness/fold geometry not yet fixed.",
+      "name": "funnel",
+      "benchmark_directory": "FUN-001_funnel",
+      "input_path": "FUN-001_funnel/input.md",
+      "rubric_path": "FUN-001_funnel/rubric.json"
+    },
+    {
+      "sequence": 27,
+      "benchmark_id": "BUC-001",
+      "category": "E",
+      "asset_class": "buchner_funnel",
+      "representative_configuration": {
+        "name": "buchner funnel",
+        "name_en": "buchner_funnel",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK Life Sciences",
+        "model": "DURAN213412207",
+        "configuration": "70mL glass Buchner funnel with glass paper-support disc;not a sintered filter funnel",
+        "nominal_capacity_ml": 70,
+        "accessories": [
+          "45mm filter-paper geometry proxy"
+        ]
+      },
+      "file_path": "BUC-001_buchner_funnel/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-PAPER (45mm circular paper geometry;diameter from manufacturer,0.2mm proxy thickness B;not a defined filtration grade.)",
+        "Independent reference model: REF-HOLDER (B split clamp:11mm open bore,20mm axial contact length,closes around10mm stem;not a vacuum seal.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Active hole pattern,stem bore and actual receiver/gasket interface need further primary evidence.; Paper grade,wet deformation,vacuum sealing and filtration physics are outside current demonstrated scope.",
+      "name": "buchner funnel",
+      "benchmark_directory": "BUC-001_buchner_funnel",
+      "input_path": "BUC-001_buchner_funnel/input.md",
+      "rubric_path": "BUC-001_buchner_funnel/rubric.json"
+    },
+    {
+      "sequence": 28,
+      "benchmark_id": "SFU-001",
+      "category": "E",
+      "asset_class": "separatory_funnel",
+      "representative_configuration": {
+        "name": "separatory funnel",
+        "name_en": "separatory_funnel",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK DURAN",
+        "model": "1064806",
+        "configuration": "250 mL conical separating funnel,PTFE stopcock,29/32 stopper,retaining device."
+      },
+      "file_path": "SFU-001_separatory_funnel/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent1064806,matching29/32 stopper and measured ring support",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Maximum body diameter and stopper seat depth missing.; NS4 designation is not an independently verified flow bore;plug geometry unknown.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "separatory funnel",
+      "benchmark_directory": "SFU-001_separatory_funnel",
+      "input_path": "SFU-001_separatory_funnel/input.md",
+      "rubric_path": "SFU-001_separatory_funnel/rubric.json"
+    },
+    {
+      "sequence": 29,
+      "benchmark_id": "VAF-001",
+      "category": "E",
+      "asset_class": "filter_flask",
+      "representative_configuration": {
+        "name": "filter flask",
+        "name_en": "filter_flask",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "DWK DURAN",
+        "model": "212044453",
+        "configuration": "500 mL Erlenmeyer filtering flask with replaceable KECK assembly hose connection."
+      },
+      "file_path": "VAF-001_filter_flask/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent212044453 flask,matched gasket/hose and supported funnel;exact gasketSKU pending",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Neck inner diameter and gasket interface require drawing.; Barb profile,seal and insertion length not specified.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "filter flask",
+      "benchmark_directory": "VAF-001_filter_flask",
+      "input_path": "VAF-001_filter_flask/input.md",
+      "rubric_path": "VAF-001_filter_flask/rubric.json"
+    },
+    {
+      "sequence": 30,
+      "benchmark_id": "SYF-001",
+      "category": "E",
+      "asset_class": "syringe_filter",
+      "representative_configuration": {
+        "name": "syringe filter",
+        "name_en": "syringe_filter",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Merck Millipore",
+        "model": "Millex-GV SLGV033RS",
+        "configuration": "Single-use 33 mm hydrophilic PVDF 0.22 um syringe filter; laboratory aqueous filtration only; no needle included."
+      },
+      "file_path": "SYF-001_syringe_filter/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independently verified sterile 10 mL Luer-lock syringe; exact SKU and mating truth remain unresolved.",
+        "Independent reference model: Benchmark receiver with 20 mm circular opening, 30 mm deep cavity; B fixture, not a commercial claim.",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Inlet/outlet mating taper and locking lug dimensions are unpublished in the sources.; Axial membrane and support positions require independent geometry.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "syringe filter",
+      "benchmark_directory": "SYF-001_syringe_filter",
+      "input_path": "SYF-001_syringe_filter/input.md",
+      "rubric_path": "SYF-001_syringe_filter/rubric.json"
+    },
+    {
+      "sequence": 31,
+      "benchmark_id": "BTF-001",
+      "category": "E",
+      "asset_class": "bottle_top_filter",
+      "representative_configuration": {
+        "name": "bottle top filter",
+        "name_en": "bottle_top_filter",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Thermo Fisher Scientific",
+        "model": "Nalgene DS0320-5045",
+        "configuration": "Reusable 500 mL polysulfone bottle-top holder, 45 mm bottle thread; 47 mm replaceable membrane and receiver supplied separately."
+      },
+      "file_path": "BTF-001_bottle_top_filter/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: 47 mm diameter membrane disc; thickness/material SKU unresolved.",
+        "Independent reference model: Verified vacuum-rated glass receiver with matching 45 mm thread; SKU unresolved.",
+        "Independent reference model: 6.3 mm ID vacuum tubing; wall thickness and material unresolved.",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Overall width and height not specified in the inspected instructions.; 45 mm denotes bottle thread family; pitch, seal and engagement dimensions are unknown.; Hose fit envelope and insertion stop require independent geometry.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "bottle top filter",
+      "benchmark_directory": "BTF-001_bottle_top_filter",
+      "input_path": "BTF-001_bottle_top_filter/input.md",
+      "rubric_path": "BTF-001_bottle_top_filter/rubric.json"
+    },
+    {
+      "sequence": 32,
+      "benchmark_id": "SPC-001",
+      "category": "E",
+      "asset_class": "spin_column",
+      "representative_configuration": {
+        "name": "spin column",
+        "name_en": "spin_column",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "QIAGEN",
+        "model": "QIAquick spin column, PCR purification format",
+        "configuration": "Historical 07/2002 handbook configuration; 800 uL column reservoir, silica membrane; paired 2 mL collection tube and separate 1.5 mL elution tube."
+      },
+      "file_path": "SPC-001_spin_column/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: QIAGEN 2 mL collection tube supplied with historical QIAquick PCR kit; independent model not supplied.",
+        "Independent reference model: Clean 1.5 mL microcentrifuge elution tube; exact compatible SKU must be frozen before testing.",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "No engineering dimensions provided in handbook.; Support flange and collection-tube seating dimensions unknown.; Outlet length and clearance above collector bottom unknown.; Cap geometry and opening travel not dimensioned. Do not invent a physical hinge range.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "spin column",
+      "benchmark_directory": "SPC-001_spin_column",
+      "input_path": "SPC-001_spin_column/input.md",
+      "rubric_path": "SPC-001_spin_column/rubric.json"
+    },
+    {
+      "sequence": 33,
+      "benchmark_id": "COL-001",
+      "category": "E",
+      "asset_class": "collection_tube",
+      "representative_configuration": {
+        "name": "collection tube",
+        "name_en": "collection_tube",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "QIAGEN",
+        "model": "2 mL collection tube supplied with QIAquick PCR purification kit",
+        "configuration": "Historical 07/2002 waste-collection tube only; column is an external mating object, not a duplicate primary column asset."
+      },
+      "file_path": "COL-001_collection_tube/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Matching QIAquick PCR spin column from 07/2002 configuration.",
+        "Independent reference model: Independent fitted rack fixture with tube wall support; geometry must be derived from verified tube dimensions, not submission.",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Tube height absent from handbook.; Actual internal rim diameter and flange support region unreported.; Bottom thickness and internal profile unreported.; Safe waste capacity with column inserted cannot be inferred from nominal 2 mL; value unit requires source volume data.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "collection tube",
+      "benchmark_directory": "COL-001_collection_tube",
+      "input_path": "COL-001_collection_tube/input.md",
+      "rubric_path": "COL-001_collection_tube/rubric.json"
+    },
+    {
+      "sequence": 34,
+      "benchmark_id": "RAC-001",
+      "category": "F",
+      "asset_class": "microtube_rack",
+      "representative_configuration": {
+        "name": "microtube rack",
+        "name_en": "microtube_rack",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Eppendorf",
+        "model": "Tube Rack 1.5 mL / 2 mL, drawing 0030 119.819-00",
+        "positions": 36,
+        "accessories": [
+          "Safe-Lock 1.5 mL reference tubes"
+        ]
+      },
+      "file_path": "RAC-001_microtube_rack/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-TUBE (Eppendorf Safe-Lock 1.5 mL, configuration fixed by the cited technical drawing, closed cap.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Undimensioned support geometry and row seat depths require a section drawing or measured reference.; Independent Safe-Lock tube model and contact parameters are missing.",
+      "name": "microtube rack",
+      "benchmark_directory": "RAC-001_microtube_rack",
+      "input_path": "RAC-001_microtube_rack/input.md",
+      "rubric_path": "RAC-001_microtube_rack/rubric.json"
+    },
+    {
+      "sequence": 35,
+      "benchmark_id": "CTR-001",
+      "category": "F",
+      "asset_class": "conical_tube_rack",
+      "representative_configuration": {
+        "name": "conical tube rack",
+        "name_en": "conical_tube_rack",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Eppendorf",
+        "model": "Tube Rack5/15/50 mL",
+        "configuration": "Two rows of six positions:smaller front holes and larger rear holes; selected15 mL tube loading."
+      },
+      "file_path": "CTR-001_conical_tube_rack/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Independent manufacturer-compatible15 mL tube model;exact tube SKU must be fixed before certification",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Internal support geometry and exact15 mL tube seating depth require independent truth.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "conical tube rack",
+      "benchmark_directory": "CTR-001_conical_tube_rack",
+      "input_path": "CTR-001_conical_tube_rack/input.md",
+      "rubric_path": "CTR-001_conical_tube_rack/rubric.json"
+    },
+    {
+      "sequence": 36,
+      "benchmark_id": "PCR-001",
+      "category": "F",
+      "asset_class": "pcr_tube_rack",
+      "representative_configuration": {
+        "name": "pcr tube rack",
+        "name_en": "pcr_tube_rack",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Fisherbrand",
+        "model": "0344820",
+        "configuration": "One polypropylene96-position rack with removable hinged lid;blue selected from assorted pack."
+      },
+      "file_path": "PCR-001_pcr_tube_rack/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: AB0620G individual tube and AB0451 strip as candidate references;SKU-specific fit remains unverified",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Separate depth130 mm conflicts with127x101x38 envelope;endpoint definitions require manufacturer clarification.; Well pitch,support depth and hinge location unknown.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "pcr tube rack",
+      "benchmark_directory": "PCR-001_pcr_tube_rack",
+      "input_path": "PCR-001_pcr_tube_rack/input.md",
+      "rubric_path": "PCR-001_pcr_tube_rack/rubric.json"
+    },
+    {
+      "sequence": 37,
+      "benchmark_id": "CRR-001",
+      "category": "F",
+      "asset_class": "cryovial_rack",
+      "representative_configuration": {
+        "name": "cryovial rack",
+        "name_en": "cryovial_rack",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Thermo Scientific Nunc",
+        "model": "376589",
+        "configuration": "PPO40-position4x10 interlocking cryotube holder."
+      },
+      "file_path": "CRR-001_cryovial_rack/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Nunc375418 candidate cryotube and376589 holder independent models;exact key fit verification required",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Overall dimensions and hole pitch not published in read page.; Anti-rotation grip and interlocking-edge geometry require independent measurement.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "cryovial rack",
+      "benchmark_directory": "CRR-001_cryovial_rack",
+      "input_path": "CRR-001_cryovial_rack/input.md",
+      "rubric_path": "CRR-001_cryovial_rack/rubric.json"
+    },
+    {
+      "sequence": 38,
+      "benchmark_id": "MPH-001",
+      "category": "F",
+      "asset_class": "microplate_holder",
+      "representative_configuration": {
+        "name": "microplate holder",
+        "name_en": "microplate_holder",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "IKA",
+        "model": "MS3.4 0003426400",
+        "configuration": "Single microtiter-plate attachment for MS3 digital/control;shaker itself excluded."
+      },
+      "file_path": "MPH-001_microplate_holder/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: IndependentMS3.4 attachment,MS3 digital head and manufacturer-approved microplate;plateSKU pending",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Attachment dimensions and plate pocket contour not obtained.; MS3 drive-head mating geometry and retention mechanism need drawing.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "microplate holder",
+      "benchmark_directory": "MPH-001_microplate_holder",
+      "input_path": "MPH-001_microplate_holder/input.md",
+      "rubric_path": "MPH-001_microplate_holder/rubric.json"
+    },
+    {
+      "sequence": 39,
+      "benchmark_id": "MAG-001",
+      "category": "F",
+      "asset_class": "magnetic_rack",
+      "representative_configuration": {
+        "name": "magnetic rack",
+        "name_en": "magnetic_rack",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Invitrogen",
+        "model": "DynaMag-2 12321D",
+        "configuration": "Permanent magnet base with removable12322D16-tube rack,two sides of8."
+      },
+      "file_path": "MAG-001_magnetic_rack/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: DynaMag-2 base/rack and independently verified1.5 mL tube models",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Rack/base dimensions and tube seat geometry not published.; Magnet-to-tube wall spacing and field map unavailable.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "magnetic rack",
+      "benchmark_directory": "MAG-001_magnetic_rack",
+      "input_path": "MAG-001_magnetic_rack/input.md",
+      "rubric_path": "MAG-001_magnetic_rack/rubric.json"
+    },
+    {
+      "sequence": 40,
+      "benchmark_id": "PIR-001",
+      "category": "F",
+      "asset_class": "pipette_stand",
+      "representative_configuration": {
+        "name": "pipette stand",
+        "name_en": "pipette_stand",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Eppendorf",
+        "model": "Pipette Carousel2 3116000015",
+        "configuration": "Six noncharging holders for Research plus family;not whiteResearch3-only3116000236."
+      },
+      "file_path": "PIR-001_pipette_stand/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Six Research plus3120000054 pipettes without tips;independent holder/carousel geometry",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Base diameter,height and holder spacing unavailable.; Holder engagement and suspended-tip clearance need independent geometry.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "pipette stand",
+      "benchmark_directory": "PIR-001_pipette_stand",
+      "input_path": "PIR-001_pipette_stand/input.md",
+      "rubric_path": "PIR-001_pipette_stand/rubric.json"
+    },
+    {
+      "sequence": 41,
+      "benchmark_id": "VOR-001",
+      "category": "G",
+      "asset_class": "vortex_mixer",
+      "representative_configuration": {
+        "name": "vortex mixer",
+        "name_en": "vortex_mixer",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "IKA",
+        "model": "VORTEX 3 0003340000 with VG 3.1",
+        "configuration": "200-240 V version, standard tube attachment; no universal platform or microplate insert."
+      },
+      "file_path": "VOR-001_vortex_mixer/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Eppendorf Safe-Lock 1.5 mL tube, capped; independent tube geometry and loaded mass required.",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "VG 3.1 seating cup profile and engagement depth unreported.; Activation force and vertical stroke not specified.; Actual speed-knob and selector travel unreported.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "vortex mixer",
+      "benchmark_directory": "VOR-001_vortex_mixer",
+      "input_path": "VOR-001_vortex_mixer/input.md",
+      "rubric_path": "VOR-001_vortex_mixer/rubric.json"
+    },
+    {
+      "sequence": 42,
+      "benchmark_id": "MST-001",
+      "category": "G",
+      "asset_class": "magnetic_stirrer",
+      "representative_configuration": {
+        "name": "magnetic stirrer",
+        "name_en": "magnetic_stirrer",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "IKA",
+        "model": "RCT basic 0025006052",
+        "configuration": "115 V model on currently read product page; stirring-only benchmark with heating held OFF and one IKAFLON 30 round stir bar, Ident. No. 0004489000."
+      },
+      "file_path": "MST-001_magnetic_stirrer/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: DURAN low-form250 mL beaker from BEA-001, independently validated geometry.",
+        "Independent reference model: IKAFLON 30 round stir bar, Ident. No. 0004489000; model file still not supplied.",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Knob center, radius and physical rotation/push stops, plus connector locations and clearances, remain unknown; reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "magnetic stirrer",
+      "benchmark_directory": "MST-001_magnetic_stirrer",
+      "input_path": "MST-001_magnetic_stirrer/input.md",
+      "rubric_path": "MST-001_magnetic_stirrer/rubric.json"
+    },
+    {
+      "sequence": 43,
+      "benchmark_id": "ORB-001",
+      "category": "G",
+      "asset_class": "orbital_shaker",
+      "representative_configuration": {
+        "name": "orbital shaker",
+        "name_en": "orbital_shaker",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "IKA",
+        "model": "KS260 basic with AS260.1 universal attachment",
+        "configuration": "100-120 V KS260 basic, four-roll AS260.1 attachment, one centered250 mL Erlenmeyer flask; not KS260 control or reciprocating HS260."
+      },
+      "file_path": "ORB-001_orbital_shaker/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: DURAN250 mL Erlenmeyer flask from ERL-001, verified geometry and total test mass required.",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Four lateral attachment screw positions, roll adjustment travel, screw thread geometry and the paired load-versus-speed envelope remain unknown; reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "orbital shaker",
+      "benchmark_directory": "ORB-001_orbital_shaker",
+      "input_path": "ORB-001_orbital_shaker/input.md",
+      "rubric_path": "ORB-001_orbital_shaker/rubric.json"
+    },
+    {
+      "sequence": 44,
+      "benchmark_id": "ROT-001",
+      "category": "G",
+      "asset_class": "tube_rotator",
+      "representative_configuration": {
+        "name": "tube rotator",
+        "name_en": "tube_rotator",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "IKA",
+        "model": "Loopster digital0004016000 withDS3 0004524200",
+        "configuration": "Digital rotator with20-position15 mL/16 mm tube attachment; not fixed-speed basic model."
+      },
+      "file_path": "ROT-001_tube_rotator/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: Twenty verified15 mL tubes of16 mm body diameter; exact SKU and cap envelope unresolved.",
+        "Pinned and independently justified mass,inertia and contact parameters",
+        "Independent source-truth geometry for dimensions marked unknown"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "DS3 diameter, clip coordinates and mounting key dimensions unavailable.; 16 mm is nominal tube compatibility, not measured empty clip gap.; Tilt pivot location and locking mechanism geometry unreported.; Membrane-key travel unreported.; Reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "tube rotator",
+      "benchmark_directory": "ROT-001_tube_rotator",
+      "input_path": "ROT-001_tube_rotator/input.md",
+      "rubric_path": "ROT-001_tube_rotator/rubric.json"
+    },
+    {
+      "sequence": 45,
+      "benchmark_id": "THM-001",
+      "category": "G",
+      "asset_class": "thermomixer",
+      "representative_configuration": {
+        "name": "thermomixer",
+        "name_en": "thermomixer",
+        "representation_mode": "Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.",
+        "manufacturer": "Eppendorf",
+        "model": "ThermoMixer C with SmartBlock 1.5 mL 5360000038",
+        "configuration": "220-240 V base, 24-position 1.5 mL block, closed Safe-Lock tubes 0030120086; no ThermoTop."
+      },
+      "file_path": "THM-001_thermomixer/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry/contact/state checkers and assigned visual reviewer",
+        "Independent reference model: SmartBlock 1.5 mL 5360000038 independent geometry.",
+        "Independent reference model: Closed Safe-Lock 1.5 mL 0030120086 tubes from historical ordering list; current geometry equivalence requires confirmation.",
+        "Independent source truth for critical geometry gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "SmartBlock mating geometry, release-lever travel and the selected assembled-height datum remain unknown; reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "thermomixer",
+      "benchmark_directory": "THM-001_thermomixer",
+      "input_path": "THM-001_thermomixer/input.md",
+      "rubric_path": "THM-001_thermomixer/rubric.json"
+    },
+    {
+      "sequence": 46,
+      "benchmark_id": "HOT-001",
+      "category": "H",
+      "asset_class": "hotplate",
+      "representative_configuration": {
+        "name": "hotplate",
+        "name_en": "hotplate",
+        "representation_mode": "Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.",
+        "manufacturer": "IKA",
+        "model": "C-MAG HP 7, CMAG 032006 documented configuration",
+        "configuration": "Historical 120 V / 60 Hz pure hotplate; 200 x 200 mm heating plate per 2006 manual. Not current 180 x 180 mm variant and not HS magnetic stirrer."
+      },
+      "file_path": "HOT-001_hotplate/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry/contact/state checkers and assigned visual reviewer",
+        "Independent reference model: DURAN 250 mL beaker from BEA-001 as a B mechanical support object, no manufacturer thermal-compatibility certification.",
+        "Independent reference model: Historical HP7 contact plug and connector reference geometry, not yet supplied.",
+        "Independent source truth for critical geometry gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Knob pivot location, angular travel and setpoint mapping not dimensioned.; Contact thermometer jack and support-bore detailed mating profile unavailable.; Serial/date identifiers distinguishing 2006 hardware from current HP7 variant not acquired; independent reference must match the historical dimensional table.; Reference models and checkers absent; no runtime or experimental validation.",
+      "name": "hotplate",
+      "benchmark_directory": "HOT-001_hotplate",
+      "input_path": "HOT-001_hotplate/input.md",
+      "rubric_path": "HOT-001_hotplate/rubric.json"
+    },
+    {
+      "sequence": 47,
+      "benchmark_id": "WBA-001",
+      "category": "H",
+      "asset_class": "water_bath",
+      "representative_configuration": {
+        "name": "water bath",
+        "name_en": "water_bath",
+        "representation_mode": "Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.",
+        "manufacturer": "Thermo Scientific",
+        "model": "Precision GP 02 TSGP02",
+        "configuration": "2 L general-purpose water bath, supplied polycarbonate gable cover TSGPACL02 and diffuser tray 102352; water mode, no beads or circulation pump."
+      },
+      "file_path": "WBA-001_water_bath/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry/contact/state checkers and assigned visual reviewer",
+        "Independent reference model: Supplied TSGPACL02 cover and diffuser tray 102352, independently measured geometry.",
+        "Independent reference model: Nalgene half rack 5972-0013TC listed as compatible in brochure page 6; tube SKU and loaded height still to be fixed.",
+        "Independent source truth for critical geometry gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Closed-cover height and lid seating geometry not dimensioned.; Diffuser tray profile, feet and true tank bottom datum not acquired.; L/W table values verified but orientation relative to front display needs an engineering drawing.; Low-fluid trip is described as near-empty; no physical trip height is given. Do not equate it with minimum recommended fill.; Reference models and checkers absent; no runtime or experimental validation.",
+      "name": "water bath",
+      "benchmark_directory": "WBA-001_water_bath",
+      "input_path": "WBA-001_water_bath/input.md",
+      "rubric_path": "WBA-001_water_bath/rubric.json"
+    },
+    {
+      "sequence": 48,
+      "benchmark_id": "DRY-001",
+      "category": "H",
+      "asset_class": "dry_bath",
+      "representative_configuration": {
+        "name": "dry bath",
+        "name_en": "dry_bath",
+        "representation_mode": "Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.",
+        "manufacturer": "Eppendorf",
+        "model": "ThermoStat C 5383000019, SmartBlock 2.0 mL 5362000035",
+        "configuration": "2016 documented 220-240 V configuration; 24 closed Safe-Lock 2.0 mL tubes 0030120094; no ThermoTop; non-mixing dry block."
+      },
+      "file_path": "DRY-001_dry_bath/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry/contact/state checkers and assigned visual reviewer",
+        "Independent reference model: SmartBlock 2.0 mL 5362000035 independent geometry.",
+        "Independent reference model: Safe-Lock 2.0 mL 0030120094 closed tubes, independent geometry.",
+        "Independent source truth for critical geometry gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Exact well centers, depth, bottom profile and tube seating datum not dimensioned.; Latch engagement geometry and lever travel unavailable.; Need base/accessory height datum to determine loaded total envelope.; Reference models and checkers absent; no runtime or experimental validation.",
+      "name": "dry bath",
+      "benchmark_directory": "DRY-001_dry_bath",
+      "input_path": "DRY-001_dry_bath/input.md",
+      "rubric_path": "DRY-001_dry_bath/rubric.json"
+    },
+    {
+      "sequence": 49,
+      "benchmark_id": "THC-001",
+      "category": "H",
+      "asset_class": "thermal_cycler",
+      "representative_configuration": {
+        "name": "thermal cycler",
+        "name_en": "thermal_cycler",
+        "representation_mode": "Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.",
+        "manufacturer": "Thermo Fisher Scientific / Applied Biosystems",
+        "model": "SimpliAmp A24811",
+        "configuration": "96-well 0.2 mL block; MicroAmp Optical plate N8010560; local operation."
+      },
+      "file_path": "THC-001_thermal_cycler/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry/contact/state checkers and assigned visual reviewer",
+        "Independent reference model: MicroAmp Optical 96-Well Reaction Plate N8010560 and compatible closure; independent geometry and closure SKU pending.",
+        "Independent source truth for critical geometry gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Dimensioned pivot and maximum opening angle unavailable.; Independent well profile, pitch and plate seating datum unavailable.; Compatible closure selection and compressed plate/closure height not yet verified.; Reference models and checkers absent; no runtime or experimental validation.",
+      "name": "thermal cycler",
+      "benchmark_directory": "THC-001_thermal_cycler",
+      "input_path": "THC-001_thermal_cycler/input.md",
+      "rubric_path": "THC-001_thermal_cycler/rubric.json"
+    },
+    {
+      "sequence": 50,
+      "benchmark_id": "CEN-001",
+      "category": "I",
+      "asset_class": "centrifuge",
+      "representative_configuration": {
+        "name": "centrifuge",
+        "name_en": "centrifuge",
+        "representation_mode": "Reproduce the selected configuration where facts are known; do not invent missing device geometry.",
+        "manufacturer": "Eppendorf",
+        "model": "Centrifuge5425",
+        "variant": "Non-refrigerated",
+        "rotor": "FA-24x2",
+        "accessories": [
+          "Matching QuickLock rotor lid",
+          "Safe-Lock1.5mL tubes"
+        ]
+      },
+      "file_path": "CEN-001_centrifuge/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Assigned human visual reviewer",
+        "Independent reference model: REF-TUBE (Closed Safe-Lock1.5mL per cited drawing.)",
+        "Independent reference model: REF-RLID (Matching QuickLock lid for FA-24x2.)",
+        "Pinned,independently justified inertial and contact parameters for any rigid-body test"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "FA-24x2 bore-center radius, bore angle and bore diameter remain unknown; reference models and independent checkers are not supplied; no simulation or experimental efficacy has been tested.",
+      "name": "centrifuge",
+      "benchmark_directory": "CEN-001_centrifuge",
+      "input_path": "CEN-001_centrifuge/input.md",
+      "rubric_path": "CEN-001_centrifuge/rubric.json"
+    },
+    {
+      "sequence": 51,
+      "benchmark_id": "BTC-001",
+      "category": "I",
+      "asset_class": "benchtop_centrifuge",
+      "representative_configuration": {
+        "name": "benchtop centrifuge",
+        "name_en": "benchtop_centrifuge",
+        "representation_mode": "Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.",
+        "manufacturer": "Eppendorf",
+        "model": "Centrifuge 5702 with A-4-38 round-bucket rotor",
+        "configuration": "Non-refrigerated 5702; four round buckets 5702761001, four single-place 15 mL adapters 5702732001, no aerosol-tight bucket caps."
+      },
+      "file_path": "BTC-001_benchtop_centrifuge/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry/contact/state checkers and assigned visual reviewer",
+        "Independent reference model: Four round buckets 5702761001 and adapters 5702732001 with independently measured interfaces.",
+        "Independent reference model: Four matching 15 mL conical tubes meeting cited envelope; exact SKU still unresolved.",
+        "Independent reference model: Supplied rotor key with independent geometry.",
+        "Independent source truth for critical geometry gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Lid pivot and maximum opening angle not dimensioned; open height does not uniquely determine angle.; Bucket pivot locations, latch seats and swept clearances unavailable.; Adapter bore/support profile not given; 17.2 mm in table is TUBE diameter, not bore.; Exact tube SKU satisfying conical 15 mL, 17.2 mm diameter and <=121 mm no-cap assembly limit not yet verified.; Reference models and checkers absent; no runtime or experimental validation.",
+      "name": "benchtop centrifuge",
+      "benchmark_directory": "BTC-001_benchtop_centrifuge",
+      "input_path": "BTC-001_benchtop_centrifuge/input.md",
+      "rubric_path": "BTC-001_benchtop_centrifuge/rubric.json"
+    },
+    {
+      "sequence": 52,
+      "benchmark_id": "MPC-001",
+      "category": "I",
+      "asset_class": "microplate_centrifuge",
+      "representative_configuration": {
+        "name": "microplate centrifuge",
+        "name_en": "microplate_centrifuge",
+        "representation_mode": "Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.",
+        "manufacturer": "Labnet / Corning",
+        "model": "MPS 1000 C1000",
+        "configuration": "120 V mini plate spinner, two vertically loaded sealed 96-well PCR plates; no tube-strip adapter."
+      },
+      "file_path": "MPC-001_microplate_centrifuge/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry/contact/state checkers and assigned visual reviewer",
+        "Independent reference model: Two identical sealed 96-well PCR plates; exact commercial SKU, closure and independent geometry unresolved.",
+        "Independent source truth for critical geometry gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Slot width/depth, plate support datum and rotor swept envelope unavailable.; Cover pivot, opening angle and Open-button travel unavailable.; Exact sealed plate SKU and closure envelope not yet verified with the selected rotor; generic 96-well label alone is insufficient.; Manual says press Open to stop and fully open only after rotor stops; timing of physical lock release is not specified.; Reference models and checkers absent; no runtime or experimental validation.",
+      "name": "microplate centrifuge",
+      "benchmark_directory": "MPC-001_microplate_centrifuge",
+      "input_path": "MPC-001_microplate_centrifuge/input.md",
+      "rubric_path": "MPC-001_microplate_centrifuge/rubric.json"
+    },
+    {
+      "sequence": 53,
+      "benchmark_id": "BAL-001",
+      "category": "J",
+      "asset_class": "analytical_balance",
+      "representative_configuration": {
+        "name": "analytical balance",
+        "name_en": "analytical_balance",
+        "representation_mode": "Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.",
+        "manufacturer": "OHAUS",
+        "model": "Pioneer PX224/E",
+        "configuration": "External-calibration analytical balance, item 30429811, glass draft shield and 90 mm weighing pan; no InCal mechanism."
+      },
+      "file_path": "BAL-001_analytical_balance/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry/contact/state checkers and assigned visual reviewer",
+        "Independent reference model: Independent PX224/E draft-shield and pan reference geometry.",
+        "Independent reference model: Benchmark container, 40 mm outside diameter and 20 mm height, 10 g virtual mass; not an OHAUS accessory.",
+        "Independent reference model: Independent external calibration mass geometry and certificate for 100 g or 200 g if physical calibration is evaluated.",
+        "Independent source truth for critical geometry gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "No dimensioned door opening or verified travel acquired; do not infer from the product image.; Pan support height and usable chamber clearance unavailable.; Thread pitch, permissible travel and foot contact geometry unavailable.; Reference models and checkers absent; no runtime or experimental validation.",
+      "name": "analytical balance",
+      "benchmark_directory": "BAL-001_analytical_balance",
+      "input_path": "BAL-001_analytical_balance/input.md",
+      "rubric_path": "BAL-001_analytical_balance/rubric.json"
+    },
+    {
+      "sequence": 54,
+      "benchmark_id": "PHM-001",
+      "category": "J",
+      "asset_class": "ph_meter",
+      "representative_configuration": {
+        "name": "ph meter",
+        "name_en": "ph_meter",
+        "manufacturer": "Thermo Scientific Orion",
+        "model": "Star A211 STARA2114",
+        "configuration": "2016 kit with 8172BNWP glass Sure-Flow electrode, separate 927007MD ATC probe and STARA-BEA meter-mounted arm.",
+        "representation_mode": "One selected real configuration; unresolved physical geometry remains unknown."
+      },
+      "file_path": "PHM-001_ph_meter/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Independent reference model: Independent 8172BNWP and 927007MD geometry, connectors and immersion datums.",
+        "Independent reference model: Independent STARA-BEA kinematic geometry.",
+        "Independent reference model: Benchmark vessels and injected buffer/sample states at 25 C; no certified buffer or model acquired.",
+        "Independent truth for listed critical source gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Bulb, junction and immersion datums of 8172BNWP not dimensioned in acquired source.; Arm reach and pivot limits unknown; 20 degree ISE mounting hole angle is not arm travel.; BNC bayonet and mini-DIN pin/key dimensions not acquired.; No submitted asset, independent reference models or implemented checkers; runtime not run.",
+      "name": "ph meter",
+      "benchmark_directory": "PHM-001_ph_meter",
+      "input_path": "PHM-001_ph_meter/input.md",
+      "rubric_path": "PHM-001_ph_meter/rubric.json"
+    },
+    {
+      "sequence": 55,
+      "benchmark_id": "HEL-001",
+      "category": "K",
+      "asset_class": "horizontal_electrophoresis",
+      "representative_configuration": {
+        "name": "horizontal electrophoresis",
+        "name_en": "horizontal_electrophoresis",
+        "manufacturer": "Bio-Rad",
+        "model": "Mini-Sub Cell GT 170-4406",
+        "configuration": "7 x 7 cm UVTP tray 170-4436, paired casting gates 170-4434 and fixed 8-well 1.5 mm comb 170-4463; no external mini-gel caster or recirculation ports.",
+        "representation_mode": "One selected real configuration; unresolved physical geometry remains unknown."
+      },
+      "file_path": "HEL-001_horizontal_electrophoresis/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Independent reference model: Independent 170-4436 tray,170-4434 gates and170-4463 comb geometry.",
+        "Independent reference model: Independent lid/base connector geometry.",
+        "Independent reference model: Benchmark gel-well and pipette-tip geometry for single-channel access; not a real fluid or separation model.",
+        "Independent truth for listed critical source gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Lid height, mating keys and connector engagement depths unavailable.; Exact tooth pitch, supporting slots and tooth-to-base clearance datum not acquired.; Gate seat and tray edge profiles unavailable; contact alone cannot establish leak-tightness.; PDF text extracted and columns cross-read; direct download blocked and screenshot image not exposed by tool. Critical table visual review remains pending.; No submitted asset, independent reference models or implemented checkers; runtime not run.",
+      "name": "horizontal electrophoresis",
+      "benchmark_directory": "HEL-001_horizontal_electrophoresis",
+      "input_path": "HEL-001_horizontal_electrophoresis/input.md",
+      "rubric_path": "HEL-001_horizontal_electrophoresis/rubric.json"
+    },
+    {
+      "sequence": 56,
+      "benchmark_id": "VEL-001",
+      "category": "K",
+      "asset_class": "vertical_electrophoresis",
+      "representative_configuration": {
+        "name": "vertical electrophoresis",
+        "name_en": "vertical_electrophoresis",
+        "manufacturer": "Bio-Rad",
+        "model": "Mini-PROTEAN Tetra 165-8003",
+        "configuration": "Historical 2011 two-gel 1.0 mm handcast system; running configuration has one electrode assembly, two prepared handcast sandwiches or one sandwich plus buffer dam. Casting stand assessed separately in GEL-001. No companion running module.",
+        "representation_mode": "One selected real configuration; unresolved physical geometry remains unknown."
+      },
+      "file_path": "VEL-001_vertical_electrophoresis/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Independent reference model: Independent1.0 mm handcast sandwich and ten-well loading guide models.",
+        "Independent reference model: Independent electrode assembly, green gaskets, locking-arm and buffer-dam geometry.",
+        "Independent reference model: Independent lid and electrode plug/key reference.",
+        "Independent truth for listed critical source gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Locking-arm guide axes, end stops and required gasket compression unavailable.; Independent lid stops, electrode jack geometry and mating depths not acquired.; Exact ten-well pitch/depth and loading-tip geometry require independent reference.; No submitted asset, independent reference models or implemented checkers; runtime not run.",
+      "name": "vertical electrophoresis",
+      "benchmark_directory": "VEL-001_vertical_electrophoresis",
+      "input_path": "VEL-001_vertical_electrophoresis/input.md",
+      "rubric_path": "VEL-001_vertical_electrophoresis/rubric.json"
+    },
+    {
+      "sequence": 57,
+      "benchmark_id": "GEL-001",
+      "category": "K",
+      "asset_class": "gel_casting",
+      "representative_configuration": {
+        "name": "gel casting",
+        "name_en": "gel_casting",
+        "manufacturer": "Bio-Rad",
+        "model": "Mini-PROTEAN casting stand 165-3303",
+        "configuration": "One two-position stand with two165-3304 casting frames,165-3305 gaskets,165-3308 short plates and165-3311 spacer plates; selected1.0 mm ten-well combs. Passive casting assembly, not an electrophoresis tank.",
+        "representation_mode": "One selected real configuration; unresolved physical geometry remains unknown."
+      },
+      "file_path": "GEL-001_gel_casting/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Independent reference model: Independent stand,frames,cams,lever and gasket geometry.",
+        "Independent reference model: Independent165-3308/165-3311 glass profiles and selected1.0 mm ten-well comb.",
+        "Independent reference model: Independent inert filling nozzle and virtual gel surface fixture; not acrylamide handling or chemistry.",
+        "Independent truth for listed critical source gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Overall stand and frame dimensions not acquired; do not use120x160x180 mm tank dimensions.; Pressure cam pivot, lock angle and compression not dimensioned.; Spring-loaded stand lever pivot, travel and preload unknown.; Selected ten-well comb tooth pitch/depth, ridge and tab profiles require reference.; No submitted asset, independent reference models or implemented checkers; runtime not run.",
+      "name": "gel casting",
+      "benchmark_directory": "GEL-001_gel_casting",
+      "input_path": "GEL-001_gel_casting/input.md",
+      "rubric_path": "GEL-001_gel_casting/rubric.json"
+    },
+    {
+      "sequence": 58,
+      "benchmark_id": "TRA-001",
+      "category": "K",
+      "asset_class": "protein_transfer",
+      "representative_configuration": {
+        "name": "protein transfer",
+        "name_en": "protein_transfer",
+        "manufacturer": "Bio-Rad",
+        "model": "Mini Trans-Blot 170-3930",
+        "configuration": "Historical Rev K tank transfer cell with two170-3931 hinged cassettes, four fiber pads, electrode module,170-3934 cooling unit and lid/cables; standard non-acidic transfer orientation. Not semi-dry or Turbo.",
+        "representation_mode": "One selected real configuration; unresolved physical geometry remains unknown."
+      },
+      "file_path": "TRA-001_protein_transfer/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset and pinned MuJoCo environment",
+        "Independent geometry, contact and state checkers",
+        "Independent reference model: Independent170-3931 cassette and latch models.",
+        "Independent reference model: Independent wet stack layer geometry and compressibility, cut to selected gel outline.",
+        "Independent reference model: Independent170-3934 cooling unit,module,tank marks and connector geometry.",
+        "Independent truth for listed critical source gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Pivot location and opening limit unavailable.; White latch travel, catch engagement and retention force not acquired.; Independent wet pad, paper, gel and membrane thickness/compression unknown.; Cooling block dimensions, slot geometry and blotting mark elevation unavailable.; No submitted asset, independent reference models or implemented checkers; runtime not run.; Exact stir bar SKU/profile not selected; swept-clearance check remains blocked rather than using an invented accessory.",
+      "name": "protein transfer",
+      "benchmark_directory": "TRA-001_protein_transfer",
+      "input_path": "TRA-001_protein_transfer/input.md",
+      "rubric_path": "TRA-001_protein_transfer/rubric.json"
+    },
+    {
+      "sequence": 59,
+      "benchmark_id": "SPO-001",
+      "category": "L",
+      "asset_class": "sampling_spoon",
+      "representative_configuration": {
+        "manufacturer": "Buerkle",
+        "model": "5378-5008 detectable long-handle spoon",
+        "configuration": "Single blue polystyrene spoon, nominal20 mL; individually packed disposable configuration. Detection and sterility are not simulated.",
+        "name": "sampling spoon",
+        "name_en": "sampling_spoon"
+      },
+      "file_path": "SPO-001_sampling_spoon/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset, pinned MuJoCo environment and independent checkers",
+        "B1 benchmark cylindrical source container:80 mm clear opening,200 mm internal depth; receiver100 mm clear opening. Independent model missing.",
+        "Independent spoon reference profile, cavity and handle grip geometry.",
+        "B2 inert5 mm diameter sphere,0.1 g; rigid support probe, not powder or liquid.",
+        "Source truth for critical gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Exact cavity depth, wall thickness and rim profile not published on acquired page.; Handle cross-section and indentation geometry require independent reference.; Reference models/checkers missing; no asset or simulation provided.",
+      "name": "sampling spoon",
+      "benchmark_directory": "SPO-001_sampling_spoon",
+      "input_path": "SPO-001_sampling_spoon/input.md",
+      "rubric_path": "SPO-001_sampling_spoon/rubric.json"
+    },
+    {
+      "sequence": 60,
+      "benchmark_id": "FOR-001",
+      "category": "L",
+      "asset_class": "forceps",
+      "representative_configuration": {
+        "manufacturer": "Fine Science Tools / Dumont",
+        "model": "Dumont #5 11251-20",
+        "configuration": "Straight Standard-tip Inox forceps,110 mm; not Biology tips, Dumoxel or self-closing #5AC.",
+        "name": "forceps",
+        "name_en": "forceps"
+      },
+      "file_path": "FOR-001_forceps/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset, pinned MuJoCo environment and independent checkers",
+        "Independent unloaded and closing11251-20 geometry plus measured compliant response.",
+        "B1 inert flat coupon:1x1x0.1 mm,0.1 mg, friction coefficient0.5; not tissue.",
+        "Independent tip protector geometry, exact SKU not yet selected.",
+        "Source truth for critical gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Unloaded tip gap and safe closure force/displacement curve unavailable.; Independent shank section, joined root and compliant curvature unavailable.; Meeting-face length and tip alignment tolerances not dimensioned.; Reference models/checkers missing; no asset or simulation provided.",
+      "name": "forceps",
+      "benchmark_directory": "FOR-001_forceps",
+      "input_path": "FOR-001_forceps/input.md",
+      "rubric_path": "FOR-001_forceps/rubric.json"
+    },
+    {
+      "sequence": 61,
+      "benchmark_id": "SCI-001",
+      "category": "L",
+      "asset_class": "scissors",
+      "representative_configuration": {
+        "manufacturer": "Fine Science Tools",
+        "model": "Iris scissors14060-09",
+        "configuration": "Straight sharp/sharp90 mm standard Iris scissors with16 mm cutting edge; not ToughCut, spring scissors or curved variants.",
+        "name": "scissors",
+        "name_en": "scissors"
+      },
+      "file_path": "SCI-001_scissors/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset, pinned MuJoCo environment and independent checkers",
+        "Independent14060-09 geometry including pivot, loops, bevels and safe travel.",
+        "B1 virtual non-colliding witness strip:8x2x0.1 mm across blade working zone; not tissue.",
+        "Independent instrument tray and tip protection geometry, exact protector SKU unresolved.",
+        "Source truth for critical gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Pivot location, bearing clearance and physical opening angle limit not published.; Finger-loop dimensions and handle thickness require independent geometry.; Blade thickness, bevel and true shear/contact profile unavailable.; Catalog labels and small tip drawings inspected; full instrument image rendering incomplete, so exact visual comparison remains pending.; Reference models/checkers missing; no asset or simulation provided.",
+      "name": "scissors",
+      "benchmark_directory": "SCI-001_scissors",
+      "input_path": "SCI-001_scissors/input.md",
+      "rubric_path": "SCI-001_scissors/rubric.json"
+    },
+    {
+      "sequence": 62,
+      "benchmark_id": "SCA-001",
+      "category": "L",
+      "asset_class": "scalpel",
+      "representative_configuration": {
+        "manufacturer": "Swann-Morton",
+        "model": "No.3 graduated handle0933 with No.10 stainless blade0301",
+        "configuration": "Reusable graduated stainless No.3 handle and removable sterile stainless No.10 blade. No retractable guard, no integrated disposable scalpel. Inert bench interaction only.",
+        "name": "scalpel",
+        "name_en": "scalpel"
+      },
+      "file_path": "SCA-001_scalpel/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset, pinned MuJoCo environment and independent checkers",
+        "Independent0933/0301 fitment and blade geometry; source drawing not acquired.",
+        "Independent compatible mounting forceps geometry; grip on blade non-edge region.",
+        "Independent5502 single-use remover and sharps-container geometry.",
+        "B1 inert non-colliding witness plane:30x30 mm with10 mm target line; not tissue.",
+        "Source truth for critical gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "No primary-source dimension for0933 acquired. Distributor120 mm not promoted to verified manufacturer truth.; No dimensioned0301 profile, thickness or cutting-edge radius acquired.; Fitment slot geometry and mounting displacement unknown; cited ISO7740 text not acquired and no standard compliance claim made.; Combined mounted length is unknown; must not add separate nominal lengths without overlap datum.; Reference models/checkers missing; no asset or simulation provided.",
+      "name": "scalpel",
+      "benchmark_directory": "SCA-001_scalpel",
+      "input_path": "SCA-001_scalpel/input.md",
+      "rubric_path": "SCA-001_scalpel/rubric.json"
+    },
+    {
+      "sequence": 63,
+      "benchmark_id": "SCR-001",
+      "category": "L",
+      "asset_class": "cell_scraper",
+      "representative_configuration": {
+        "manufacturer": "Corning",
+        "model": "Falcon 353085",
+        "configuration": "Sterile scraper: 180 mm polystyrene handle, 18 mm TPE blade. Not Corning 3010 or Falcon 353089.",
+        "name": "cell scraper",
+        "name_en": "cell_scraper"
+      },
+      "file_path": "SCR-001_cell_scraper/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset, pinned MuJoCo environment and independent checkers",
+        "Independent scraper geometry and calibrated flexure; missing.",
+        "Independent compatible Falcon T25 neck/interior geometry; SKU pending.",
+        "B witness grid: 5 mm cells on verified growth surface; not cells or fluid.",
+        "Source truth for critical gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Thickness, edge profile and elasticity not specified.; Assembled length unknown; do not sum component lengths.; Connection geometry, unloaded orientation and safe travel unspecified.; Specific compatible Falcon T25 SKU and independent neck/interior model not acquired.; Reference models/checkers missing; no asset or simulation provided.; PDF body read; direct download denied. Figures and force graph not visually verified.",
+      "name": "cell scraper",
+      "benchmark_directory": "SCR-001_cell_scraper",
+      "input_path": "SCR-001_cell_scraper/input.md",
+      "rubric_path": "SCR-001_cell_scraper/rubric.json"
+    },
+    {
+      "sequence": 64,
+      "benchmark_id": "MOR-001",
+      "category": "L",
+      "asset_class": "mortar_pestle",
+      "representative_configuration": {
+        "manufacturer": "CoorsTek",
+        "model": "60310 mortar with 60311 porcelain pestle",
+        "configuration": "Historical 2017 catalog 01097 H configuration: nominal 50 mL mortar and all-porcelain pestle. Not newer 66310/66311 or wooden-handle variant.",
+        "name": "mortar pestle",
+        "name_en": "mortar_pestle"
+      },
+      "file_path": "MOR-001_mortar_pestle/rubric.json",
+      "specification_status": "needs_review",
+      "source_verification_status": "partial",
+      "static_validation_status": "passed",
+      "runtime_dependencies": [
+        "Submitted asset, pinned MuJoCo environment and independent checkers",
+        "Independent 60310 cavity, lip and base model; missing.",
+        "Independent 60311 head profile and inertial/contact measurements; missing.",
+        "B level bench and external mortar support at rim-exterior; support geometry must not enter cavity.",
+        "B inert non-colliding witness track mapped onto independently measured cavity; no powder model.",
+        "Source truth for critical gaps"
+      ],
+      "simulation_validation_status": "not_run",
+      "next_action": "Inner depth, curvature, wall thickness and pouring-lip geometry not dimensioned.; Head diameter and contact curvature not dimensioned.; Base footprint and surface flatness unknown.; Mass, friction, roughness, compliance and failure loads not supplied; no inferred porcelain fracture model.; Reference models/checkers missing; no asset or simulation provided.; Page 10 glazing prose is editorially ambiguous; do not infer an exact glaze boundary from it. Independent close-up or material drawing needed.",
+      "name": "mortar pestle",
+      "benchmark_directory": "MOR-001_mortar_pestle",
+      "input_path": "MOR-001_mortar_pestle/input.md",
+      "rubric_path": "MOR-001_mortar_pestle/rubric.json"
+    }
+  ],
+  "language": "en",
+  "session_progress": {
+    "remaining_unwritten": 0,
+    "next_item": "BEA-001",
+    "next_phase": "Resolve per-asset critical source gaps and finish semantic review; no additional asset classes remain unwritten.",
+    "benchmark_folders_saved": 64,
+    "input_markdown_files_saved": 64,
+    "rubric_json_files_saved": 64
+  },
+  "field_conventions": {
+    "language": "All delivered JSON contents are English; original user files are preserved.",
+    "critical": "Only required_components entries use this flag; T-STRUCT hard gates determine consequences.",
+    "source_completeness": "Unknown required dimensions use required_for_spec_completion and known_gaps.blocks_specification_completion.",
+    "runtime_dependencies": "Missing models/checkers prevent runtime certification but do not mean the submitted asset failed.",
+    "name_field": "Use name instead of the prompt's name_zh because the user explicitly requested English-only file contents.",
+    "target_paths": "Root-based dot paths; array elements use numeric path segments."
+  },
+  "batch_completion": {
+    "authoring_status": "all_64_benchmark_folders_saved",
+    "specification_validation_status": "needs_review",
+    "source_verification_status": "partial",
+    "static_validation_status": "passed",
+    "simulation_validation_status": "not_run",
+    "completed_asset_classes": 64,
+    "fully_validated_specifications": 0,
+    "blocking_gap_entries": 150,
+    "note": "All 64 cases use one directory containing input.md and rubric.json. Two source-enrichment passes resolved or normalized public manufacturer dimensions in DWP-001, ORB-001, MST-001, CCP-001, CEN-001, THM-001, CTU-001 and MWP-001; unresolved parameters and runtime blockers remain explicit."
+  },
+  "batch_review": {
+    "status": "partial",
+    "checked_at": "2026-09-09",
+    "checks_executed": [
+      "Strict JSON parsing of all 64 rubric.json files",
+      "English-only content in all 64 input.md and rubric.json pairs",
+      "Exactly one input.md and one rubric.json per benchmark directory",
+      "No rubric dependency on paths into input.md",
+      "Concrete embedded targets, requirements and source records in every rubric check",
+      "Exactly 100 points with declared category totals matching check allocations",
+      "Resolvable rubric-internal check and hard-gate identifiers",
+      "Preserved unknown values and blocked-dependency behavior",
+      "Catalog directory and file path consistency",
+      "Unchanged original centrifuge reference file"
+    ],
+    "limitations": [
+      "This was a format conversion only; source verification remains partial.",
+      "No live 3D asset, pinned reference geometry or runtime checker was executed.",
+      "No benchmark may be promoted to spec_validated while a blocking specification gap remains."
+    ],
+    "online_parameter_research": {
+      "date": "2026-09-09",
+      "status": "in_progress",
+      "completed_assets": [
+        "DWP-001",
+        "ORB-001",
+        "MST-001",
+        "CCP-001",
+        "CEN-001",
+        "THM-001",
+        "CTU-001",
+        "MWP-001"
+      ],
+      "resolved_parameters": [
+        "DIM-LENGTH",
+        "DIM-ORBIT_RADIUS",
+        "DIM-BAR_DIAMETER",
+        "DIM-PLATE_LENGTH",
+        "DIM-PLATE_WIDTH",
+        "DIM-PLATE_HEIGHT",
+        "DIM-WELL_DEPTH",
+        "DIM-WELL_TOP_DIAMETER",
+        "DIM-WELL_CENTER_SPACING",
+        "DIM-OH",
+        "DIM-ORBIT_GEOMETRY",
+        "DIM-L",
+        "MWP-001 scalar geometry scoring normalization"
+      ],
+      "note": "Only parameters supported by inspected manufacturer material were populated. Stale composite unknowns were replaced with narrower U-class requirements where manufacturer scalar geometry was already verified."
+    }
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "format": "amx-rubric",
+  "case_id": "MOR-001",
+  "asset_class": "mortar_pestle",
+  "source_sha": "c8f69dc8c397cbf7",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Porcelain mortar body with pouring lip and open grinding cavity",
+      "weight": 3.0,
+      "params": {
+        "part": "Porcelain mortar body with pouring lip and open grinding cavity"
+      }
+    },
+    {
+      "id": "PART-CMP-1",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Independent porcelain pestle with handle and grinding head",
+      "weight": 3.0,
+      "params": {
+        "part": "Independent porcelain pestle with handle and grinding head"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "DIM-DIM-MORTAR_TOP_OUTSIDE_DIAMETER",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "mortar_top_outside_diameter",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Porcelain mortar body with pouring lip and open grinding cavity",
+        "dimension_id": "DIM-MORTAR_TOP_OUTSIDE_DIAMETER",
+        "value_m": 0.07,
+        "kind": "diameter_outer",
+        "height_fraction": 0.85
+      },
+      "note": "Top outside diameter of mortar, not cavity bore"
+    },
+    {
+      "id": "DIM-DIM-MORTAR_HEIGHT",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "mortar_height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Porcelain mortar body with pouring lip and open grinding cavity",
+        "dimension_id": "DIM-MORTAR_HEIGHT",
+        "value_m": 0.047,
+        "height_fraction": 0.15
+      },
+      "note": "Mortar bottom to rim"
+    },
+    {
+      "id": "DIM-DIM-PESTLE_LENGTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "pestle_length",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Independent porcelain pestle with handle and grinding head",
+        "dimension_id": "DIM-PESTLE_LENGTH",
+        "value_m": 0.114,
+        "kind": "extent_max"
+      },
+      "note": "Pestle axial overall length"
+    },
+    {
+      "id": "PROP-DIM-NOMINAL_CAPACITY",
+      "axis": "parts",
+      "primitive": "property_assert",
+      "subject": "nominal_capacity",
+      "params": {
+        "quantity": "nominal_capacity",
+        "quantity_class": "volume",
+        "value": 50.0,
+        "unit": "mL"
+      }
+    },
+    {
+      "id": "NA-DIM-CAVITY_PROFILE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "cavity_profile",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-PESTLE_HEAD",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "pestle_head",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-BASE_CONTACT",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "base_contact",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-MATERIAL_CONTACT",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "material_contact",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Open porcelain mortar with lip and separate all-porcelain pestle",
+      "params": {
+        "feature": "Open porcelain mortar with lip and separate all-porcelain pestle"
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Top table 60310/60311 geometry rather than wooden-handle version",
+      "params": {
+        "feature": "Top table 60310/60311 geometry rather than wooden-handle version"
+      }
+    },
+    {
+      "id": "VIS-02",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Unglazed grinding contact appearance requires close reference confirmation",
+      "params": {
+        "feature": "Unglazed grinding contact appearance requires close reference confirmation"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+.venv/
+.env
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+MUJOCO_LOG.TXT
+
+# Everything the pipeline writes. Rounds are reproducible from the design.json they
+# contain, so the artefacts are outputs and not sources -- and a single case bundle
+# carries a 35 MB compiled model.
+runs/
+build/
+# Anchored: only the top-level output directory. An unanchored `assets/` also swallows
+# hand-written source, such as the example's Articraft model.
+/assets/
+
+# Extracted from the robosuite wheel by scripts/vendor_robots.py, which setup.sh runs.
+vendor/robots/

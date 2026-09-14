@@ -1,0 +1,494 @@
+# reagent bottle benchmark Input Specification
+
+- `benchmark_id`: BOT-001
+- `asset_class`: reagent_bottle
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: reagent bottle
+- `name_en`: reagent_bottle
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: DWK Life Sciences
+- `model`: DURAN Original 218013651
+- `nominal_capacity_ml`: `250`
+- `accessories`:
+  - Blue PP GL45 screw cap
+  - PP pouring ring
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `outer_diameter`:
+  - `id`: DIM-OD
+  - `value`: `70`
+  - `unit`: mm
+  - `measurement_object`: Bottle
+  - `measurement_location`: Outside cylindrical body
+  - `measurement_state`: Upright
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `closed_height`:
+  - `id`: DIM-H
+  - `value`: `143`
+  - `unit`: mm
+  - `measurement_object`: Bottle assembly
+  - `measurement_location`: Base to top of blue cap
+  - `measurement_state`: Cap installed
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `bare_height`:
+  - `id`: DIM-BARE
+  - `value`: `138`
+  - `unit`: mm
+  - `measurement_object`: Bare bottle
+  - `measurement_location`: Base to bare neck top
+  - `measurement_state`: Cap and pouring ring absent
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-02
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `mouth_inner_diameter`:
+  - `id`: DIM-ID
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Neck
+  - `measurement_location`: Clear opening, not GL designation
+  - `measurement_state`: Cap removed
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: GL45 designation does not specify usable bore.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `thread_pitch`:
+  - `id`: DIM-PITCH
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: GL45 thread
+  - `measurement_location`: Axial pitch
+  - `measurement_state`: Unassembled
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Actual thread drawing not obtained.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-BODY`**
+  - `id`: CMP-BODY
+  - `name`: Bottle body and base
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-CAVITY`**
+  - `id`: CMP-CAVITY
+  - `name`: Neck-connected internal cavity
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-CAP`**
+  - `id`: CMP-CAP
+  - `name`: Blue PP screw cap
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-RING`**
+  - `id`: CMP-RING
+  - `name`: PP pouring ring
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-CAP`**
+  - `id`: IF-CAP
+  - `description`: Only the matching blue PP GL45 closure and pouring ring are in scope. Cap approaches neck along -Z and seals at its lip; thread geometry requires independent reference.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `thread_designation`: GL45
+  - `actual_bore_mm`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `mate`: REF-CAP
+  - `support_location`: Neck thread and sealing lip
+  - `access_clearance`:
+    - `source_class`: B
+    - `axial_mm`: `50`
+    - `radial_mm`: `20`
+
+## Reference Consumables
+
+- **Item 1 — `REF-CAP`**
+  - `id`: REF-CAP
+  - `configuration`: Cap and pouring ring included with DURAN 218013651, per catalog page 11.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-01`**
+    - `parent`: body
+    - `child`: cap
+    - `type`: benchmark_rotational_release_then_free_body
+    - `coordinate_frame`: Neck frame; +Z out of bottle
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `zero`: Closed cap
+    - `range`:
+      - `source_class`: B
+      - `min`: `0`
+      - `max`: `360`
+      - `unit`: deg
+      - `reason`: One-revolution interaction surrogate only, not the true opening angle or thread lead.
+    - `physical_thread_pitch_mm`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `locking_conditions`: Proxy locks only when cap is centered at its seat and reverse rotation is complete.
+    - `limits`: After rotational release, allow cap lift along +Z; no claim of true helical contact.
+    - `id`: J-01
+
+## Functional Requirements
+
+- **Item 1 — `FUN-CAP`**
+  - `id`: FUN-CAP
+  - `description`: Cap supports distinct closed, released and removed states; unremoved cap blocks mouth access. Proxy release must be observable from cap motion.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FUN-CAVITY`**
+  - `id`: FUN-CAVITY
+  - `description`: Bare bottle brim-volume target 310 mL; nominal capacity 250 mL is a different quantity.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `nominal_capacity_ml`: `250`
+  - `working_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `brim_capacity_ml`: `310`
+  - `unknown_reason`: No protocol-specific working fill selected.
+- **Item 3 — `FUN-SEAT`**
+  - `id`: FUN-SEAT
+  - `description`: With the matching reference cap, installed pose centers on the neck, covers the opening, and remains attached under a 180 degree inversion; this is retention, not a leak test.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Open, access and reclose for reagent storage.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `object`: Bottle and cap
+  - `preconditions`:
+    - Empty bottle fixed upright
+    - Matching cap installed
+  - `action`: Turn proxy release 360 degrees at 30 deg/s; lift 30 mm at 10 mm/s; approach neck; replace cap and reverse rotation.
+  - `expected_postconditions`:
+    - Mouth accessible while removed
+    - Cap seated and closed at end
+  - `parameters`:
+    - `repetitions`: `3`
+    - `timeout_s`: `45`
+  - `forbidden_states`:
+    - Inserting objects through a closed cap
+    - Interpreting retained cap as verified leak-tightness
+  - `source_note`: Storage and pouring use from page 11; exact test motion is B.
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - SRC-01
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: Storage and pouring use from page 11; exact test motion is B.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Turn proxy release 360 degrees at 30 deg/s; lift 30 mm at 10 mm/s; approach neck; replace cap and reverse rotation.
+    - `parameters`:
+      - `repetitions`: `3`
+      - `timeout_s`: `45`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: DURAN Laboratory Glassware Catalog
+  - `publisher`: DWK Life Sciences
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Printed page 11: 218013651 with cap and ring; 218013602 without cap and ring; drawing.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-OD
+    - DIM-H
+    - DIM-BARE
+    - CMP-BODY
+    - CMP-CAVITY
+    - CMP-CAP
+    - CMP-RING
+    - IF-CAP
+    - REF-CAP
+    - PRO-01
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: DURAN Original GL45 bottle 250 mL without cap, 218013602
+  - `publisher`: DWK Life Sciences
+  - `url`: https://www.dwk.com/na/duran-original-gl-45-laboratory-bottle-clear-without-screw-cap-and-pouring-ring-250-ml-218013602?nonitro=&print=yes&s=MjAxNjk%3D
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Specifications: diameter 70 mm, bare height 138 mm, brim capacity 310 mL; same bare bottle, cap excluded.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-BARE
+    - FUN-CAVITY
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-CAP (Cap and pouring ring included with DURAN 218013651, per catalog page 11.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VOLUME`:
+    - `source_class`: B
+    - `condition`: 294.5<=V<=325.5 mL and convergence difference<=1%. Tolerance is B ±5%.
+    - `target_path`: input.functional_requirements.1.brim_capacity_ml
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-CAP-MOTION`:
+    - `source_class`: B
+    - `condition`: 360±2 degrees and 30±1 mm reached; reverse cycle closes; no unintended penetration>0.2 mm.
+    - `target_path`: input.articulation_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-SEAT`:
+    - `source_class`: B
+    - `condition`: Center error<=0.5 mm; cap separation<=0.5 mm; closed cap occludes mouth; no unintended overlap>0.2 mm.
+    - `target_path`: input.interfaces.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Printed page 11 bottle drawing and photograph.
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Bottle shoulder and narrow threaded neck
+  - Blue cap
+  - Pouring ring
+  - Graduations and labeling area
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

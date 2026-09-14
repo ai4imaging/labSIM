@@ -1,0 +1,458 @@
+# graduated cylinder benchmark Input Specification
+
+- `benchmark_id`: CYL-001
+- `asset_class`: graduated_cylinder
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: graduated cylinder
+- `name_en`: graduated_cylinder
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: DWK Life Sciences
+- `model`: DURAN213962408
+- `configuration`: Tall100mL ClassB measuring cylinder,hexagonal base,white1mL scale
+- `nominal_capacity_ml`: `100`
+- `accessories`:
+  - *(none)*
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `cylinder_outer_diameter`:
+  - `id`: DIM-D
+  - `value`: `29`
+  - `unit`: mm
+  - `measurement_object`: Cylinder
+  - `measurement_location`: Outer tube diameter d; excludes base
+  - `measurement_state`: Upright empty
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-H
+  - `value`: `256`
+  - `unit`: mm
+  - `measurement_object`: Cylinder
+  - `measurement_location`: Base to mouth h
+  - `measurement_state`: Upright empty
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `base_span`:
+  - `id`: DIM-BASE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Hexagonal base
+  - `measurement_location`: Across opposite corners
+  - `measurement_state`: Upright
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Base extent not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `inner_diameter`:
+  - `id`: DIM-ID
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Cylinder cavity
+  - `measurement_location`: Bore along graduated region
+  - `measurement_state`: Empty
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Only outer diameter provided.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-TUBE`**
+  - `id`: CMP-TUBE
+  - `name`: Tall cylindrical wall
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-BASE`**
+  - `id`: CMP-BASE
+  - `name`: Hexagonal base
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-TUBE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-KNOBS`**
+  - `id`: CMP-KNOBS
+  - `name`: Three base support knobs
+  - `quantity`: `3`
+  - `kind`: fixed
+  - `parent`: CMP-BASE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-CAV`**
+  - `id`: CMP-CAV
+  - `name`: Open bore with closed bottom
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-TUBE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-SCALE`**
+  - `id`: CMP-SCALE
+  - `name`: White graduated scale
+  - `quantity`: `1`
+  - `kind`: visual
+  - `parent`: CMP-TUBE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-MOUTH`**
+  - `id`: IF-MOUTH
+  - `description`: Open-mouth access along-Z; table supports base knobs, not cylinder sidewall. No fitted cap in selected configuration.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `mate`: REF-PROBE
+  - `clearance_mm`: `30`
+
+## Reference Consumables
+
+- **Item 1 — `REF-PROBE`**
+  - `id`: REF-PROBE
+  - `configuration`: Rigid cylindrical access probe: diameter2mm,length30mm; B geometry.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `false`
+- `reason`: No internal moving mechanism. Free placement in the world is not an internal joint.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - *(none)*
+
+## Functional Requirements
+
+- **Item 1 — `FUN-SCALE`**
+  - `id`: FUN-SCALE
+  - `description`: Scale increment1mL, nominal100mL, manufacturerClassB accuracy±1mL at20C, calibration In. Actual meniscus and liquid accuracy excluded.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `nominal_capacity_ml`: `100`
+  - `working_capacity_ml`: `100`
+  - `brim_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unknown_reason`: Brim capacity unknown; working capacity refers only to nominal graduated range.
+  - `graduation_ml`: `1`
+  - `manufacturer_accuracy_ml`: `1`
+  - `reference_temperature_c`: `20`
+  - `geometric_test_marks_ml`:
+    - `25`
+    - `50`
+    - `100`
+  - `geometric_tolerance_ml`:
+    - `value`: `2`
+    - `source_class`: B
+- **Item 2 — `FUN-STABLE`**
+  - `id`: FUN-STABLE
+  - `description`: The hexagonal base permits stable upright placement and resists rolling when lying on one base facet.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `FUN-ACCESS`**
+  - `id`: FUN-ACCESS
+  - `description`: An unobstructed mouth and connected bore admit the standard access probe20mm below rim.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Graduated-volume reading posture.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `object`: Cylinder,base,graduation marks
+  - `preconditions`:
+    - Cylinder upright on level plane
+    - Scale faces observer
+  - `action`: Access mouth with probe; align horizontal reference planes at25,50,100mL marks; inspect from eye-level front camera; return empty cylinder to bench.
+  - `expected_postconditions`:
+    - Marks are readable without hiding behind base
+    - Cylinder upright and accessible
+  - `parameters`:
+    - `probe_insertion_mm`: `20`
+    - `speed_mm_s`: `10`
+    - `repetitions`: `3`
+    - `timeout_s`: `30`
+  - `forbidden_states`:
+    - Calling geometric planes measured liquid menisci
+    - Treating classB as classA
+  - `source_note`: Holding/measuring use and In20C calibration documentedp95; reference-plane observations are B.
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - SRC-01
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: Holding/measuring use and In20C calibration documentedp95; reference-plane observations are B.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Access mouth with probe; align horizontal reference planes at25,50,100mL marks; inspect from eye-level front camera; return empty cylinder to bench.
+    - `parameters`:
+      - `probe_insertion_mm`: `20`
+      - `speed_mm_s`: `10`
+      - `repetitions`: `3`
+      - `timeout_s`: `30`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: DURAN Laboratory Glassware Catalog
+  - `publisher`: DWK Life Sciences
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: p95 upper tall-cylinder table213962408 row, calibration paragraph and drawing.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-D
+    - DIM-H
+    - CMP-TUBE
+    - CMP-BASE
+    - CMP-KNOBS
+    - CMP-CAV
+    - CMP-SCALE
+    - IF-MOUTH
+    - FUN-SCALE
+    - FUN-STABLE
+    - PRO-01
+    - REQ-VIS
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-PROBE (Rigid cylindrical access probe: diameter2mm,length30mm; B geometry.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-ACCESS`:
+    - `source_class`: B
+    - `condition`: Connected bore with closed bottom; probe passes without unintended overlap>0.2mm.
+    - `target_path`: input.interfaces.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-GRAD`:
+    - `source_class`: B
+    - `condition`: All three volumes within±2mL(B); adjacent marks correctly increment1mL; In20C/ClassB±1mL metadata distinct from proxy result.
+    - `target_path`: input.functional_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STABLE`:
+    - `source_class`: B
+    - `condition`: Upright tilt<=2deg and translation<=1mm; horizontal placement roll<=2deg; intended support contact maintained.
+    - `target_path`: input.functional_requirements.1
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: p95 upper tall-cylinder illustration.
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Tall narrow body
+  - Hexagonal base
+  - White scale
+  - Open pouring lip
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

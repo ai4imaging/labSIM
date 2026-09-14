@@ -1,0 +1,728 @@
+# microplate centrifuge benchmark Input Specification
+
+- `benchmark_id`: MPC-001
+- `asset_class`: microplate_centrifuge
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: microplate centrifuge
+- `name_en`: microplate_centrifuge
+- `representation_mode`: Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.
+- `manufacturer`: Labnet / Corning
+- `model`: MPS 1000 C1000
+- `configuration`: 120 V mini plate spinner, two vertically loaded sealed 96-well PCR plates; no tube-strip adapter.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-WIDTH
+  - `value`: `190`
+  - `unit`: mm
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: Brochure W
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `depth`:
+  - `id`: DIM-DEPTH
+  - `value`: `210`
+  - `unit`: mm
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: Brochure D
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `closed_height`:
+  - `id`: DIM-CLOSED_HEIGHT
+  - `value`: `183`
+  - `unit`: mm
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: Brochure H; no open height supplied
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `plate_capacity`:
+  - `id`: DIM-PLATE_CAPACITY
+  - `value`: `2`
+  - `unit`: count
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: Opposed vertical plate slots
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `rated_speed`:
+  - `id`: DIM-RATED_SPEED
+  - `value`: `2500`
+  - `unit`: rpm
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: Published fixed run speed
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `rated_rcf`:
+  - `id`: DIM-RATED_RCF
+  - `value`: `500`
+  - `unit`: x_g
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: Published maximum RCF, not a geometry radius
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `plate_slot_profile`:
+  - `id`: DIM-PLATE_SLOT_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: plate_slot_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Slot width/depth, plate support datum and rotor swept envelope unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `lid_travel`:
+  - `id`: DIM-LID_TRAVEL
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: lid_travel
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Cover pivot, opening angle and Open-button travel unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `plate_selection`:
+  - `id`: DIM-PLATE_SELECTION
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: plate_selection
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Exact sealed plate SKU and closure envelope not yet verified with the selected rotor; generic 96-well label alone is insufficient.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `release_logic`:
+  - `id`: DIM-RELEASE_LOGIC
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: MPS 1000 C1000
+  - `measurement_location`: release_logic
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Manual says press Open to stop and fully open only after rotor stops; timing of physical lock release is not specified.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Housing
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Clear cover
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Two-slot rotor
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Top rotor-indexing knob
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: Open/stop button
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Opposed plate slots
+  - `quantity`: `2`
+  - `kind`: cavity
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-6`**
+  - `id`: CMP-6
+  - `name`: Rear power switch and inlet
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Load plates vertically through the top opening, sealing face inward and well bottoms outward; plate must reach slot bottom.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Index rotor using top knob to access each slot, only while fully stopped.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: Counterbalance with same brand/type and sample volumes; one sample plate still requires a matching dummy plate.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Two identical sealed 96-well PCR plates; exact commercial SKU, closure and independent geometry unresolved.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: Selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-1
+    - `type`: revolute
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Rear cover hinge, location unknown
+    - `zero`: Closed
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: deg
+    - `range_source_class`: B
+    - `limits`: Finite true opening travel unknown.
+    - `locking_conditions`: Open button requests stop; full access procedurally forbidden before zero speed. No automatic full-open mechanism asserted.
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+  - **Item 2 — `J-1`**
+    - `id`: J-1
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-2
+    - `type`: continuous_revolute
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Vertical rotor axis under indexing knob
+    - `zero`: First slot aligned to loading aperture
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: deg
+    - `range_source_class`: B
+    - `limits`: Continuous rotation; manual indexing at rest only.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Expose two sequentially indexed loading slots, not a horizontal plate tray.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Closing the lid starts the run; Open requests stop.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Keep plate balance/procedure validity distinct from unverified automatic imbalance detection.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Load both vertical slots.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `preconditions`: Power available, rotor stopped, cover open.
+  - `action`: Index first slot, insert sealed plate fully facing inward; index and load matched second plate.
+  - `expected_postcondition`: Both slots filled symmetrically.
+  - `forbidden_states`:
+    - Unsealed plate
+    - Outward-facing seal
+    - Single unbalanced plate
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Load both vertical slots.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Index first slot, insert sealed plate fully facing inward; index and load matched second plate.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Short run and unload.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `preconditions`: Both matched plates seated.
+  - `action`: Close cover; run 15-20 s; press Open; wait for rotor stop before fully opening and indexing for removal.
+  - `expected_postcondition`: Stopped rotor accessible for removal.
+  - `forbidden_states`:
+    - Hands in moving rotor
+    - Manual indexing while running
+    - Continuous-duty use
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Short run and unload.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Close cover; run 15-20 s; press Open; wait for rotor stop before fully opening and indexing for removal.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: MPS 1000 manufacturer brochure
+  - `publisher`: Labnet / Corning
+  - `url`: https://axon-labortechnik.de/pdf/620-LABNET%20MPS%201000.PDF
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Single-page manufacturer brochure: W x D x H table and loading photograph rendered and inspected; publication date not printed.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-WIDTH
+    - DIM-DEPTH
+    - DIM-CLOSED_HEIGHT
+    - DIM-PLATE_CAPACITY
+    - DIM-RATED_SPEED
+    - DIM-RATED_RCF
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - CMP-6
+    - REF-0
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: MPS 1000 Instruction Manual
+  - `publisher`: Labnet / Corning
+  - `url`: https://device.report/m/07c72d452bf841a50d197558901df7c5fbf2d4aa96356196d6f48e7d20f117b6_optim.pdf
+  - `version_or_publication_date`: 12/22 CLSLN-AN-1017DOC REV1
+  - `locator`: Printed pages 1-2 specifications, safety and operation steps 1-6. Full six-page text read via web; local PDF retrieval blocked.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - IF-0
+    - IF-1
+    - IF-2
+    - PRO-0
+    - PRO-1
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real heat transfer, fluid flow and experimental efficacy
+  - Requirement extraction from raw sources
+  - Actual liquid spin-down and aerosol containment
+  - Tube-strip adapter operation
+  - Unverified automatic imbalance protection
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry/contact/state checkers and assigned visual reviewer
+  - Independent reference model: Two identical sealed 96-well PCR plates; exact commercial SKU, closure and independent geometry unresolved.
+  - Independent source truth for critical geometry gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `source_class`: B
+  - `run_duration_s`: `15`
+  - `balance_mass_tolerance_g`: `0.1`
+  - `event_latency_s`: `1`
+  - `manual_speed_tolerance`:
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-02
+    - `relative`: `0.1`
+    - `note`: 2500 rpm +/-10% is published; no actual motor test has been run.
+  - `T-CASE-0`:
+    - `initial`: Stopped rotor, open cover, two sealed independent plates above aperture.
+    - `action`: Index first slot at 30 deg/s, lower first plate at 10 mm/s; repeat second; reverse sequence for removal.
+    - `observable`: Rotor phase, plate orientation, support datum and aperture clearance.
+    - `pass_condition`: Both plates fully seat within 1 mm of independently measured datum with seals inward, no unintended penetration >0.2 mm and no forced access through housing; both recoverable. Unknown slot geometry blocks scoring.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-1`:
+    - `initial`: Valid load and closed-cover sensor false; motor stopped.
+    - `action`: Close cover, run 15 s, press Open; inject stopped state after controlled deceleration, then open fully.
+    - `observable`: Motor command, speed trace and access event order.
+    - `pass_condition`: Closure starts drive and Open stops drive within 1 s each; steady speed in 2250-2750 rpm once stabilized; no full-access action before stopped event. Missing actual dynamics blocks speed verification, not silently replaced by commanded speed.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-2`:
+    - `initial`: Independent procedure checker, matching plate types and mass metadata.
+    - `action`: Evaluate valid matched pair, missing second plate, different plate type, and 1 g imbalance; try a 60 s continuous-duty request.
+    - `observable`: Procedure acceptance and duration metadata.
+    - `pass_condition`: Valid identical matched pair within 0.1 g accepted; all negative cases flagged invalid, including 60 s duration. This is a B workflow checker, not evidence of an automatic 20 s cutoff or imbalance sensor.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Both plates fully seat within 1 mm of independently measured datum with seals inward, no unintended penetration >0.2 mm and no forced access through housing; both recoverable. Unknown slot geometry blocks scoring.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Closure starts drive and Open stops drive within 1 s each; steady speed in 2250-2750 rpm once stabilized; no full-access action before stopped event. Missing actual dynamics blocks speed verification, not silently replaced by commanded speed.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Valid identical matched pair within 0.1 g accepted; all negative cases flagged invalid, including 60 s duration. This is a B workflow checker, not evidence of an automatic 20 s cutoff or imbalance sensor.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Single-page manufacturer brochure: W x D x H table and loading photograph rendered and inspected; publication date not printed.
+  - `url`: https://axon-labortechnik.de/pdf/620-LABNET%20MPS%201000.PDF
+  - `verification_status`: Manufacturer brochure rendered and visually inspected; 2022 manual diagrams not independently rendered.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Top indexing knob and narrow vertical plate loading opening
+  - Clear hinged cover and front Open button
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

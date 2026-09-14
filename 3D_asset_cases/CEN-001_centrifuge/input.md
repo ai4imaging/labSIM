@@ -1,0 +1,793 @@
+# centrifuge benchmark Input Specification
+
+- `benchmark_id`: CEN-001
+- `asset_class`: centrifuge
+- `specification_version`: 1.2.1
+- `language`: en
+
+> This Markdown file contains the complete current input specification. Newly resolved values retain explicit provenance; unresolved values and measurement plans remain explicit.
+
+## Asset Identity
+
+- `name`: centrifuge
+- `name_en`: centrifuge
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: Eppendorf
+- `model`: Centrifuge5425
+- `variant`: Non-refrigerated
+- `rotor`: FA-24x2
+- `accessories`:
+  - Matching QuickLock rotor lid
+  - Safe-Lock1.5mL tubes
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-W
+  - `value`: `240`
+  - `unit`: mm
+  - `measurement_object`: Centrifuge
+  - `measurement_location`: Overall width
+  - `measurement_state`: Closed upright
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `depth`:
+  - `id`: DIM-D
+  - `value`: `390`
+  - `unit`: mm
+  - `measurement_object`: Centrifuge
+  - `measurement_location`: Overall depth
+  - `measurement_state`: Closed upright
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `closed_height`:
+  - `id`: DIM-H
+  - `value`: `240`
+  - `unit`: mm
+  - `measurement_object`: Centrifuge
+  - `measurement_location`: Bench to top
+  - `measurement_state`: Closed upright
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `open_height`:
+  - `id`: DIM-OH
+  - `value`: `480`
+  - `unit`: mm
+  - `measurement_object`: Centrifuge 5425 non-refrigerated
+  - `measurement_location`: Support plane to the highest point of the main lid in its fully open state
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-03
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `bore_center_radius`:
+  - `id`: DIM-BR
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Rotor
+  - `measurement_location`: Axis to bore-mouth center
+  - `measurement_state`: Stopped
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: 8.4cm is the RCF conversion radius, not a bore-mouth radius.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `bore_angle`:
+  - `id`: DIM-BA
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: deg
+  - `measurement_object`: Bore
+  - `measurement_location`: Inclination to rotation axis
+  - `measurement_state`: Stopped
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Fixed-angle identified but inclination not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the defined endpoints on three physical units with three repetitions per unit in the stated coordinate frame.
+    - `instrument`: Calibrated digital angle gauge or optical coordinate measurement system
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `bore_diameter`:
+  - `id`: DIM-BD
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Bore
+  - `measurement_location`: Clear opening
+  - `measurement_state`: Stopped
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: 11mm describes compatible tube diameter, not bore diameter.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-BODY`**
+  - `id`: CMP-BODY
+  - `name`: Main body
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-LID`**
+  - `id`: CMP-LID
+  - `name`: External lid
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-CHAMBER`**
+  - `id`: CMP-CHAMBER
+  - `name`: Recessed chamber
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-ROTOR`**
+  - `id`: CMP-ROTOR
+  - `name`: FA-24x2 rotor
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-SHAFT
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-SHAFT`**
+  - `id`: CMP-SHAFT
+  - `name`: Hub and shaft
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-RLID`**
+  - `id`: CMP-RLID
+  - `name`: QuickLock rotor lid
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-ROTOR
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-BORES`**
+  - `id`: CMP-BORES
+  - `name`: Sample bores
+  - `quantity`: `24`
+  - `kind`: cavity
+  - `parent`: CMP-ROTOR
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 8 — `CMP-PANEL`**
+  - `id`: CMP-PANEL
+  - `name`: Control panel
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 9 — `CMP-OPEN`**
+  - `id`: CMP-OPEN
+  - `name`: OPEN control
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 10 — `CMP-START`**
+  - `id`: CMP-START
+  - `name`: START_STOP control
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 11 — `CMP-GLASS`**
+  - `id`: CMP-GLASS
+  - `name`: Monitoring glass
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-LID
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-TUBES`**
+  - `id`: IF-TUBES
+  - `description`: Manufacturer permits1.5/2mL conical-bottom microtubes, nominal11mm diameter, without adapters; test fixes Safe-Lock1.5mL geometry.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-02
+  - `mate`: REF-TUBE
+  - `direction`: Along actual bore axis into seat
+  - `support`: Bore contacts, without hidden tube attachment
+  - `access_clearance_mm`:
+    - `value`: `30`
+    - `source_class`: B
+  - `compatibility_status`: Nominal tube class supported; exact mesh fit pending.
+- **Item 2 — `IF-RLID`**
+  - `id`: IF-RLID
+  - `description`: Install matching rotor lid vertically and secure QuickLock clockwise to the locking stop/click.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `mate`: REF-RLID
+  - `direction`: -Z
+  - `support`: Rotor rim and central lock
+  - `access_clearance_mm`:
+    - `value`: `30`
+    - `source_class`: B
+
+## Reference Consumables
+
+- **Item 1 — `REF-TUBE`**
+  - `id`: REF-TUBE
+  - `configuration`: Closed Safe-Lock1.5mL per cited drawing.
+  - `source_refs`:
+    - SRC-01
+    - SRC-02
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-RLID`**
+  - `id`: REF-RLID
+  - `configuration`: Matching QuickLock lid for FA-24x2.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-01`**
+    - `parent`: main_body
+    - `child`: external_lid
+    - `type`: revolute
+    - `coordinate_frame`: Bench +Z up; local+X across rear hinge
+    - `axis`:
+      - `1`
+      - `0`
+      - `0`
+    - `zero`: Closed
+    - `range`:
+      - `min`: `0`
+      - `max`: `90`
+      - `unit`: deg
+      - `source_class`: B
+      - `acceptable_open_min_deg`: `80`
+      - `acceptable_open_max_deg`: `100`
+      - `reason`: Access-test approximation, not manufacturer angle.
+    - `limits`: Locked during rotor motion; actual access opening tested separately from release.
+    - `id`: J-01
+  - **Item 2 — `J-02`**
+    - `parent`: shaft
+    - `child`: rotor
+    - `type`: continuous_revolute
+    - `coordinate_frame`: Rotor local frame
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `zero`: Arbitrary index
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: deg
+      - `source_class`: B
+      - `reason`: Unlimited angle, not missing finite limits.
+    - `limits`: Closed lid required for running.
+    - `id`: J-02
+  - **Item 3 — `J-03`**
+    - `parent`: rotor
+    - `child`: rotor_lid
+    - `type`: detachable_rotational_lock
+    - `coordinate_frame`: Rotor frame
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `zero`: Installed and locked
+    - `range`:
+      - `max_lock_angle_deg`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `source_class`: U
+      - `reason`: QuickLock angle undimensioned.
+    - `limits`: Independent of external lid.
+    - `id`: J-03
+  - **Item 4 — `J-04`**
+    - `parent`: panel
+    - `child`: controls
+    - `type`: contact_trigger
+    - `coordinate_frame`: Local control face
+    - `axis`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `zero`: Released
+    - `range`:
+      - `physical_travel_mm`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `source_class`: U
+      - `reason`: Travel unknown; contact trigger is explicit B alternative.
+    - `limits`: Trigger regions must coincide with visible OPEN and START_STOP.
+    - `id`: J-04
+
+## Functional Requirements
+
+- **Item 1 — `FUN-OPEN`**
+  - `id`: FUN-OPEN
+  - `description`: With LID=OFF and stationary rotor, OPEN releases lid; manual or modeled spring assistance may complete access opening.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `FUN-LOAD`**
+  - `id`: FUN-LOAD
+  - `description`: 24 positions load, support and unload; balanced2,12,24-tube cases allow rotor-lid and external-lid closure.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `FUN-INTERLOCK`**
+  - `id`: FUN-INTERLOCK
+  - `description`: START with open lid leaves rotor stopped; normal OPEN during rotation cannot unlock/open.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `source_note`: Closed-lid prerequisite and prohibited opening documented; numeric checks are B.
+  - `stop_threshold_rpm`: `0.1`
+  - `stop_dwell_s`: `0.5`
+  - `moving_test_speed_rpm`: `600`
+- **Item 4 — `FUN-CYCLE`**
+  - `id`: FUN-CYCLE
+  - `description`: Repeat IDLE -> ACCELERATING -> RUNNING -> DECELERATING -> STOPPED cycles.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Balanced microtube centrifugation.
+  - `source_class`: P
+  - `source_refs`:
+    - SRC-01
+  - `object`: FA-24x2, matching rotor lid and closed microtubes
+  - `preconditions`:
+    - Rotor secured and stationary
+    - External lid open
+  - `action`: Load identical equal-fill tubes in opposite pairs; check<=3.75g per position; secure rotor lid; close external lid; START; STOP or wait; verify stopped; OPEN; remove rotor lid and unload.
+  - `expected_postconditions`:
+    - Rotor stops before access
+    - Tubes retrieved
+  - `parameters`:
+    - `counts`:
+      - `2`
+      - `12`
+      - `24`
+    - `max_load_per_position_g`: `3.75`
+    - `simulation_speed_rpm`:
+      - `value`: `600`
+      - `source_class`: B
+    - `steady_run_s`:
+      - `value`: `5`
+      - `source_class`: B
+    - `repetitions`:
+      - `value`: `3`
+      - `source_class`: B
+    - `timeout_s`:
+      - `value`: `180`
+      - `source_class`: B
+  - `forbidden_states`:
+    - Asymmetric load
+    - Open tube caps
+    - Access during motion
+    - Unsecured rotor or mismatched rotor lid
+  - `source_note`: Manual5.5-5.6; no particular QIAquick column assembly compatibility asserted.
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: P
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Balanced microtube centrifugation.
+    - `source_note`: Manual5.5-5.6; no particular QIAquick column assembly compatibility asserted.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Load identical equal-fill tubes in opposite pairs; check<=3.75g per position; secure rotor lid; close external lid; START; STOP or wait; verify stopped; OPEN; remove rotor lid and unload.
+    - `parameters`:
+      - `counts`:
+        - `2`
+        - `12`
+        - `24`
+      - `max_load_per_position_g`: `3.75`
+      - `simulation_speed_rpm`:
+        - `value`: `600`
+        - `source_class`: B
+      - `steady_run_s`:
+        - `value`: `5`
+        - `source_class`: B
+      - `repetitions`:
+        - `value`: `3`
+        - `source_class`: B
+      - `timeout_s`:
+        - `value`: `180`
+        - `source_class`: B
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Centrifuge5425 Original Operating Instructions
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/product-media/doc/en/338022/Centrifugation_Operating-manual_Centrifuge-5425.pdf
+  - `version_or_publication_date`: 5405 900 027-03/122021
+  - `locator`: pp15,23 controls; pp29-33 loading, operation and radius; p48 lid errors; pp54-55 specifications; p58 FA-24x2 table.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-W
+    - DIM-D
+    - DIM-H
+    - CMP-BODY
+    - CMP-LID
+    - CMP-CHAMBER
+    - CMP-ROTOR
+    - CMP-SHAFT
+    - CMP-RLID
+    - CMP-BORES
+    - CMP-PANEL
+    - CMP-OPEN
+    - CMP-START
+    - CMP-GLASS
+    - IF-TUBES
+    - IF-RLID
+    - REF-TUBE
+    - REF-RLID
+    - FUN-OPEN
+    - FUN-LOAD
+    - FUN-INTERLOCK
+    - FUN-CYCLE
+    - PRO-01
+    - REQ-ROTOR
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Technical Data Sheet: Safe-Lock Tubes1.5mL
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: p1 section and lid-state views.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - IF-TUBES
+    - REF-TUBE
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: Centrifuge 5425/5425 R product specifications
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/gb-en/Products/Centrifugation/IVD-Products/Centrifuge-5425-5425R-p-PF-934145
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Specifications table, Centrifuge 5425 non-refrigerated column: height with open lid 48 cm.
+  - `access_date`: 2026-09-09
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-OH
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-TUBE (Closed Safe-Lock1.5mL per cited drawing.)
+  - Independent reference model: REF-RLID (Matching QuickLock lid for FA-24x2.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-ROTOR-SPEC`:
+    - `source_class`: B
+    - `condition`: 24 bores; spacing15±1deg(B); limits15060rpm and3.75g/position; no-rotor mass15.6kg±10%(B); computedRCF within1%(B) of21300.
+    - `target_path`: input.rotor_specification
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-MOTION`:
+    - `source_class`: B
+    - `condition`: Assisted opening reaches80-100deg;1800±18deg continuous rotation; axis drift<=0.5mm; independent rotor-lid motion and correct reseating; unintended overlap<=0.2mm.
+    - `target_path`: input.articulation_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-LOADING`:
+    - `source_class`: B
+    - `condition`: 24/24 positions succeed in3 repeats;5s support without bottom passage; both lids close for all configurations; unintended overlap<=0.2mm.
+    - `target_path`: input.functional_requirements.1
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-INTERLOCK`:
+    - `source_class`: B
+    - `condition`: Case1 abs(rpm)<=0.1 for5s. Case2 stays locked and within2deg of closed while rotating. Release only after abs(rpm)<=0.1 for0.5s.
+    - `target_path`: input.functional_requirements.2
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-CYCLE`:
+    - `source_class`: B
+    - `condition`: All9cycles complete and unload;5s steady speed within±5%; no abnormal overlap/detachment; stop precedes opening.
+    - `target_path`: input.protocol_conditioned_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Rotor Specification
+
+- `id`: REQ-ROTOR
+- `description`: Operating limits are distinct from geometry targets.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `positions`: `24`
+- `max_speed_rpm`: `15060`
+- `max_rcf_xg`: `21300`
+- `max_load_per_position_g`: `3.75`
+- `load_definition`: Adapter plus tube plus contents
+- `body_mass_without_rotor_kg`: `15.6`
+- `rcf_reference_radius_mm`: `84`
+- `radius_definition`: rpm-to-RCF conversion radius for selected tube/adapter, not bore-mouth location.
+- `typical_acceleration_s`: `15`
+- `typical_deceleration_s`: `15`
+- `timing_conditions`: Approximate maximum-load/ramp values, pp54-55; not a mandated low-speed simulation ramp.
+- `equal_spacing`:
+  - `source_class`: D
+  - `value`: `15`
+  - `unit`: deg
+  - `formula`: 360/24
+  - `assumption`: Uniform spacing required by benchmark and supported by rotor illustration.
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: p15 Fig3-1 andp58 rotor illustration.
+  - `url`: https://www.eppendorf.com/product-media/doc/en/338022/Centrifugation_Operating-manual_Centrifuge-5425.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Rear-hinged lid
+  - Front panel
+  - Recessed chamber and central rotor
+  - Monitoring glass
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

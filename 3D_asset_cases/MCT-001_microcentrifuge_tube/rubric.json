@@ -1,0 +1,275 @@
+{
+  "format": "amx-rubric",
+  "case_id": "MCT-001",
+  "asset_class": "microcentrifuge_tube",
+  "source_sha": "7f4754cf14cb793d",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-BODY",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Cylindrical upper body and conical closed bottom",
+      "weight": 3.0,
+      "params": {
+        "part": "Cylindrical upper body and conical closed bottom"
+      }
+    },
+    {
+      "id": "PART-CMP-CAP",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Tethered cap",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Tethered cap"
+      }
+    },
+    {
+      "id": "PART-CMP-HINGE",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Integral flexible cap tether",
+      "weight": 3.0,
+      "params": {
+        "part": "Integral flexible cap tether"
+      }
+    },
+    {
+      "id": "PART-CMP-LATCH",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Safe-Lock latch and sealing lip",
+      "weight": 3.0,
+      "params": {
+        "part": "Safe-Lock latch and sealing lip"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "PART-CAVITY",
+      "axis": "parts",
+      "primitive": "cavity_volume",
+      "subject": "the internal volume",
+      "weight": 3.0,
+      "params": {
+        "min_volume_ml": 1.5
+      }
+    },
+    {
+      "id": "DIM-DIM-D",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "body_outer_diameter",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Cylindrical upper body and conical closed bottom",
+        "dimension_id": "DIM-D",
+        "value_m": 0.0108,
+        "kind": "diameter_outer"
+      },
+      "note": "Outer cylindrical body per section arrow"
+    },
+    {
+      "id": "DIM-DIM-ID",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "mouth_inner_diameter",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-ID",
+        "value_m": 0.0087,
+        "kind": "diameter_inner"
+      },
+      "note": "Inner opening per section arrow"
+    },
+    {
+      "id": "NA-DIM-H",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "closed_height",
+      "params": {
+        "reason": "the name does not say how to measure this on the assembled object"
+      }
+    },
+    {
+      "id": "NA-DIM-OH",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "open90_height",
+      "params": {
+        "reason": "the name does not say how to measure this on the assembled object"
+      }
+    },
+    {
+      "id": "NA-DIM-LATCH",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "latch_interference",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Conical bottom",
+      "params": {
+        "feature": "Conical bottom"
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Tethered snap cap",
+      "params": {
+        "feature": "Tethered snap cap"
+      }
+    },
+    {
+      "id": "VIS-02",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Safe-Lock latch projection",
+      "params": {
+        "feature": "Safe-Lock latch projection"
+      }
+    },
+    {
+      "id": "VIS-03",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Cylindrical upper body",
+      "params": {
+        "feature": "Cylindrical upper body"
+      }
+    },
+    {
+      "id": "OP-J-01",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "cap",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "cap",
+        "operation_id": "J-01",
+        "operation_kind": "hinge",
+        "parent_part": "tube_body",
+        "expected_joint_types": [
+          "hinge"
+        ],
+        "range_min": 0.0,
+        "range_max": 3.141592653589793
+      },
+      "note": "Cap closed; Preserve cap tether; closed latch state only with cap at seated mouth pose; no claim of measured snap force."
+    },
+    {
+      "id": "SWEEP-J-01",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "cap clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "cap"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G1-PARTS",
+      "item_ids": [
+        "PART-CMP-CAP"
+      ],
+      "description": "Whether every named critical component is present as a body."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-J-01"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}

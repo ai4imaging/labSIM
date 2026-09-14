@@ -1,0 +1,811 @@
+# benchtop centrifuge benchmark Input Specification
+
+- `benchmark_id`: BTC-001
+- `asset_class`: benchtop_centrifuge
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: benchtop centrifuge
+- `name_en`: benchtop_centrifuge
+- `representation_mode`: Reproduce one selected real configuration; unknown geometry is not replaced by benchmark proxies.
+- `manufacturer`: Eppendorf
+- `model`: Centrifuge 5702 with A-4-38 round-bucket rotor
+- `configuration`: Non-refrigerated 5702; four round buckets 5702761001, four single-place 15 mL adapters 5702732001, no aerosol-tight bucket caps.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-WIDTH
+  - `value`: `320`
+  - `unit`: mm
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: 5702 non-refrigerated body
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `depth`:
+  - `id`: DIM-DEPTH
+  - `value`: `395`
+  - `unit`: mm
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: 5702 front to rear
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `closed_height`:
+  - `id`: DIM-CLOSED_HEIGHT
+  - `value`: `243`
+  - `unit`: mm
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: 5702 lid closed
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `open_height`:
+  - `id`: DIM-OPEN_HEIGHT
+  - `value`: `525`
+  - `unit`: mm
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: 5702 lid fully open
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `bucket_count`:
+  - `id`: DIM-BUCKET_COUNT
+  - `value`: `4`
+  - `unit`: count
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: A-4-38 round buckets
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `max_speed`:
+  - `id`: DIM-MAX_SPEED
+  - `value`: `4400`
+  - `unit`: rpm
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: A-4-38 selected configuration limit
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `lid_axis`:
+  - `id`: DIM-LID_AXIS
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: lid_axis
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Lid pivot and maximum opening angle not dimensioned; open height does not uniquely determine angle.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `bucket_pivots`:
+  - `id`: DIM-BUCKET_PIVOTS
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: bucket_pivots
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Bucket pivot locations, latch seats and swept clearances unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `adapter_profile`:
+  - `id`: DIM-ADAPTER_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: adapter_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Adapter bore/support profile not given; 17.2 mm in table is TUBE diameter, not bore.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `tube_selection`:
+  - `id`: DIM-TUBE_SELECTION
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Centrifuge 5702 with A-4-38 round-bucket rotor
+  - `measurement_location`: tube_selection
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Exact tube SKU satisfying conical 15 mL, 17.2 mm diameter and <=121 mm no-cap assembly limit not yet verified.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Base
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Machine lid
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: A-4-38 rotor cross
+  - `quantity`: `1`
+  - `kind`: moving
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: Round buckets
+  - `quantity`: `4`
+  - `kind`: moving
+  - `parent`: CMP-2
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: Single-place adapters
+  - `quantity`: `4`
+  - `kind`: removable
+  - `parent`: CMP-3
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: Lid latch
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-6`**
+  - `id`: CMP-6
+  - `name`: Time/start-stop rotary knob
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 8 — `CMP-7`**
+  - `id`: CMP-7
+  - `name`: Speed rotary knob and Open/Short controls
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Shaft peg engages rotor groove; tighten rotor nut clockwise using supplied key; remove buckets before lifting rotor cross.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: All four bucket positions must be occupied; opposite buckets same weight class and same total load; each bucket must swing freely.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: Adapter 5702732001 accepts one conical 15 mL tube per bucket: nominal tube diameter 17.2 mm, maximum tube length without bucket cap 121 mm. Table radius 13.7 cm is centrifugation radius, not pivot or bore-center radius.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Four round buckets 5702761001 and adapters 5702732001 with independently measured interfaces.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Four matching 15 mL conical tubes meeting cited envelope; exact SKU still unresolved.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: Supplied rotor key with independent geometry.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: Selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-1
+    - `type`: revolute
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Rear lid hinge, exact position unknown
+    - `zero`: Closed
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: deg
+    - `range_source_class`: B
+    - `limits`: Finite travel unknown; must reproduce measured open height without inventing angle.
+    - `locking_conditions`: Keep closed during rotation; automatic end opening only after stop.
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+  - **Item 2 — `J-1`**
+    - `id`: J-1
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-2
+    - `type`: continuous_revolute
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Motor shaft vertical
+    - `zero`: Indexed arm orientation
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: deg
+    - `range_source_class`: B
+    - `limits`: Continuous rotation, selected maximum 4400 rpm.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+  - **Item 3 — `J-2`**
+    - `id`: J-2
+    - `parent_component`: CMP-2
+    - `child_component`: CMP-3
+    - `type`: four_independent_revolute_joints
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: One tangential bucket pivot per position
+    - `zero`: Hanging vertical
+    - `range`:
+      - `min`: `0`
+      - `max`: `90`
+      - `unit`: deg
+    - `range_source_class`: M
+    - `limits`: Manual swing-out test reaches 90 degrees; pivot and stop geometry still unknown.
+    - `locking_conditions`: None
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Provide independently swinging buckets, not fixed-angle tube bores.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Keep lid/run state logic distinct from load-validity procedure checks.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Represent normal braking and imbalance-fault unpowered deceleration distinctly.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Mount and load.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Stopped open machine; intact approved rotor, buckets and adapters.
+  - `action`: Secure rotor, install all buckets, equalize opposing loads and check free swing.
+  - `expected_postcondition`: Complete symmetric assembly.
+  - `forbidden_states`:
+    - Missing bucket
+    - Carrying rotor by buckets
+    - Wrong tube length
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Mount and load.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Secure rotor, install all buckets, equalize opposing loads and check free swing.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: First-use swing-out test.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: New tube combination or tubes longer than 100 mm; symmetric load.
+  - `action`: Perform swing-out test with rotor speed no greater than 1000 rpm.
+  - `expected_postcondition`: Buckets swing to 90 degrees without tube/rotor-cross contact.
+  - `forbidden_states`:
+    - Using 4400 rpm for clearance commissioning
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: First-use swing-out test.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Perform swing-out test with rotor speed no greater than 1000 rpm.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 3 — `PRO-2`**
+  - `id`: PRO-2
+  - `description`: Start and stop timed run.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Correct loading and closed locked lid.
+  - `action`: Set time/speed, press time knob; abort by pressing again or allow completion.
+  - `expected_postcondition`: Normal run brakes; stopped non-refrigerated 5702 automatically opens lid.
+  - `forbidden_states`:
+    - Assuming R/RH end-lid behavior applies to 5702
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Start and stop timed run.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Set time/speed, press time knob; abort by pressing again or allow completion.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Centrifuge 5702 / 5702 R / 5702 RH Operating Manual
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/product-media/doc/en/327547/Centrifugation_Operating-manual_Centrifuge-5702-5702-R-5702-RH.pdf
+  - `version_or_publication_date`: 5702 900 028-04/102021
+  - `locator`: Pages 28-32 installation/loading, 35-37 start/end, 58-59 faults, 66-67 specifications, 71-73 round-bucket compatibility. Pages 30,66,72,73 rendered and inspected.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-WIDTH
+    - DIM-DEPTH
+    - DIM-CLOSED_HEIGHT
+    - DIM-OPEN_HEIGHT
+    - DIM-BUCKET_COUNT
+    - DIM-MAX_SPEED
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-3
+    - CMP-4
+    - CMP-5
+    - CMP-6
+    - CMP-7
+    - IF-0
+    - IF-1
+    - IF-2
+    - REF-0
+    - REF-1
+    - REF-2
+    - J-2
+    - PRO-0
+    - PRO-1
+    - PRO-2
+    - REQ-VIS
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real heat transfer, fluid flow and experimental efficacy
+  - Requirement extraction from raw sources
+  - High-speed rotor stress and safe-service certification
+  - Biological separation
+  - Aerosol-tightness
+  - Refrigerated variants
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry/contact/state checkers and assigned visual reviewer
+  - Independent reference model: Four round buckets 5702761001 and adapters 5702732001 with independently measured interfaces.
+  - Independent reference model: Four matching 15 mL conical tubes meeting cited envelope; exact SKU still unresolved.
+  - Independent reference model: Supplied rotor key with independent geometry.
+  - Independent source truth for critical geometry gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `source_class`: B
+  - `load_balance_tolerance_g`: `0.1`
+  - `test_run_s`: `30`
+  - `test_speed_rpm`: `1000`
+  - `max_payload_per_bucket_g`:
+    - `value`: `190`
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `meaning`: Adapter + tube + contents, not the 190 g empty bucket weight.
+  - `imbalance_fault`: Inject Er15/Inb independently; actual mass imbalance trip threshold unknown.
+  - `T-CASE-0`:
+    - `initial`: Open lid, rotor detached, buckets removed, independent geometry available.
+    - `action`: Align peg/groove, tighten nut, fit buckets/adapters/tubes; kinematically sweep each bucket 0..90 degrees at 30 deg/s and rotate rotor one turn at 30 deg/s.
+    - `observable`: Mount engagement, each bucket coordinate and tube/cross/lid clearances.
+    - `pass_condition`: All four buckets independently reach 90 degrees within 2 degrees and return; no unintended penetration >0.2 mm; rotor removal requires nut release. Kinematic clearance test is not evidence of safe high-speed operation.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-1`:
+    - `initial`: B procedure monitor; all bucket masses independently measured.
+    - `action`: Validate complete matched assembly; then omit a bucket, swap opposite weight classes, and introduce 1 g opposing payload difference.
+    - `observable`: Procedure validation and mass differences.
+    - `pass_condition`: Complete matched assembly with <=0.1 g pair difference and <=190 g payload per bucket accepted; each negative case rejected. This is a B preflight checker, not a claim that the real device detects every incorrect load.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-2`:
+    - `initial`: Valid load, motor stopped; independent lid/lock state injection.
+    - `action`: Try open/unlatched start, then close/lock and run 30 s; request Open during rotation; finish deceleration.
+    - `observable`: Motor enable, lid lock and stopped/open state.
+    - `pass_condition`: Open/unlatched start prohibited; lid remains closed through rotation; only stopped state permits automatic end opening. Event latency <=1 s B. Actual opening angle not inferred.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+  - `T-CASE-3`:
+    - `initial`: Running state at 1000 rpm in controller proxy.
+    - `action`: Inject Er15/Inb and track drive/brake commands until independent stopped event.
+    - `observable`: Motor drive and active-brake command, fault state.
+    - `pass_condition`: Drive disabled and no active braking commanded after this fault within 1 s; fault reported. Actual stopping time and trip mass are not asserted.
+    - `source_class`: B
+    - `note`: Benchmark test tolerances and event timing, not manufacturer thermal or physical performance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: All four buckets independently reach 90 degrees within 2 degrees and return; no unintended penetration >0.2 mm; rotor removal requires nut release. Kinematic clearance test is not evidence of safe high-speed operation.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Complete matched assembly with <=0.1 g pair difference and <=190 g payload per bucket accepted; each negative case rejected. This is a B preflight checker, not a claim that the real device detects every incorrect load.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Open/unlatched start prohibited; lid remains closed through rotation; only stopped state permits automatic end opening. Event latency <=1 s B. Actual opening angle not inferred.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+  - `T-CASE-3`:
+    - `condition`: Drive disabled and no active braking commanded after this fault within 1 s; fault reported. Actual stopping time and trip mass are not asserted.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-3
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Pages 28-32 installation/loading, 35-37 start/end, 58-59 faults, 66-67 specifications, 71-73 round-bucket compatibility. Pages 30,66,72,73 rendered and inspected.
+  - `url`: https://www.eppendorf.com/product-media/doc/en/327547/Centrifugation_Operating-manual_Centrifuge-5702-5702-R-5702-RH.pdf
+  - `verification_status`: Relevant manufacturer drawings and tables inspected; future renders not assessed.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Four-bucket swing rotor under hinged machine lid
+  - Non-refrigerated control panel without temperature setting
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

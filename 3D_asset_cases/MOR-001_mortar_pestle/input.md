@@ -1,0 +1,632 @@
+# mortar pestle benchmark Input Specification
+
+- `benchmark_id`: MOR-001
+- `asset_class`: mortar_pestle
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `manufacturer`: CoorsTek
+- `model`: 60310 mortar with 60311 porcelain pestle
+- `configuration`: Historical 2017 catalog 01097 H configuration: nominal 50 mL mortar and all-porcelain pestle. Not newer 66310/66311 or wooden-handle variant.
+- `name`: mortar pestle
+- `name_en`: mortar_pestle
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `mortar_top_outside_diameter`:
+  - `id`: DIM-MORTAR_TOP_OUTSIDE_DIAMETER
+  - `value`: `70`
+  - `unit`: mm
+  - `measurement_object`: 60310 mortar with 60311 porcelain pestle
+  - `measurement_location`: Top outside diameter of mortar, not cavity bore
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `specification_note`: Catalog page 3 says dimensions/capacities are relative reference sizes, not guaranteed exact values. Rubric tolerance is benchmark-defined.
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `mortar_height`:
+  - `id`: DIM-MORTAR_HEIGHT
+  - `value`: `47`
+  - `unit`: mm
+  - `measurement_object`: 60310 mortar with 60311 porcelain pestle
+  - `measurement_location`: Mortar bottom to rim
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `specification_note`: Catalog page 3 says dimensions/capacities are relative reference sizes, not guaranteed exact values. Rubric tolerance is benchmark-defined.
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `pestle_length`:
+  - `id`: DIM-PESTLE_LENGTH
+  - `value`: `114`
+  - `unit`: mm
+  - `measurement_object`: 60310 mortar with 60311 porcelain pestle
+  - `measurement_location`: Pestle axial overall length
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `specification_note`: Catalog page 3 says dimensions/capacities are relative reference sizes, not guaranteed exact values. Rubric tolerance is benchmark-defined.
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `nominal_capacity`:
+  - `id`: DIM-NOMINAL_CAPACITY
+  - `value`: `50`
+  - `unit`: mL
+  - `measurement_object`: 60310 mortar with 60311 porcelain pestle
+  - `measurement_location`: Catalog nominal capacity; not working fill or guaranteed exact volume
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `specification_note`: Catalog page 3 says dimensions/capacities are relative reference sizes, not guaranteed exact values. Rubric tolerance is benchmark-defined.
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `cavity_profile`:
+  - `id`: DIM-CAVITY_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: 60310 mortar with 60311 porcelain pestle
+  - `measurement_location`: cavity_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Inner depth, curvature, wall thickness and pouring-lip geometry not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `pestle_head`:
+  - `id`: DIM-PESTLE_HEAD
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: 60310 mortar with 60311 porcelain pestle
+  - `measurement_location`: pestle_head
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Head diameter and contact curvature not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `base_contact`:
+  - `id`: DIM-BASE_CONTACT
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: 60310 mortar with 60311 porcelain pestle
+  - `measurement_location`: base_contact
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Base footprint and surface flatness unknown.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `material_contact`:
+  - `id`: DIM-MATERIAL_CONTACT
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mixed_properties
+  - `measurement_object`: 60310 mortar with 60311 porcelain pestle
+  - `measurement_location`: material_contact
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Mass, friction, roughness, compliance and failure loads not supplied; no inferred porcelain fracture model.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Porcelain mortar body with pouring lip and open grinding cavity
+  - `quantity`: `1`
+  - `kind`: root
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Independent porcelain pestle with handle and grinding head
+  - `quantity`: `1`
+  - `kind`: independent_rigid_body
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Mortar base rests on bench; pestle is an independent free body, not a jointed attachment.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Pestle head contacts cavity; head/cavity compatibility needs independent profiles.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: Pouring lip is an access feature; nominal capacity does not prescribe working fill.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Independent 60310 cavity, lip and base model; missing.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Independent 60311 head profile and inertial/contact measurements; missing.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: B level bench and external mortar support at rim-exterior; support geometry must not enter cavity.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 4 — `REF-3`**
+  - `id`: REF-3
+  - `configuration`: B inert non-colliding witness track mapped onto independently measured cavity; no powder model.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `applicable`: `false`
+- `reason`: Rigid item or independent free bodies; no internal joint needed.
+- `joints`:
+  - *(none)*
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Support mortar on level bench and permit pestle insertion without wall tunneling.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Permit controlled grinding-path contact as a mechanical proxy only.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Reject visibly defective ware before use; distinguish preparation sequence from real comminution.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Inspect before use
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Ambient clean dry ware.
+  - `action`: Inspect mortar and pestle for visible defects; reject defective item.
+  - `expected_postcondition`: Only intact items enter test.
+  - `forbidden_states`: Using visibly defective ware.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Inspect before use
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Inspect mortar and pestle for visible defects; reject defective item.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Sample preparation context
+  - `source_class`: P
+  - `source_refs`:
+    - SRC-02
+  - `preconditions`: Sample selected for an analysis requiring fine grinding.
+  - `action`: Prevent contamination while drying and prepare sample for appropriate sieve endpoint.
+  - `expected_postcondition`: Real endpoint requires separate sieving, not a motion score.
+  - `forbidden_states`: Claiming that simulated contact proves 0.250 mm particles.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: P
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Sample preparation context
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Prevent contamination while drying and prepare sample for appropriate sieve endpoint.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 3 — `PRO-2`**
+  - `id`: PRO-2
+  - `description`: Bench motion proxy
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `preconditions`: Verified cavity/head and support; no hazardous material.
+  - `action`: Support mortar, lower pestle, trace three circular paths, withdraw.
+  - `expected_postcondition`: No unintended wall crossing or fixture intrusion.
+  - `forbidden_states`: Impact fracture tests or assuming grinding efficacy from animation.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - *(none)*
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Support mortar, lower pestle, trace three circular paths, withdraw.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: CoorsTek Labware Catalog
+  - `url`: https://sc151090f8fbfc9a9.jimcontent.com/download/version/1535048593/module/10601745052/name/Catalogo%20COORS%20TEK%20Proquisur.pdf
+  - `publisher`: CoorsTek; manufacturer-authored distributor-hosted copy
+  - `version_or_publication_date`: 2017 01097 H
+  - `locator`: Pages 3,10,20; first mortar/pestle table, rows 60310 and 60311
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-MORTAR_TOP_OUTSIDE_DIAMETER
+    - DIM-MORTAR_HEIGHT
+    - DIM-PESTLE_LENGTH
+    - DIM-NOMINAL_CAPACITY
+    - CMP-0
+    - CMP-1
+    - IF-0
+    - IF-1
+    - IF-2
+    - PRO-0
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Soil sample preparation
+  - `url`: https://anlab.ucdavis.edu/lab-information/sampling-and-preparation/soil
+  - `publisher`: UC Davis Analytical Laboratory
+  - `version_or_publication_date`: Updated March 13, 2026
+  - `locator`: Drying Recommendations and Grinding Exceptions
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - PRO-1
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Powder fracture, particle-size distribution and homogeneity
+  - Chemical contamination, abrasion and sterilization certification
+  - Thermal shock or impact strength
+  - Treating reference catalog dimensions as guaranteed manufacturing tolerances
+- `runtime_dependencies`:
+  - Submitted asset, pinned MuJoCo environment and independent checkers
+  - Independent 60310 cavity, lip and base model; missing.
+  - Independent 60311 head profile and inertial/contact measurements; missing.
+  - B level bench and external mortar support at rim-exterior; support geometry must not enter cavity.
+  - B inert non-colliding witness track mapped onto independently measured cavity; no powder model.
+  - Source truth for critical gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `T-CASE-0`:
+    - `initial`: Level bench; mortar settled 5 s under verified mass/contact parameters; pestle 10 mm above rim.
+    - `action`: With external mortar support, lower pestle to independently pre-registered reachable cavity point; lift clear; three trials.
+    - `observable`: Mortar pose, penetration and tool independence.
+    - `pass_condition`: Each trial reaches target within 1 mm, no unintended penetration >0.2 mm, mortar tilt <=2 deg and displacement <=1 mm; pestle lifts without dragging mortar. Missing profiles/contact data yields null.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-1`:
+    - `initial`: Externally supported mortar; independently verified collision-free 5 mm radius circle on cavity contact locus; if no such reachable path exists, choose and freeze feasible radius before evaluating submission.
+    - `action`: Trace three revolutions at 5 mm/s tangential speed, then withdraw.
+    - `observable`: Path error, signed head/cavity clearance and attachment state.
+    - `pass_condition`: At least 95% of samples within 1 mm of frozen path and contact clearance <=0.2 mm; no penetration >0.2 mm, detached geometry or artificial mortar-pestle joint. No particle-size claim.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-2`:
+    - `initial`: Independent event checker; one intact and one visibly chipped reference state.
+    - `action`: Inspect each state; attempt preparation and grinding command; label any reported experimental endpoint.
+    - `observable`: Acceptance/rejection trace and endpoint provenance.
+    - `pass_condition`: Defective reference is excluded before action; intact reference admitted; any actual particle-size endpoint remains not_tested unless separately measured. These are operator workflow checks, not device interlocks.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Each trial reaches target within 1 mm, no unintended penetration >0.2 mm, mortar tilt <=2 deg and displacement <=1 mm; pestle lifts without dragging mortar. Missing profiles/contact data yields null.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: At least 95% of samples within 1 mm of frozen path and contact clearance <=0.2 mm; no penetration >0.2 mm, detached geometry or artificial mortar-pestle joint. No particle-size claim.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Defective reference is excluded before action; intact reference admitted; any actual particle-size endpoint remains not_tested unless separately measured. These are operator workflow checks, not device interlocks.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `url`: https://sc151090f8fbfc9a9.jimcontent.com/download/version/1535048593/module/10601745052/name/Catalogo%20COORS%20TEK%20Proquisur.pdf
+  - `locator`: Pages 3,10,20; first mortar/pestle table, rows 60310 and 60311
+  - `verification_status`: Page 10 table and illustration rendered and visually inspected; illustration is family-level, not a dimensioned CAD drawing.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Open porcelain mortar with lip and separate all-porcelain pestle
+  - Top table 60310/60311 geometry rather than wooden-handle version
+  - Unglazed grinding contact appearance requires close reference confirmation
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

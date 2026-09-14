@@ -1,0 +1,233 @@
+{
+  "format": "amx-rubric",
+  "case_id": "SCR-001",
+  "asset_class": "cell_scraper",
+  "source_sha": "cb1f1f02fd885ecf",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Cross-ribbed polystyrene handle",
+      "weight": 3.0,
+      "params": {
+        "part": "Cross-ribbed polystyrene handle"
+      }
+    },
+    {
+      "id": "PART-CMP-1",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "TPE blade with flexible retained connection",
+      "weight": 3.0,
+      "params": {
+        "part": "TPE blade with flexible retained connection"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "DIM-DIM-HANDLE_LENGTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "handle_length",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "Cross-ribbed polystyrene handle",
+        "dimension_id": "DIM-HANDLE_LENGTH",
+        "value_m": 0.18,
+        "kind": "footprint_max"
+      },
+      "note": "Handle only; not assembled length"
+    },
+    {
+      "id": "DIM-DIM-BLADE_WIDTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "blade_width",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "TPE blade with flexible retained connection",
+        "dimension_id": "DIM-BLADE_WIDTH",
+        "value_m": 0.018000000000000002,
+        "kind": "footprint_min",
+        "axis": "x"
+      },
+      "note": "Blade span, not thickness"
+    },
+    {
+      "id": "NA-DIM-BLADE_SECTION",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "blade_section",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-OVERALL_LENGTH",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "overall_length",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-FLEXURE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "flexure",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-VESSEL_INTERFACE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "vessel_interface",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Cross-ribbed handle",
+      "params": {
+        "feature": "Cross-ribbed handle"
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Distinct narrow TPE blade",
+      "params": {
+        "feature": "Distinct narrow TPE blade"
+      }
+    },
+    {
+      "id": "VIS-02",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Flexible retained junction",
+      "params": {
+        "feature": "Flexible retained junction"
+      }
+    },
+    {
+      "id": "OP-J-0",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "TPE blade with flexible retained connection",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "TPE blade with flexible retained connection",
+        "operation_id": "J-0",
+        "parent_part": "Cross-ribbed polystyrene handle"
+      },
+      "note": "Unloaded shape unknown; Travel requires independent measurement; no invented physical revolute hinge."
+    },
+    {
+      "id": "SWEEP-J-0",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "TPE blade with flexible retained connection clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "TPE blade with flexible retained connection"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-J-0"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}

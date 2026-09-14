@@ -1,0 +1,567 @@
+# scissors benchmark Input Specification
+
+- `benchmark_id`: SCI-001
+- `asset_class`: scissors
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `manufacturer`: Fine Science Tools
+- `model`: Iris scissors14060-09
+- `configuration`: Straight sharp/sharp90 mm standard Iris scissors with16 mm cutting edge; not ToughCut, spring scissors or curved variants.
+- `name`: scissors
+- `name_en`: scissors
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `overall_length`:
+  - `id`: DIM-OVERALL_LENGTH
+  - `value`: `90`
+  - `unit`: mm
+  - `measurement_object`: Iris scissors14060-09
+  - `measurement_location`: Closed instrument end-to-end length
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `cutting_edge_length`:
+  - `id`: DIM-CUTTING_EDGE_LENGTH
+  - `value`: `16`
+  - `unit`: mm
+  - `measurement_object`: Iris scissors14060-09
+  - `measurement_location`: Cutting edge, not pivot-to-tip lever arm
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `hinge_geometry`:
+  - `id`: DIM-HINGE_GEOMETRY
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Iris scissors14060-09
+  - `measurement_location`: hinge_geometry
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Pivot location, bearing clearance and physical opening angle limit not published.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `ring_geometry`:
+  - `id`: DIM-RING_GEOMETRY
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Iris scissors14060-09
+  - `measurement_location`: ring_geometry
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Finger-loop dimensions and handle thickness require independent geometry.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `blade_cross_section`:
+  - `id`: DIM-BLADE_CROSS_SECTION
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Iris scissors14060-09
+  - `measurement_location`: blade_cross_section
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Blade thickness, bevel and true shear/contact profile unavailable.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `visual_reference`:
+  - `id`: DIM-VISUAL_REFERENCE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Iris scissors14060-09
+  - `measurement_location`: visual_reference
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Catalog labels and small tip drawings inspected; full instrument image rendering incomplete, so exact visual comparison remains pending.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: First blade and finger-loop arm
+  - `quantity`: `1`
+  - `kind`: root
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Second blade and finger-loop arm
+  - `quantity`: `1`
+  - `kind`: articulated
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Central pivot connection
+  - `quantity`: `1`
+  - `kind`: fixed_region_or_component
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: External gripper actuates the two finger loops; pivot couples opposed blade motion.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Opposed cutting edges move past one another in a shear plane; intended blade contact is not automatically abnormal overlap.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Independent14060-09 geometry including pivot, loops, bevels and safe travel.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: B1 virtual non-colliding witness strip:8x2x0.1 mm across blade working zone; not tissue.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: Independent instrument tray and tip protection geometry, exact protector SKU unresolved.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `applicable`: `true`
+- `reason`: Actual flexibility or relative motion; approximation is not physical truth.
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-1
+    - `type`: revolute
+    - `coordinate_frame`: Instrument plane XY; pivot axis normal Z
+    - `axis`: Physical axis position from independent reference
+    - `zero`: Closed blades
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: deg
+    - `range_source_class`: U
+    - `limits`: No invented maximum angle or spring return; ordinary loop scissors remain where positioned absent external load.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Open and close about one physical pivot without blade separation or handle detachment.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Trace a progressive shearing path across a witness region, not material severing.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: Expose pivot and blade surfaces for care and protect sharp tips in storage.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Mechanical scissors benchmark
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `preconditions`: Inspected scissors and independent reference ready; no biological specimen.
+  - `action`: Hold finger loops, open within verified travel, place witness strip in working zone, close and reopen.
+  - `expected_postcondition`: Repeatable shearing motion.
+  - `forbidden_states`: Interpreting visible opening/closing as successful tissue cutting.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - *(none)*
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Hold finger loops, open within verified travel, place witness strip in working zone, close and reopen.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Post-use instrument care
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+  - `preconditions`: Instrument used and no damaged cutting edge allowed for reuse.
+  - `action`: Clean with blades open, rinse/dry, lubricate pivot with suitable instrument oil and cycle, then protect tips in dry storage.
+  - `expected_postcondition`: Accessible hinge and protected dry item.
+  - `forbidden_states`: Industrial lubricant or assuming a care-state flag verifies sterilization.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Post-use instrument care
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Clean with blades open, rinse/dry, lubricate pivot with suitable instrument oil and cycle, then protect tips in dry storage.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: FST2025-26 catalog
+  - `url`: https://finescience.com/media/e3/ea/b2/1760653721/FST-Catalog-2025-26-USD.pdf
+  - `publisher`: Fine Science Tools
+  - `version_or_publication_date`: 2025-26
+  - `locator`: Printed37, PDF21 spread: Iris14060-09 column,90 mm length and16 mm cutting edge. Text/table labels visually checked; large instrument images incompletely rendered.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-OVERALL_LENGTH
+    - DIM-CUTTING_EDGE_LENGTH
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - IF-0
+    - IF-1
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Maintenance and Care
+  - `url`: https://finescience.com/en-US/service/maintenance-care/
+  - `publisher`: Fine Science Tools
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Cleaning and storage: open-position cleaning, joint lubrication and dry protected storage.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - PRO-1
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Actual tissue or paper cutting, edge sharpness, tissue damage, corrosion and sterilization efficacy.
+- `runtime_dependencies`:
+  - Submitted asset, pinned MuJoCo environment and independent checkers
+  - Independent14060-09 geometry including pivot, loops, bevels and safe travel.
+  - B1 virtual non-colliding witness strip:8x2x0.1 mm across blade working zone; not tissue.
+  - Independent instrument tray and tip protection geometry, exact protector SKU unresolved.
+  - Source truth for critical gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `boundary`: No fracture/cutting model. Witness strip has no contact force; it records only edge sweep.
+  - `mechanical_tolerances`:
+    - `source_class`: B
+    - `unintended_overlap_mm`: `0.05`
+    - `axis_drift_mm`: `0.05`
+  - `T-CASE-0`:
+    - `initial`: Independent geometry and opening limit, scissors closed.
+    - `action`: Open to75% of independently measured safe angle, close, repeat3 times at15 deg/s.
+    - `observable`: Pivot center, axial play, tip path and loop attachment.
+    - `pass_condition`: Pivot drift<=0.05 mm; angular target error<=1 degree; no disconnection, unintended overlap>0.05 mm or tip crossing inconsistent with reference; intended sliding blade contact allowed. Unknown travel blocks.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-1`:
+    - `initial`: Verified open scissors; witness strip inside independently mapped16 mm working-edge region.
+    - `action`: Close once while tracking intersection of opposed edge projections with witness strip.
+    - `observable`: Coverage and progression of edge intersection.
+    - `pass_condition`: Projected shear intersection traverses at least90% of8 mm witness width monotonically from proximal toward distal working region, with<=0.1 mm B positional uncertainty; no cut/separation success inferred.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+  - `T-CASE-2`:
+    - `initial`: Instrument open on fixture with approved care events available.
+    - `action`: Expose pivot, perform declared clean/rinse/dry/lubricate events, cycle and place into protected storage.
+    - `observable`: Accessibility, care order and tip enclosure.
+    - `pass_condition`: Pivot and inner blades accessible in open state; drying precedes storage; tip protection encloses both tips without deformation exceeding independent reference; no blade contact with neighboring instrument.
+    - `source_class`: B
+    - `reason`: Benchmark interaction conditions, not manufacturer performance tolerances.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Pivot drift<=0.05 mm; angular target error<=1 degree; no disconnection, unintended overlap>0.05 mm or tip crossing inconsistent with reference; intended sliding blade contact allowed. Unknown travel blocks.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: Projected shear intersection traverses at least90% of8 mm witness width monotonically from proximal toward distal working region, with<=0.1 mm B positional uncertainty; no cut/separation success inferred.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: Pivot and inner blades accessible in open state; drying precedes storage; tip protection encloses both tips without deformation exceeding independent reference; no blade contact with neighboring instrument.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `url`: https://finescience.com/media/e3/ea/b2/1760653721/FST-Catalog-2025-26-USD.pdf
+  - `locator`: Printed37, PDF21 spread: Iris14060-09 column,90 mm length and16 mm cutting edge. Text/table labels visually checked; large instrument images incompletely rendered.
+  - `verification_status`: Catalog dimensional column and small straight-tip drawing inspected; full product photo remains a dependency.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Straight sharp/sharp opposing blades with two finger loops and central pivot.
+  - No spring bow, ratchet, curved tips or ToughCut identification.
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

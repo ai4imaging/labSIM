@@ -1,0 +1,508 @@
+# conical tube benchmark Input Specification
+
+- `benchmark_id`: CTU-001
+- `asset_class`: conical_tube
+- `specification_version`: 1.2.1
+- `language`: en
+
+> This Markdown file contains the complete current input specification. Newly resolved values retain explicit provenance; unresolved values and measurement plans remain explicit.
+
+## Asset Identity
+
+- `name`: conical tube
+- `name_en`: conical_tube
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: Corning
+- `model`: 430791
+- `configuration`: 15mL PP conical tube with orange HDPE CentriStar screw cap; not self-standing
+- `nominal_capacity_ml`: `15`
+- `accessories`:
+  - Supplied CentriStar cap
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `body_od`:
+  - `id`: DIM-D
+  - `value`: `17.5`
+  - `unit`: mm
+  - `measurement_object`: Tube body
+  - `measurement_location`: Cylindrical OD,approximate manufacturer value
+  - `measurement_state`: Uncompressed
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `cap_od`:
+  - `id`: DIM-C
+  - `value`: `22.6`
+  - `unit`: mm
+  - `measurement_object`: Cap
+  - `measurement_location`: Maximum cap OD,approximate
+  - `measurement_state`: As supplied
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `overall_length`:
+  - `id`: DIM-L
+  - `value`: `118.61`
+  - `unit`: mm
+  - `measurement_object`: Corning 430791 tube with supplied CentriStar cap
+  - `measurement_location`: Lowest conical tip to the top face of the fully seated supplied cap
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-03
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `thread_profile`:
+  - `id`: DIM-T
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Cap/neck
+  - `measurement_location`: Thread pitch and engagement depth
+  - `measurement_state`: Cap removed
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: No interface drawing obtained.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-BODY`**
+  - `id`: CMP-BODY
+  - `name`: PP body with conical closed tip
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-CAV`**
+  - `id`: CMP-CAV
+  - `name`: Open internal cavity
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-CAP`**
+  - `id`: CMP-CAP
+  - `name`: HDPE CentriStar cap
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-THREAD`**
+  - `id`: CMP-THREAD
+  - `name`: Threaded neck and cap seal
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-SCALE`**
+  - `id`: CMP-SCALE
+  - `name`: 0.5mL scale and white marking spot
+  - `quantity`: `1`
+  - `kind`: visual
+  - `parent`: CMP-BODY
+  - `critical`: `false`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-CAP`**
+  - `id`: IF-CAP
+  - `description`: Use the supplied matching CentriStar cap,approaching the tube neck axially; support and seal at actual neck/cap engagement.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `mate`: REF-CAP
+  - `direction`: -Z
+  - `clearance_mm`:
+    - `value`: `30`
+    - `source_class`: B
+- **Item 2 — `IF-HOLDER`**
+  - `id`: IF-HOLDER
+  - `description`: Provide external support because the selected conical tube is not self-standing. A B fixture is allowed for static handling,not centrifuge-rotor compatibility.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `mate`: REF-HOLDER
+  - `direction`: -Z insertion
+  - `support`: Tube tip and fixture base; radial guidance
+  - `clearance_mm`: `30`
+
+## Reference Consumables
+
+- **Item 1 — `REF-CAP`**
+  - `id`: REF-CAP
+  - `configuration`: Supplied orange HDPE CentriStar cap for430791.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-HOLDER`**
+  - `id`: REF-HOLDER
+  - `configuration`: B fixture: vertical cylindrical bore18.5mm diameter,100mm deep with closed flat bottom; tube rests at its tip; not a manufacturer rotor adaptor.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-01`**
+    - `parent`: tube
+    - `child`: cap
+    - `type`: detachable_screw_closure
+    - `coordinate_frame`: Tube+Z from tip to mouth
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `zero`: Seated cap
+    - `range`:
+      - `source_class`: U
+      - `release_deg`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `lead_mm`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `reason`: Travel and lead not published.
+    - `limits`: Measured reference release path required; cap does not remain tethered after removal.
+    - `id`: J-01
+
+## Functional Requirements
+
+- **Item 1 — `FUN-CLOSE`**
+  - `id`: FUN-CLOSE
+  - `description`: Cap supports installed/removed states and exposes mouth after removal.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `FUN-STAGE`**
+  - `id`: FUN-STAGE
+  - `description`: Externally supported tube can be loaded and retrieved without falling through or cap obstruction.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FUN-SPEC`**
+  - `id`: FUN-SPEC
+  - `description`: Nominal15mL,graduations1.5-14.5mL by0.5mL,maxRCF12500xg; source rating is not a simulated strength result.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-02
+  - `nominal_capacity_ml`: `15`
+  - `working_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `brim_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unknown_reason`: Protocol fill and brim capacity unspecified.
+  - `graduation_min_ml`: `1.5`
+  - `graduation_max_ml`: `14.5`
+  - `graduation_increment_ml`: `0.5`
+  - `max_rcf_xg`: `12500`
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Supported conical-tube sample staging.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `object`: Tube,holder and cap
+  - `preconditions`:
+    - Tube externally supported
+    - Cap and contents absent for mechanical test
+  - `action`: Seat tube;install/remove cap;access mouth;replace cap and retrieve supported tube.
+  - `expected_postconditions`:
+    - Cap installed on retrieval
+    - No unsupported upright-standing assumption
+  - `parameters`:
+    - `linear_speed_mm_s`: `10`
+    - `cap_speed_deg_s`: `30`
+    - `repetitions`: `3`
+    - `timeout_s`: `60`
+  - `forbidden_states`:
+    - Assuming freestanding stability
+    - Using12500xg rating as evidence of simulated stress resistance
+    - Reusing dimensions from a different15mL model
+  - `source_note`: Non-self-standing geometry and screw-cap operation documented; sequence is B.
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - SRC-01
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: Non-self-standing geometry and screw-cap operation documented; sequence is B.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Seat tube;install/remove cap;access mouth;replace cap and retrieve supported tube.
+    - `parameters`:
+      - `linear_speed_mm_s`: `10`
+      - `cap_speed_deg_s`: `30`
+      - `repetitions`: `3`
+      - `timeout_s`: `60`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Corning43079115mL PP Centrifuge Tube
+  - `publisher`: Corning
+  - `url`: https://ecatalog.corning.com/life-sciences/b2b/US/en/Liquid-Handling/Tubes%2C-Liquid-Handling/Centrifuge-Tubes/Corning%C2%AE-15mL-Centrifuge-Tubes/p/430791
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Product Information/Details: OD,cap diameter,graduations,non-self-standing and materials.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-D
+    - DIM-C
+    - DIM-L
+    - CMP-BODY
+    - CMP-CAV
+    - CMP-CAP
+    - CMP-THREAD
+    - CMP-SCALE
+    - IF-CAP
+    - IF-HOLDER
+    - REF-CAP
+    - FUN-CLOSE
+    - FUN-SPEC
+    - PRO-01
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Corning Centrifuge Tubes Product Information Sheet
+  - `publisher`: Corning
+  - `url`: https://www.corning.com/catalog/cls/documents/product-information-sheets/CLS-LH-334.pdf
+  - `version_or_publication_date`: 9/18 CLS-LH-334 REV8
+  - `locator`: p2 row430791; text read through web tool; local download denied.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - FUN-SPEC
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: Corning CentriStar Centrifuge Tubes Guidelines for Use
+  - `publisher`: Corning Life Sciences
+  - `url`: https://www.corning.com/catalog/cls/documents/protocols/CI-CentriStar_CT-12_REV2_DL.pdf
+  - `version_or_publication_date`: CI-CENTRISTAR CT-12 REV2, 7/16
+  - `locator`: Page 1 dimensioned 15 mL CentriStar tube drawing: overall capped length 118.61 mm; page 2 ordering table includes catalog number 430791.
+  - `access_date`: 2026-09-09
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-L
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-CAP (Supplied orange HDPE CentriStar cap for430791.)
+  - Independent reference model: REF-HOLDER (B fixture: vertical cylindrical bore18.5mm diameter,100mm deep with closed flat bottom; tube rests at its tip; not a manufacturer rotor adaptor.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-CAP`:
+    - `source_class`: B
+    - `condition`: Cap seat offset<=0.5mm;30mm lift clears mouth;no unintended overlap>0.2mm.
+    - `target_path`: input.articulation_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STAGE`:
+    - `source_class`: B
+    - `condition`: Tube supported5s;tilt<=2deg;no fall-through or overlap>0.2mm;cap remains accessible.
+    - `target_path`: input.protocol_conditioned_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-SPEC`:
+    - `source_class`: B
+    - `condition`: Scale includes1.5-14.5mL at0.5mL intervals;nominal15mL distinguished from brim;RCF12500xg represented as manufacturer rating,not passed simulation.
+    - `target_path`: input.functional_requirements.2
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Product gallery on430791 page; image inspection pending.
+  - `url`: https://ecatalog.corning.com/life-sciences/b2b/US/en/Liquid-Handling/Tubes%2C-Liquid-Handling/Centrifuge-Tubes/Corning%C2%AE-15mL-Centrifuge-Tubes/p/430791
+  - `verification_status`: page_read_image_not_inspected
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Conical closed tip
+  - Orange knurled flat-top cap
+  - Clear tube
+  - White marking spot and graduations
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

@@ -1,0 +1,607 @@
+# single channel pipette benchmark Input Specification
+
+- `benchmark_id`: PIP-001
+- `asset_class`: single_channel_pipette
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: single channel pipette
+- `name_en`: single_channel_pipette
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: Eppendorf
+- `model`: Research plus 3120 000.054
+- `configuration`: Single-channel variable volume, yellow, 20-200 microliters
+- `accessories`:
+  - epT.I.P.S. 2-200 microliter, yellow, 53 mm
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `tip_length`:
+  - `id`: DIM-TIP-L
+  - `value`: `53`
+  - `unit`: mm
+  - `measurement_object`: Required reference tip
+  - `measurement_location`: End-to-end tip length; not the pipette body length
+  - `measurement_state`: Unmounted
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `body_length`:
+  - `id`: DIM-L
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Pipette
+  - `measurement_location`: Top of released button to cone end
+  - `measurement_state`: No tip attached
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Manual does not provide overall body engineering dimensions.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `cone_diameter`:
+  - `id`: DIM-CONE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Tip cone
+  - `measurement_location`: Sealing contact band diameter
+  - `measurement_state`: No tip attached
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Interface profile drawing not obtained.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `first_stop_travel`:
+  - `id`: DIM-S1
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Dispensing button
+  - `measurement_location`: Rest to first stop
+  - `measurement_state`: Volume set to 100 microliters
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: No manufacturer stroke dimension obtained.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `second_stop_travel`:
+  - `id`: DIM-S2
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Dispensing button
+  - `measurement_location`: Rest to second stop
+  - `measurement_state`: Volume set to 100 microliters
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: No manufacturer stroke dimension obtained.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-HANDLE`**
+  - `id`: CMP-HANDLE
+  - `name`: Upper body and finger rest
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-BUTTON`**
+  - `id`: CMP-BUTTON
+  - `name`: Dispensing button and piston linkage
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-HANDLE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-RING`**
+  - `id`: CMP-RING
+  - `name`: Volume setting ring
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-HANDLE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-DISPLAY`**
+  - `id`: CMP-DISPLAY
+  - `name`: Volume display
+  - `quantity`: `1`
+  - `kind`: visual
+  - `parent`: CMP-HANDLE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-CONE`**
+  - `id`: CMP-CONE
+  - `name`: Spring-loaded tip cone
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-HANDLE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-EJECT`**
+  - `id`: CMP-EJECT
+  - `name`: Separate ejector and sleeve
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-HANDLE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-TIP`**
+  - `id`: IF-TIP
+  - `description`: Mount the color-matched 2-200 microliter yellow epT.I.P.S. on the axial cone with light force. Contact at the actual cone sealing band must retain the tip, while the separate ejector removes it.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `mate`: REF-TIP
+  - `approach_direction`: Pipette cone along -Z into an upright tip
+  - `support_location`: Cone-tip contact band
+  - `access_space`:
+    - `source_class`: B
+    - `axial_mm`: `30`
+    - `radial_mm`: `10`
+
+## Reference Consumables
+
+- **Item 1 — `REF-TIP`**
+  - `id`: REF-TIP
+  - `configuration`: epT.I.P.S. 2-200 microliters, yellow, 53 mm, manual p36 selected test-tip configuration.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-01`**
+    - `parent`: handle
+    - `child`: dispensing_button
+    - `type`: prismatic
+    - `axis`:
+      - `0`
+      - `0`
+      - `-1`
+    - `coordinate_frame`: Pipette longitudinal frame, +Z from cone to button
+    - `zero`: Button released
+    - `range`:
+      - `source_class`: U
+      - `first_stop_mm`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `second_stop_mm`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `reason`: Actual strokes need reference measurement; first and second stop ordering is manufacturer-described.
+    - `limits`: Rest < first stop < second stop; spring return to rest; do not extend stroke beyond the measured second stop.
+    - `id`: J-01
+  - **Item 2 — `J-02`**
+    - `parent`: handle
+    - `child`: volume_ring
+    - `type`: revolute
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `coordinate_frame`: Pipette longitudinal frame
+    - `zero`: 20 microliter display setting
+    - `range`:
+      - `source_class`: U
+      - `max_angle_deg`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `reason`: Angular gearing not specified; endpoint volumes are known.
+    - `limits`: Display range 20-200 microliters; no commanded out-of-range setting.
+    - `id`: J-02
+  - **Item 3 — `J-03`**
+    - `parent`: handle
+    - `child`: ejector_sleeve
+    - `type`: prismatic
+    - `axis`:
+      - `0`
+      - `0`
+      - `-1`
+    - `coordinate_frame`: Pipette longitudinal frame
+    - `zero`: Ejector released
+    - `range`:
+      - `source_class`: U
+      - `max_mm`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `reason`: Ejection stroke not dimensioned.
+    - `limits`: Enough travel to detach the matching tip, then return.
+    - `id`: J-03
+  - **Item 4 — `J-04`**
+    - `parent`: lower_body
+    - `child`: tip_cone
+    - `type`: prismatic_compliance
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `coordinate_frame`: Pipette longitudinal frame
+    - `zero`: Unloaded cone
+    - `range`:
+      - `source_class`: U
+      - `max_mm`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `reason`: Spring travel not dimensioned.
+    - `limits`: Retain manufacturer-described spring-loaded mounting function; calibration pending.
+    - `id`: J-04
+
+## Functional Requirements
+
+- **Item 1 — `FUN-VOLUME`**
+  - `id`: FUN-VOLUME
+  - `description`: Setting range 20-200 microliters in 0.2 microliter increments; this is a setting-interface check, not delivered-volume accuracy.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `min_ul`: `20`
+  - `max_ul`: `200`
+  - `increment_ul`: `0.2`
+- **Item 2 — `FUN-STOPS`**
+  - `id`: FUN-STOPS
+  - `description`: Forward-pipetting action distinguishes rest, first stop, second stop and spring return; separate ejection must release the mounted tip.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `FUN-RETAIN`**
+  - `id`: FUN-RETAIN
+  - `description`: Tip remains attached for a 50 mm lift and 5 s unsupported dwell before commanded ejection.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Forward pipetting and tip disposal, mechanical and event-sequence fragment.
+  - `source_class`: P
+  - `source_refs`:
+    - SRC-01
+  - `object`: Pipette button, tip and ejector
+  - `preconditions`:
+    - Matching tip mounted
+    - Volume set within range
+  - `action`: Press first stop; lower tip vertically into liquid; slowly release; withdraw; place against receiving inner wall; press first then second stop; withdraw while pressed; operate separate ejector.
+  - `expected_postconditions`:
+    - Mechanical stop sequence observed
+    - Used tip detached after ejection
+  - `parameters`:
+    - `immersion_depth_mm`:
+      - `min`: `2`
+      - `max`: `4`
+      - `applies_to`: 200 microliter setting
+      - `source_class`: M
+    - `simulation_dwell_s`:
+      - `value`: `1`
+      - `source_class`: B
+    - `repetitions`:
+      - `value`: `3`
+      - `source_class`: B
+    - `timeout_s`:
+      - `value`: `30`
+      - `source_class`: B
+  - `forbidden_states`:
+    - Laying down a pipette with a filled tip
+    - Immersing the pipette body
+    - Claiming volume accuracy from button events
+  - `source_note`: Manual pp8,16-17. Fluid transfer is out of scope; a geometric liquid plane and event trace are proxies.
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: P
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Forward pipetting and tip disposal, mechanical and event-sequence fragment.
+    - `source_note`: Manual pp8,16-17. Fluid transfer is out of scope; a geometric liquid plane and event trace are proxies.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Press first stop; lower tip vertically into liquid; slowly release; withdraw; place against receiving inner wall; press first then second stop; withdraw while pressed; operate separate ejector.
+    - `parameters`:
+      - `immersion_depth_mm`:
+        - `min`: `2`
+        - `max`: `4`
+        - `applies_to`: 200 microliter setting
+        - `source_class`: M
+      - `simulation_dwell_s`:
+        - `value`: `1`
+        - `source_class`: B
+      - `repetitions`:
+        - `value`: `3`
+        - `source_class`: B
+      - `timeout_s`:
+        - `value`: `30`
+        - `source_class`: B
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Eppendorf Research plus Operating Manual
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/product-media/doc/en/174967/Eppendorf_Liquid-Handling_Operating-manual_Research-plus_Eppendorf-Research-plus.pdf
+  - `version_or_publication_date`: 3120 900.012-09/042019
+  - `locator`: Pages 12-13 parts; 15-17 operation; 34 increment table; 36 selected model and test tip; 39 ordering.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-TIP-L
+    - CMP-HANDLE
+    - CMP-BUTTON
+    - CMP-RING
+    - CMP-DISPLAY
+    - CMP-CONE
+    - CMP-EJECT
+    - IF-TIP
+    - REF-TIP
+    - FUN-VOLUME
+    - FUN-STOPS
+    - PRO-01
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Bio-protocol equipment record using Eppendorf Research plus 3120000054
+  - `url`: https://bio-protocol.org/en/bpdetail?id=2735&type=0
+  - `version`: published protocol equipment list
+  - `locator`: Equipment item 14 identifies the 20-200 uL Eppendorf Research plus, catalog 3120000054; this corroborates task use but does not provide body geometry.
+  - `access_date`: 2026-09-09
+  - `verification_status`: body_read_protocol
+  - `supports_requirement_ids`:
+    - REQ-ASSET
+    - PRO-01
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-TIP (epT.I.P.S. 2-200 microliters, yellow, 53 mm, manual p36 selected test-tip configuration.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STOPS`:
+    - `source_class`: B
+    - `condition`: Two distinct ordered stops; return within0.2 mm of rest; separate ejector motion; no unintended overlap>0.2 mm.
+    - `target_path`: input.articulation_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-SETTING`:
+    - `source_class`: B
+    - `condition`: All targets represented exactly; neighboring settings differ0.2 microliters; out-of-range values rejected or mechanically limited.
+    - `target_path`: input.functional_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-TIP`:
+    - `source_class`: B
+    - `condition`: Tip slip<=0.5 mm during dwell; correct first/second-stop sequence; 2-4 mm immersion proxy at200 microliters; after ejection tip is detached by>=5 mm within2 s.
+    - `target_path`: input.protocol_conditioned_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Manual p12 Fig3-1, single-channel illustration.
+  - `url`: https://www.eppendorf.com/product-media/doc/en/174967/Eppendorf_Liquid-Handling_Operating-manual_Research-plus_Eppendorf-Research-plus.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Finger rest
+  - Separate volume ring and display
+  - Separate ejector control
+  - One tip cone
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

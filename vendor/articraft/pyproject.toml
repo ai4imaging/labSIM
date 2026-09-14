@@ -1,0 +1,117 @@
+[project]
+name = "articraft"
+version = "0.1.0"
+description = "Local-first agentic articulated object generation and viewing."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { file = "LICENSE" }
+authors = [{ name = "Articraft contributors" }]
+keywords = ["3d-assets", "articulation", "cad", "urdf", "agentic-generation"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Multimedia :: Graphics :: 3D Modeling",
+]
+dependencies = [
+    "aiofiles>=24.1.0",
+    "cadquery>=2.5",
+    "fastapi>=0.111.0",
+    "google-genai",
+    "numpy>=2.4.1",
+    "openai>=1.40.0",
+    "python-dotenv>=1.0.0",
+    "rich>=13.7.0",
+    "uvicorn>=0.30.0",
+    "pydantic>=2.0.0",
+    "manifold3d>=3.3.2",
+    "trimesh>=4.11.3",
+    "python-fcl>=0.7.0.8",
+    "websockets>=15.0.1",
+    "networkx>=3.6.1",
+    "rtree>=1.4.1",
+    "zstandard>=0.23.0",
+    "bm25s>=0.3.2.post1",
+    "scipy>=1.17.1",
+    "anthropic>=0.101.0",
+    "socksio>=1.0.0",
+]
+
+[project.scripts]
+articraft = "cli.main:main"
+
+[project.urls]
+Homepage = "https://github.com/mattzh72/articraft"
+Repository = "https://github.com/mattzh72/articraft"
+Issues = "https://github.com/mattzh72/articraft/issues"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "articraft",
+    "agent",
+    "cli",
+    "storage",
+    "viewer",
+    "sdk",
+]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "/.claude",
+    "/.mypy_cache",
+    "/.pytest_cache",
+    "/.ruff_cache",
+    "/.uv-cache",
+    "/.venv",
+    "/assets",
+    "/data",
+    "/dist",
+    "/node_modules",
+    "/viewer/web/dist",
+    "/viewer/web/node_modules",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "pytest>=8.4.0",
+    "pytest-xdist>=3.8.0",
+    "ruff>=0.11.0",
+]
+
+[tool.uv]
+required-version = ">=0.9.17"
+exclude-newer = "7 days"
+exclude-newer-package = { anthropic = "2026-05-12T00:00:00Z" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# Use `-n0` on an invocation to force serial execution for debugging.
+addopts = ["--import-mode=importlib", "-n", "auto", "--dist=worksteal"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+"scaffold.py" = ["F821"]
+"sdk/_core/v0/mesh.py" = ["F401"]
+"sdk/_core/v0/testing.py" = ["F401"]
+"sdk/_core/v0/_mesh/__init__.py" = ["F401"]
+"sdk/_core/v0/_mesh/*.py" = ["F401", "F403", "F405", "F821"]
+"sdk/_core/v0/_testing/*.py" = ["F401", "F403", "F405", "F821"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

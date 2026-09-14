@@ -1,0 +1,510 @@
+# wash bottle benchmark Input Specification
+
+- `benchmark_id`: WAS-001
+- `asset_class`: wash_bottle
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: wash bottle
+- `name_en`: wash_bottle
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: Thermo Scientific Nalgene
+- `model`: 2401-0500
+- `configuration`: 500mL LDPE Economy Wash Bottle;28mm PP closure/stem and PPCO draw tube
+- `nominal_capacity_ml`: `500`
+- `accessories`:
+  - Supplied closure/nozzle
+  - Draw tube
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `published_diameter`:
+  - `id`: DIM-D
+  - `value`: `91.4`
+  - `unit`: mm
+  - `measurement_object`: Selected product assembly
+  - `measurement_location`: Published Diameter(Metric); no drawing separates body/nozzle envelope
+  - `measurement_state`: Uncompressed, assembled; measurement endpoints need drawing confirmation
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `published_height`:
+  - `id`: DIM-H
+  - `value`: `213`
+  - `unit`: mm
+  - `measurement_object`: Selected product assembly
+  - `measurement_location`: Published Height(Metric); not a calibrated body-only height
+  - `measurement_state`: Uncompressed, assembled; endpoint definition pending
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `nozzle_bore`:
+  - `id`: DIM-N
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Nozzle
+  - `measurement_location`: Uncut tip internal opening
+  - `measurement_state`: As supplied
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Nozzle bore not published.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `wall_thickness`:
+  - `id`: DIM-T
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: LDPE bottle
+  - `measurement_location`: Mid-body wall section
+  - `measurement_state`: Uncompressed
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Wall profile and constitutive properties not supplied.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-BODY`**
+  - `id`: CMP-BODY
+  - `name`: Flexible LDPE body
+  - `quantity`: `1`
+  - `kind`: compliant
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-CAV`**
+  - `id`: CMP-CAV
+  - `name`: Bottle cavity
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-CAP`**
+  - `id`: CMP-CAP
+  - `name`: PP screw closure with integral dispensing stem
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-DRAW`**
+  - `id`: CMP-DRAW
+  - `name`: PPCO draw tube
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-CAP
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-NOZZLE`**
+  - `id`: CMP-NOZZLE
+  - `name`: Integral outlet nozzle
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-CAP
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-CAP`**
+  - `id`: IF-CAP
+  - `description`: Use supplied28mm closure assembly; closure/stem and draw tube must remain connected.28mm is the closure designation, not a verified bottle-mouth bore.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `mate`: REF-CAP
+  - `direction`: Axial neck approach
+  - `support`: Neck thread and draw-tube socket
+  - `access_clearance_mm`:
+    - `value`: `30`
+    - `source_class`: B
+- **Item 2 — `IF-TARGET`**
+  - `id`: IF-TARGET
+  - `description`: Aim nozzle at a reference collection disk from20mm distance; do not contact the target with nozzle.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `mate`: REF-TARGET
+  - `standoff_mm`: `20`
+
+## Reference Consumables
+
+- **Item 1 — `REF-CAP`**
+  - `id`: REF-CAP
+  - `configuration`: Supplied2401-0500 PP closure/stem plus PPCO draw tube.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-TARGET`**
+  - `id`: REF-TARGET
+  - `configuration`: B target disk,diameter20mm,plane normal facing nozzle.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-01`**
+    - `parent`: bottle
+    - `child`: cap
+    - `type`: detachable_screw_closure
+    - `coordinate_frame`: Neck+Z out
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `zero`: Closed
+    - `range`:
+      - `source_class`: U
+      - `release_angle_deg`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `reason`: Thread travel not published.
+    - `limits`: Actual thread reference needed; no assumed turn count.
+    - `id`: J-01
+  - **Item 2 — `J-02`**
+    - `parent`: bottle
+    - `child`: squeeze_region
+    - `type`: external_contact_proxy_not_internal_joint
+    - `coordinate_frame`: Opposing mid-body surfaces
+    - `axis`:
+      - `1`
+      - `0`
+      - `0`
+    - `zero`: No probe contact
+    - `range`:
+      - `source_class`: B
+      - `proxy_force_threshold_n`: `0.5`
+      - `max_test_force_n`: `1`
+      - `reason`: Contact-event proxy only; not calibrated LDPE deformation or dispense rate.
+    - `limits`: Do not convert contact event into claimed liquid volume.
+    - `id`: J-02
+
+## Functional Requirements
+
+- **Item 1 — `FUN-PATH`**
+  - `id`: FUN-PATH
+  - `description`: Draw tube,closure and uncut nozzle form a connected hollow route; no solid collision plug may obstruct it.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `FUN-AIM`**
+  - `id`: FUN-AIM
+  - `description`: Nozzle axis can be aimed into a collection region while bottle is externally held.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FUN-SQUEEZE`**
+  - `id`: FUN-SQUEEZE
+  - `description`: Detect opposed body contact as a B squeeze-request proxy; actual squeezing deformation and fluid dispensing remain outside validated scope.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `nominal_capacity_ml`: `500`
+  - `working_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `brim_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unknown_reason`: No working/brim volume selected.
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Rinsing and final-volume positioning fragment.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `object`: Wash bottle,nozzle,target
+  - `preconditions`:
+    - Nozzle uncut
+    - Closure/draw tube connected
+    - Bottle held upright
+  - `action`: Aim nozzle at target from20mm; apply opposed0.5-1N contacts; release contacts; move nozzle away.
+  - `expected_postconditions`:
+    - Aim maintained
+    - Squeeze-request event follows contact and stops on release
+  - `parameters`:
+    - `contact_hold_s`: `1`
+    - `repetitions`: `3`
+    - `timeout_s`: `20`
+  - `forbidden_states`:
+    - Reporting transferred volume from proxy event
+    - Claiming rigid geometry reproduces LDPE wall compliance
+  - `source_note`: Rinsing and volumetric-flask final-fill uses documented; proxy sequence is B.
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - SRC-01
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: Rinsing and volumetric-flask final-fill uses documented; proxy sequence is B.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Aim nozzle at target from20mm; apply opposed0.5-1N contacts; release contacts; move nozzle away.
+    - `parameters`:
+      - `contact_hold_s`: `1`
+      - `repetitions`: `3`
+      - `timeout_s`: `20`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Nalgene LDPE Economy Wash Bottles2401-0500
+  - `publisher`: Thermo Fisher Scientific
+  - `url`: https://www.thermofisher.com/order/catalog/product/2401-0500
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: Selected2401-0500 Specifications and Features; product gallery.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-D
+    - DIM-H
+    - CMP-BODY
+    - CMP-CAV
+    - CMP-CAP
+    - CMP-DRAW
+    - CMP-NOZZLE
+    - IF-CAP
+    - REF-CAP
+    - FUN-PATH
+    - PRO-01
+    - REQ-VIS
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-CAP (Supplied2401-0500 PP closure/stem plus PPCO draw tube.)
+  - Independent reference model: REF-TARGET (B target disk,diameter20mm,plane normal facing nozzle.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-CAP`:
+    - `source_class`: B
+    - `condition`: Cap centerswithin0.5mm; assembly remains connected; no unintended overlap>0.2mm. Missing thread reference blocks test.
+    - `target_path`: input.articulation_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-SQUEEZE`:
+    - `source_class`: B
+    - `condition`: Proxy active only while both contacts>=0.5N and neither>1N; deactivateswithin0.1s after release; no claim of displacement or flow.
+    - `target_path`: input.functional_requirements.2
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-PATH`:
+    - `source_class`: B
+    - `condition`: One open internal route exists without a solid plug; draw tube remains physically attached.
+    - `target_path`: input.functional_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-AIM`:
+    - `source_class`: B
+    - `condition`: Ray hits20mm target disk;standoff20±2mm;no nozzle-target collision.
+    - `target_path`: input.protocol_conditioned_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Selected product gallery; image retrieval failed, visual evaluation blocked pending image availability.
+  - `url`: https://www.thermofisher.com/order/catalog/product/2401-0500
+  - `verification_status`: page_read_image_fetch_failed
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Translucent ungraduated cylindrical bottle
+  - Bent integral dispensing nozzle
+  - Narrow screw closure
+  - Internal draw tube
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

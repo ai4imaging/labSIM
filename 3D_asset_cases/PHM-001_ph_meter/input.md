@@ -1,0 +1,695 @@
+# ph meter benchmark Input Specification
+
+- `benchmark_id`: PHM-001
+- `asset_class`: ph_meter
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: ph meter
+- `name_en`: ph_meter
+- `manufacturer`: Thermo Scientific Orion
+- `model`: Star A211 STARA2114
+- `configuration`: 2016 kit with 8172BNWP glass Sure-Flow electrode, separate 927007MD ATC probe and STARA-BEA meter-mounted arm.
+- `representation_mode`: One selected real configuration; unresolved physical geometry remains unknown.
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `width`:
+  - `id`: DIM-WIDTH
+  - `value`: `180`
+  - `unit`: mm
+  - `measurement_object`: Star A211 STARA2114
+  - `measurement_location`: Meter only, arm excluded
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `depth`:
+  - `id`: DIM-DEPTH
+  - `value`: `240`
+  - `unit`: mm
+  - `measurement_object`: Star A211 STARA2114
+  - `measurement_location`: Meter only
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `height`:
+  - `id`: DIM-HEIGHT
+  - `value`: `110`
+  - `unit`: mm
+  - `measurement_object`: Star A211 STARA2114
+  - `measurement_location`: Meter only
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `holder_nominal`:
+  - `id`: DIM-HOLDER_NOMINAL
+  - `value`: `12`
+  - `unit`: mm
+  - `measurement_object`: Star A211 STARA2114
+  - `measurement_location`: Flexible pH holder nominal size, not exact bore tolerance
+  - `measurement_state`: Unloaded selected configuration
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `electrode_profile`:
+  - `id`: DIM-ELECTRODE_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Star A211 STARA2114
+  - `measurement_location`: electrode_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Bulb, junction and immersion datums of 8172BNWP not dimensioned in acquired source.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `arm_travel`:
+  - `id`: DIM-ARM_TRAVEL
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Star A211 STARA2114
+  - `measurement_location`: arm_travel
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Arm reach and pivot limits unknown; 20 degree ISE mounting hole angle is not arm travel.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `connector_profile`:
+  - `id`: DIM-CONNECTOR_PROFILE
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Star A211 STARA2114
+  - `measurement_location`: connector_profile
+  - `measurement_state`: Requires independent reference measurement
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: BNC bayonet and mini-DIN pin/key dimensions not acquired.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-0`**
+  - `id`: CMP-0
+  - `name`: Meter housing and controls
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-1`**
+  - `id`: CMP-1
+  - `name`: Arm base
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-2`**
+  - `id`: CMP-2
+  - `name`: Arm and pivoted holder
+  - `quantity`: `1`
+  - `kind`: articulated
+  - `parent`: CMP-1
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-3`**
+  - `id`: CMP-3
+  - `name`: 8172BNWP electrode and cable
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+- **Item 5 — `CMP-4`**
+  - `id`: CMP-4
+  - `name`: 927007MD ATC probe
+  - `quantity`: `1`
+  - `kind`: removable
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+- **Item 6 — `CMP-5`**
+  - `id`: CMP-5
+  - `name`: BNC and eight-pin mini-DIN sockets
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-0
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 7 — `CMP-6`**
+  - `id`: CMP-6
+  - `name`: Electrode refill cover and Sure-Flow cap
+  - `quantity`: `1`
+  - `kind`: articulated
+  - `parent`: CMP-3
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-03
+
+## Interfaces
+
+- **Item 1 — `IF-0`**
+  - `id`: IF-0
+  - `description`: Mate pH electrode to BNC and separate ATC to eight-pin mini-DIN; combination electrode does not require an extra half-cell reference lead.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `IF-1`**
+  - `id`: IF-1
+  - `description`: Holder supports probes without cable tension and permits collision-free immersion.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `IF-2`**
+  - `id`: IF-2
+  - `description`: Keep refill opening and Sure-Flow cap accessible; preserve glass bulb and junction geometry.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-03
+
+## Reference Consumables
+
+- **Item 1 — `REF-0`**
+  - `id`: REF-0
+  - `configuration`: Independent 8172BNWP and 927007MD geometry, connectors and immersion datums.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-1`**
+  - `id`: REF-1
+  - `configuration`: Independent STARA-BEA kinematic geometry.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 3 — `REF-2`**
+  - `id`: REF-2
+  - `configuration`: Benchmark vessels and injected buffer/sample states at 25 C; no certified buffer or model acquired.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: Selected mechanism requires relative motion.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-0`**
+    - `id`: J-0
+    - `parent_component`: CMP-0
+    - `child_component`: CMP-2
+    - `type`: arm_pivot_chain
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Independent arm axes pending
+    - `zero`: Reference assembly pose
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: deg
+    - `range_source_class`: U
+    - `limits`: Do not infer travel from illustrations.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+  - **Item 2 — `J-1`**
+    - `id`: J-1
+    - `parent_component`: CMP-3
+    - `child_component`: CMP-6
+    - `type`: axial_cap_release
+    - `coordinate_frame`: Local body frame; +Z upright. Axis location must come from independent reference geometry.
+    - `axis`: Electrode stem axis
+    - `zero`: Released cap
+    - `range`:
+      - `min`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `max`: `null` (unknown or not applicable as stated by the adjacent fields)
+      - `unit`: mm
+    - `range_source_class`: U
+    - `limits`: Physical stroke unavailable.
+    - `locking_conditions`: None
+    - `source_class`: B
+    - `source_refs`:
+      - *(none)*
+    - `unknown_physical_geometry`: Pivot or sliding guide geometry requires independent reference.
+
+## Functional Requirements
+
+- **Item 1 — `FN-0`**
+  - `id`: FN-0
+  - `description`: Permit correctly keyed connections and supported probe motion.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 2 — `FN-1`**
+  - `id`: FN-1
+  - `description`: Record accepted calibration points only after stable input and explicit completion.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+- **Item 3 — `FN-2`**
+  - `id`: FN-2
+  - `description`: AutoRead locks stable values until a fresh measurement; transient input is not a completed reading.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-0`**
+  - `id`: PRO-0
+  - `description`: Prepare the refillable Sure-Flow electrode.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-03
+  - `preconditions`: Inspected electrode and specified fill/storage solutions available.
+  - `action`: Remove storage cap, rinse, uncover fill hole, replenish 810007, depress cap to wet junction and replenish; condition in storage solution.
+  - `expected_postcondition`: Wet junction, fill opening uncovered during measurement, liquid level above junction and at least one inch above sample.
+  - `forbidden_states`: Dry storage, silver-containing replacement fill or claiming flow from cap motion alone.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-03
+    - `statement`: Prepare the refillable Sure-Flow electrode.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Remove storage cap, rinse, uncover fill hole, replenish 810007, depress cap to wet junction and replenish; condition in storage solution.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 2 — `PRO-1`**
+  - `id`: PRO-1
+  - `description`: Two-point calibration.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `preconditions`: Correctly connected and prepared pH/ATC probes; fresh buffers bracketing sample.
+  - `action`: Rinse and gently blot; immerse in first buffer, start and accept stable point; rinse, repeat second point, then Cal Done.
+  - `expected_postcondition`: Two accepted points saved.
+  - `forbidden_states`: Treating unstable data or rinsing motion as successful chemical calibration.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+    - `statement`: Two-point calibration.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Rinse and gently blot; immerse in first buffer, start and accept stable point; rinse, repeat second point, then Cal Done.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+- **Item 3 — `PRO-2`**
+  - `id`: PRO-2
+  - `description`: Sample acquisition and storage.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-03
+  - `preconditions`: Completed calibration and AutoRead selected.
+  - `action`: Rinse, immerse, trigger measurement, wait for stable lock and record pH/temperature; return electrode to storage solution.
+  - `expected_postcondition`: Locked record and wet bulb/junction storage state.
+  - `forbidden_states`: Recording transient input as locked or leaving junction dry.
+  - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: M
+    - `source_refs`:
+      - SRC-01
+      - SRC-03
+    - `statement`: Sample acquisition and storage.
+    - `source_note`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Rinse, immerse, trigger measurement, wait for stable lock and record pH/temperature; return electrode to storage solution.
+    - `parameters`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Orion Star A210 Series Benchtop Meter User Manual
+  - `publisher`: Thermo Scientific Orion
+  - `url`: https://assets.thermofisher.com/TFS-Assets/LED/manuals/Orion-Star-A210-Series-Benchtop-Meter-User-Manual-EN.pdf
+  - `version_or_publication_date`: 68X0004410615 Rev A
+  - `locator`: Pages 8-11 connectors and holder, 50-52 calibration,57 read modes,99 dimensions. Pages11 and99 visually inspected.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-WIDTH
+    - DIM-DEPTH
+    - DIM-HEIGHT
+    - DIM-HOLDER_NOMINAL
+    - CMP-0
+    - CMP-1
+    - CMP-2
+    - CMP-5
+    - IF-0
+    - IF-1
+    - REF-0
+    - REF-1
+    - PRO-1
+    - PRO-2
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Star A211 kit specifications
+  - `publisher`: Thermo Scientific Orion
+  - `url`: https://documents.thermofisher.com/TFS-Assets/LSG/Specification-Sheets/S-STARA211-E-0216-RevD_HIRES.pdf
+  - `version_or_publication_date`: S-STARA211-E 0216 RevD
+  - `locator`: Page2 STARA2114 and STARA-BEA ordering entries.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - CMP-3
+    - CMP-4
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: ROSS Electrode User Guide
+  - `publisher`: Thermo Scientific Orion
+  - `url`: https://www.instrumart.com/assets/ROSS_Manual.pdf
+  - `version_or_publication_date`: 254786-001 Rev A,2007
+  - `locator`: Printed pages3,7-8,12: 8172BNWP identification, Sure-Flow preparation and storage.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - CMP-6
+    - IF-2
+    - PRO-0
+    - PRO-2
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow and experimental efficacy
+  - Electrochemical accuracy, buffer certification and cleaning efficacy.
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Independent reference model: Independent 8172BNWP and 927007MD geometry, connectors and immersion datums.
+  - Independent reference model: Independent STARA-BEA kinematic geometry.
+  - Independent reference model: Benchmark vessels and injected buffer/sample states at 25 C; no certified buffer or model acquired.
+  - Independent truth for listed critical source gaps
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `asset_specific`:
+  - `boundary`: Virtual pH/stability events test state logic, not electrochemical accuracy, actual wetting, buffering or ATC performance.
+  - `fixture`:
+    - `source_class`: B
+    - `buffer_pH`:
+      - `4.01`
+      - `7`
+    - `sample_pH`: `6`
+    - `temperature_C`: `25`
+  - `T-CASE-0`:
+    - `initial`: Independent profiles and joint limits available; disconnected prepared probes and vessels.
+    - `action`: Mate correct and attempt incorrect connector alignment without force; mount probes, access cap/refill opening and move through all vessels.
+    - `observable`: Key seating, support, joint limits, cable slack and clearances.
+    - `pass_condition`: Correct connectors seat within 0.5 mm of verified datum; mismatched connector cannot seat; no unintended overlap >0.2 mm; probe slip <=1 mm; bulb/wall clearance >=1 mm; physical travel respected. Missing geometry blocks.
+    - `source_class`: B
+    - `note`: Test conditions and tolerances, not manufacturer performance.
+  - `T-CASE-1`:
+    - `initial`: No completed calibration, input injector at25 C.
+    - `action`: Inject unstable then stable4.01; accept; rinse event; inject stable7.00; accept; Cal Done.
+    - `observable`: Accepted values, point count and completion log.
+    - `pass_condition`: No unstable acceptance; two values within0.01 pH of injected values; completion only after Cal Done; rinse event between points. Tolerance is benchmark-defined.
+    - `source_class`: B
+    - `note`: Test conditions and tolerances, not manufacturer performance.
+  - `T-CASE-2`:
+    - `initial`: Virtual calibration complete, AutoRead sample mode.
+    - `action`: Trigger, inject transient then stable6.00; change input after lock; trigger again; finish and place in storage vessel.
+    - `observable`: AR flag, retained value, fresh acquisition and storage state.
+    - `pass_condition`: No early lock; stable6.00 retained within0.01 until new trigger; new trigger releases lock; temperature recorded; final declared wet-storage state covers bulb and junction. No physical fluid claim.
+    - `source_class`: B
+    - `note`: Test conditions and tolerances, not manufacturer performance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `source_class`: B
+  - `T-DIM`:
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `source_class`: B
+  - `T-STRUCT`:
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `source_class`: B
+  - `T-VIS`:
+    - `condition`: Every listed feature is identifiable.
+    - `target_path`: input.visual_requirements
+    - `source_class`: B
+  - `T-CASE-0`:
+    - `condition`: Correct connectors seat within 0.5 mm of verified datum; mismatched connector cannot seat; no unintended overlap >0.2 mm; probe slip <=1 mm; bulb/wall clearance >=1 mm; physical travel respected. Missing geometry blocks.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-0
+    - `source_class`: B
+  - `T-CASE-1`:
+    - `condition`: No unstable acceptance; two values within0.01 pH of injected values; completion only after Cal Done; rinse event between points. Tolerance is benchmark-defined.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-1
+    - `source_class`: B
+  - `T-CASE-2`:
+    - `condition`: No early lock; stable6.00 retained within0.01 until new trigger; new trigger releases lock; temperature recorded; final declared wet-storage state covers bulb and junction. No physical fluid claim.
+    - `target_path`: input.test_conditions.asset_specific.T-CASE-2
+    - `source_class`: B
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `url`: https://assets.thermofisher.com/TFS-Assets/LED/manuals/Orion-Star-A210-Series-Benchtop-Meter-User-Manual-EN.pdf
+  - `locator`: Pages 8-11 connectors and holder, 50-52 calibration,57 read modes,99 dimensions. Pages11 and99 visually inspected.
+  - `verification_status`: Holder and meter specification images inspected; exact electrode geometry remains unresolved.
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Meter with separate arm, glass electrode and stainless ATC probe.
+  - Distinct BNC and mini-DIN interfaces and refillable electrode.
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

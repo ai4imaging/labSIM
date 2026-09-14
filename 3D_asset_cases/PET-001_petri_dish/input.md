@@ -1,0 +1,506 @@
+# petri dish benchmark Input Specification
+
+- `benchmark_id`: PET-001
+- `asset_class`: petri_dish
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: petri dish
+- `name_en`: petri_dish
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: DWK Life Sciences
+- `model`: DUROPLAN217554607
+- `configuration`: Borosilicate glass Petri dish with separate planar lid and base;100mm lid OD
+- `nominal_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+- `capacity_note`: Selected by diameter and height,not by nominal liquid capacity.
+- `accessories`:
+  - Matching loose lid
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `lid_od`:
+  - `id`: DIM-LD
+  - `value`: `100`
+  - `unit`: mm
+  - `measurement_object`: Lid
+  - `measurement_location`: Outer diameter d1
+  - `measurement_state`: Separate lid
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `base_od`:
+  - `id`: DIM-BD
+  - `value`: `94`
+  - `unit`: mm
+  - `measurement_object`: Dish base
+  - `measurement_location`: Outer diameter d2
+  - `measurement_state`: Separate base
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `lid_height`:
+  - `id`: DIM-LH
+  - `value`: `17`
+  - `unit`: mm
+  - `measurement_object`: Lid
+  - `measurement_location`: Individual lid height h,not assembled height
+  - `measurement_state`: Separate lid
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `base_height`:
+  - `id`: DIM-BH
+  - `value`: `15`
+  - `unit`: mm
+  - `measurement_object`: Dish base
+  - `measurement_location`: Individual base height h1
+  - `measurement_state`: Separate base
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `lid_inner_diameter`:
+  - `id`: DIM-LID
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Lid
+  - `measurement_location`: Clear skirt bore
+  - `measurement_state`: Separate lid
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Internal diameter not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+- `internal_floor_diameter`:
+  - `id`: DIM-FD
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Dish cavity
+  - `measurement_location`: Planar usable inner floor
+  - `measurement_state`: Lid removed
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Base OD is not inner culture-area diameter.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-BASE`**
+  - `id`: CMP-BASE
+  - `name`: Shallow planar-bottom dish
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-CAV`**
+  - `id`: CMP-CAV
+  - `name`: Open shallow cavity
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-BASE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-LID`**
+  - `id`: CMP-LID
+  - `name`: Loose planar lid with skirt
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-BASE
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+
+## Interfaces
+
+- **Item 1 — `IF-LID`**
+  - `id`: IF-LID
+  - `description`: Matching lid lowers along-Z over dish rim and rests by gravity; no hinge,screw or hermetic lock is required.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `mate`: REF-LID
+  - `support`: Overlapping lid skirt and dish rim
+  - `access_clearance_mm`: `30`
+- **Item 2 — `IF-ACCESS`**
+  - `id`: IF-ACCESS
+  - `description`: With lid removed,access central floor from+Z using2mm B probe.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `mate`: REF-PROBE
+  - `clearance_mm`: `20`
+
+## Reference Consumables
+
+- **Item 1 — `REF-LID`**
+  - `id`: REF-LID
+  - `configuration`: Matching DUROPLAN217554607 lid,fixed by manufacturer's table.
+  - `source_refs`:
+    - SRC-01
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-PROBE`**
+  - `id`: REF-PROBE
+  - `configuration`: Rigid B sphere diameter2mm for access test.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-01`**
+    - `parent`: dish_base
+    - `child`: lid
+    - `type`: independent_free_body_with_removal_path
+    - `coordinate_frame`: Dish+Z up
+    - `axis`:
+      - `0`
+      - `0`
+      - `1`
+    - `zero`: Resting over rim
+    - `range`:
+      - `min`: `0`
+      - `max`: `30`
+      - `unit`: mm
+      - `source_class`: B
+      - `reason`: Vertical access clearance,not a constrained internal slide joint.
+    - `limits`: Lid detached when lifted; no artificial retention on inversion.
+    - `id`: J-01
+
+## Functional Requirements
+
+- **Item 1 — `FUN-PLANAR`**
+  - `id`: FUN-PLANAR
+  - `description`: Planar interior floor and lid permit geometric observation; planar surface does not establish optical distortion or biological growth performance.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `FUN-ACCESS`**
+  - `id`: FUN-ACCESS
+  - `description`: Lid removal exposes cavity for sample positioning; lid replacement does not intersect a3mm-deep B substrate geometry.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `nominal_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `working_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `brim_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unknown_reason`: No published volume target adopted; substrate thickness is geometric only.
+  - `substrate_depth_mm`: `3`
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Culture-vessel opening and substrate access.
+  - `source_class`: B
+  - `source_refs`:
+    - SRC-01
+  - `object`: Dish base,lid,probe and substrate proxy
+  - `preconditions`:
+    - Dish upright on level surface
+    - Empty or3mm substrate proxy
+  - `action`: Lift lid30mm;approach central floor with probe;withdraw probe;replace lid.
+  - `expected_postconditions`:
+    - Cavity accessible
+    - Loose lid rests without substrate interference
+  - `parameters`:
+    - `linear_speed_mm_s`: `10`
+    - `repetitions`: `3`
+    - `timeout_s`: `30`
+  - `forbidden_states`:
+    - Claiming agar distribution or microbial growth from rigid geometry
+    - Treating loose lid as sealed threaded closure
+  - `source_note`: Cultivation use and planar surfaces describedp175; test sequence/substrate thickness are B.
+  - `source_defined_step`:
+    - `status`: not_separately_extracted
+    - `source_class`: U
+    - `source_refs`:
+      - SRC-01
+    - `statement`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `source_note`: Cultivation use and planar surfaces describedp175; test sequence/substrate thickness are B.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Lift lid30mm;approach central floor with probe;withdraw probe;replace lid.
+    - `parameters`:
+      - `linear_speed_mm_s`: `10`
+      - `repetitions`: `3`
+      - `timeout_s`: `30`
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: DURAN Laboratory Glassware Catalog
+  - `publisher`: DWK Life Sciences
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: p175 DUROPLAN table217554607 row and separated lid/base drawing.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-LD
+    - DIM-BD
+    - DIM-LH
+    - DIM-BH
+    - CMP-BASE
+    - CMP-CAV
+    - CMP-LID
+    - IF-LID
+    - REF-LID
+    - FUN-PLANAR
+    - PRO-01
+    - REQ-VIS
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-LID (Matching DUROPLAN217554607 lid,fixed by manufacturer's table.)
+  - Independent reference model: REF-PROBE (Rigid B sphere diameter2mm for access test.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-LID`:
+    - `source_class`: B
+    - `condition`: Lid clears by30mm lift and rests centeredwithin1mm on return;no unintended overlap>0.2mm;no hidden hinge or weld.
+    - `target_path`: input.articulation_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-PLANAR`:
+    - `source_class`: B
+    - `condition`: Each deviation<=0.2mm(B);no holes through floor. Does not certify optical quality.
+    - `target_path`: input.functional_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-ACCESS`:
+    - `source_class`: B
+    - `condition`: Probe path unblocked;lid rests without contacting substrate;unintended overlap<=0.2mm.
+    - `target_path`: input.protocol_conditioned_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: p175 DUROPLAN separated lid/base drawing.
+  - `url`: https://cms.mz-at.de/fileadmin/user_upload/Downloads/dwk-life-sciences/Brochure_Catalogue_News/dwk_duran-catalog_brochure_compressed.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Shallow circular base
+  - Separate overlapping lid
+  - Planar transparent bottom
+  - Planar transparent lid
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

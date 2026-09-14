@@ -1,0 +1,3408 @@
+{
+  "benchmark_id": "MAG-001",
+  "asset_class": "magnetic_rack",
+  "source_classification": {
+    "M": "Manufacturer statement",
+    "P": "Published protocol or SOP",
+    "S": "Formal standard",
+    "D": "Derived with explicit assumptions",
+    "B": "Benchmark-defined",
+    "U": "Unknown or unverified"
+  },
+  "checks": [
+    {
+      "id": "T-LOAD",
+      "name": "Future asset compilation",
+      "requirements": [
+        {
+          "id": "REQ-ASSET",
+          "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+          "source_class": "B",
+          "sources": [],
+          "output_format": "MJCF + meshes + semantic mapping",
+          "required_capabilities": []
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "16 reference tubes seated;rack on base.",
+              "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+              "observable": "Tube retention and base separation.",
+              "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+              "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+              "observable": "Access clearance and reference-relative separation.",
+              "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Magnetic base",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Removable sample rack",
+                  "quantity": 1,
+                  "kind": "removable",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Tube seats",
+                  "quantity": 16,
+                  "kind": "cavity",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-3",
+                  "name": "Permanent magnet region",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "DynaMag-2 Magnet",
+                    "publisher": "Invitrogen",
+                    "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                    "version_or_publication_date": null,
+                    "locator": "Description,Product notes and cleaning FAQ",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "CMP-3",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "PRO-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "Description,Product notes and cleaning FAQ",
+                  "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "target": {
+                "initial": "16 reference tubes seated;rack on base.",
+                "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+                "observable": "Tube retention and base separation.",
+                "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "target": {
+                "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+                "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+                "observable": "Access clearance and reference-relative separation.",
+                "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Rack/base dimensions and tube seat geometry not published.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "magnet_distance": {
+                  "id": "DIM-MAGNET_DISTANCE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "magnet_distance",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Magnet-to-tube wall spacing and field map unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tube_outer_diameter": {
+                  "id": "DIM-REF-TUBE-OD",
+                  "value": 10.8,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Maximum cylindrical tube body outside diameter; this is not the rack seat diameter",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                },
+                "reference_tube_closed_height": {
+                  "id": "DIM-REF-TUBE-H",
+                  "value": 41,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Approximate closed tube height in the technical drawing",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_note": "The source marks this height as approximate; the rack envelope remains unknown."
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [],
+      "limitations": [
+        "Specification only: checker not implemented and asset test not run."
+      ]
+    },
+    {
+      "id": "T-STRUCT",
+      "name": "Required components and topology",
+      "requirements": [
+        {
+          "id": "CMP-0",
+          "name": "Magnetic base",
+          "quantity": 1,
+          "kind": "fixed",
+          "parent": null,
+          "critical": true,
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CMP-1",
+          "name": "Removable sample rack",
+          "quantity": 1,
+          "kind": "removable",
+          "parent": null,
+          "critical": true,
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CMP-2",
+          "name": "Tube seats",
+          "quantity": 16,
+          "kind": "cavity",
+          "parent": "CMP-1",
+          "critical": true,
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "CMP-3",
+          "name": "Permanent magnet region",
+          "quantity": 1,
+          "kind": "fixed",
+          "parent": "CMP-0",
+          "critical": true,
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "16 reference tubes seated;rack on base.",
+              "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+              "observable": "Tube retention and base separation.",
+              "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+              "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+              "observable": "Access clearance and reference-relative separation.",
+              "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Magnetic base",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Removable sample rack",
+                  "quantity": 1,
+                  "kind": "removable",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Tube seats",
+                  "quantity": 16,
+                  "kind": "cavity",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-3",
+                  "name": "Permanent magnet region",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "DynaMag-2 Magnet",
+                    "publisher": "Invitrogen",
+                    "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                    "version_or_publication_date": null,
+                    "locator": "Description,Product notes and cleaning FAQ",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "CMP-3",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "PRO-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "Description,Product notes and cleaning FAQ",
+                  "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "target": {
+                "initial": "16 reference tubes seated;rack on base.",
+                "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+                "observable": "Tube retention and base separation.",
+                "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "target": {
+                "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+                "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+                "observable": "Access clearance and reference-relative separation.",
+                "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Rack/base dimensions and tube seat geometry not published.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "magnet_distance": {
+                  "id": "DIM-MAGNET_DISTANCE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "magnet_distance",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Magnet-to-tube wall spacing and field map unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tube_outer_diameter": {
+                  "id": "DIM-REF-TUBE-OD",
+                  "value": 10.8,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Maximum cylindrical tube body outside diameter; this is not the rack seat diameter",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                },
+                "reference_tube_closed_height": {
+                  "id": "DIM-REF-TUBE-H",
+                  "value": 41,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Approximate closed tube height in the technical drawing",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_note": "The source marks this height as approximate; the rack envelope remains unknown."
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [
+        {
+          "id": "SRC-01",
+          "title": "DynaMag-2 Magnet",
+          "publisher": "Invitrogen",
+          "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+          "version_or_publication_date": null,
+          "locator": "Description,Product notes and cleaning FAQ",
+          "access_date": "2026-09-08",
+          "verification_status": "body_read",
+          "supports_requirement_ids": [
+            "CMP-0",
+            "CMP-1",
+            "CMP-2",
+            "CMP-3",
+            "IF-0",
+            "IF-1",
+            "REF-0",
+            "PRO-0",
+            "REQ-VIS"
+          ]
+        }
+      ],
+      "limitations": [
+        "Specification only: checker not implemented and asset test not run."
+      ]
+    },
+    {
+      "id": "T-VIS",
+      "name": "Reference-image features",
+      "requirements": [
+        {
+          "id": "REQ-VIS",
+          "description": "Observable features in fixed views.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ],
+          "reference": {
+            "source_id": "SRC-01",
+            "locator": "Description,Product notes and cleaning FAQ",
+            "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+            "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+          },
+          "views": [
+            "front",
+            "left",
+            "top",
+            "front_left_45deg"
+          ],
+          "state": "Upright and stationary; also open-cover views where applicable.",
+          "features": [
+            "Material appearance and silhouette consistent with the source image"
+          ],
+          "reviewer_status": "not_assigned",
+          "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+          "review_protocol": {
+            "source_class": "B",
+            "render_resolution_px": {
+              "width": 1600,
+              "height": 1600
+            },
+            "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+            "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+            "asset_state": "Upright and stationary; also open-cover views where applicable.",
+            "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+            "reviewer_policy": {
+              "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+              "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+              "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+              "current_assignment": null,
+              "status": "blocked_dependency"
+            }
+          }
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "16 reference tubes seated;rack on base.",
+              "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+              "observable": "Tube retention and base separation.",
+              "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+              "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+              "observable": "Access clearance and reference-relative separation.",
+              "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Magnetic base",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Removable sample rack",
+                  "quantity": 1,
+                  "kind": "removable",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Tube seats",
+                  "quantity": 16,
+                  "kind": "cavity",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-3",
+                  "name": "Permanent magnet region",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "DynaMag-2 Magnet",
+                    "publisher": "Invitrogen",
+                    "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                    "version_or_publication_date": null,
+                    "locator": "Description,Product notes and cleaning FAQ",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "CMP-3",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "PRO-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "Description,Product notes and cleaning FAQ",
+                  "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "target": {
+                "initial": "16 reference tubes seated;rack on base.",
+                "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+                "observable": "Tube retention and base separation.",
+                "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "target": {
+                "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+                "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+                "observable": "Access clearance and reference-relative separation.",
+                "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Rack/base dimensions and tube seat geometry not published.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "magnet_distance": {
+                  "id": "DIM-MAGNET_DISTANCE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "magnet_distance",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Magnet-to-tube wall spacing and field map unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tube_outer_diameter": {
+                  "id": "DIM-REF-TUBE-OD",
+                  "value": 10.8,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Maximum cylindrical tube body outside diameter; this is not the rack seat diameter",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                },
+                "reference_tube_closed_height": {
+                  "id": "DIM-REF-TUBE-H",
+                  "value": 41,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Approximate closed tube height in the technical drawing",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_note": "The source marks this height as approximate; the rack envelope remains unknown."
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [
+        {
+          "id": "SRC-01",
+          "title": "DynaMag-2 Magnet",
+          "publisher": "Invitrogen",
+          "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+          "version_or_publication_date": null,
+          "locator": "Description,Product notes and cleaning FAQ",
+          "access_date": "2026-09-08",
+          "verification_status": "body_read",
+          "supports_requirement_ids": [
+            "CMP-0",
+            "CMP-1",
+            "CMP-2",
+            "CMP-3",
+            "IF-0",
+            "IF-1",
+            "REF-0",
+            "PRO-0",
+            "REQ-VIS"
+          ]
+        }
+      ],
+      "limitations": [
+        "Specification only: checker not implemented and asset test not run."
+      ]
+    },
+    {
+      "id": "T-CASE-0",
+      "name": "Rack removal with tubes",
+      "requirements": [
+        {
+          "id": "IF-0",
+          "description": "Sixteen1.5..2 mL microtubes;exactSKU fit must be verified.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF-1",
+          "description": "Top rack lifts off base for resuspension;not compatible withMX4 mixer.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "FN-0",
+          "description": "Load and retain16 tubes while lifting whole rack.",
+          "source_class": "B",
+          "sources": []
+        },
+        {
+          "id": "FN-1",
+          "description": "Distinguish on-magnet placement from off-magnet handling;neither state proves separation.",
+          "source_class": "B",
+          "sources": []
+        },
+        {
+          "id": "PRO-0",
+          "description": "Remove sample rack from magnet base for resuspension;do not autoclave magnet.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ],
+          "preconditions": "Rack seated on base.",
+          "action": "Lift rack before resuspension handling.",
+          "expected_postcondition": "Rack mechanically separated from base.",
+          "forbidden_states": [
+            "Autoclaving magnet",
+            "MX4 mixer compatibility claim"
+          ],
+          "parameters": null,
+          "source_defined_step": {
+            "status": "extracted",
+            "source_class": "M",
+            "sources": [
+              {
+                "id": "SRC-01",
+                "title": "DynaMag-2 Magnet",
+                "publisher": "Invitrogen",
+                "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                "version_or_publication_date": null,
+                "locator": "Description,Product notes and cleaning FAQ",
+                "access_date": "2026-09-08",
+                "verification_status": "body_read",
+                "supports_requirement_ids": [
+                  "CMP-0",
+                  "CMP-1",
+                  "CMP-2",
+                  "CMP-3",
+                  "IF-0",
+                  "IF-1",
+                  "REF-0",
+                  "PRO-0",
+                  "REQ-VIS"
+                ]
+              }
+            ],
+            "statement": "Remove sample rack from magnet base for resuspension;do not autoclave magnet.",
+            "source_note": null
+          },
+          "benchmark_test_action": {
+            "source_class": "B",
+            "action": "Lift rack before resuspension handling.",
+            "parameters": null,
+            "reason": "Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement."
+          }
+        },
+        {
+          "id": "REF-0",
+          "configuration": "DynaMag-2 base/rack and independently verified1.5 mL tube models",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ],
+          "source_class": "M",
+          "model_status": "missing",
+          "model_version": null,
+          "path": null,
+          "sha256": null,
+          "frozen": false
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "16 reference tubes seated;rack on base.",
+              "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+              "observable": "Tube retention and base separation.",
+              "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+              "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+              "observable": "Access clearance and reference-relative separation.",
+              "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Magnetic base",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Removable sample rack",
+                  "quantity": 1,
+                  "kind": "removable",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Tube seats",
+                  "quantity": 16,
+                  "kind": "cavity",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-3",
+                  "name": "Permanent magnet region",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "DynaMag-2 Magnet",
+                    "publisher": "Invitrogen",
+                    "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                    "version_or_publication_date": null,
+                    "locator": "Description,Product notes and cleaning FAQ",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "CMP-3",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "PRO-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "Description,Product notes and cleaning FAQ",
+                  "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "target": {
+                "initial": "16 reference tubes seated;rack on base.",
+                "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+                "observable": "Tube retention and base separation.",
+                "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "target": {
+                "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+                "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+                "observable": "Access clearance and reference-relative separation.",
+                "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Rack/base dimensions and tube seat geometry not published.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "magnet_distance": {
+                  "id": "DIM-MAGNET_DISTANCE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "magnet_distance",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Magnet-to-tube wall spacing and field map unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tube_outer_diameter": {
+                  "id": "DIM-REF-TUBE-OD",
+                  "value": 10.8,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Maximum cylindrical tube body outside diameter; this is not the rack seat diameter",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                },
+                "reference_tube_closed_height": {
+                  "id": "DIM-REF-TUBE-H",
+                  "value": 41,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Approximate closed tube height in the technical drawing",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_note": "The source marks this height as approximate; the rack envelope remains unknown."
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [],
+      "limitations": [
+        "Not run. Missing external models or source truth blocks testing.",
+        "Mechanical and state proxies do not validate fluid,thermal,magnetic,biological or cutting efficacy."
+      ]
+    },
+    {
+      "id": "T-CASE-1",
+      "name": "On-magnet approach geometry",
+      "requirements": [
+        {
+          "id": "IF-0",
+          "description": "Sixteen1.5..2 mL microtubes;exactSKU fit must be verified.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "IF-1",
+          "description": "Top rack lifts off base for resuspension;not compatible withMX4 mixer.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "FN-0",
+          "description": "Load and retain16 tubes while lifting whole rack.",
+          "source_class": "B",
+          "sources": []
+        },
+        {
+          "id": "FN-1",
+          "description": "Distinguish on-magnet placement from off-magnet handling;neither state proves separation.",
+          "source_class": "B",
+          "sources": []
+        },
+        {
+          "id": "PRO-0",
+          "description": "Remove sample rack from magnet base for resuspension;do not autoclave magnet.",
+          "source_class": "M",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ],
+          "preconditions": "Rack seated on base.",
+          "action": "Lift rack before resuspension handling.",
+          "expected_postcondition": "Rack mechanically separated from base.",
+          "forbidden_states": [
+            "Autoclaving magnet",
+            "MX4 mixer compatibility claim"
+          ],
+          "parameters": null,
+          "source_defined_step": {
+            "status": "extracted",
+            "source_class": "M",
+            "sources": [
+              {
+                "id": "SRC-01",
+                "title": "DynaMag-2 Magnet",
+                "publisher": "Invitrogen",
+                "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                "version_or_publication_date": null,
+                "locator": "Description,Product notes and cleaning FAQ",
+                "access_date": "2026-09-08",
+                "verification_status": "body_read",
+                "supports_requirement_ids": [
+                  "CMP-0",
+                  "CMP-1",
+                  "CMP-2",
+                  "CMP-3",
+                  "IF-0",
+                  "IF-1",
+                  "REF-0",
+                  "PRO-0",
+                  "REQ-VIS"
+                ]
+              }
+            ],
+            "statement": "Remove sample rack from magnet base for resuspension;do not autoclave magnet.",
+            "source_note": null
+          },
+          "benchmark_test_action": {
+            "source_class": "B",
+            "action": "Lift rack before resuspension handling.",
+            "parameters": null,
+            "reason": "Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement."
+          }
+        },
+        {
+          "id": "REF-0",
+          "configuration": "DynaMag-2 base/rack and independently verified1.5 mL tube models",
+          "sources": [
+            {
+              "id": "SRC-01",
+              "title": "DynaMag-2 Magnet",
+              "publisher": "Invitrogen",
+              "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+              "version_or_publication_date": null,
+              "locator": "Description,Product notes and cleaning FAQ",
+              "access_date": "2026-09-08",
+              "verification_status": "body_read",
+              "supports_requirement_ids": [
+                "CMP-0",
+                "CMP-1",
+                "CMP-2",
+                "CMP-3",
+                "IF-0",
+                "IF-1",
+                "REF-0",
+                "PRO-0",
+                "REQ-VIS"
+              ]
+            }
+          ],
+          "source_class": "M",
+          "model_status": "missing",
+          "model_version": null,
+          "path": null,
+          "sha256": null,
+          "frozen": false
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "16 reference tubes seated;rack on base.",
+              "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+              "observable": "Tube retention and base separation.",
+              "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+              "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+              "observable": "Access clearance and reference-relative separation.",
+              "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Magnetic base",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Removable sample rack",
+                  "quantity": 1,
+                  "kind": "removable",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Tube seats",
+                  "quantity": 16,
+                  "kind": "cavity",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-3",
+                  "name": "Permanent magnet region",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "DynaMag-2 Magnet",
+                    "publisher": "Invitrogen",
+                    "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                    "version_or_publication_date": null,
+                    "locator": "Description,Product notes and cleaning FAQ",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "CMP-3",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "PRO-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "Description,Product notes and cleaning FAQ",
+                  "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "target": {
+                "initial": "16 reference tubes seated;rack on base.",
+                "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+                "observable": "Tube retention and base separation.",
+                "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "target": {
+                "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+                "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+                "observable": "Access clearance and reference-relative separation.",
+                "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Rack/base dimensions and tube seat geometry not published.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "magnet_distance": {
+                  "id": "DIM-MAGNET_DISTANCE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "magnet_distance",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Magnet-to-tube wall spacing and field map unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tube_outer_diameter": {
+                  "id": "DIM-REF-TUBE-OD",
+                  "value": 10.8,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Maximum cylindrical tube body outside diameter; this is not the rack seat diameter",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                },
+                "reference_tube_closed_height": {
+                  "id": "DIM-REF-TUBE-H",
+                  "value": 41,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Approximate closed tube height in the technical drawing",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_note": "The source marks this height as approximate; the rack envelope remains unknown."
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [],
+      "limitations": [
+        "Not run. Missing external models or source truth blocks testing.",
+        "Mechanical and state proxies do not validate fluid,thermal,magnetic,biological or cutting efficacy."
+      ]
+    },
+    {
+      "id": "T-DIM",
+      "name": "Pending independent dimensional truth",
+      "requirements": [
+        {
+          "id": "DIM-ENVELOPE",
+          "value": null,
+          "unit": "mm",
+          "measurement_object": "DynaMag-2 12321D",
+          "measurement_location": "envelope",
+          "measurement_state": "Requires independent reference measurement",
+          "source_class": "U",
+          "sources": [],
+          "unknown_reason": "Rack/base dimensions and tube seat geometry not published.",
+          "tolerance": {
+            "source_class": "B",
+            "full_relative_error_max": 0.05,
+            "partial_relative_error_max": 0.1,
+            "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+            "is_manufacturer_tolerance": false
+          },
+          "required_for_spec_completion": true,
+          "critical": true,
+          "hard_fail_relative_error_max": {
+            "value": 0.2,
+            "source_class": "B",
+            "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+          },
+          "measurement_plan": {
+            "status": "required_not_performed",
+            "source_class": "B",
+            "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+            "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+            "sample_count": 3,
+            "repetitions_per_sample": 3,
+            "required_traceability": [
+              "instrument identifier and calibration certificate",
+              "sample catalog number and lot when available",
+              "operator, date, raw readings, summary statistic and measurement uncertainty",
+              "photograph or drawing showing the measurement datum and asset state"
+            ],
+            "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+          }
+        },
+        {
+          "id": "DIM-MAGNET_DISTANCE",
+          "value": null,
+          "unit": "mm",
+          "measurement_object": "DynaMag-2 12321D",
+          "measurement_location": "magnet_distance",
+          "measurement_state": "Requires independent reference measurement",
+          "source_class": "U",
+          "sources": [],
+          "unknown_reason": "Magnet-to-tube wall spacing and field map unavailable.",
+          "tolerance": {
+            "source_class": "B",
+            "full_relative_error_max": 0.05,
+            "partial_relative_error_max": 0.1,
+            "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+            "is_manufacturer_tolerance": false
+          },
+          "required_for_spec_completion": true,
+          "critical": true,
+          "hard_fail_relative_error_max": {
+            "value": 0.2,
+            "source_class": "B",
+            "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+          },
+          "measurement_plan": {
+            "status": "required_not_performed",
+            "source_class": "B",
+            "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+            "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+            "sample_count": 3,
+            "repetitions_per_sample": 3,
+            "required_traceability": [
+              "instrument identifier and calibration certificate",
+              "sample catalog number and lot when available",
+              "operator, date, raw readings, summary statistic and measurement uncertainty",
+              "photograph or drawing showing the measurement datum and asset state"
+            ],
+            "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+          }
+        },
+        {
+          "id": "REQ-TEST",
+          "source_class": "B",
+          "sources": [],
+          "gravity_m_s2": [
+            0,
+            0,
+            -9.81
+          ],
+          "time_step_s": 0.001,
+          "contact_solver": "Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.",
+          "linear_speed_mm_s": 10,
+          "angular_speed_deg_s": 30,
+          "repetitions": 3,
+          "timeout_s": 30,
+          "abnormal_penetration_max_mm": 0.2,
+          "stable_translation_max_mm": 1,
+          "stable_tilt_max_deg": 2,
+          "reason": "Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.",
+          "asset_specific": {
+            "T-CASE-0": {
+              "initial": "16 reference tubes seated;rack on base.",
+              "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+              "observable": "Tube retention and base separation.",
+              "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            },
+            "T-CASE-1": {
+              "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+              "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+              "observable": "Access clearance and reference-relative separation.",
+              "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "source_class": "B",
+              "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+            }
+          },
+          "acceptance_by_check": {
+            "T-LOAD": {
+              "condition": "No errors, resources resolved and all states finite.",
+              "target": {
+                "id": "REQ-ASSET",
+                "description": "Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.",
+                "source_class": "B",
+                "sources": [],
+                "output_format": "MJCF + meshes + semantic mapping",
+                "required_capabilities": []
+              },
+              "source_class": "B"
+            },
+            "T-STRUCT": {
+              "condition": "Every critical component and connection conforms.",
+              "target": [
+                {
+                  "id": "CMP-0",
+                  "name": "Magnetic base",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-1",
+                  "name": "Removable sample rack",
+                  "quantity": 1,
+                  "kind": "removable",
+                  "parent": null,
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-2",
+                  "name": "Tube seats",
+                  "quantity": 16,
+                  "kind": "cavity",
+                  "parent": "CMP-1",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "CMP-3",
+                  "name": "Permanent magnet region",
+                  "quantity": 1,
+                  "kind": "fixed",
+                  "parent": "CMP-0",
+                  "critical": true,
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-01",
+                      "title": "DynaMag-2 Magnet",
+                      "publisher": "Invitrogen",
+                      "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                      "version_or_publication_date": null,
+                      "locator": "Description,Product notes and cleaning FAQ",
+                      "access_date": "2026-09-08",
+                      "verification_status": "body_read",
+                      "supports_requirement_ids": [
+                        "CMP-0",
+                        "CMP-1",
+                        "CMP-2",
+                        "CMP-3",
+                        "IF-0",
+                        "IF-1",
+                        "REF-0",
+                        "PRO-0",
+                        "REQ-VIS"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "source_class": "B"
+            },
+            "T-VIS": {
+              "condition": "Every listed feature is identifiable.",
+              "target": {
+                "id": "REQ-VIS",
+                "description": "Observable features in fixed views.",
+                "source_class": "M",
+                "sources": [
+                  {
+                    "id": "SRC-01",
+                    "title": "DynaMag-2 Magnet",
+                    "publisher": "Invitrogen",
+                    "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                    "version_or_publication_date": null,
+                    "locator": "Description,Product notes and cleaning FAQ",
+                    "access_date": "2026-09-08",
+                    "verification_status": "body_read",
+                    "supports_requirement_ids": [
+                      "CMP-0",
+                      "CMP-1",
+                      "CMP-2",
+                      "CMP-3",
+                      "IF-0",
+                      "IF-1",
+                      "REF-0",
+                      "PRO-0",
+                      "REQ-VIS"
+                    ]
+                  }
+                ],
+                "reference": {
+                  "source_id": "SRC-01",
+                  "locator": "Description,Product notes and cleaning FAQ",
+                  "url": "https://www.thermofisher.com/order/catalog/product/12321D",
+                  "verification_status": "Source text read; image-specific appearance review remains a runtime dependency."
+                },
+                "views": [
+                  "front",
+                  "left",
+                  "top",
+                  "front_left_45deg"
+                ],
+                "state": "Upright and stationary; also open-cover views where applicable.",
+                "features": [
+                  "Material appearance and silhouette consistent with the source image"
+                ],
+                "reviewer_status": "not_assigned",
+                "note": "Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.",
+                "review_protocol": {
+                  "source_class": "B",
+                  "render_resolution_px": {
+                    "width": 1600,
+                    "height": 1600
+                  },
+                  "projection": "orthographic for named orthographic views; perspective only for the named 45-degree view",
+                  "background": "neutral mid-gray, uniform illumination, no depth-of-field blur",
+                  "asset_state": "Upright and stationary; also open-cover views where applicable.",
+                  "occlusion_policy": "Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.",
+                  "reviewer_policy": {
+                    "mode": "two_independent_human_reviewers_or_one_pinned_vision_model",
+                    "human_requirement": "Record two reviewer IDs and resolve disagreements before certification.",
+                    "model_requirement": "Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.",
+                    "current_assignment": null,
+                    "status": "blocked_dependency"
+                  }
+                }
+              },
+              "source_class": "B"
+            },
+            "T-CASE-0": {
+              "condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+              "target": {
+                "initial": "16 reference tubes seated;rack on base.",
+                "action": "Lift rack50 mm at10 mm/s;hold5 s;return.",
+                "observable": "Tube retention and base separation.",
+                "pass_condition": "All16 retained;relative tube drift <=1 mm;no tube-wall penetration >0.2 mm;return seat residual <=0.2 mm.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-CASE-1": {
+              "condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+              "target": {
+                "initial": "Rack seated;all16 open reference tubes;B1 mm probe.",
+                "action": "Approach each mouth to3 mm inside;withdraw10 mm;record actual magnet-relative tube poses.",
+                "observable": "Access clearance and reference-relative separation.",
+                "pass_condition": "16/16 mouths accessible;magnet-relative tube poses match independent truth within0.2 mm;no bead-recovery score assigned.",
+                "source_class": "B",
+                "note": "Proxy acceptance conditions,not manufacturer tolerances; source requirements retain their own provenance."
+              },
+              "source_class": "B"
+            },
+            "T-DIM": {
+              "condition": "All required dimension errors <=10%;unknown truth blocks evaluation.",
+              "target": {
+                "envelope": {
+                  "id": "DIM-ENVELOPE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "envelope",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Rack/base dimensions and tube seat geometry not published.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "magnet_distance": {
+                  "id": "DIM-MAGNET_DISTANCE",
+                  "value": null,
+                  "unit": "mm",
+                  "measurement_object": "DynaMag-2 12321D",
+                  "measurement_location": "magnet_distance",
+                  "measurement_state": "Requires independent reference measurement",
+                  "source_class": "U",
+                  "sources": [],
+                  "unknown_reason": "Magnet-to-tube wall spacing and field map unavailable.",
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_plan": {
+                    "status": "required_not_performed",
+                    "source_class": "B",
+                    "method": "Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.",
+                    "instrument": "Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature",
+                    "sample_count": 3,
+                    "repetitions_per_sample": 3,
+                    "required_traceability": [
+                      "instrument identifier and calibration certificate",
+                      "sample catalog number and lot when available",
+                      "operator, date, raw readings, summary statistic and measurement uncertainty",
+                      "photograph or drawing showing the measurement datum and asset state"
+                    ],
+                    "value_population_rule": "Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference."
+                  }
+                },
+                "reference_tube_outer_diameter": {
+                  "id": "DIM-REF-TUBE-OD",
+                  "value": 10.8,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Maximum cylindrical tube body outside diameter; this is not the rack seat diameter",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  }
+                },
+                "reference_tube_closed_height": {
+                  "id": "DIM-REF-TUBE-H",
+                  "value": 41,
+                  "unit": "mm",
+                  "measurement_object": "Fixed reference Eppendorf Safe-Lock 1.5 mL tube",
+                  "measurement_location": "Approximate closed tube height in the technical drawing",
+                  "measurement_state": "Unloaded selected configuration",
+                  "source_class": "M",
+                  "sources": [
+                    {
+                      "id": "SRC-03",
+                      "title": "Eppendorf Safe-Lock Tube 1.5 mL Technical Drawing",
+                      "url": "https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf",
+                      "version": "manufacturer technical drawing available in 2026",
+                      "locator": "Page 1: tube outside diameter 10.8 mm and approximately 41 mm closed height.",
+                      "access_date": "2026-09-09",
+                      "verification_status": "drawing_rendered_and_read",
+                      "supports_requirement_ids": [
+                        "DIM-REF-TUBE-OD",
+                        "DIM-REF-TUBE-H"
+                      ]
+                    }
+                  ],
+                  "unknown_reason": null,
+                  "tolerance": {
+                    "source_class": "B",
+                    "full_relative_error_max": 0.05,
+                    "partial_relative_error_max": 0.1,
+                    "reason": "Initial benchmark reproduction tolerance; not empirically calibrated and not a manufacturer tolerance.",
+                    "is_manufacturer_tolerance": false
+                  },
+                  "required_for_spec_completion": true,
+                  "critical": true,
+                  "hard_fail_relative_error_max": {
+                    "value": 0.2,
+                    "source_class": "B",
+                    "reason": "Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance."
+                  },
+                  "measurement_note": "The source marks this height as approximate; the rack envelope remains unknown."
+                }
+              },
+              "source_class": "B"
+            }
+          },
+          "is_manufacturer_tolerance": false
+        }
+      ],
+      "sources": [],
+      "limitations": [
+        "Specification only: checker not implemented and asset test not run."
+      ]
+    }
+  ]
+}

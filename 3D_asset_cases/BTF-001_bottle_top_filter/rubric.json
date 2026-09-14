@@ -1,0 +1,564 @@
+{
+  "format": "amx-rubric",
+  "case_id": "BTF-001",
+  "asset_class": "bottle_top_filter",
+  "source_sha": "af96c055ab7d8c7e",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Bottle-top adapter and side-arms",
+      "weight": 3.0,
+      "params": {
+        "part": "Bottle-top adapter and side-arms"
+      }
+    },
+    {
+      "id": "PART-CMP-1",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Upper chamber",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Upper chamber"
+      }
+    },
+    {
+      "id": "PART-CMP-2",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Threaded locking ring",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Threaded locking ring"
+      }
+    },
+    {
+      "id": "PART-CMP-3",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Removable chamber cover with two ports",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Removable chamber cover with two ports"
+      }
+    },
+    {
+      "id": "PART-CMP-4",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Clear sterilization support plate",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Clear sterilization support plate"
+      }
+    },
+    {
+      "id": "PART-CMP-5",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Support O-rings",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Support O-rings",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-6",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Cover O-ring",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Cover O-ring"
+      }
+    },
+    {
+      "id": "PART-CMP-7",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Vacuum gasket",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Vacuum gasket"
+      }
+    },
+    {
+      "id": "PART-CMP-8",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "TPE port caps",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "TPE port caps",
+        "count": 4
+      }
+    },
+    {
+      "id": "PART-CMP-9",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "PP tubing adapter",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "PP tubing adapter"
+      }
+    },
+    {
+      "id": "PART-CMP-10",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Funnel extension",
+      "weight": 3.0,
+      "params": {
+        "part": "Funnel extension"
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "PROP-DIM-RESERVOIR_CAPACITY",
+      "axis": "parts",
+      "primitive": "property_assert",
+      "subject": "reservoir_capacity",
+      "params": {
+        "quantity": "reservoir_capacity",
+        "quantity_class": "volume",
+        "value": 500.0,
+        "unit": "mL"
+      }
+    },
+    {
+      "id": "DIM-DIM-MEMBRANE_DIAMETER",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "membrane_diameter",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "dimension_id": "DIM-MEMBRANE_DIAMETER",
+        "value_m": 0.047,
+        "kind": "diameter_outer"
+      },
+      "note": "Separate membrane disc outside diameter; not housing diameter"
+    },
+    {
+      "id": "NA-DIM-ENVELOPE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "envelope",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-THREAD_PROFILE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "thread_profile",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-SIDEARM_PROFILE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "sidearm_profile",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Straw-tinted transparent upper chamber",
+      "params": {
+        "feature": "Straw-tinted transparent upper chamber"
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "White locking ring, red seals and side-arms",
+      "params": {
+        "feature": "White locking ring, red seals and side-arms"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Upper chamber",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Upper chamber",
+        "operation_id": "OP-CMP-1-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Upper chamber clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Upper chamber"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-2-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Threaded locking ring",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Threaded locking ring",
+        "operation_id": "OP-CMP-2-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-2-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Threaded locking ring clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Threaded locking ring"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-3-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Removable chamber cover with two ports",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Removable chamber cover with two ports",
+        "operation_id": "OP-CMP-3-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-3-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Removable chamber cover with two ports clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Removable chamber cover with two ports"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-4-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Clear sterilization support plate",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Clear sterilization support plate",
+        "operation_id": "OP-CMP-4-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-4-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Clear sterilization support plate clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Clear sterilization support plate"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-5-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Support O-rings",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Support O-rings",
+        "operation_id": "OP-CMP-5-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ],
+        "count": 2
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-5-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Support O-rings clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Support O-rings"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-6-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Cover O-ring",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Cover O-ring",
+        "operation_id": "OP-CMP-6-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-6-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Cover O-ring clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Cover O-ring"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-7-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Vacuum gasket",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Vacuum gasket",
+        "operation_id": "OP-CMP-7-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-7-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Vacuum gasket clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Vacuum gasket"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-8-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "TPE port caps",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "TPE port caps",
+        "operation_id": "OP-CMP-8-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ],
+        "count": 4
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-8-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "TPE port caps clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "TPE port caps"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-9-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "PP tubing adapter",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "PP tubing adapter",
+        "operation_id": "OP-CMP-9-REMOVE",
+        "operation_kind": "remove",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ]
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-9-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "PP tubing adapter clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "PP tubing adapter"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G1-PARTS",
+      "item_ids": [
+        "PART-CMP-1",
+        "PART-CMP-2",
+        "PART-CMP-3",
+        "PART-CMP-4",
+        "PART-CMP-5",
+        "PART-CMP-6",
+        "PART-CMP-7",
+        "PART-CMP-8",
+        "PART-CMP-9"
+      ],
+      "description": "Whether every named critical component is present as a body."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-OP-CMP-1-REMOVE",
+        "OP-OP-CMP-2-REMOVE",
+        "OP-OP-CMP-3-REMOVE",
+        "OP-OP-CMP-4-REMOVE",
+        "OP-OP-CMP-5-REMOVE",
+        "OP-OP-CMP-6-REMOVE",
+        "OP-OP-CMP-7-REMOVE",
+        "OP-OP-CMP-8-REMOVE",
+        "OP-OP-CMP-9-REMOVE"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}

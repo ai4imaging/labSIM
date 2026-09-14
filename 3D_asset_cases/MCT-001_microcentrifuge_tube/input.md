@@ -1,0 +1,562 @@
+# microcentrifuge tube benchmark Input Specification
+
+- `benchmark_id`: MCT-001
+- `asset_class`: microcentrifuge_tube
+- `specification_version`: 1.2.0
+- `language`: en
+
+> This Markdown file contains the complete input specification carried over from the prior structured representation. Known values, unknown values, provenance classes, tolerances, and measurement plans are unchanged.
+
+## Asset Identity
+
+- `name`: microcentrifuge tube
+- `name_en`: microcentrifuge_tube
+- `representation_mode`: Reproduce the selected configuration where facts are known; do not invent missing device geometry.
+- `manufacturer`: Eppendorf
+- `model`: Safe-Lock1.5mL,clear,PCR clean0030123328
+- `configuration`: Single polypropylene tube with tethered snap lid
+- `nominal_capacity_ml`: `1.5`
+- `accessories`:
+  - *(none)*
+
+## Task Instruction
+
+- `id`: REQ-ASSET
+- `description`: Future deliverable: compilable MuJoCo MJCF with relative mesh resources and locatable component, joint and interaction mappings. This task delivers specifications only.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `output_format`: MJCF + meshes + semantic mapping
+- `required_capabilities`:
+  - *(none)*
+
+## Dimensions
+
+- `body_outer_diameter`:
+  - `id`: DIM-D
+  - `value`: `10.8`
+  - `unit`: mm
+  - `measurement_object`: Tube
+  - `measurement_location`: Outer cylindrical body per section arrow
+  - `measurement_state`: Open cap
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `mouth_inner_diameter`:
+  - `id`: DIM-ID
+  - `value`: `8.7`
+  - `unit`: mm
+  - `measurement_object`: Tube mouth
+  - `measurement_location`: Inner opening per section arrow
+  - `measurement_state`: Open cap
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `closed_height`:
+  - `id`: DIM-H
+  - `value`: `41`
+  - `unit`: mm
+  - `measurement_object`: Tube and cap
+  - `measurement_location`: Total height marked ca.41
+  - `measurement_state`: Closed cap
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `approximate_manufacturer_value`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `open90_height`:
+  - `id`: DIM-OH
+  - `value`: `59`
+  - `unit`: mm
+  - `measurement_object`: Tube and cap
+  - `measurement_location`: Total height marked ca.59
+  - `measurement_state`: Cap90degrees open as drawn
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `unknown_reason`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `approximate_manufacturer_value`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+- `latch_interference`:
+  - `id`: DIM-LATCH
+  - `value`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unit`: mm
+  - `measurement_object`: Safe-Lock latch
+  - `measurement_location`: Snap engagement/deflection
+  - `measurement_state`: Closing
+  - `source_class`: U
+  - `source_refs`:
+    - *(none)*
+  - `unknown_reason`: Latch interference and elastic travel are not dimensioned.
+  - `tolerance`:
+    - `source_class`: B
+    - `full_relative_error_max`: `0.05`
+    - `partial_relative_error_max`: `0.1`
+    - `reason`: Initial geometric reproduction tolerance; not empirically calibrated. This is not a manufacturer tolerance.
+    - `is_manufacturer_tolerance`: `false`
+  - `required_for_spec_completion`: `true`
+  - `critical`: `true`
+  - `hard_fail_relative_error_max`:
+    - `value`: `0.2`
+    - `source_class`: B
+    - `reason`: Benchmark hard-failure threshold for a critical dimension; not a manufacturer tolerance.
+  - `measurement_plan`:
+    - `status`: required_not_performed
+    - `source_class`: B
+    - `method`: Measure the stated feature on three physical units with three repetitions per unit, using a sectioned sample or non-contact metrology where the feature is not externally accessible.
+    - `instrument`: Calibrated digital caliper, micrometer, or coordinate measurement system selected for the feature
+    - `sample_count`: `3`
+    - `repetitions_per_sample`: `3`
+    - `required_traceability`:
+      - instrument identifier and calibration certificate
+      - sample catalog number and lot when available
+      - operator, date, raw readings, summary statistic and measurement uncertainty
+      - photograph or drawing showing the measurement datum and asset state
+    - `value_population_rule`: Keep value null and source_class U until the raw record and calibration evidence are reviewed; then record the statistic and retain the measurement record reference.
+
+## Required Components
+
+- **Item 1 — `CMP-BODY`**
+  - `id`: CMP-BODY
+  - `name`: Cylindrical upper body and conical closed bottom
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 2 — `CMP-CAV`**
+  - `id`: CMP-CAV
+  - `name`: Open tube cavity
+  - `quantity`: `1`
+  - `kind`: cavity
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 3 — `CMP-CAP`**
+  - `id`: CMP-CAP
+  - `name`: Tethered cap
+  - `quantity`: `1`
+  - `kind`: independent_moving
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 4 — `CMP-HINGE`**
+  - `id`: CMP-HINGE
+  - `name`: Integral flexible cap tether
+  - `quantity`: `1`
+  - `kind`: compliant
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 5 — `CMP-LATCH`**
+  - `id`: CMP-LATCH
+  - `name`: Safe-Lock latch and sealing lip
+  - `quantity`: `1`
+  - `kind`: fixed
+  - `parent`: CMP-BODY
+  - `critical`: `true`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+- **Item 6 — `CMP-MARK`**
+  - `id`: CMP-MARK
+  - `name`: Graduations and labeling area
+  - `quantity`: `1`
+  - `kind`: visual
+  - `parent`: CMP-BODY
+  - `critical`: `false`
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-02
+
+## Interfaces
+
+- **Item 1 — `IF-RACK`**
+  - `id`: IF-RACK
+  - `description`: Insert tube along-Z into the documented1.5/2mL rack; support on rack seat and tube body/flange contacts; retrieve without cap collision.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-03
+  - `mate`: REF-RACK
+  - `support_location`: Tube/rack contacts; no hidden attachment
+  - `access_clearance_mm`:
+    - `value`: `30`
+    - `source_class`: B
+- **Item 2 — `IF-MOUTH`**
+  - `id`: IF-MOUTH
+  - `description`: Open mouth admits a B1mm diameter sampling probe20mm along the tube axis; cap must clear that route.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+  - `mate`: REF-PROBE
+  - `direction`: -Z into mouth
+  - `access_clearance_mm`: `20`
+
+## Reference Consumables
+
+- **Item 1 — `REF-RACK`**
+  - `id`: REF-RACK
+  - `configuration`: Eppendorf1.5/2mL Tube Rack per0030119819 drawing; independent geometry model missing.
+  - `source_refs`:
+    - SRC-03
+  - `source_class`: M
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+- **Item 2 — `REF-PROBE`**
+  - `id`: REF-PROBE
+  - `configuration`: Rigid B probe: diameter1mm,length30mm.
+  - `source_refs`:
+    - *(none)*
+  - `source_class`: B
+  - `model_status`: missing
+  - `model_version`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `path`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `sha256`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `frozen`: `false`
+
+## Articulation Requirements
+
+- `id`: REQ-JOINT
+- `applicable`: `true`
+- `reason`: The selected configuration has moving mechanisms.
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `joints`:
+  - **Item 1 — `J-01`**
+    - `parent`: tube_body
+    - `child`: cap
+    - `type`: revolute_surrogate_for_flexible_tether
+    - `coordinate_frame`: Hinge frame;+X along tether bending axis
+    - `axis`:
+      - `1`
+      - `0`
+      - `0`
+    - `zero`: Cap closed
+    - `range`:
+      - `source_class`: B
+      - `min`: `0`
+      - `max`: `180`
+      - `unit`: deg
+      - `reason`: Rigid hinge surrogate; source depicts90degree and fully folded-away views, not a material strain limit.
+    - `limits`: Preserve cap tether; closed latch state only with cap at seated mouth pose; no claim of measured snap force.
+    - `id`: J-01
+
+## Functional Requirements
+
+- **Item 1 — `FUN-CAP`**
+  - `id`: FUN-CAP
+  - `description`: Cap can open, close and remain tethered; latch/sealing lip visibly mate when closed. Mechanical closure is not a leak or aerosol test.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+    - SRC-02
+- **Item 2 — `FUN-VOL`**
+  - `id`: FUN-VOL
+  - `description`: Cavity supports a nominal1.5mL volume target; true brim capacity and protocol working fill remain unspecified.
+  - `source_class`: M
+  - `source_refs`:
+    - SRC-01
+  - `nominal_capacity_ml`: `1.5`
+  - `working_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `brim_capacity_ml`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `unknown_reason`: No chosen working fill or verified brim volume.
+  - `geometry_proxy_min_ml`:
+    - `value`: `1.5`
+    - `source_class`: B
+- **Item 3 — `FUN-STAGE`**
+  - `id`: FUN-STAGE
+  - `description`: Tube can be staged upright in the matching rack and sampled through its open mouth.
+  - `source_class`: B
+  - `source_refs`:
+    - *(none)*
+
+## Protocol Conditioned Requirements
+
+- **Item 1 — `PRO-01`**
+  - `id`: PRO-01
+  - `description`: Tube closure and sample-access fragment.
+  - `source_class`: P
+  - `source_refs`:
+    - SRC-02
+  - `object`: Tube cap,mouth and rack
+  - `preconditions`:
+    - Undamaged single-use tube
+    - Supported upright
+  - `action`: Open tube for sampling; close lid fully before a centrifugation-intent event. In a separate autoclave-preparation branch keep tube open.
+  - `expected_postconditions`:
+    - Cap closed before centrifugation-intent marker
+    - Cap open for autoclave-preparation marker
+  - `parameters`:
+    - `simulation_repetitions`:
+      - `value`: `3`
+      - `source_class`: B
+    - `timeout_s`:
+      - `value`: `30`
+      - `source_class`: B
+    - `autoclave_reference`:
+      - `temperature_c`: `121`
+      - `duration_min`: `20`
+      - `source_class`: M
+      - `evaluation`: Metadata only; no thermal or sterilization validation
+  - `forbidden_states`:
+    - Open cap at centrifugation-intent marker
+    - Claiming repeat simulation cycles establish physical reusability
+    - Treating latch surrogate as measured leakage protection
+  - `source_note`: External protocol checker inspects cap pose; no electronic interlock is added to the tube.
+  - `source_defined_step`:
+    - `status`: extracted
+    - `source_class`: P
+    - `source_refs`:
+      - SRC-02
+    - `statement`: Tube closure and sample-access fragment.
+    - `source_note`: External protocol checker inspects cap pose; no electronic interlock is added to the tube.
+  - `benchmark_test_action`:
+    - `source_class`: B
+    - `action`: Open tube for sampling; close lid fully before a centrifugation-intent event. In a separate autoclave-preparation branch keep tube open.
+    - `parameters`:
+      - `simulation_repetitions`:
+        - `value`: `3`
+        - `source_class`: B
+      - `timeout_s`:
+        - `value`: `30`
+        - `source_class`: B
+      - `autoclave_reference`:
+        - `temperature_c`: `121`
+        - `duration_min`: `20`
+        - `source_class`: M
+        - `evaluation`: Metadata only; no thermal or sterilization validation
+    - `reason`: Benchmark-authored observable action derived from the cited source context; it is not represented as a verbatim manufacturer, protocol, or standards requirement.
+
+## Source Documents
+
+- **Item 1 — `SRC-01`**
+  - `id`: SRC-01
+  - `title`: Technical Data Sheet: Safe-Lock Tubes1.5mL
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf
+  - `version_or_publication_date`: `null` (unknown or not applicable as stated by the adjacent fields)
+  - `locator`: p1 section,90degree-open and closed-state views.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - DIM-D
+    - DIM-ID
+    - DIM-H
+    - DIM-OH
+    - CMP-BODY
+    - CMP-CAV
+    - CMP-CAP
+    - CMP-HINGE
+    - CMP-LATCH
+    - IF-RACK
+    - FUN-CAP
+    - FUN-VOL
+    - REQ-VIS
+- **Item 2 — `SRC-02`**
+  - `id`: SRC-02
+  - `title`: Eppendorf Tubes Instructions for Use
+  - `publisher`: Eppendorf
+  - `url`: https://pipette.com/mm5/pdfs/manuals-brochures/Instructions%20for%20use%20of%20Eppendorf%20Safe%20Lock%20Centrifuge%20Tubes.pdf
+  - `version_or_publication_date`: 0012 557.019-04/062013
+  - `locator`: pp3-5 lid closure,single use and labeling; p6 open autoclaving; p10 ordering0030123328.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - CMP-MARK
+    - FUN-CAP
+    - PRO-01
+- **Item 3 — `SRC-03`**
+  - `id`: SRC-03
+  - `title`: Technical Data Sheet: Tube Rack1.5mL/2mL
+  - `publisher`: Eppendorf
+  - `url`: https://www.eppendorf.com/product-media/doc/en/235449/Consumables_Technical-data_Tube-Rack-15-mL-20-mL.pdf
+  - `version_or_publication_date`: 0030 119.819-00/042017
+  - `locator`: p1 rack interface drawing.
+  - `access_date`: 2026-09-08
+  - `verification_status`: body_read
+  - `supports_requirement_ids`:
+    - IF-RACK
+    - REF-RACK
+
+## Scope And Assumptions
+
+- `included`:
+  - Geometry and rigid-body contact
+  - Applicable articulation and device-state logic
+- `excluded`:
+  - Real fluid flow or delivered volume
+  - Heat transfer and experimental efficacy
+  - Independent extraction of requirements from raw sources
+- `runtime_dependencies`:
+  - Submitted asset and pinned MuJoCo environment
+  - Independent geometry, contact and state checkers
+  - Assigned human visual reviewer
+  - Independent reference model: REF-RACK (Eppendorf1.5/2mL Tube Rack per0030119819 drawing; independent geometry model missing.)
+  - Independent reference model: REF-PROBE (Rigid B probe: diameter1mm,length30mm.)
+  - Pinned,independently justified inertial and contact parameters for any rigid-body test
+- `certification_blocked_until_dependencies_resolved`: `true`
+
+## Test Conditions
+
+- `id`: REQ-TEST
+- `source_class`: B
+- `source_refs`:
+  - *(none)*
+- `gravity_m_s2`:
+  - `0`
+  - `0`
+  - `-9.81`
+- `time_step_s`: `0.001`
+- `contact_solver`: Pin and record MuJoCo version and solver settings before running; missing configuration gives invalid_test.
+- `linear_speed_mm_s`: `10`
+- `angular_speed_deg_s`: `30`
+- `repetitions`: `3`
+- `timeout_s`: `30`
+- `abnormal_penetration_max_mm`: `0.2`
+- `stable_translation_max_mm`: `1`
+- `stable_tilt_max_deg`: `2`
+- `reason`: Initial quasi-static proxy conditions, not manufacturer operating speeds or verified material properties. This is not a manufacturer tolerance.
+- `acceptance_by_check`:
+  - `T-LOAD`:
+    - `source_class`: B
+    - `condition`: No errors, resources resolved and all states finite.
+    - `target_path`: input.task_instruction
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-DIM`:
+    - `source_class`: B
+    - `condition`: Every e<=0.10.
+    - `target_path`: input.dimensions
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STRUCT`:
+    - `source_class`: B
+    - `condition`: Every critical component and connection conforms.
+    - `target_path`: input.required_components
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VIS`:
+    - `source_class`: B
+    - `condition`: Every listed feature matches the source's qualitative appearance in the required views; do not re-score component existence or numeric dimensions.
+    - `target_path`: input.visual_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-CAP`:
+    - `source_class`: B
+    - `condition`: 90±2deg reached; closed posewithin2deg; tether never detaches; cap-lip center offset<=0.2mm; no unintended overlap>0.2mm.
+    - `target_path`: input.articulation_requirements
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-VOL`:
+    - `source_class`: B
+    - `condition`: Connected cavityV>=1.5mL; closed bottom; convergence<=1%.
+    - `target_path`: input.functional_requirements.1
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-STAGE`:
+    - `source_class`: B
+    - `condition`: Tube supported5s without falling through;probe20mm path clear;retrieval unobstructed;unintended overlap<=0.2mm.
+    - `target_path`: input.interfaces
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+  - `T-PROTOCOL`:
+    - `source_class`: B
+    - `condition`: Closed accepted/open rejected for centrifugation marker;open accepted/closed rejected for autoclave-preparation marker.
+    - `target_path`: input.protocol_conditioned_requirements.0
+    - `provenance_note`: This acceptance rule is benchmark-defined. Manufacturer target values retain the provenance of the referenced input requirements.
+- `is_manufacturer_tolerance`: `false`
+
+## Visual Requirements
+
+- `id`: REQ-VIS
+- `description`: Observable features in fixed views.
+- `source_class`: M
+- `source_refs`:
+  - SRC-01
+- `reference`:
+  - `source_id`: SRC-01
+  - `locator`: Technical drawingp1.
+  - `url`: https://www.eppendorf.com/product-media/doc/en/140027_Technical-Data/Eppendorf_Consumables_Technical-data_Safe-Lock-Tube-15-mL_Safe-Lock-15-mL-technical-drawing.pdf
+- `views`:
+  - front
+  - left
+  - top
+  - front_left_45deg
+- `state`: Upright and stationary; also open-cover views where applicable.
+- `features`:
+  - Conical bottom
+  - Tethered snap cap
+  - Safe-Lock latch projection
+  - Cylindrical upper body
+- `reviewer_status`: not_assigned
+- `note`: Family illustrations support structural features only, not exact pixel dimensions of the selected SKU.
+- `review_protocol`:
+  - `source_class`: B
+  - `render_resolution_px`:
+    - `width`: `1600`
+    - `height`: `1600`
+  - `projection`: orthographic for named orthographic views; perspective only for the named 45-degree view
+  - `background`: neutral mid-gray, uniform illumination, no depth-of-field blur
+  - `asset_state`: Upright and stationary; also open-cover views where applicable.
+  - `occlusion_policy`: Generate an additional unobstructed view when a required feature is hidden; a hidden feature is not automatically conforming.
+  - `reviewer_policy`:
+    - `mode`: two_independent_human_reviewers_or_one_pinned_vision_model
+    - `human_requirement`: Record two reviewer IDs and resolve disagreements before certification.
+    - `model_requirement`: Record provider, model/version, prompt hash and image hash. Unpinned or unavailable models yield blocked_dependency.
+    - `current_assignment`: `null` (unknown or not applicable as stated by the adjacent fields)
+    - `status`: blocked_dependency

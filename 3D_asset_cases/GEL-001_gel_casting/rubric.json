@@ -1,0 +1,500 @@
+{
+  "format": "amx-rubric",
+  "case_id": "GEL-001",
+  "asset_class": "gel_casting",
+  "source_sha": "74ca9eee804d1443",
+  "items": [
+    {
+      "id": "PHY-LOAD",
+      "axis": "physics",
+      "primitive": "load_compiles",
+      "subject": "the exported MJCF",
+      "weight": 3.0,
+      "critical": true,
+      "note": "Nothing else is worth measuring on an asset a simulator will not accept."
+    },
+    {
+      "id": "PHY-INERTIA",
+      "axis": "physics",
+      "primitive": "part_inertia",
+      "subject": "every part's mass and inertia",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-CONNECTED",
+      "axis": "physics",
+      "primitive": "assembly_connected",
+      "subject": "the assembly holding together",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-INTERPENETRATION",
+      "axis": "physics",
+      "primitive": "rest_interpenetration",
+      "subject": "parts sharing space at rest",
+      "weight": 3.0,
+      "critical": true
+    },
+    {
+      "id": "PHY-DENSITY",
+      "axis": "physics",
+      "primitive": "part_density",
+      "subject": "every part being made of something",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-COM",
+      "axis": "physics",
+      "primitive": "com_support",
+      "subject": "the centre of mass over the footprint",
+      "weight": 2.0
+    },
+    {
+      "id": "PHY-STABILITY",
+      "axis": "physics",
+      "primitive": "rest_stability",
+      "subject": "standing on a bench unaided",
+      "weight": 3.0
+    },
+    {
+      "id": "PART-CMP-0",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Two-position casting stand",
+      "weight": 3.0,
+      "params": {
+        "part": "Two-position casting stand"
+      }
+    },
+    {
+      "id": "PART-CMP-1",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Casting frames",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Casting frames",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-2",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Frame pressure cams",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Frame pressure cams"
+      }
+    },
+    {
+      "id": "PART-CMP-3",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Spring-loaded pressure levers",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Spring-loaded pressure levers",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-4",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Gray casting gaskets",
+      "weight": 3.0,
+      "params": {
+        "part": "Gray casting gaskets",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-5",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Short plates",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Short plates",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-6",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "1.0 mm spacer plates",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "1.0 mm spacer plates",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-CMP-7",
+      "axis": "parts",
+      "primitive": "part_present",
+      "subject": "Ten-well1.0 mm combs",
+      "weight": 3.0,
+      "critical": true,
+      "params": {
+        "part": "Ten-well1.0 mm combs",
+        "count": 2
+      }
+    },
+    {
+      "id": "PART-MASS",
+      "axis": "parts",
+      "primitive": "part_mass",
+      "subject": "every part weighing something",
+      "weight": 2.0,
+      "note": "A welded part may legally weigh nothing in MuJoCo. It may not here."
+    },
+    {
+      "id": "DIM-DIM-SHORT_PLATE_WIDTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "short_plate_width",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "short_plate",
+        "dimension_id": "DIM-SHORT_PLATE_WIDTH",
+        "value_m": 0.101,
+        "kind": "footprint_max",
+        "axis": "x"
+      },
+      "note": "Short plate outer width"
+    },
+    {
+      "id": "DIM-DIM-SHORT_PLATE_HEIGHT",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "short_plate_height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "short_plate",
+        "dimension_id": "DIM-SHORT_PLATE_HEIGHT",
+        "value_m": 0.073
+      },
+      "note": "Short plate outer height"
+    },
+    {
+      "id": "DIM-DIM-SPACER_PLATE_WIDTH",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "spacer_plate_width",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "spacer_plate",
+        "dimension_id": "DIM-SPACER_PLATE_WIDTH",
+        "value_m": 0.101,
+        "kind": "footprint_min",
+        "axis": "x"
+      },
+      "note": "Spacer plate outer width"
+    },
+    {
+      "id": "DIM-DIM-SPACER_PLATE_HEIGHT",
+      "axis": "parts",
+      "primitive": "part_dimension",
+      "subject": "spacer_plate_height",
+      "weight": 2.0,
+      "critical": true,
+      "params": {
+        "part": "spacer_plate",
+        "dimension_id": "DIM-SPACER_PLATE_HEIGHT",
+        "value_m": 0.082
+      },
+      "note": "Spacer plate outer height"
+    },
+    {
+      "id": "NA-DIM-GEL_GAP",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "gel_gap",
+      "params": {
+        "reason": "the name does not say how to measure this on the assembled object"
+      }
+    },
+    {
+      "id": "NA-DIM-STAND_ENVELOPE",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "stand_envelope",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-CAM_KINEMATICS",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "cam_kinematics",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-LEVER_KINEMATICS",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "lever_kinematics",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "NA-DIM-COMB_GEOMETRY",
+      "axis": "parts",
+      "primitive": "not_scorable",
+      "subject": "comb_geometry",
+      "params": {
+        "reason": "the benchmark itself records no target for this dimension"
+      }
+    },
+    {
+      "id": "VIS-00",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Separate side-by-side casting stand with spring levers, two frames and outward pressure cams.",
+      "params": {
+        "feature": "Separate side-by-side casting stand with spring levers, two frames and outward pressure cams."
+      }
+    },
+    {
+      "id": "VIS-01",
+      "axis": "parts",
+      "primitive": "visual_feature",
+      "subject": "Tall spacer plate, shorter front plate, gray bottom gaskets and removable combs.",
+      "params": {
+        "feature": "Tall spacer plate, shorter front plate, gray bottom gaskets and removable combs."
+      }
+    },
+    {
+      "id": "OP-J-0",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Frame pressure cams",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Frame pressure cams",
+        "operation_id": "J-0",
+        "parent_part": "Casting frames"
+      },
+      "note": "Open cams; Unknown physical rotation and force."
+    },
+    {
+      "id": "SWEEP-J-0",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Frame pressure cams clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Frame pressure cams"
+      }
+    },
+    {
+      "id": "OP-J-1",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Spring-loaded pressure levers",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Spring-loaded pressure levers",
+        "operation_id": "J-1",
+        "operation_kind": "rotate",
+        "parent_part": "Two-position casting stand",
+        "expected_joint_types": [
+          "hinge"
+        ],
+        "count": 2
+      },
+      "note": "Released levers; Unknown travel/preload; do not fabricate force."
+    },
+    {
+      "id": "SWEEP-J-1",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Spring-loaded pressure levers clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Spring-loaded pressure levers"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Casting frames",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Casting frames",
+        "operation_id": "OP-CMP-1-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-0",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ],
+        "count": 2
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-1-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Casting frames clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Casting frames"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-5-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Short plates",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Short plates",
+        "operation_id": "OP-CMP-5-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-1",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ],
+        "count": 2
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-5-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Short plates clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Short plates"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-6-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "1.0 mm spacer plates",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "1.0 mm spacer plates",
+        "operation_id": "OP-CMP-6-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-1",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ],
+        "count": 2
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-6-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "1.0 mm spacer plates clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "1.0 mm spacer plates"
+      }
+    },
+    {
+      "id": "OP-OP-CMP-7-REMOVE",
+      "axis": "operability",
+      "primitive": "operation_exercise",
+      "subject": "Ten-well1.0 mm combs",
+      "weight": 4.0,
+      "critical": true,
+      "params": {
+        "part": "Ten-well1.0 mm combs",
+        "operation_id": "OP-CMP-7-REMOVE",
+        "operation_kind": "remove",
+        "parent_part": "CMP-1",
+        "expected_joint_types": [
+          "free",
+          "slide"
+        ],
+        "count": 2
+      },
+      "note": "required component is explicitly removable"
+    },
+    {
+      "id": "SWEEP-OP-CMP-7-REMOVE",
+      "axis": "operability",
+      "primitive": "swept_collision",
+      "subject": "Ten-well1.0 mm combs clearing its whole travel",
+      "weight": 2.0,
+      "params": {
+        "part": "Ten-well1.0 mm combs"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "id": "G0-LOAD",
+      "item_ids": [
+        "PHY-LOAD"
+      ],
+      "description": "Whether the compiled MJCF loads and stays finite."
+    },
+    {
+      "id": "G3-PHYSICS",
+      "item_ids": [
+        "PHY-INERTIA",
+        "PHY-CONNECTED",
+        "PHY-INTERPENETRATION"
+      ],
+      "description": "Whether the assembly carries mass, stays in one piece, and does not occupy the same space twice. Each miss costs its own item."
+    },
+    {
+      "id": "G1-PARTS",
+      "item_ids": [
+        "PART-CMP-1",
+        "PART-CMP-2",
+        "PART-CMP-3",
+        "PART-CMP-5",
+        "PART-CMP-6",
+        "PART-CMP-7"
+      ],
+      "description": "Whether every named critical component is present as a body."
+    },
+    {
+      "id": "G2-OPERABILITY",
+      "item_ids": [
+        "OP-J-0",
+        "OP-J-1",
+        "OP-OP-CMP-1-REMOVE",
+        "OP-OP-CMP-5-REMOVE",
+        "OP-OP-CMP-6-REMOVE",
+        "OP-OP-CMP-7-REMOVE"
+      ],
+      "description": "Whether every named affordance executes. Each miss costs that operation."
+    }
+  ]
+}
