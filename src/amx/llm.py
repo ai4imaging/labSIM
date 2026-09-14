@@ -70,7 +70,6 @@ PROVIDERS: dict[str, Provider] = {
         kind="openai",
         key_env="GPUGEEK_API_KEY",
         base_url_env="GPUGEEK_BASE_URL",
-        default_base_url="https://api.gpugeek.com/v1",
         default_model=DEFAULT_GPUGEEK_MODEL,
     ),
 }
@@ -399,9 +398,18 @@ def probe(provider: str, *, timeout: float = 20.0) -> Probe:
     key = os.environ.get(spec.key_env, "")
     base = os.environ.get(spec.base_url_env) or spec.default_base_url
     if not base:
-        base = (
-            "https://api.anthropic.com/v1" if spec.kind == "anthropic" else "https://api.openai.com/v1"
-        )
+        if spec.kind == "anthropic":
+            base = "https://api.anthropic.com/v1"
+        elif name == "openai":
+            base = "https://api.openai.com/v1"
+        else:
+            return Probe(
+                provider=name,
+                base_url="",
+                key_present=bool(key),
+                reachable=False,
+                detail=f"set {spec.base_url_env} to your own OpenAI-compatible endpoint; this repo ships none",
+            )
     result = Probe(provider=name, base_url=base, key_present=bool(key), reachable=False)
 
     url = base.rstrip("/") + "/models"

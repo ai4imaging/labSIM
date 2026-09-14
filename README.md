@@ -45,45 +45,57 @@ If `uv` was just installed and the next command says it is not found, add
 To refresh the environment later, run `./setup.sh` again. `uv sync` is incremental;
 robot meshes are skipped when they are already present.
 
-### 3. Fill in `.env`
+### 3. Fill in `.env` with **your** credentials
 
-Open the `.env` the script wrote and set at least a key for the provider you will use.
-Only that provider's variables are required. The defaults talk to the GpuGeek
-OpenAI-compatible gateway:
+This repository does not include an API key or a hosted model endpoint. Generating an
+asset will not work until you put **your own** key in `.env`. Do not paste anyone
+else's key, and do not commit `.env` (it is gitignored).
+
+Open the `.env` the script wrote. Pick one provider and fill only that block.
+
+**Anthropic**
 
 ```bash
-# required to generate assets
-GPUGEEK_API_KEY=sk-...
-GPUGEEK_BASE_URL=https://api.gpugeek.com/v1
-
-# which model the bench and the authoring agent ask for
-AMX_LLM_PROVIDER=gpugeek
-AMX_LLM_MODEL=Vendor2/Claude-4.8-opus
-GPUGEEK_MODEL=Vendor2/Claude-4.8-opus
-ARTICRAFT_MODEL=Vendor2/Claude-4.8-opus
+ANTHROPIC_API_KEY=          # from console.anthropic.com
+AMX_LLM_PROVIDER=anthropic
+AMX_LLM_MODEL=claude-sonnet-4-5
+ARTICRAFT_MODEL=claude-sonnet-4-5
 ```
 
-Model ids are whatever that gateway currently serves. Do not guess — list them:
+**OpenAI**
+
+```bash
+OPENAI_API_KEY=             # from platform.openai.com
+AMX_LLM_PROVIDER=openai
+AMX_LLM_MODEL=gpt-4.1
+ARTICRAFT_MODEL=gpt-4.1
+```
+
+**Your own OpenAI-compatible gateway**
+
+```bash
+GPUGEEK_API_KEY=            # the key *your* gateway issued you
+GPUGEEK_BASE_URL=           # https://…/v1  — required; there is no default
+AMX_LLM_PROVIDER=gpugeek
+AMX_LLM_MODEL=              # an id that gateway actually serves
+GPUGEEK_MODEL=
+ARTICRAFT_MODEL=
+```
+
+The `GPUGEEK_*` names are historical. They are just the compatible-client key and
+base URL; they do not point at any service shipped with this repo. If
+`GPUGEEK_BASE_URL` is empty, the client refuses to start.
+
+Then confirm the endpoint answers and list the models it serves:
 
 ```bash
 uv run amx llm doctor
 ```
 
-That call tells you whether the key is present, whether the endpoint answers, and which
-model names it actually has. A 400 that says `model not found` is almost always a stale
-id in `.env`, not a code bug.
-
-Direct Anthropic or OpenAI also work. Set `ANTHROPIC_API_KEY` or `OPENAI_API_KEY` and
-point `AMX_LLM_PROVIDER` at `anthropic` or `openai`. Articraft infers a provider from
-the model id; GpuGeek ids use a `VendorN/` prefix on purpose, so they are not read as
-OpenRouter.
+A 400 that says `model not found` is almost always a stale id in `.env`, not a code bug.
 
 On Linux, add `MUJOCO_GL=egl` (or `osmesa`) to `.env` for headless renders. On macOS
 leave `MUJOCO_GL` unset — MuJoCo uses CGL, and setting EGL there fails at render time.
-
-Retry knobs (`GPUGEEK_MAX_ATTEMPTS`, `GPUGEEK_RETRY_BASE_SECONDS`,
-`GPUGEEK_RETRY_MAX_SECONDS`) default to values that survive a several-minute outage.
-You do not need to change them for a first run.
 
 ### 4. Check the install
 

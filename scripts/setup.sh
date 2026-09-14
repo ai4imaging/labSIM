@@ -33,7 +33,7 @@ uv sync --python 3.12 --extra articraft "$@"
 
 if [ ! -f .env ]; then
     cp .env.example .env
-    echo "==> wrote .env from .env.example  (empty keys; fill GPUGEEK_API_KEY to generate assets)"
+    echo "==> wrote .env from .env.example  (empty; put YOUR own API key in before generating)"
 else
     echo "==> .env already present; leaving it alone"
 fi
@@ -74,7 +74,7 @@ print('sim_judge', sim_judge.__version__)
 "
 echo
 echo "Next:"
-echo "  1. Edit .env and set GPUGEEK_API_KEY (and the model ids you want)."
+echo "  1. Edit .env with YOUR own API key (Anthropic, OpenAI, or your gateway)."
 echo "  2. uv run amx llm doctor          # can the gateway be reached"
 echo "  3. uv run pytest                  # deterministic tests; no key needed"
 echo "  4. uv run amx bench list          # the 64 cases"

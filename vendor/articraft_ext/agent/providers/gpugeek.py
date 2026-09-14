@@ -48,7 +48,8 @@ except Exception:  # pragma: no cover - dotenv is optional
         return None
 
 
-DEFAULT_GPUGEEK_BASE_URL = "https://api.gpugeek.com/v1"
+DEFAULT_GPUGEEK_BASE_URL = ""
+"""No hosted endpoint is shipped. Set GPUGEEK_BASE_URL to your own OpenAI-compatible API."""
 DEFAULT_GPUGEEK_CONTEXT_TOKENS = 200_000
 DEFAULT_GPUGEEK_MAX_TOKENS = 32_000
 DEFAULT_GPUGEEK_OUTPUT_SAFETY_TOKENS = 1_024
@@ -172,6 +173,11 @@ class GpuGeekLLM(OpenAICompatibleChatCompletionsMixin):
             )
         self.model_id = resolved_model
         self.base_url = (os.environ.get("GPUGEEK_BASE_URL") or DEFAULT_GPUGEEK_BASE_URL).rstrip("/")
+        if not self.base_url and not dry_run:
+            raise ValueError(
+                "No OpenAI-compatible endpoint is configured. Set GPUGEEK_BASE_URL to "
+                "your own API (this repository does not ship one)."
+            )
         self.thinking_level = thinking_level
         self.max_tokens = _env_int("GPUGEEK_MAX_TOKENS", DEFAULT_GPUGEEK_MAX_TOKENS)
         self.context_tokens = _env_int("GPUGEEK_CONTEXT_TOKENS", DEFAULT_GPUGEEK_CONTEXT_TOKENS)
